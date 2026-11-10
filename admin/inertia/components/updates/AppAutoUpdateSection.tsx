@@ -4,8 +4,12 @@ import api from '~/lib/api'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useNotifications } from '~/context/NotificationContext'
 import { useAppAutoUpdateStatus } from '~/hooks/useAppAutoUpdateStatus'
+import { useTranslation } from 'react-i18next'
+import { useServiceText } from '~/lib/service_i18n'
 
 export default function AppAutoUpdateSection() {
+  const { t, i18n } = useTranslation('settings')
+  const serviceText = useServiceText()
   const { addNotification } = useNotifications()
   const queryClient = useQueryClient()
   const { data: status, isLoading } = useAppAutoUpdateStatus()
@@ -18,40 +22,38 @@ export default function AppAutoUpdateSection() {
       queryClient.invalidateQueries({ queryKey: ['app-auto-update-status'] })
       addNotification({
         type: 'success',
-        message: value ? 'App automatic updates enabled.' : 'App automatic updates disabled.',
+        message: value ? t('autoUpd.appOn') : t('autoUpd.appOff'),
       })
     },
     onError: () => {
-      addNotification({ type: 'error', message: 'Failed to update app auto-update setting.' })
+      addNotification({ type: 'error', message: t('autoUpd.appFail') })
     },
   })
 
   return (
     <>
-      <StyledSectionHeader title="Automatic App Updates" className="mt-8" />
+      <StyledSectionHeader title={t('autoUpd.appTitle')} className="mt-8" />
       <div className="bg-surface-primary rounded-lg border shadow-md overflow-hidden mt-6 p-6">
         <Switch
           checked={enabled}
           onChange={(value) => toggleMutation.mutate(value)}
           disabled={toggleMutation.isPending || isLoading}
-          label="Enable Automatic App Updates"
-          description="Automatically install minor and patch updates for apps you've opted in (toggle each app in Supply Depot). Major versions always require a manual update. Uses the same update window and cool-off period as the core schedule above."
+          label={t('autoUpd.appEnable')}
+          description={t('autoUpd.appDesc')}
         />
 
         {enabled && status && (
           <div className="mt-6 pt-4 border-t border-desert-stone-light text-sm">
             <p className="text-desert-stone mb-3">
-              <span className="font-medium">Update window: </span>
-              {status.windowStart}–{status.windowEnd} (
-              {status.withinWindow ? 'currently inside' : 'currently outside'}); cool-off{' '}
-              {status.cooloffHours}h.
+              <span className="font-medium">{t('autoUpd.updateWindow')} </span>
+              {t('autoUpd.windowStatus', { start: status.windowStart, end: status.windowEnd, inside: status.withinWindow ? t('autoUpd.inside') : t('autoUpd.outside'), hours: status.cooloffHours })}
               {status.lastResult && (
                 <>
                   {' '}
-                  <span className="font-medium">Last run: </span>
+                  <span className="font-medium">{t('autoUpd.lastRun')} </span>
                   {status.lastResult}
                   {status.lastAttemptAt
-                    ? ` (${new Date(status.lastAttemptAt).toLocaleString()})`
+                    ? ` (${new Date(status.lastAttemptAt).toLocaleString(i18n.language)})`
                     : ''}
                 </>
               )}
@@ -59,7 +61,7 @@ export default function AppAutoUpdateSection() {
 
             {status.apps.length === 0 ? (
               <p className="text-desert-stone-dark">
-                No apps are opted in yet. Enable auto-update on individual apps from the Supply Depot.
+                {t('autoUpd.noApps')}
               </p>
             ) : (
               <ul className="space-y-2">
@@ -70,13 +72,13 @@ export default function AppAutoUpdateSection() {
                   >
                     <div>
                       <p className="font-medium text-text-primary">
-                        {app.friendly_name || app.service_name}
+                        {serviceText.name(app)}
                       </p>
                       <p className="text-desert-stone">
                         {app.current_version}
                         {app.available_update_version
                           ? ` → ${app.available_update_version}`
-                          : ' (up to date)'}
+                          : ` (${t('autoUpd.upToDate')})`}
                       </p>
                       {app.auto_disabled_reason && (
                         <p className="text-desert-red mt-0.5">{app.auto_disabled_reason}</p>
