@@ -7,7 +7,7 @@ import {
   IconSettings,
   IconWifiOff,
 } from '@tabler/icons-react'
-import { Head, Link, router, usePage } from '@inertiajs/react'
+import { Head, Link, router } from '@inertiajs/react'
 import AppLayout from '~/layouts/AppLayout'
 import { getServiceLink } from '~/lib/navigation'
 import { ServiceSlim } from '../../types/services'
@@ -30,6 +30,7 @@ import { linkTileColor } from '../../constants/link_tile_colors'
 import { useTranslation } from 'react-i18next'
 import { useServiceText } from '~/lib/service_i18n'
 import type { TFunction } from 'i18next'
+import { useAssistantName } from '~/lib/assistant_name'
 
 // Maps is a Core Capability (display_order: 4)
 const getMapsItem = (t: TFunction<'home'>) => ({
@@ -129,7 +130,7 @@ export default function Home(props: {
   const updateInfo = useUpdateAvailable();
   const rerunBanner = useBenchmarkRerunBanner()
   const queryClient = useQueryClient()
-  const { aiAssistantName } = usePage<{ aiAssistantName: string }>().props
+  const aiAssistantName = useAssistantName()
 
   // Link tile management. `editingTile` null with the modal open means "create".
   const [linkModalOpen, setLinkModalOpen] = useState(false)

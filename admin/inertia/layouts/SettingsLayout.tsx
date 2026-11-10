@@ -14,17 +14,17 @@ import {
   IconWand,
   IconZoom
 } from '@tabler/icons-react'
-import { usePage } from '@inertiajs/react'
 import StyledSidebar from '~/components/StyledSidebar'
 import { getServiceLink } from '~/lib/navigation'
 import useServiceInstalledStatus from '~/hooks/useServiceInstalledStatus'
 import useCreatorPacks from '~/hooks/useCreatorPacks'
 import { SERVICE_NAMES } from '../../constants/service_names'
 import { useTranslation } from 'react-i18next'
+import { useAssistantName } from '~/lib/assistant_name'
 
 export default function SettingsLayout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation('settings')
-  const { aiAssistantName } = usePage<{ aiAssistantName: string }>().props
+  const aiAssistantName = useAssistantName()
   const aiAssistantInstallStatus = useServiceInstalledStatus(SERVICE_NAMES.OLLAMA)
   // Only show the Creator Packs entry on builds that can actually install packs
   // (release-injected key present) — a fork built from source has no key.

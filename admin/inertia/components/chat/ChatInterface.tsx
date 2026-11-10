@@ -6,9 +6,9 @@ import type { ModelVisionCapability } from '../../../types/ollama'
 import ChatMessageBubble from './ChatMessageBubble'
 import ChatAssistantAvatar from './ChatAssistantAvatar'
 import BouncingDots from '../BouncingDots'
-import { usePage } from '@inertiajs/react'
 import InfoTooltip from '../InfoTooltip'
 import { visionAttachmentGuidance } from '../../lib/vision_guidance'
+import { useAssistantName } from '~/lib/assistant_name'
 
 interface ChatInterfaceProps {
   messages: ChatMessage[]
@@ -38,7 +38,7 @@ export default function ChatInterface({
   chatSuggestionsEnabled = false,
   chatSuggestionsLoading = false,
 }: ChatInterfaceProps) {
-  const { aiAssistantName } = usePage<{ aiAssistantName: string }>().props
+  const aiAssistantName = useAssistantName()
   const [input, setInput] = useState('')
   const [images, setImages] = useState<ChatImageAttachment[]>([])
   const messagesEndRef = useRef<HTMLDivElement>(null)

@@ -35,5 +35,8 @@
   },
   "docs": {
     "title": "Documentation"
+  },
+  "assistant": {
+    "defaultName": "AI Assistant"
   }
 }

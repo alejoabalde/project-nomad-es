@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { usePage } from '@inertiajs/react'
 import { IconBrain } from '@tabler/icons-react'
 import api from '~/lib/api'
 import StyledButton from '~/components/StyledButton'
 import { useNotifications } from '~/context/NotificationContext'
+import { useAssistantName } from '~/lib/assistant_name'
 
 /**
  * First-chat onboarding banner (RFC #883 Phase 3 task 12).
@@ -31,8 +31,7 @@ export default function KbPolicyPromptBanner() {
   // pages so the banner pulls the user-set name when surfaced. Default to
   // "AI Assistant" when accessed outside that context (no-op for chat pages,
   // but keeps the component safe for future reuse elsewhere).
-  const aiAssistantName =
-    usePage<{ aiAssistantName?: string }>().props?.aiAssistantName || 'AI Assistant'
+  const aiAssistantName = useAssistantName()
 
   const { data: promptState } = useQuery({
     queryKey: ['kbPolicyPromptState'],

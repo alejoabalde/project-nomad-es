@@ -1,4 +1,4 @@
-import { Head, Link, usePage } from '@inertiajs/react'
+import { Head, Link } from '@inertiajs/react'
 import { useState } from 'react'
 import SettingsLayout from '~/layouts/SettingsLayout'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
@@ -26,6 +26,7 @@ import { useBenchmarkRun } from '~/hooks/useBenchmarkRun'
 import BenchmarkRunView from '~/components/benchmark/BenchmarkRunView'
 import ScoreReveal from '~/components/benchmark/ScoreReveal'
 import { getScoreDisplay } from '~/lib/benchmarkScore'
+import { useAssistantName } from '~/lib/assistant_name'
 
 export default function BenchmarkPage(props: {
   benchmark: {
@@ -34,7 +35,7 @@ export default function BenchmarkPage(props: {
     currentBenchmarkId: string | null
   }
 }) {
-  const { aiAssistantName } = usePage<{ aiAssistantName: string }>().props
+  const aiAssistantName = useAssistantName()
   const queryClient = useQueryClient()
   const aiInstalled = useServiceInstalledStatus(SERVICE_NAMES.OLLAMA)
   const [isRunning, setIsRunning] = useState(props.benchmark.status !== 'idle')

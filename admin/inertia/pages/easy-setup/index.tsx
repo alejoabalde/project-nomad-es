@@ -1,4 +1,4 @@
-import { Head, router, usePage } from '@inertiajs/react'
+import { Head, router } from '@inertiajs/react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useState, useMemo } from 'react'
 import AppLayout from '~/layouts/AppLayout'
@@ -25,6 +25,7 @@ import { resolveTierResources } from '~/lib/collections'
 import { SERVICE_NAMES } from '../../../constants/service_names'
 import { Trans, useTranslation } from 'react-i18next'
 import type { TFunction } from 'i18next'
+import { useAssistantName } from '~/lib/assistant_name'
 
 // Capability definitions - maps user-friendly categories to services
 interface Capability {
@@ -96,7 +97,7 @@ export default function EasySetupWizard(props: {
   system: { services: ServiceSlim[]; remoteOllamaUrl: string }
 }) {
   const { t } = useTranslation('easySetup')
-  const { aiAssistantName } = usePage<{ aiAssistantName: string }>().props
+  const aiAssistantName = useAssistantName()
   const CORE_CAPABILITIES = buildCoreCapabilities(aiAssistantName, t)
 
   const [currentStep, setCurrentStep] = useState<WizardStep>(1)
