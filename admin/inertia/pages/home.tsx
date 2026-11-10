@@ -28,6 +28,7 @@ import { IconPlus, IconPencil, IconTrash, IconExternalLink } from '@tabler/icons
 import { useState } from 'react'
 import { linkTileColor } from '../../constants/link_tile_colors'
 import { useTranslation } from 'react-i18next'
+import { useServiceText } from '~/lib/service_i18n'
 import type { TFunction } from 'i18next'
 
 // Maps is a Core Capability (display_order: 4)
@@ -123,6 +124,7 @@ export default function Home(props: {
   drugReferenceInstalled: boolean
 }) {
   const { t } = useTranslation('home')
+  const serviceText = useServiceText()
   const items: DashboardItem[] = []
   const updateInfo = useUpdateAvailable();
   const rerunBanner = useBenchmarkRerunBanner()
@@ -172,15 +174,15 @@ export default function Home(props: {
     .forEach((service) => {
       items.push({
         // Inject custom AI Assistant name if this is the chat service
-        label: service.service_name === SERVICE_NAMES.OLLAMA && aiAssistantName ? aiAssistantName : (service.friendly_name || service.service_name),
+        label: service.service_name === SERVICE_NAMES.OLLAMA && aiAssistantName ? aiAssistantName : serviceText.name(service),
         to:
           service.ui_location || service.custom_url
             ? getServiceLink(service.ui_location || '', service.custom_url)
             : '#',
         target: '_blank',
         description:
-          service.description ||
-          t('items.accessApp', { name: service.friendly_name || service.service_name }),
+          serviceText.description(service) ||
+          t('items.accessApp', { name: serviceText.name(service) }),
         icon: service.icon ? (
           <DynamicIcon icon={service.icon as DynamicIconName} className="!size-12" />
         ) : (

@@ -17,6 +17,7 @@ import { useTransmit } from 'react-adonis-transmit'
 import { BROADCAST_CHANNELS } from '../../../constants/broadcast'
 import { IconArrowUp, IconCheck, IconDownload } from '@tabler/icons-react'
 import UpdateServiceModal from '~/components/UpdateServiceModal'
+import { useServiceText } from '~/lib/service_i18n'
 
 function extractTag(containerImage: string): string {
   if (!containerImage) return ''
@@ -25,6 +26,7 @@ function extractTag(containerImage: string): string {
 }
 
 export default function SettingsPage(props: { system: { services: ServiceSlim[] } }) {
+  const serviceText = useServiceText()
   const { openModal, closeAllModals } = useModals()
   const { showError } = useErrorNotification()
   const { isOnline } = useInternetStatus()
@@ -381,8 +383,8 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
                   render(record) {
                     return (
                       <div className="flex flex-col">
-                        <p>{record.friendly_name || record.service_name}</p>
-                        <p className="text-sm text-text-muted">{record.description}</p>
+                        <p>{serviceText.name(record)}</p>
+                        <p className="text-sm text-text-muted">{serviceText.description(record)}</p>
                       </div>
                     )
                   },

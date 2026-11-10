@@ -1,0 +1,74 @@
+{
+  "nomad_kiwix_server": {
+    "name": "Biblioteca de información",
+    "description": "Acceso sin conexión a Wikipedia, referencias médicas, guías prácticas y enciclopedias"
+  },
+  "nomad_qdrant": {
+    "name": "Base de datos vectorial Qdrant",
+    "description": "Base de datos vectorial para guardar y buscar embeddings"
+  },
+  "nomad_ollama": {
+    "name": "Asistente de IA",
+    "description": "Chat de IA local que funciona por completo en tu equipo, sin necesidad de internet"
+  },
+  "nomad_cyberchef": {
+    "name": "Herramientas de datos",
+    "description": "Navaja suiza para codificar, cifrar y analizar datos"
+  },
+  "nomad_flatnotes": {
+    "name": "Notas",
+    "description": "Aplicación sencilla de notas con almacenamiento local"
+  },
+  "nomad_kolibri": {
+    "name": "Plataforma educativa",
+    "description": "Plataforma de aprendizaje interactiva con cursos en video y ejercicios"
+  },
+  "nomad_kolibri_2": {
+    "name": "Plataforma educativa (2.ª gen.)",
+    "description": "Plataforma de aprendizaje interactiva con cursos en video y ejercicios"
+  },
+  "nomad_stirling_pdf": {
+    "name": "Stirling PDF",
+    "description": "Herramienta local para trabajar con PDF: unir, dividir, comprimir, convertir y más"
+  },
+  "nomad_filebrowser": {
+    "name": "Explorador de archivos",
+    "description": "Administrador de archivos web: explora, sube, descarga y organiza los archivos de tu equipo"
+  },
+  "nomad_calibreweb": {
+    "name": "Calibre Web",
+    "description": "Lector de libros electrónicos y administrador de tu biblioteca de Calibre desde el navegador"
+  },
+  "nomad_it_tools": {
+    "name": "IT Tools",
+    "description": "Colección de utilidades para desarrolladores: UUID, hash, codificación, formateadores y más"
+  },
+  "nomad_excalidraw": {
+    "name": "Excalidraw",
+    "description": "Pizarra virtual para dibujar diagramas a mano alzada; funciona totalmente sin conexión"
+  },
+  "nomad_meshtastic_web": {
+    "name": "Meshtastic Web",
+    "description": "Cliente web para administrar radios de red mallada Meshtastic"
+  },
+  "nomad_meshcore_web": {
+    "name": "MeshCore Web",
+    "description": "Cliente web para radios de red mallada MeshCore"
+  },
+  "nomad_homebox": {
+    "name": "Homebox",
+    "description": "Inventario del hogar y gestión de bienes: lleva el registro de todo lo que tienes"
+  },
+  "nomad_vaultwarden": {
+    "name": "Vaultwarden",
+    "description": "Servidor de contraseñas ligero compatible con Bitwarden: protege tus credenciales sin conexión"
+  },
+  "nomad_jellyfin": {
+    "name": "Jellyfin",
+    "description": "Servidor multimedia de código abierto: transmite tus videos, música y fotos"
+  },
+  "nomad_translate": {
+    "name": "Biblioteca traducida",
+    "description": "Lee la Biblioteca de información en otro idioma. Traducción automática que funciona sin conexión, con la CPU"
+  }
+}

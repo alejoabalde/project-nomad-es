@@ -46,6 +46,7 @@ import { getSupplyDepotDocLink } from '../../constants/supply_depot_docs'
 import api from '~/lib/api'
 import { toTitleCase } from '../../app/utils/misc'
 import { SERVICE_NAMES } from '../../constants/service_names'
+import { useServiceText } from '~/lib/service_i18n'
 
 function extractTag(containerImage: string): string {
   if (!containerImage) return ''
@@ -91,6 +92,7 @@ type Modal =
   | null
 
 export default function SupplyDepotPage(props: { system: { services: ServiceSlim[] } }) {
+  const serviceText = useServiceText()
   const { showError } = useErrorNotification()
   const { addNotification } = useNotifications()
   const { isOnline } = useInternetStatus()
@@ -185,6 +187,8 @@ export default function SupplyDepotPage(props: { system: { services: ServiceSlim
       return (
         s.friendly_name?.toLowerCase().includes(q) ||
         s.description?.toLowerCase().includes(q) ||
+        serviceText.name(s).toLowerCase().includes(q) ||
+        serviceText.description(s)?.toLowerCase().includes(q) ||
         s.powered_by?.toLowerCase().includes(q) ||
         s.category?.toLowerCase().includes(q)
       )
@@ -874,6 +878,7 @@ function AppCard({
   migrationInstructionsHref,
   migrationInstructionsText,
 }: AppCardProps) {
+  const serviceText = useServiceText()
   const isRunning = service.status === 'running'
   const isStopped = service.installed && !isRunning
   const catColor = service.category ? CATEGORY_COLORS[service.category] ?? CATEGORY_COLORS.custom : CATEGORY_COLORS.custom
@@ -930,7 +935,7 @@ function AppCard({
           </div>
           <div className="min-w-0">
             <p className="font-semibold text-text-primary text-sm leading-tight truncate">
-              {service.friendly_name ?? service.service_name}
+              {serviceText.name(service)}
             </p>
             {subtitle}
           </div>
@@ -960,7 +965,7 @@ function AppCard({
       {/* Description */}
       {service.description && (
         <p className="text-xs text-text-muted leading-relaxed mb-3 flex-1 line-clamp-2">
-          {service.description}
+          {serviceText.description(service)}
         </p>
       )}
 
