@@ -1,0 +1,77 @@
+{
+  "title": "Ajustes",
+  "nav": {
+    "supplyDepot": "Depósito de suministros",
+    "benchmark": "Benchmark",
+    "contentExplorer": "Explorador de contenido",
+    "contentManager": "Administrador de contenido",
+    "creatorPacks": "Packs de creadores",
+    "mapsManager": "Administrador de mapas",
+    "serviceLogs": "Registros y métricas de servicios",
+    "checkUpdates": "Buscar actualizaciones",
+    "system": "Sistema",
+    "advanced": "Avanzado",
+    "apiReference": "Referencia de la API",
+    "support": "Apoya el proyecto",
+    "legal": "Avisos legales"
+  },
+  "system": {
+    "title": "Información del sistema",
+    "subtitle": "Monitoreo y diagnóstico en tiempo real • Última actualización: {{date}} • Los datos se actualizan cada 30 segundos",
+    "highMemory": {
+      "title": "Uso de memoria muy alto",
+      "message": "El uso de memoria del sistema supera el 90%. El rendimiento podría verse afectado."
+    },
+    "resourceUsage": "Uso de recursos",
+    "cpuUsage": "Uso de CPU",
+    "cores_one": "{{count}} núcleo",
+    "cores_other": "{{count}} núcleos",
+    "memoryUsage": "Uso de memoria",
+    "swapUsage": "Uso de swap",
+    "details": "Detalles del sistema",
+    "os": {
+      "title": "Sistema operativo",
+      "distribution": "Distribución",
+      "kernel": "Versión del kernel",
+      "architecture": "Arquitectura",
+      "hostname": "Nombre del equipo",
+      "platform": "Plataforma"
+    },
+    "cpu": {
+      "title": "Procesador",
+      "manufacturer": "Fabricante",
+      "brand": "Marca",
+      "cores": "Núcleos",
+      "physicalCores": "Núcleos físicos",
+      "virtualization": "Virtualización"
+    },
+    "enabled": "Activada",
+    "disabled": "Desactivada",
+    "gpu": {
+      "title": "Gráficos",
+      "model": "Modelo",
+      "vendor": "Fabricante"
+    },
+    "na": "N/D",
+    "memory": {
+      "title": "Asignación de memoria",
+      "total": "RAM total",
+      "used": "RAM en uso",
+      "available": "RAM disponible",
+      "utilized": "{{percent}}% en uso"
+    },
+    "storage": {
+      "title": "Dispositivos de almacenamiento",
+      "normal": "Normal",
+      "warning": "Advertencia: uso alto",
+      "critical": "Crítico: disco casi lleno",
+      "none": "No se detectaron dispositivos de almacenamiento"
+    },
+    "status": {
+      "title": "Estado del sistema",
+      "uptime": "Tiempo encendido",
+      "cpuCores": "Núcleos de CPU",
+      "storageDevices": "Dispositivos de almacenamiento"
+    }
+  }
+}

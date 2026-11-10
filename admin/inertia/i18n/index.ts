@@ -15,6 +15,8 @@ import esHome from '../locales/es/home.json'
 import esEasySetup from '../locales/es/easySetup.json'
 import esComponents from '../locales/es/components.json'
 import enComponents from '../locales/en/components.json'
+import esSettings from '../locales/es/settings.json'
+import enSettings from '../locales/en/settings.json'
 import enCommon from '../locales/en/common.json'
 import enHome from '../locales/en/home.json'
 import enEasySetup from '../locales/en/easySetup.json'
@@ -30,8 +32,8 @@ export const DEFAULT_LANGUAGE: LanguageCode = 'es'
 export const LANGUAGE_STORAGE_KEY = 'nomad:language'
 
 export const resources = {
-  es: { common: esCommon, components: esComponents, home: esHome, easySetup: esEasySetup },
-  en: { common: enCommon, components: enComponents, home: enHome, easySetup: enEasySetup },
+  es: { common: esCommon, settings: esSettings, components: esComponents, home: esHome, easySetup: esEasySetup },
+  en: { common: enCommon, settings: enSettings, components: enComponents, home: enHome, easySetup: enEasySetup },
 } as const
 
 function isSupported(code: unknown): code is LanguageCode {
@@ -62,7 +64,7 @@ void i18n.use(initReactI18next).init({
   lng: getInitialLanguage(),
   fallbackLng: 'en',
   defaultNS: 'common',
-  ns: ['common', 'components', 'home', 'easySetup'],
+  ns: ['common', 'settings', 'components', 'home', 'easySetup'],
   interpolation: { escapeValue: false },
   returnNull: false,
 })

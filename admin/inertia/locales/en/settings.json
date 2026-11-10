@@ -1,0 +1,77 @@
+{
+  "title": "Settings",
+  "nav": {
+    "supplyDepot": "Supply Depot",
+    "benchmark": "Benchmark",
+    "contentExplorer": "Content Explorer",
+    "contentManager": "Content Manager",
+    "creatorPacks": "Creator Packs",
+    "mapsManager": "Maps Manager",
+    "serviceLogs": "Service Logs & Metrics",
+    "checkUpdates": "Check for Updates",
+    "system": "System",
+    "advanced": "Advanced",
+    "apiReference": "API Reference",
+    "support": "Support the Project",
+    "legal": "Legal Notices"
+  },
+  "system": {
+    "title": "System Information",
+    "subtitle": "Real-time monitoring and diagnostics • Last updated: {{date}} • Refreshing data every 30 seconds",
+    "highMemory": {
+      "title": "Very High Memory Usage Detected",
+      "message": "System memory usage exceeds 90%. Performance degradation may occur."
+    },
+    "resourceUsage": "Resource Usage",
+    "cpuUsage": "CPU Usage",
+    "cores_one": "{{count}} core",
+    "cores_other": "{{count}} cores",
+    "memoryUsage": "Memory Usage",
+    "swapUsage": "Swap Usage",
+    "details": "System Details",
+    "os": {
+      "title": "Operating System",
+      "distribution": "Distribution",
+      "kernel": "Kernel Version",
+      "architecture": "Architecture",
+      "hostname": "Hostname",
+      "platform": "Platform"
+    },
+    "cpu": {
+      "title": "Processor",
+      "manufacturer": "Manufacturer",
+      "brand": "Brand",
+      "cores": "Cores",
+      "physicalCores": "Physical Cores",
+      "virtualization": "Virtualization"
+    },
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "gpu": {
+      "title": "Graphics",
+      "model": "Model",
+      "vendor": "Vendor"
+    },
+    "na": "N/A",
+    "memory": {
+      "title": "Memory Allocation",
+      "total": "Total RAM",
+      "used": "Used RAM",
+      "available": "Available RAM",
+      "utilized": "{{percent}}% Utilized"
+    },
+    "storage": {
+      "title": "Storage Devices",
+      "normal": "Normal",
+      "warning": "Warning - Usage High",
+      "critical": "Critical - Disk Almost Full",
+      "none": "No storage devices detected"
+    },
+    "status": {
+      "title": "System Status",
+      "uptime": "System Uptime",
+      "cpuCores": "CPU Cores",
+      "storageDevices": "Storage Devices"
+    }
+  }
+}

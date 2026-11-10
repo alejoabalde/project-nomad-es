@@ -32,5 +32,8 @@
     "close": "Cerrar",
     "remove": "Quitar",
     "save": "Guardar"
+  },
+  "docs": {
+    "title": "Documentación"
   }
 }
