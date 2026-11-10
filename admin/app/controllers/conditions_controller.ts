@@ -84,6 +84,7 @@ export default class ConditionsController {
       const filterOpts = {
         route: params.route,
         sort: params.sort,
+        source: params.source,
       }
 
       // Strip affirmative remedies from the situation-search response when the

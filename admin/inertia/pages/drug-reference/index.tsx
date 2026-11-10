@@ -327,6 +327,7 @@ export default function DrugReferenceIndex({
         // real OTC options surface above the homeopathic flood — and so the
         // cross-situation intersection can actually find the common drugs.
         const params = new URLSearchParams({ slug: c.slug, limit: '200' })
+        params.set('source', sourceRef.current)
         if (rt) params.set('route', rt)
         if (srt && srt !== 'relevance') params.set('sort', srt)
         const resp = await fetch(`/api/conditions/drugs?${params}`)
@@ -361,14 +362,14 @@ export default function DrugReferenceIndex({
     [selectedSlugs, fetchSituation, route, sort]
   )
 
-  // Re-fetch selected situations when route/sort change.
+  // Re-fetch selected situations when route/sort/source change.
   useEffect(() => {
     for (const slug of selectedSlugs) {
       const c = conditions.find((x) => x.slug === slug)
       if (c) fetchSituation(c, route, sort)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [route, sort])
+  }, [route, sort, source])
 
   // Honor a ?situation= deep link — jump to the situation tab and select it.
   useEffect(() => {
@@ -523,6 +524,19 @@ t('idx.restartConfirm')
     )
   }
 
+  // Fork: label source selector, shared by the drug and situation tabs.
+  const sourcePills = (
+    <div className="mb-3 flex flex-wrap items-center gap-2">
+      <span className="text-xs font-semibold text-desert-green-darker">{t('src.label')}</span>
+      <FilterPill active={source === 'aemps'} onClick={() => handleSourceChange('aemps')}>
+        {t('src.aemps')}
+      </FilterPill>
+      <FilterPill active={source === 'fda'} onClick={() => handleSourceChange('fda')}>
+        {t('src.fda')}
+      </FilterPill>
+    </div>
+  )
+
   const tabClass = ({ selected }: { selected: boolean }) =>
     `flex items-center gap-2 rounded-t-lg border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors focus:outline-none ${
       selected
@@ -560,15 +574,7 @@ t('idx.restartConfirm')
             {/* ══ Tab 1: Search by drug ══════════════════════════════════════ */}
             <TabPanel>
               {/* Fork: label source selector */}
-              <div className="mb-3 flex flex-wrap items-center gap-2">
-                <span className="text-xs font-semibold text-desert-green-darker">{t('src.label')}</span>
-                <FilterPill active={source === 'aemps'} onClick={() => handleSourceChange('aemps')}>
-                  {t('src.aemps')}
-                </FilterPill>
-                <FilterPill active={source === 'fda'} onClick={() => handleSourceChange('fda')}>
-                  {t('src.fda')}
-                </FilterPill>
-              </div>
+              {sourcePills}
               {/* Controls (always on top) */}
               <div className="relative mb-3">
                 <IconSearch
@@ -700,7 +706,8 @@ t('idx.restartConfirm')
 
             {/* ══ Tab 2: By situation ════════════════════════════════════════ */}
             <TabPanel>
-              <SafetyBanner />
+              {sourcePills}
+              <SafetyBanner source={source} />
 
               {/* Selected situations + collapsible browser (controls on top) */}
               <div className="my-4">

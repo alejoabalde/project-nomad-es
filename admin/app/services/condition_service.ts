@@ -23,6 +23,19 @@ import type {
 } from '../../types/conditions.js'
 import type { DrugSearchResult } from '../../types/drug_reference.js'
 
+import { CONDITION_TERMS_ES } from '../data/conditions_es.js'
+
+/**
+ * Fork (project-nomad-es): `source` picks the leaflet set — 'aemps' searches the
+ * Spanish leaflets with the Spanish terms, 'fda' the FDA labels with the English
+ * ones. Omitted: every row, English terms (upstream behavior).
+ */
+export interface ConditionSearchOpts {
+  route?: string
+  sort?: 'relevance' | 'name'
+  source?: 'fda' | 'aemps'
+}
+
 /**
  * "When to use what" — condition-first service (Phase 1 + Phase 2).
  *
@@ -98,12 +111,14 @@ export class ConditionService {
   async drugsForSlug(
     slug: string,
     limit = 50,
-    opts?: { route?: string; sort?: 'relevance' | 'name' }
+    opts?: ConditionSearchOpts
   ): Promise<ConditionDrugsResult | null> {
     const condition = this.findCondition(slug)
     if (!condition) return null
 
-    const drugs = await this.searchIndications(condition.searchTerms, limit, opts)
+    const terms =
+      opts?.source === 'aemps' ? (CONDITION_TERMS_ES[condition.slug] ?? condition.searchTerms) : condition.searchTerms
+    const drugs = await this.searchIndications(terms, limit, opts)
     const remedies: NaturalRemedy[] = remediesForCondition(REMEDIES_FILE, slug)
     return { condition: toConditionSummary(condition), drugs, remedies }
   }
@@ -125,7 +140,7 @@ export class ConditionService {
   async drugsForFreeText(
     query: string,
     limit = 50,
-    opts?: { route?: string; sort?: 'relevance' | 'name' }
+    opts?: ConditionSearchOpts
   ): Promise<ConditionDrugsResult> {
     const trimmed = query.trim()
     const drugs = trimmed.length > 0 ? await this.searchIndications([trimmed], limit, opts) : []
@@ -177,7 +192,7 @@ export class ConditionService {
   async searchIndications(
     searchTerms: string[],
     limit = 50,
-    opts?: { route?: string; sort?: 'relevance' | 'name' }
+    opts?: ConditionSearchOpts
   ): Promise<DrugSearchResult[]> {
     const ftQuery = buildIndicationQuery(searchTerms)
     // A FULLTEXT query needs a token >= innodb_ft_min_token_size (3). If the
@@ -218,7 +233,7 @@ export class ConditionService {
   private async searchIndicationFulltext(
     ftQuery: string,
     limit: number,
-    opts?: { route?: string; sort?: 'relevance' | 'name' }
+    opts?: ConditionSearchOpts
   ): Promise<DrugSearchResult[]> {
     let sql = `
       SELECT
@@ -236,6 +251,11 @@ export class ConditionService {
         AND product_type = ?
     `
     const bindings: unknown[] = [ftQuery, ftQuery, PRODUCT_TYPES.OTC]
+
+    if (opts?.source) {
+      sql += ' AND source = ?'
+      bindings.push(opts.source)
+    }
 
     if (opts?.route) {
       sql += ' AND route LIKE ?'
@@ -262,7 +282,7 @@ export class ConditionService {
   private async searchIndicationLike(
     searchTerms: string[],
     limit: number,
-    opts?: { route?: string; sort?: 'relevance' | 'name' }
+    opts?: ConditionSearchOpts
   ): Promise<DrugSearchResult[]> {
     const terms = searchTerms.map((t) => t.trim()).filter((t) => t.length > 0)
     if (terms.length === 0) return []
@@ -283,6 +303,11 @@ export class ConditionService {
         AND product_type = ?
     `
     const bindings: unknown[] = [...terms.map((t) => `%${t}%`), PRODUCT_TYPES.OTC]
+
+    if (opts?.source) {
+      sql += ' AND source = ?'
+      bindings.push(opts.source)
+    }
 
     if (opts?.route) {
       sql += ' AND route LIKE ?'

@@ -8,8 +8,9 @@ import { Trans, useTranslation } from 'react-i18next'
  * and detail pages: results are FDA label-indication matches, NOT
  * recommendations, NOT an FDA endorsement, and NOT a drug-interaction checker.
  * It leads the page (not a footnote) so the caveat is read before any result.
+ * Fork: `source='aemps'` swaps the first bullet for the Spanish-leaflet wording.
  */
-export default function SafetyBanner() {
+export default function SafetyBanner({ source = 'fda' }: { source?: 'fda' | 'aemps' }) {
   const { t } = useTranslation('drugs')
   return (
     <div role="alert" className="mb-6 rounded-lg border-2 border-amber-400 bg-amber-50 p-4">
@@ -22,7 +23,7 @@ export default function SafetyBanner() {
         <div className="text-sm text-amber-900">
           <p className="font-bold mb-1">{t('safety.title')}</p>
           <ul className="list-disc pl-5 space-y-0.5 text-amber-800">
-            <li><Trans t={t} i18nKey="safety.b1" components={{ s: <strong /> }} /></li>
+            <li><Trans t={t} i18nKey={source === 'aemps' ? 'safety.b1Aemps' : 'safety.b1'} components={{ s: <strong /> }} /></li>
             <li><Trans t={t} i18nKey="safety.b2" components={{ s: <strong /> }} /></li>
             <li><Trans t={t} i18nKey="safety.b3" components={{ s: <strong /> }} /></li>
           </ul>

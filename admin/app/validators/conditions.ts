@@ -21,5 +21,7 @@ export const conditionDrugsValidator = vine.compile(
     limit: vine.number().min(1).max(200).optional(),
     route: vine.string().trim().minLength(1).maxLength(40).optional(),
     sort: vine.enum(['relevance', 'name']).optional(),
+    // Fork (project-nomad-es): leaflet set to search.
+    source: vine.enum(['fda', 'aemps']).optional(),
   })
 )

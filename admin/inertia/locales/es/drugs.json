@@ -4,7 +4,7 @@
   "disclaimer": {
     "title": "Antes de usar la Guía de medicamentos",
     "ack": "Entiendo, continuar",
-    "intro": "Esta herramienta muestra información general de salud tomada de los <s>prospectos oficiales de la FDA</s> y relaciona síntomas con opciones de venta libre. Se ofrece <s>solo a modo informativo</s>.",
+    "intro": "Esta herramienta muestra información general de salud tomada de <s>prospectos oficiales</s> (de la AEMPS, en español, y de la FDA, en inglés) y relaciona síntomas con opciones de venta libre. Se ofrece <s>solo a modo informativo</s>.",
     "b1": "<s>No es consejo médico</s> y no reemplaza a un médico, farmacéutico o enfermero.",
     "b2": "<s>No es un verificador de interacciones entre medicamentos</s>. Lee siempre el prospecto completo de cada producto y consulta a un profesional antes de combinar medicamentos.",
     "b3": "Las coincidencias por situación salen del texto de los prospectos, no de recomendaciones clínicas: pueden estar incompletas o incluir productos inesperados.",
@@ -41,7 +41,8 @@
     "title": "Referencia solo informativa: no es consejo médico.",
     "b1": "Estos resultados relacionan las indicaciones de los prospectos de la FDA con una situación. <s>No son una recomendación</s> ni <s>un aval de la FDA</s>.",
     "b2": "<s>No es un verificador de interacciones entre medicamentos</s>. Lee todas las advertencias de cada prospecto y consulta a un farmacéutico o médico antes de combinar medicamentos.",
-    "b3": "En una emergencia, o si los síntomas son graves o empeoran, <s>contacta a un profesional de la salud o llama a emergencias</s>."
+    "b3": "En una emergencia, o si los síntomas son graves o empeoran, <s>contacta a un profesional de la salud o llama a emergencias</s>.",
+    "b1Aemps": "Estos resultados relacionan las indicaciones de los prospectos de la AEMPS con una situación. <s>No son una recomendación</s> ni <s>un aval de la AEMPS</s>. Son medicamentos sin receta autorizados en España; en tu país pueden tener otro nombre o requerir receta."
   },
   "remedyNote": {
     "title": "Solo informativo: no es consejo médico.",
@@ -112,7 +113,7 @@
   "remedyCount_other": "{{count}} remedios",
   "natural": "Remedios naturales",
   "searchFailed": "La búsqueda falló",
-  "noData": "Todavía no hay datos de medicamentos de la FDA",
+  "noData": "Todavía no hay datos de medicamentos",
   "searching": "Buscando…",
   "loading": "Cargando…",
   "asIs": "Los datos de los prospectos se ofrecen tal cual; no te bases en ellos para tomar decisiones médicas.",
@@ -151,7 +152,7 @@
     "otcCount_one": "{{count}} de venta libre",
     "otcCount_other": "{{count}} de venta libre",
     "emptyBody": "Descarga el conjunto de prospectos de openFDA para activar la búsqueda sin conexión. Es una descarga comprimida de ~1,7 GB (~8–10 GB después de indexar).",
-    "pickHint": "Elige una situación (o varias) arriba para ver los medicamentos de venta libre cuyo prospecto de la FDA la menciona.",
+    "pickHint": "Elige una situación (o varias) arriba para ver los medicamentos de venta libre cuyo prospecto la menciona.",
     "noIntersection": "Ninguna opción sirve para las {{count}} a la vez. Aquí tienes opciones para cada situación.",
     "subtitle": "Busca un medicamento por nombre o empieza por un síntoma para encontrar opciones de venta libre, todo a partir de prospectos guardados sin conexión (de la AEMPS en español y de la FDA en inglés).",
     "trySituation": "¿Buscas algo para tratar un síntoma? Prueba la pestaña <b>Por situación</b>.",

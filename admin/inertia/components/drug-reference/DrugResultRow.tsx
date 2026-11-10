@@ -17,7 +17,8 @@ interface Props {
 function titleCase(s: string): string {
   return s
     .toLowerCase()
-    .replace(/\b([a-z])/g, (m) => m.toUpperCase())
+    // Unicode-aware: \b treats accented letters as word breaks ("áCido").
+    .replace(/(^|[^\p{L}])(\p{L})/gu, (_m, pre: string, ch: string) => pre + ch.toUpperCase())
 }
 
 /**

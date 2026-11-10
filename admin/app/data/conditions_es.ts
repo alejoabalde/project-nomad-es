@@ -1,0 +1,86 @@
+/**
+ * Fork (project-nomad-es): Spanish search terms for each curated situation,
+ * used when the "Por situación" tab searches the AEMPS Spanish leaflets.
+ *
+ * The English `searchTerms` in collections/conditions.json follow FDA label
+ * wording; these follow the wording of section 1 of Spanish leaflets
+ * ("Qué es X y para qué se utiliza"), e.g. "alivio de los dolores ocasionales
+ * leves", "estados febriles", "tos improductiva". Keyed by condition slug; a
+ * slug missing here falls back to the English terms.
+ */
+export const CONDITION_TERMS_ES: Record<string, string[]> = {
+  'pain': ['dolor', 'dolores', 'dolores leves', 'dolores ocasionales', 'analgésico'],
+  'headache': ['dolor de cabeza', 'cefalea', 'migraña', 'jaqueca'],
+  'muscle-joint-pain': [
+    'dolores musculares',
+    'contracturas',
+    'dolor de espalda',
+    'lumbalgia',
+    'artrosis',
+    'dolor articular',
+    'torceduras',
+    'esguinces',
+  ],
+  'fever': ['fiebre', 'estados febriles', 'febriles'],
+  'menstrual-cramps': ['dolor menstrual', 'dismenorrea', 'menstruación dolorosa', 'menstruales'],
+  'cough': ['tos', 'tos seca', 'tos improductiva', 'antitusivo', 'expectorante', 'mucolítico', 'mucosidad'],
+  'nasal-congestion': ['congestión nasal', 'nariz tapada', 'descongestionante', 'descongestión nasal'],
+  'sore-throat': ['dolor de garganta', 'irritación de garganta', 'garganta', 'faringitis', 'afonía'],
+  'common-cold': ['resfriado', 'resfriado común', 'catarro', 'gripe', 'síntomas gripales', 'procesos gripales'],
+  'allergic-reaction': [
+    'alergia',
+    'alérgica',
+    'rinitis alérgica',
+    'urticaria',
+    'estornudos',
+    'antihistamínico',
+    'picor de ojos',
+  ],
+  'heartburn': ['acidez', 'ardor de estómago', 'pirosis', 'reflujo', 'hiperacidez', 'antiácido'],
+  'indigestion': ['indigestión', 'dispepsia', 'digestiones pesadas', 'malestar de estómago', 'pesadez de estómago'],
+  'nausea-vomiting': ['náuseas', 'vómitos', 'antiemético'],
+  'diarrhea': ['diarrea', 'diarrea aguda', 'antidiarreico'],
+  'constipation': ['estreñimiento', 'estreñimiento ocasional', 'laxante', 'tránsito intestinal'],
+  'motion-sickness': ['mareo', 'mareos', 'cinetosis', 'mareo en viajes', 'mareo del viajero'],
+  'gas': ['gases', 'flatulencia', 'meteorismo', 'hinchazón abdominal', 'aerofagia'],
+  'wounds-cuts': [
+    'heridas',
+    'cortes',
+    'rozaduras',
+    'erosiones',
+    'antiséptico',
+    'desinfección de heridas',
+    'infección de heridas',
+  ],
+  'burns': ['quemaduras', 'quemaduras leves', 'quemaduras solares', 'quemaduras superficiales'],
+  'insect-bites-stings': ['picaduras', 'picaduras de insectos', 'picadura de insecto', 'mosquitos'],
+  'skin-rash-itch': ['picor', 'prurito', 'eccema', 'dermatitis', 'irritación de la piel', 'erupción'],
+  'poison-ivy': ['dermatitis de contacto', 'dermatitis alérgica', 'irritación por plantas'],
+  'fungal-infection': ['pie de atleta', 'hongos', 'micosis', 'tiña', 'antifúngico', 'infección por hongos'],
+  'dry-skin': ['piel seca', 'sequedad de la piel', 'piel agrietada', 'grietas', 'labios agrietados'],
+  'acne': ['acné', 'granos', 'espinillas', 'puntos negros'],
+  'eye-irritation': [
+    'irritación ocular',
+    'ojos secos',
+    'sequedad ocular',
+    'ojos rojos',
+    'enrojecimiento ocular',
+    'lágrimas artificiales',
+  ],
+  'earache': ['dolor de oído', 'tapón de cera', 'cerumen', 'oído'],
+  'canker-sores': ['aftas', 'llagas', 'úlceras bucales', 'herpes labial', 'lesiones de la boca'],
+  'toothache': ['dolor de muelas', 'dolor dental', 'dolor de dientes', 'odontalgia', 'dentales'],
+  'sleeplessness': ['insomnio', 'dificultad para dormir', 'conciliar el sueño', 'trastornos del sueño'],
+  'dehydration': [
+    'deshidratación',
+    'rehidratación oral',
+    'sales de rehidratación',
+    'electrolitos',
+    'pérdida de líquidos',
+  ],
+  'hemorrhoids': ['hemorroides', 'almorranas', 'picor anal', 'fisura anal'],
+  'yeast-infection': ['candidiasis vaginal', 'candidiasis', 'infección vaginal por hongos', 'vulvovaginitis'],
+  'pinworm': ['oxiuros', 'lombrices', 'oxiuriasis', 'parásitos intestinales'],
+  'cold-sore-lip': ['protector labial', 'labios agrietados', 'labios secos', 'herpes labial'],
+  'eye-allergy': ['conjuntivitis alérgica', 'alergia ocular', 'picor de ojos', 'ojos llorosos'],
+}
