@@ -481,7 +481,8 @@
     "search": "Buscar modelos de lenguaje...",
     "refresh": "Actualizar modelos",
     "install": "Instalar",
-    "loadMore": "Cargar más"
+    "loadMore": "Cargar más",
+    "useChatModel": "Usar el modelo del chat"
   },
   "benchmark": {
     "partial": "Parcial",
@@ -597,7 +598,11 @@
     },
     "recorded_one": "{{count}} benchmark registrado",
     "recorded_other": "{{count}} benchmarks registrados",
-    "compiling": "Generando el informe..."
+    "compiling": "Generando el informe...",
+    "report": "Informe",
+    "idLabel": "ID del benchmark",
+    "typeLabel": "Tipo",
+    "dateLabel": "Fecha"
   },
   "benchmarkRun": {
     "stage": {

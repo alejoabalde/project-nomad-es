@@ -73,7 +73,8 @@
   },
   "deleteModal": {
     "warning": "This will permanently remove this custom app.",
-    "body": "The container will be stopped and removed. Host volume data will remain on disk."
+    "body": "The container will be stopped and removed. Host volume data will remain on disk.",
+    "removeImage": "Also remove the Docker image to reclaim disk space"
   },
   "uninstallModal": {
     "warning": "This will remove the app from this device.",

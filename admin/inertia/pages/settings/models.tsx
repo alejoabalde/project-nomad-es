@@ -243,7 +243,7 @@ export default function ModelsPage(props: {
     tokens >= 1024 ? `${Math.round(tokens / 1024)}K` : String(tokens)
 
   const tasksModelOptions = [
-    { value: '', label: 'Use the chat model' },
+    { value: '', label: t('models.useChatModel') },
     ...props.models.installedModels.map((model) => ({ value: model.name, label: model.name })),
     ...(tasksModel && !props.models.installedModels.some((m) => m.name === tasksModel)
       ? [{ value: tasksModel, label: t('models.notInstalled', { name: tasksModel }), disabled: true }]

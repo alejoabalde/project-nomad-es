@@ -5,7 +5,8 @@
   "layout": {
     "backToHome": "Volver al inicio",
     "logoAlt": "Logo de Project NOMAD",
-    "commandCenter": "Centro de mando"
+    "commandCenter": "Centro de mando",
+    "closeSidebar": "Cerrar menú lateral"
   },
   "footer": {
     "version": "Project NOMAD™ Centro de mando v{{version}}",
@@ -31,12 +32,29 @@
     "cancel": "Cancelar",
     "close": "Cerrar",
     "remove": "Quitar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "confirm": "Confirmar",
+    "backHome": "Volver al inicio",
+    "moreInfo": "Más información",
+    "dismissAlert": "Cerrar aviso"
   },
   "docs": {
     "title": "Documentación"
   },
   "assistant": {
     "defaultName": "Asistente de IA"
+  },
+  "table": {
+    "noData": "No hay registros",
+    "collapse": "Contraer fila",
+    "expand": "Expandir fila"
+  },
+  "progress": {
+    "complete": "Descarga completa"
+  },
+  "errors": {
+    "notFound": "Página no encontrada",
+    "notFoundBody": "Esta página no existe.",
+    "server": "Error del servidor"
   }
 }

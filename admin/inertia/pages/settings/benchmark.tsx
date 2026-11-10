@@ -647,17 +647,17 @@ export default function BenchmarkPage(props: {
                   >
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-left flex-1">
                       <div>
-                        <div className="text-desert-stone-dark">Benchmark ID</div>
+                        <div className="text-desert-stone-dark">{t('benchmark.idLabel')}</div>
                         <div className="font-mono text-xs">
                           {latestResult.benchmark_id.slice(0, 8)}...
                         </div>
                       </div>
                       <div>
-                        <div className="text-desert-stone-dark">Type</div>
-                        <div className="capitalize">{latestResult.benchmark_type}</div>
+                        <div className="text-desert-stone-dark">{t('benchmark.typeLabel')}</div>
+                        <div className="capitalize">{t(`benchmark.types.${latestResult.benchmark_type}`, { defaultValue: latestResult.benchmark_type })}</div>
                       </div>
                       <div>
-                        <div className="text-desert-stone-dark">Date</div>
+                        <div className="text-desert-stone-dark">{t('benchmark.dateLabel')}</div>
                         <div>
                           {new Date(
                             latestResult.created_at as unknown as string

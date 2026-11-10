@@ -73,7 +73,8 @@
   },
   "deleteModal": {
     "warning": "Se eliminará esta app personalizada de forma permanente.",
-    "body": "El contenedor se detendrá y se eliminará. Los datos de los volúmenes del equipo quedarán en el disco."
+    "body": "El contenedor se detendrá y se eliminará. Los datos de los volúmenes del equipo quedarán en el disco.",
+    "removeImage": "Eliminar también la imagen de Docker para liberar espacio en disco"
   },
   "uninstallModal": {
     "warning": "Se quitará la app de este equipo.",

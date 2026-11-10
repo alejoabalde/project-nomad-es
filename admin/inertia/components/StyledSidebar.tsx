@@ -133,7 +133,7 @@ const StyledSidebar: React.FC<StyledSidebarProps> = ({ title, items }) => {
                   onClick={() => setSidebarOpen(false)}
                   className="-m-2.5 p-2.5"
                 >
-                  <span className="sr-only">Close sidebar</span>
+                  <span className="sr-only">{t('layout.closeSidebar')}</span>
                   <IconX aria-hidden="true" className="size-6 text-white" />
                 </button>
               </div>

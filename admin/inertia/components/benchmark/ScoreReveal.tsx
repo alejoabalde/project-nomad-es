@@ -108,7 +108,7 @@ export default function ScoreReveal({
       <div className="bg-desert-white rounded-lg border border-desert-stone-light overflow-hidden">
         <div className="bg-desert-olive px-6 py-2 flex items-center gap-2">
           <div className="w-1 h-4 bg-desert-green" />
-          <span className="text-xs font-semibold text-white uppercase tracking-wide">Report</span>
+          <span className="text-xs font-semibold text-white uppercase tracking-wide">{t('benchmark.report')}</span>
           {scoreInfo.isPartial && (
             <span className="ml-auto px-2 py-0.5 rounded-full bg-desert-white/20 text-white text-xs font-semibold uppercase tracking-wide">
               {t('benchmark.partial')}

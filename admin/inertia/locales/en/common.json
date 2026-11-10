@@ -5,7 +5,8 @@
   "layout": {
     "backToHome": "Back to Home",
     "logoAlt": "Project NOMAD Logo",
-    "commandCenter": "Command Center"
+    "commandCenter": "Command Center",
+    "closeSidebar": "Close sidebar"
   },
   "footer": {
     "version": "Project NOMAD™ Command Center v{{version}}",
@@ -31,12 +32,29 @@
     "cancel": "Cancel",
     "close": "Close",
     "remove": "Remove",
-    "save": "Save"
+    "save": "Save",
+    "confirm": "Confirm",
+    "backHome": "Back to Home",
+    "moreInfo": "More information",
+    "dismissAlert": "Dismiss alert"
   },
   "docs": {
     "title": "Documentation"
   },
   "assistant": {
     "defaultName": "AI Assistant"
+  },
+  "table": {
+    "noData": "No records found",
+    "collapse": "Collapse row",
+    "expand": "Expand row"
+  },
+  "progress": {
+    "complete": "Download complete"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "notFoundBody": "This page does not exist.",
+    "server": "Server Error"
   }
 }

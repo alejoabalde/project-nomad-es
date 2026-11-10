@@ -720,7 +720,7 @@ export default function SupplyDepotPage(props: { system: { services: ServiceSlim
                 onChange={(e) => setRemoveImage(e.target.checked)}
                 className="accent-desert-red h-4 w-4 rounded"
               />
-              <span className="text-text-muted text-xs">Also remove the Docker image to reclaim disk space</span>
+              <span className="text-text-muted text-xs">{t('deleteModal.removeImage')}</span>
             </label>
           </div>
         </StyledModal>
@@ -753,7 +753,7 @@ export default function SupplyDepotPage(props: { system: { services: ServiceSlim
                 onChange={(e) => setRemoveImage(e.target.checked)}
                 className="accent-desert-red h-4 w-4 rounded"
               />
-              <span className="text-text-muted text-xs">Also remove the Docker image to reclaim disk space</span>
+              <span className="text-text-muted text-xs">{t('deleteModal.removeImage')}</span>
             </label>
           </div>
         </StyledModal>

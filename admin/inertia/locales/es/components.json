@@ -322,5 +322,49 @@
     "chunks": "{{count}} fragmentos",
     "none": "No se están procesando archivos en este momento",
     "justNow": "recién"
+  },
+  "whatsNew": {
+    "notes": "Ver notas de la versión",
+    "v1_34": {
+      "title": "Novedades de la v1.34",
+      "h0": "Packs de creadores: instala packs de videos seleccionados de tus creadores favoritos y míralos sin conexión.",
+      "h1": "Guía de medicamentos: consulta sin conexión los prospectos de la FDA para obtener información rápida y confiable.",
+      "h2": "Puntuación de benchmark v2: un modelo de puntuación renovado, con telemetría en vivo durante la prueba y tu puntuación al final.",
+      "h3": "NOMAD.md: dale a tu asistente de IA instrucciones permanentes que sigue en cada conversación.",
+      "h4": "Colecciones de la base de conocimiento: agrupa por tema lo que busca el asistente para que las respuestas no se vayan del tema."
+    }
+  },
+  "kbGuard": {
+    "title": "Confirmar una indexación grande para la IA",
+    "proceed": "Continuar de todos modos",
+    "body": "Indexar este lote para el asistente de IA usará aproximadamente <s>{{size}}</s> de espacio en disco para los embeddings, además de las descargas originales.",
+    "free": "Es más del 10 % del espacio libre que te queda en el disco ({{free}} libres). Generar los embeddings puede tardar varias horas y es difícil interrumpirlo limpiamente una vez iniciado.",
+    "manual": "Si prefieres revisar cada elemento antes de indexar, cancela aquí y cambia el ajuste de indexación automática a <s>Manual</s> desde el panel de la base de conocimiento."
+  },
+  "linkTile": {
+    "saveFail": "No se pudo guardar este enlace.",
+    "addFail": "No se pudo agregar este enlace. Puede que ya exista uno con ese nombre.",
+    "editTitle": "Editar enlace",
+    "addTitle": "Agregar un enlace",
+    "add": "Agregar enlace",
+    "name": "Nombre",
+    "namePh": "NAS del living",
+    "opensAs": "Se abre como:",
+    "notSet": "todavía sin definir",
+    "desc": "Descripción (opcional)",
+    "descPh": "Fotos y copias de seguridad",
+    "icon": "Ícono",
+    "color": "Color",
+    "intro": "Agrega un acceso directo a algo que ya tienes funcionando, en este equipo o en cualquier otro lugar de tu red. NOMAD no lo administra: solo pone un botón en tu panel.",
+    "invalid": "Ingresa una URL válida, por ejemplo 192.168.1.50:8080 o https://nas.local.",
+    "outlined": "Los enlaces se muestran con borde y sin relleno, elijas el color que elijas, para distinguirlos de las apps que administra NOMAD.",
+    "colors": {
+      "green": "Verde",
+      "olive": "Oliva",
+      "orange": "Naranja",
+      "red": "Rojo",
+      "sand": "Arena",
+      "stone": "Piedra"
+    }
   }
 }

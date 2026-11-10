@@ -481,7 +481,8 @@
     "search": "Search language models..",
     "refresh": "Refresh Models",
     "install": "Install",
-    "loadMore": "Load More"
+    "loadMore": "Load More",
+    "useChatModel": "Use the chat model"
   },
   "benchmark": {
     "partial": "Partial",
@@ -597,7 +598,11 @@
     },
     "recorded_one": "{{count}} benchmark recorded",
     "recorded_other": "{{count}} benchmarks recorded",
-    "compiling": "Compiling report..."
+    "compiling": "Compiling report...",
+    "report": "Report",
+    "idLabel": "Benchmark ID",
+    "typeLabel": "Type",
+    "dateLabel": "Date"
   },
   "benchmarkRun": {
     "stage": {

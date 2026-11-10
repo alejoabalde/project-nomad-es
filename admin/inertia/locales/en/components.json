@@ -322,5 +322,49 @@
     "chunks": "{{count}} chunks",
     "none": "No files are currently being processed",
     "justNow": "just now"
+  },
+  "whatsNew": {
+    "notes": "See release notes",
+    "v1_34": {
+      "title": "What's new in v1.34",
+      "h0": "Creator Packs - install curated video packs from your favorite creators and watch them fully offline.",
+      "h1": "Medication Reference - offline FDA drug-label lookup for quick, reliable medication information.",
+      "h2": "Benchmark Score v2 - a rebuilt scoring model, with live telemetry while the test runs and your score revealed at the end.",
+      "h3": "NOMAD.md - give your AI assistant standing instructions it follows in every conversation.",
+      "h4": "Knowledge Base collections - group what the assistant searches by subject, so answers stay on topic."
+    }
+  },
+  "kbGuard": {
+    "title": "Confirm large AI indexing operation",
+    "proceed": "Proceed anyway",
+    "body": "Indexing this batch for the AI Assistant will use approximately <s>{{size}}</s> of disk space for embeddings, on top of the raw downloads.",
+    "free": "That's more than 10% of your remaining free disk space ({{free}} free). Embedding can take several hours and is hard to interrupt cleanly once started.",
+    "manual": "If you'd rather review per-item before indexing, cancel here and switch your Auto-index setting to <s>Manual</s> from the Knowledge Base panel."
+  },
+  "linkTile": {
+    "saveFail": "Failed to save this link.",
+    "addFail": "Failed to add this link. A link with that name may already exist.",
+    "editTitle": "Edit Link",
+    "addTitle": "Add a Link",
+    "add": "Add Link",
+    "name": "Name",
+    "namePh": "Living room NAS",
+    "opensAs": "Opens as:",
+    "notSet": "not set yet",
+    "desc": "Description (optional)",
+    "descPh": "Photos and backups",
+    "icon": "Icon",
+    "color": "Color",
+    "intro": "Add a shortcut to something you already run, on this machine or anywhere else on your network. NOMAD does not manage it, it just puts a button on your dashboard.",
+    "invalid": "Enter a valid URL, for example 192.168.1.50:8080 or https://nas.local.",
+    "outlined": "Links stay outlined rather than filled whichever color you pick, so they are distinguishable from apps NOMAD manages.",
+    "colors": {
+      "green": "Green",
+      "olive": "Olive",
+      "orange": "Orange",
+      "red": "Red",
+      "sand": "Sand",
+      "stone": "Stone"
+    }
   }
 }

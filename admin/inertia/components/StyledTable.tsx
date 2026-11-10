@@ -2,6 +2,7 @@ import { capitalizeFirstLetter } from '~/lib/util'
 import classNames from '~/lib/classNames'
 import LoadingSpinner from '~/components/LoadingSpinner'
 import React, { RefObject, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export type StyledTableProps<T extends { [key: string]: any }> = {
   loading?: boolean
@@ -43,7 +44,7 @@ function StyledTable<T extends { [key: string]: any }>({
   tableBodyClassName = '',
   tableBodyStyle = {},
   data = [],
-  noDataText = 'No records found',
+  noDataText,
   onRowClick,
   columns = [],
   className = '',
@@ -53,6 +54,8 @@ function StyledTable<T extends { [key: string]: any }>({
   compact = false,
   expandable,
 }: StyledTableProps<T>) {
+  const { t } = useTranslation()
+  noDataText = noDataText ?? t('common:table.noData')
   const { className: tableClassName, ...restTableProps } = tableProps
 
   const [expandedRowKeys, setExpandedRowKeys] = useState<(string | number)[]>(
@@ -140,7 +143,7 @@ function StyledTable<T extends { [key: string]: any }>({
                       >
                         <button
                           className="text-text-muted hover:text-text-primary focus:outline-none"
-                          aria-label={isExpanded ? 'Collapse row' : 'Expand row'}
+                          aria-label={isExpanded ? t('common:table.collapse') : t('common:table.expand')}
                         >
                           <svg
                             className={classNames(
