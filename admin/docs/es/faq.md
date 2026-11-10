@@ -49,7 +49,7 @@ Después depende por completo de lo que descargues:
 - Wikipedia completa en inglés: ~95 GB
 - Cursos de Khan Academy: ~50 GB
 - Referencias médicas: ~500 MB
-- Mapas de estados de EE. UU.: ~2-3 GB cada uno
+- Mapas: depende del país y del nivel de detalle que elijas; el mapa mundial completo ocupa unos 125 GB
 - Modelos de IA: entre 10 y 40 GB según el modelo
 
 Empieza por lo esencial y agrega más cuando lo necesites.
@@ -141,7 +141,7 @@ El acceso anticipado te permite recibir, si lo activas, versiones candidatas con
 
 La función de mapas necesita datos de mapas descargados. Si ves una zona en blanco:
 1. Ve a **Ajustes → Administrador de mapas**
-2. Descarga las regiones de tu zona
+2. Usa **Elegir países** y descarga el país de tu zona
 3. Espera a que terminen las descargas
 4. Vuelve a los mapas y recarga la página
 

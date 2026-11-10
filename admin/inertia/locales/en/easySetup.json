@@ -66,7 +66,9 @@
     "title": "Choose Map Regions",
     "subtitle": "Select map region collections to download for offline use. You can always download more regions later.",
     "mapsManagerHint": "Only need a specific country, or want the whole world? Individual countries and a full global map can be installed any time from the <link>Maps Manager</link>.",
-    "none": "No map collections available at this time."
+    "none": "No map collections available at this time.",
+    "byCountryOnly": "",
+    "subtitleByCountry": "Offline maps are chosen by country, from the Maps Manager."
   },
   "step3": {
     "title": "Choose Content",

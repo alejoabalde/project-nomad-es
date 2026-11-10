@@ -28,7 +28,10 @@ export default function MapsManager(props: {
   maps: { baseAssetsExist: boolean; worldBasemapExists: boolean; regionFiles: FileEntry[] }
 }) {
   const queryClient = useQueryClient()
-  const { t } = useTranslation('settings')
+  const { t, i18n } = useTranslation('settings')
+  // The curated map collections are US regions only; in Spanish they are hidden
+  // and maps are downloaded by country instead.
+  const showCuratedMaps = !i18n.language.startsWith('es')
   const { openModal, closeAllModals } = useModals()
   const { addNotification } = useNotifications()
   const [downloading, setDownloading] = useState(false)
@@ -386,6 +389,7 @@ export default function MapsManager(props: {
             }}
           />
 
+          {showCuratedMaps && (<>
           <div className="mt-8 mb-6 flex items-center justify-between">
             <StyledSectionHeader title={t('mapsMgr.curated')} className="!mb-0" />
             <StyledButton
@@ -408,6 +412,7 @@ export default function MapsManager(props: {
               <p className="text-text-muted">{t('mapsMgr.noCollections')}</p>
             )}
           </div>
+          </>)}
           <div className="mt-12 mb-6 flex items-center justify-between">
             <StyledSectionHeader title={t('mapsMgr.stored')} className="!mb-0" />
             <StyledButton
