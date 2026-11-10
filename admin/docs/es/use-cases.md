@@ -33,14 +33,14 @@ Enseña a tus hijos en cualquier lugar, con o sin internet. Programas completos 
 - Seguir el progreso de varios estudiantes
 - Complementar con Wikipedia para trabajos de investigación
 - Usar la IA como un tutor paciente para cualquier materia
-- Leer literatura clásica gracias al Proyecto Gutenberg
+- Leer literatura clásica gracias a Wikisource
 - Subir guías curriculares a la base de conocimiento para que la IA ayude con preguntas específicas del programa
 
 **Contenido recomendado:**
-- Cursos de Khan Academy en Kolibri
-- Wikipedia for Schools (seleccionada para estudiantes más chicos)
-- Proyecto Gutenberg (libros clásicos)
-- Colecciones ZIM educativas
+- Cursos de Khan Academy en español en Kolibri
+- Vikidia (enciclopedia para chicos)
+- Wikisource (libros clásicos)
+- Colección Educación y referencia
 
 **Consejo:** crea una cuenta de Kolibri para cada hijo y así sigues su progreso por separado.
 
@@ -130,7 +130,8 @@ Hay quienes simplemente prefieren que sus búsquedas y preguntas queden en priva
 Cuando no puedes llegar a un médico, tener información médica confiable puede ser crucial.
 
 **A qué puedes acceder:**
-- NHS Medicines A-Z (información sobre medicamentos e interacciones)
+- Wikipedia Médica y MedlinePlus en español
+- Guía de medicamentos de la FDA (prospectos en inglés)
 - Biblioteca médica (medicina de campo, procedimientos de emergencia)
 - Guías de primeros auxilios
 - Referencias de anatomía y fisiología
@@ -139,8 +140,7 @@ Cuando no puedes llegar a un médico, tener información médica confiable puede
 **Importante:** las referencias médicas son solo informativas. No reemplazan la atención de un profesional. En una emergencia, busca siempre ayuda profesional cuando sea posible.
 
 **Contenido recomendado:**
-- Colección Medicina, nivel Esencial
-- Referencia NHS Medicines
+- Colección Medicina, nivel Estándar (MedlinePlus en español y la Guía de medicamentos)
 - Guías de primeros auxilios y medicina de emergencia
 
 ---

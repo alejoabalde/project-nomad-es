@@ -45,7 +45,8 @@ lleva el total a unos 25 GB, porque Ollama y un modelo de uso general
 ocupan bastante.
 
 Después depende por completo de lo que descargues:
-- Wikipedia completa (en inglés): ~95 GB
+- Wikipedia completa en español: ~37 GB con imágenes, ~13 GB sin imágenes
+- Wikipedia completa en inglés: ~95 GB
 - Cursos de Khan Academy: ~50 GB
 - Referencias médicas: ~500 MB
 - Mapas de estados de EE. UU.: ~2-3 GB cada uno
@@ -71,6 +72,8 @@ También puedes usar el **Explorador de contenido** para ver todo el contenido Z
 3. Ve a **Dispositivo → Canales**
 4. Explora e importa los canales disponibles
 
+Hay canales en español, como el de Khan Academy en español. Al importar un canal puedes elegir solo los temas que te interesan, así no descargas el canal entero.
+
 ### ¿Qué tan actualizado está el contenido?
 El contenido está tan actualizado como la última vez que lo descargaste. Las copias de Wikipedia suelen actualizarse cada mes. Revisa los nombres de archivo o las descripciones para ver las fechas.
 
@@ -86,6 +89,11 @@ Cuando eliges contenido en el asistente de Configuración rápida o en el Explor
 - **Completo**: todo lo disponible para la categoría (la descarga más grande)
 
 Así puedes equilibrar cuánto contenido tienes con cuánto espacio ocupa.
+
+### ¿En qué idioma está el contenido de las colecciones?
+Con la interfaz en español, las colecciones seleccionadas y las opciones de Wikipedia son las de esta versión en español: priorizan contenido en español, como Wikipedia, Wikipedia Médica, MedlinePlus, Vikidia, Wikilibros o iFixit. Cuando para algún tema no existe contenido en español, la colección incluye la versión en inglés y lo indica en el título con «(en inglés)». Si cambias la interfaz a inglés, verás las colecciones originales de NOMAD.
+
+Para leer en español el contenido que está en inglés, instala la app **Biblioteca traducida** desde el [Depósito de suministros](/supply-depot). Traduce los artículos de la Biblioteca de información sin conexión, con la CPU, mientras los lees. Es traducción automática: se entiende bien, pero no es perfecta.
 
 ---
 

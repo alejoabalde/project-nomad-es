@@ -1,0 +1,644 @@
+{
+  "spec_version": "2026-11-10",
+  "categories": [
+    {
+      "name": "Medicina",
+      "slug": "medicine",
+      "icon": "IconStethoscope",
+      "description": "Referencias médicas y enciclopedias en español con información de salud y preparación para emergencias.",
+      "language": "es",
+      "tiers": [
+        {
+          "name": "Esencial",
+          "slug": "medicine-essential",
+          "description": "Artículos médicos de Wikipedia en español, livianos y sin imágenes. Empieza por aquí.",
+          "recommended": true,
+          "resources": [
+            {
+              "id": "wikipedia_es_medicine_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia Médica",
+              "description": "Selección de artículos médicos de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_medicine_nopic_2026-10.zim",
+              "size_mb": 171
+            }
+          ]
+        },
+        {
+          "name": "Estándar",
+          "slug": "medicine-standard",
+          "description": "Enciclopedia de salud de MedlinePlus en español y la Guía de medicamentos de la FDA. Incluye todo lo del nivel Esencial.",
+          "includesTier": "medicine-essential",
+          "resources": [
+            {
+              "id": "medlineplus.gov_es_all",
+              "version": "2024-12",
+              "title": "MedlinePlus en español",
+              "description": "Enciclopedia de salud de la Biblioteca Nacional de Medicina de EE. UU.: enfermedades, síntomas, medicamentos y suplementos",
+              "url": "https://download.kiwix.org/zim/zimit/medlineplus.gov_es_all_2024-12.zim",
+              "size_mb": 1767
+            },
+            {
+              "id": "openfda-drug-labels",
+              "type": "dataset",
+              "version": "2025-01",
+              "title": "Guía de medicamentos de la FDA (en inglés)",
+              "description": "Prospectos de la FDA sin conexión: busca por nombre del medicamento",
+              "url": "https://api.fda.gov/download.json",
+              "size_mb": 1700
+            }
+          ]
+        },
+        {
+          "name": "Completo",
+          "slug": "medicine-comprehensive",
+          "description": "Wikipedia Médica con todas sus imágenes e ilustraciones. Incluye todo lo del nivel Estándar.",
+          "includesTier": "medicine-standard",
+          "resources": [
+            {
+              "id": "wikipedia_es_medicine_maxi",
+              "version": "2026-10",
+              "title": "Wikipedia Médica (con imágenes)",
+              "description": "Artículos médicos de Wikipedia en español con imágenes e ilustraciones",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_medicine_maxi_2026-10.zim",
+              "size_mb": 469
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Supervivencia y preparación",
+      "slug": "survival",
+      "icon": "IconShieldCheck",
+      "description": "Preparación para emergencias, planes de evacuación y técnicas de supervivencia. Lo que no existe en español se completa con contenido en inglés.",
+      "language": "es",
+      "tiers": [
+        {
+          "name": "Esencial",
+          "slug": "survival-essential",
+          "description": "La guía oficial de Ready.gov en español, más referencias sobre agua, alimentos y nudos. Empieza por aquí.",
+          "recommended": true,
+          "resources": [
+            {
+              "id": "ready.gov_es_all",
+              "version": "2026-10",
+              "title": "Ready.gov en español",
+              "description": "Guía oficial de EE. UU. para prepararse ante desastres: clima, incendios, planes de evacuación y kits de emergencia",
+              "url": "https://download.kiwix.org/zim/zimit/ready.gov_es_all_2026-10.zim",
+              "size_mb": 2066
+            },
+            {
+              "id": "zimgit-water_en",
+              "version": "2024-08",
+              "title": "Biblioteca de potabilización de agua (en inglés)",
+              "description": "Cómo recolectar, filtrar y potabilizar agua para beber",
+              "url": "https://download.kiwix.org/zim/other/zimgit-water_en_2024-08.zim",
+              "size_mb": 20
+            },
+            {
+              "id": "zimgit-food-preparation_en",
+              "version": "2025-04",
+              "title": "Alimentos para la preparación (en inglés)",
+              "description": "Recetas y técnicas para preparar y conservar alimentos",
+              "url": "https://download.kiwix.org/zim/other/zimgit-food-preparation_en_2025-04.zim",
+              "size_mb": 98
+            },
+            {
+              "id": "zimgit-knots_en",
+              "version": "2024-08",
+              "title": "Biblioteca de nudos (en inglés)",
+              "description": "Guías ilustradas de nudos, amarres, escaleras y suturas",
+              "url": "https://download.kiwix.org/zim/other/zimgit-knots_en_2024-08.zim",
+              "size_mb": 27
+            },
+            {
+              "id": "canadian-prepper_en_winterprepping",
+              "version": "2026-08",
+              "title": "Canadian Prepper: Winter Prepping (en inglés)",
+              "description": "Videos sobre supervivencia en invierno y emergencias con frío",
+              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_winterprepping_2026-08.zim",
+              "size_mb": 1342
+            },
+            {
+              "id": "canadian-prepper_en_bugoutroll",
+              "version": "2026-07",
+              "title": "Canadian Prepper: Bug Out Roll (en inglés)",
+              "description": "Cómo elegir el equipo para la mochila de evacuación",
+              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_bugoutroll_2026-07.zim",
+              "size_mb": 879
+            }
+          ]
+        },
+        {
+          "name": "Estándar",
+          "slug": "survival-standard",
+          "description": "Habilidades de campo, radiocomunicaciones y técnicas de evacuación y de supervivencia urbana. Incluye todo lo del nivel Esencial.",
+          "includesTier": "survival-essential",
+          "resources": [
+            {
+              "id": "outdoors.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Vida al aire libre (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas sobre senderismo, campamento, orientación y vida en la naturaleza",
+              "url": "https://download.kiwix.org/zim/stack_exchange/outdoors.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 142
+            },
+            {
+              "id": "ham.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Radioafición (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas sobre equipos de radio, antenas, licencias y comunicaciones de emergencia",
+              "url": "https://download.kiwix.org/zim/stack_exchange/ham.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 75
+            },
+            {
+              "id": "canadian-prepper_en_bugoutconcepts",
+              "version": "2026-08",
+              "title": "Canadian Prepper: Bug Out Concepts (en inglés)",
+              "description": "Estrategias y planificación para evacuaciones de emergencia",
+              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_bugoutconcepts_2026-08.zim",
+              "size_mb": 2886
+            },
+            {
+              "id": "urban-prepper_en_all",
+              "version": "2026-08",
+              "title": "Urban Prepper (en inglés)",
+              "description": "Serie de videos sobre preparación para emergencias en la ciudad",
+              "url": "https://download.kiwix.org/zim/videos/urban-prepper_en_all_2026-08.zim",
+              "size_mb": 2245
+            }
+          ]
+        },
+        {
+          "name": "Completo",
+          "slug": "survival-comprehensive",
+          "description": "Biblioteca completa de preparación: recuperación después de un desastre, alimentos, tecnología apropiada y estrategia militar clásica. Incluye todo lo del nivel Estándar.",
+          "includesTier": "survival-standard",
+          "resources": [
+            {
+              "id": "canadian-prepper_en_preppingfood",
+              "version": "2026-07",
+              "title": "Canadian Prepper: Prepping Food (en inglés)",
+              "description": "Almacenamiento de alimentos a largo plazo y comidas de supervivencia",
+              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_preppingfood_2026-07.zim",
+              "size_mb": 2160
+            },
+            {
+              "id": "zimgit-post-disaster_en",
+              "version": "2024-05",
+              "title": "Biblioteca de recursos para después de un desastre (en inglés)",
+              "description": "Refugio, saneamiento, rescate de materiales y recuperación después de un desastre",
+              "url": "https://download.kiwix.org/zim/other/zimgit-post-disaster_en_2024-05.zim",
+              "size_mb": 644
+            },
+            {
+              "id": "100r.co_en_all",
+              "version": "2026-06",
+              "title": "Hundred Rabbits (en inglés)",
+              "description": "Notas de campo sobre vida de baja tecnología: energía solar, agua, comida y reparaciones tras una década fuera de la red",
+              "url": "https://download.kiwix.org/zim/zimit/100r.co_en_all_2026-06.zim",
+              "size_mb": 172
+            },
+            {
+              "id": "gutenberg_en_lcc-u",
+              "version": "2026-03",
+              "title": "Proyecto Gutenberg: Ciencia militar (en inglés)",
+              "description": "Textos clásicos de estrategia, táctica y manuales militares",
+              "url": "https://download.kiwix.org/zim/gutenberg/gutenberg_en_lcc-u_2026-03.zim",
+              "size_mb": 1200
+            },
+            {
+              "id": "cd3wdproject.org_en_all",
+              "version": "2025-11",
+              "title": "CD3WD: Biblioteca de tecnología apropiada (en inglés)",
+              "description": "Guías prácticas de producción de alimentos, agua y saneamiento, construcción y fabricación a pequeña escala sin cadenas de suministro industriales",
+              "url": "https://download.kiwix.org/zim/zimit/cd3wdproject.org_en_all_2025-11.zim",
+              "size_mb": 581
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Educación y referencia",
+      "slug": "education",
+      "icon": "IconSchool",
+      "description": "Enciclopedias, libros, diccionarios, simulaciones y videos educativos en español para aprender por tu cuenta.",
+      "language": "es",
+      "tiers": [
+        {
+          "name": "Esencial",
+          "slug": "education-essential",
+          "description": "Enciclopedia para chicos, libros de texto abiertos y diccionario. Livianos y centrados en el texto.",
+          "recommended": true,
+          "resources": [
+            {
+              "id": "vikidia_es_all_maxi",
+              "version": "2026-09",
+              "title": "Vikidia",
+              "description": "Enciclopedia en español para chicos de 8 a 13 años",
+              "url": "https://download.kiwix.org/zim/vikidia/vikidia_es_all_maxi_2026-09.zim",
+              "size_mb": 134
+            },
+            {
+              "id": "wikibooks_es_all_nopic",
+              "version": "2026-10",
+              "title": "Wikilibros",
+              "description": "Libros de texto abiertos de matemática, ciencias, computación y más, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_es_all_nopic_2026-10.zim",
+              "size_mb": 93
+            },
+            {
+              "id": "wiktionary_es_all_nopic",
+              "version": "2026-09",
+              "title": "Wikcionario",
+              "description": "Diccionario libre en español: definiciones, etimologías y traducciones",
+              "url": "https://download.kiwix.org/zim/wiktionary/wiktionary_es_all_nopic_2026-09.zim",
+              "size_mb": 656
+            }
+          ]
+        },
+        {
+          "name": "Estándar",
+          "slug": "education-standard",
+          "description": "Suma cursos, simulaciones de ciencias, charlas TED, guías de viaje y textos clásicos. Incluye todo lo del nivel Esencial.",
+          "includesTier": "education-essential",
+          "resources": [
+            {
+              "id": "wikiversity_es_all_maxi",
+              "version": "2026-10",
+              "title": "Wikiversidad",
+              "description": "Cursos, tutoriales y materiales de aprendizaje para todos los niveles",
+              "url": "https://download.kiwix.org/zim/wikiversity/wikiversity_es_all_maxi_2026-10.zim",
+              "size_mb": 41
+            },
+            {
+              "id": "phet_es_all",
+              "version": "2026-08",
+              "title": "Simulaciones PhET",
+              "description": "Simulaciones interactivas de física, química, biología y matemática",
+              "url": "https://download.kiwix.org/zim/phet/phet_es_all_2026-08.zim",
+              "size_mb": 109
+            },
+            {
+              "id": "ted_mul_ted-en-espanol",
+              "version": "2026-09",
+              "title": "TED en español",
+              "description": "Charlas TED dadas en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-en-espanol_2026-09.zim",
+              "size_mb": 639
+            },
+            {
+              "id": "wikivoyage_es_all_maxi",
+              "version": "2026-09",
+              "title": "Wikiviajes",
+              "description": "Guías de viaje libres en español",
+              "url": "https://download.kiwix.org/zim/wikivoyage/wikivoyage_es_all_maxi_2026-09.zim",
+              "size_mb": 139
+            },
+            {
+              "id": "wikisource_es_all_maxi",
+              "version": "2026-10",
+              "title": "Wikisource",
+              "description": "Biblioteca de textos libres en español: literatura, historia y documentos",
+              "url": "https://download.kiwix.org/zim/wikisource/wikisource_es_all_maxi_2026-10.zim",
+              "size_mb": 512
+            }
+          ]
+        },
+        {
+          "name": "Completo",
+          "slug": "education-comprehensive",
+          "description": "Wikilibros con todas sus imágenes y diagramas. Incluye todo lo del nivel Estándar.",
+          "includesTier": "education-standard",
+          "resources": [
+            {
+              "id": "wikibooks_es_all_maxi",
+              "version": "2026-10",
+              "title": "Wikilibros (con imágenes)",
+              "description": "Libros de texto abiertos con todas sus ilustraciones y diagramas",
+              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_es_all_maxi_2026-10.zim",
+              "size_mb": 281
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hazlo tú mismo y reparaciones",
+      "slug": "diy",
+      "icon": "IconTool",
+      "description": "Arréglalo tú mismo: guías de reparación, mejoras para el hogar, carpintería y mantenimiento de vehículos. Lo que no existe en español se completa con contenido en inglés.",
+      "language": "es",
+      "tiers": [
+        {
+          "name": "Esencial",
+          "slug": "diy-essential",
+          "description": "Guías de reparación de iFixit en español, más preguntas y respuestas sobre carpintería y vehículos. Empieza por aquí.",
+          "recommended": true,
+          "resources": [
+            {
+              "id": "ifixit_es_all",
+              "version": "2026-03",
+              "title": "Guías de reparación de iFixit",
+              "description": "Guías paso a paso en español para reparar electrónica, electrodomésticos y vehículos",
+              "url": "https://download.kiwix.org/zim/ifixit/ifixit_es_all_2026-03.zim",
+              "size_mb": 3681
+            },
+            {
+              "id": "woodworking.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Carpintería (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas de Stack Exchange sobre carpintería, ensambles y trabajo en madera",
+              "url": "https://download.kiwix.org/zim/stack_exchange/woodworking.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 99
+            },
+            {
+              "id": "mechanics.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Mantenimiento de vehículos (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas de Stack Exchange sobre reparación de autos y motos",
+              "url": "https://download.kiwix.org/zim/stack_exchange/mechanics.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 321
+            }
+          ]
+        },
+        {
+          "name": "Estándar",
+          "slug": "diy-standard",
+          "description": "Miles de preguntas y respuestas sobre mejoras para el hogar. Incluye todo lo del nivel Esencial.",
+          "includesTier": "diy-essential",
+          "resources": [
+            {
+              "id": "diy.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Bricolaje y mejoras para el hogar (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas de Stack Exchange sobre reparaciones del hogar, electricidad, plomería y construcción",
+              "url": "https://download.kiwix.org/zim/stack_exchange/diy.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 1900
+            }
+          ]
+        },
+        {
+          "name": "Completo",
+          "slug": "diy-comprehensive",
+          "description": "Las guías de iFixit en inglés, más completas que las de español. Incluye todo lo del nivel Estándar.",
+          "includesTier": "diy-standard",
+          "resources": [
+            {
+              "id": "ifixit_en_all",
+              "version": "2025-12",
+              "title": "Guías de reparación de iFixit (en inglés)",
+              "description": "Guías paso a paso para reparar electrónica, electrodomésticos y vehículos (más completa que la versión en español)",
+              "url": "https://download.kiwix.org/zim/ifixit/ifixit_en_all_2025-12.zim",
+              "size_mb": 3380
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Agricultura y alimentos",
+      "slug": "agriculture",
+      "icon": "IconPlant",
+      "description": "Cultiva y prepara tu propia comida: huerta, técnicas de cocina y conservación de alimentos. Por ahora no hay contenido en español, así que esta colección está en inglés.",
+      "language": "es",
+      "tiers": [
+        {
+          "name": "Esencial",
+          "slug": "agriculture-essential",
+          "description": "Recetas rápidas y nociones básicas de cocina para las comidas de todos los días.",
+          "recommended": true,
+          "resources": [
+            {
+              "id": "foss.cooking_en_all",
+              "version": "2026-02",
+              "title": "FOSS Cooking (en inglés)",
+              "description": "Guías y recetas de cocina rápidas y fáciles",
+              "url": "https://download.kiwix.org/zim/zimit/foss.cooking_en_all_2026-02.zim",
+              "size_mb": 24
+            },
+            {
+              "id": "based.cooking_en_all",
+              "version": "2026-08",
+              "title": "Based.Cooking (en inglés)",
+              "description": "Recetas simples y prácticas de la comunidad",
+              "url": "https://download.kiwix.org/zim/zimit/based.cooking_en_all_2026-08.zim",
+              "size_mb": 16
+            }
+          ]
+        },
+        {
+          "name": "Estándar",
+          "slug": "agriculture-standard",
+          "description": "Conocimientos de huerta y cocina a partir de preguntas y respuestas de la comunidad. Incluye todo lo del nivel Esencial.",
+          "includesTier": "agriculture-essential",
+          "resources": [
+            {
+              "id": "gardening.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Huerta y jardinería (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas de Stack Exchange sobre cultivar tus alimentos, cuidado de plantas y paisajismo",
+              "url": "https://download.kiwix.org/zim/stack_exchange/gardening.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 923
+            },
+            {
+              "id": "cooking.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Cocina (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas de Stack Exchange sobre técnicas de cocina, seguridad alimentaria y recetas",
+              "url": "https://download.kiwix.org/zim/stack_exchange/cooking.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 236
+            },
+            {
+              "id": "zimgit-food-preparation_en",
+              "version": "2025-04",
+              "title": "Alimentos para la preparación (en inglés)",
+              "description": "Recetas y técnicas para preparar y conservar alimentos",
+              "url": "https://download.kiwix.org/zim/other/zimgit-food-preparation_en_2025-04.zim",
+              "size_mb": 98
+            }
+          ]
+        },
+        {
+          "name": "Completo",
+          "slug": "agriculture-comprehensive",
+          "description": "Autosuficiencia completa con videos sobre vida en el campo y textos clásicos de agricultura. Incluye todo lo del nivel Estándar.",
+          "includesTier": "agriculture-standard",
+          "resources": [
+            {
+              "id": "lrnselfreliance_en_all",
+              "version": "2026-06",
+              "title": "Learning Self-Reliance: Homesteading (en inglés)",
+              "description": "Apicultura, cría de animales y prácticas de vida sustentable",
+              "url": "https://download.kiwix.org/zim/videos/lrnselfreliance_en_all_2026-06.zim",
+              "size_mb": 3790
+            },
+            {
+              "id": "gutenberg_en_lcc-s",
+              "version": "2026-03",
+              "title": "Proyecto Gutenberg: Agricultura (en inglés)",
+              "description": "Textos clásicos sobre agricultura, cría de animales, cultivo de plantas y conservación de alimentos",
+              "url": "https://download.kiwix.org/zim/gutenberg/gutenberg_en_lcc-s_2026-03.zim",
+              "size_mb": 4300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Computación y tecnología",
+      "slug": "computing",
+      "icon": "IconCode",
+      "description": "Tutoriales de programación, preguntas y respuestas y documentación técnica. Lo que no existe en español se completa con contenido en inglés.",
+      "language": "es",
+      "tiers": [
+        {
+          "name": "Esencial",
+          "slug": "computing-essential",
+          "description": "Aprende a programar con freeCodeCamp en español y la documentación básica de programación.",
+          "recommended": true,
+          "resources": [
+            {
+              "id": "freecodecamp_es_all",
+              "version": "2026-10",
+              "title": "freeCodeCamp en español",
+              "description": "Tutoriales interactivos de programación: JavaScript, algoritmos y estructuras de datos",
+              "url": "https://download.kiwix.org/zim/freecodecamp/freecodecamp_es_all_2026-10.zim",
+              "size_mb": 12
+            },
+            {
+              "id": "devdocs_en_python",
+              "version": "2026-08",
+              "title": "Documentación de Python (en inglés)",
+              "description": "Referencia completa y tutoriales del lenguaje Python",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_python_2026-08.zim",
+              "size_mb": 4
+            },
+            {
+              "id": "devdocs_en_javascript",
+              "version": "2026-07",
+              "title": "Documentación de JavaScript (en inglés)",
+              "description": "Referencia y guías de JavaScript de MDN",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_javascript_2026-07.zim",
+              "size_mb": 3
+            },
+            {
+              "id": "devdocs_en_html",
+              "version": "2026-07",
+              "title": "Documentación de HTML (en inglés)",
+              "description": "Referencia de elementos y atributos HTML de MDN",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_html_2026-07.zim",
+              "size_mb": 2
+            },
+            {
+              "id": "devdocs_en_css",
+              "version": "2026-07",
+              "title": "Documentación de CSS (en inglés)",
+              "description": "Referencia de propiedades y selectores CSS de MDN",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_css_2026-07.zim",
+              "size_mb": 5
+            }
+          ]
+        },
+        {
+          "name": "Estándar",
+          "slug": "computing-standard",
+          "description": "Stack Overflow en español, proyectos maker con Arduino y Raspberry Pi y más documentación. Incluye todo lo del nivel Esencial.",
+          "includesTier": "computing-essential",
+          "resources": [
+            {
+              "id": "es.stackoverflow.com_mul_all",
+              "version": "2026-10",
+              "title": "Stack Overflow en español",
+              "description": "Preguntas y respuestas para programadores y profesionales de la informática",
+              "url": "https://download.kiwix.org/zim/stack_exchange/es.stackoverflow.com_mul_all_2026-10.zim",
+              "size_mb": 1436
+            },
+            {
+              "id": "arduino.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Arduino (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas de Stack Exchange sobre proyectos con microcontroladores Arduino",
+              "url": "https://download.kiwix.org/zim/stack_exchange/arduino.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 247
+            },
+            {
+              "id": "raspberrypi.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Raspberry Pi (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas de Stack Exchange sobre proyectos y problemas con Raspberry Pi",
+              "url": "https://download.kiwix.org/zim/stack_exchange/raspberrypi.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 285
+            },
+            {
+              "id": "devdocs_en_node",
+              "version": "2026-08",
+              "title": "Documentación de Node.js (en inglés)",
+              "description": "Referencia de la API y guías de Node.js",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_node_2026-08.zim",
+              "size_mb": 1
+            },
+            {
+              "id": "devdocs_en_react",
+              "version": "2026-02",
+              "title": "Documentación de React (en inglés)",
+              "description": "Referencia y tutoriales de la biblioteca React",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_react_2026-02.zim",
+              "size_mb": 3
+            },
+            {
+              "id": "devdocs_en_git",
+              "version": "2026-07",
+              "title": "Documentación de Git (en inglés)",
+              "description": "Referencia del control de versiones Git",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_git_2026-07.zim",
+              "size_mb": 2
+            }
+          ]
+        },
+        {
+          "name": "Completo",
+          "slug": "computing-comprehensive",
+          "description": "Electrónica en profundidad y muchas preguntas y respuestas para proyectos de hardware. Incluye todo lo del nivel Estándar.",
+          "includesTier": "computing-standard",
+          "resources": [
+            {
+              "id": "electronics.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Electrónica (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas de Stack Exchange sobre diseño de circuitos, componentes e ingeniería eléctrica",
+              "url": "https://download.kiwix.org/zim/stack_exchange/electronics.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 3800
+            },
+            {
+              "id": "robotics.stackexchange.com_en_all",
+              "version": "2026-02",
+              "title": "Robótica (preguntas y respuestas) (en inglés)",
+              "description": "Preguntas y respuestas de Stack Exchange sobre robótica y automatización",
+              "url": "https://download.kiwix.org/zim/stack_exchange/robotics.stackexchange.com_en_all_2026-02.zim",
+              "size_mb": 233
+            },
+            {
+              "id": "devdocs_en_docker",
+              "version": "2026-07",
+              "title": "Documentación de Docker (en inglés)",
+              "description": "Referencia y guías de contenedores Docker",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_docker_2026-07.zim",
+              "size_mb": 2
+            },
+            {
+              "id": "devdocs_en_bash",
+              "version": "2026-01",
+              "title": "Documentación de Linux (en inglés)",
+              "description": "Referencia de comandos de Linux y administración del sistema",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_bash_2026-01.zim",
+              "size_mb": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

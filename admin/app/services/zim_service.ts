@@ -31,7 +31,8 @@ import { RunDownloadJob } from '#jobs/run_download_job'
 import { DownloadDrugDataJob } from '#jobs/download_drug_data_job'
 import { DrugReferenceService } from './drug_reference_service.js'
 import { SERVICE_NAMES } from '../../constants/service_names.js'
-import { CollectionManifestService } from './collection_manifest_service.js'
+import { CollectionManifestService, specUrlFor } from './collection_manifest_service.js'
+import { CONTENT_LANGUAGES, getContentLanguage, isWikipediaSelectorFile, type ContentLanguage } from '../utils/content_language.js'
 import { KiwixCatalogService } from './kiwix_catalog_service.js'
 import { KiwixLibraryService } from './kiwix_library_service.js'
 import { RagService } from './rag_service.js'
@@ -44,7 +45,6 @@ import { getHostedContentHeaders } from '../utils/hosted_content_auth.js'
 import { KIWIX_CATALOG_BASE_URL } from '../../constants/kiwix.js'
 
 const ZIM_MIME_TYPES = ['application/x-zim', 'application/x-openzim', 'application/octet-stream']
-const WIKIPEDIA_OPTIONS_URL = 'https://raw.githubusercontent.com/Crosstalk-Solutions/project-nomad/refs/heads/main/collections/wikipedia.json'
 
 @inject()
 export class ZimService {
@@ -437,7 +437,7 @@ export class ZimService {
   async downloadRemoteSuccessCallback(urls: string[], restart = true) {
     // Check if any URL is a Wikipedia download and handle it
     for (const url of urls) {
-      if (url.includes('wikipedia_en_')) {
+      if (isWikipediaSelectorFile(url)) {
         await this.onWikipediaDownloadComplete(url, true)
       }
     }
@@ -503,7 +503,7 @@ export class ZimService {
     let removedSupersededZim = false
     for (const url of urls) {
       // Skip Wikipedia files (managed separately)
-      if (url.includes('wikipedia_en_')) continue
+      if (isWikipediaSelectorFile(url)) continue
 
       const filename = url.split('/').pop()
       if (!filename) continue
@@ -641,10 +641,12 @@ export class ZimService {
 
     // If the uploaded file matches a known Wikipedia option, mark it as installed
     try {
-      const manifest = await CollectionManifest.find('wikipedia')
-      if (manifest) {
-        const spec = manifest.spec_data as { options: Array<{ id: string; url: string | null }> }
-        const matchedOption = spec.options.find(
+      const manifests = await CollectionManifest.query().whereIn('type', ['wikipedia', 'wikipedia_es'])
+      if (manifests.length > 0) {
+        const allOptions = manifests.flatMap(
+          (m) => (m.spec_data as { options: Array<{ id: string; url: string | null }> }).options
+        )
+        const matchedOption = allOptions.find(
           (opt) => opt.url && opt.url.split('/').pop() === filename
         )
         if (matchedOption && matchedOption.url) {
@@ -668,7 +670,7 @@ export class ZimService {
           // Remove any other wikipedia_en_*.zim files, same as the download flow
           const allFiles = await this.list()
           const staleWikipediaFiles = allFiles.files.filter(
-            (f) => f.name.startsWith('wikipedia_en_') && f.name !== filename
+            (f) => isWikipediaSelectorFile(f.name) && f.name !== filename
           )
           for (const stale of staleWikipediaFiles) {
             try {
@@ -800,9 +802,9 @@ export class ZimService {
 
   // Wikipedia selector methods
 
-  async getWikipediaOptions(): Promise<WikipediaOption[]> {
+  async getWikipediaOptions(lang: ContentLanguage = getContentLanguage()): Promise<WikipediaOption[]> {
     try {
-      const response = await axios.get(WIKIPEDIA_OPTIONS_URL)
+      const response = await axios.get(specUrlFor('wikipedia', lang))
       const data = response.data
 
       const validated = await vine.validate({
@@ -964,17 +966,20 @@ export class ZimService {
     const selection = await this.getWikipediaSelection()
 
     // Determine which Wikipedia option this file belongs to by matching filename
+    // Runs from the download job, outside any request, so check every
+    // language's list (a Spanish Wikipedia only appears in the Spanish one).
     let matchedOptionId: string | null = null
-    try {
-      const options = await this.getWikipediaOptions()
-      for (const opt of options) {
-        if (opt.url && opt.url.split('/').pop() === filename) {
-          matchedOptionId = opt.id
+    for (const lang of CONTENT_LANGUAGES) {
+      try {
+        const options = await this.getWikipediaOptions(lang)
+        const match = options.find((opt) => opt.url && opt.url.split('/').pop() === filename)
+        if (match) {
+          matchedOptionId = match.id
           break
         }
+      } catch {
+        // If we can't fetch options, try to continue with existing selection
       }
-    } catch {
-      // If we can't fetch options, try to continue with existing selection
     }
 
     if (success) {

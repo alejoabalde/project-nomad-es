@@ -107,6 +107,8 @@ La Plataforma educativa ofrece cursos completos que funcionan sin conexión.
 2. Inicia sesión o crea una cuenta de estudiante
 3. Explora los cursos y empieza a aprender
 
+**Cursos en español:** los cursos se agregan desde Kolibri importando canales. Para Khan Academy en español, importa el canal de Khan Academy en español desde **Dispositivo → Canales**; puedes elegir solo los temas que quieras.
+
 **Consejo:** Kolibri admite varios usuarios. Crea una cuenta para cada integrante de la familia y así sigues el progreso de cada uno.
 
 ---

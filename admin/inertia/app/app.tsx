@@ -2,7 +2,7 @@
 /// <reference path="../../config/inertia.ts" />
 
 import '../css/app.css'
-import '~/i18n'
+import i18n from '~/i18n'
 import { createRoot } from 'react-dom/client'
 import { createInertiaApp } from '@inertiajs/react'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
@@ -17,6 +17,13 @@ import { UsePageProps } from '../../types/system'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Project NOMAD'
 const queryClient = new QueryClient()
+
+// Curated collections (and the Wikipedia options) depend on the interface
+// language, which the server reads from the nomad_lang cookie. Refetch
+// everything when the language changes so the lists follow it.
+i18n.on('languageChanged', () => {
+  void queryClient.invalidateQueries()
+})
 
 // Patch the global crypto object for non-HTTPS/localhost contexts
 if (!window.crypto?.randomUUID) {

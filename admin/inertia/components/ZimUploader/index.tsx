@@ -61,7 +61,8 @@ export default function ZimUploader({ onUploadComplete, existingFilenames }: Zim
         return
       }
 
-      const isWikipedia = (name: string) => name.startsWith('wikipedia_en_')
+      const isWikipedia = (name: string) =>
+        name.startsWith('wikipedia_en_') || /^wikipedia_es_(?:all|top)_/.test(name)
       if (isWikipedia(file.name)) {
         const alreadyQueued = uppy.getFiles().some((f) => f.id !== file.id && isWikipedia(f.name))
         if (alreadyQueued) {
