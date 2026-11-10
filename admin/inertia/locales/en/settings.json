@@ -348,7 +348,8 @@
     "download": "Download",
     "confirmTitle": "Confirm Download?",
     "confirmBody": "Are you sure you want to download <b>{{name}}</b>? It may take some time for it to be available depending on the file size and your internet connection. The Kiwix application will be restarted after the download is complete.",
-    "confirmCustomBody": "Are you sure you want to download <b>{{name}}</b>{{size}}? The Kiwix application will be restarted after the download is complete."
+    "confirmCustomBody": "Are you sure you want to download <b>{{name}}</b>{{size}}? The Kiwix application will be restarted after the download is complete.",
+    "englishContentNote": ""
   },
   "mapsMgr": {
     "baseMapOk": "Base map downloaded successfully.",

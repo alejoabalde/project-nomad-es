@@ -529,6 +529,9 @@ export default function ZimRemoteExplorer() {
               {t('explorer.forceRefresh')}
             </StyledButton>
           </div>
+          {t('explorer.englishContentNote') && (
+            <Alert title={t('explorer.englishContentNote')} type="info" variant="bordered" className="mb-6" />
+          )}
 
           {/* Wikipedia Selector */}
           {isLoadingWikipedia ? (

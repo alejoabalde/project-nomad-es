@@ -76,7 +76,8 @@
       "title": "Additional Content",
       "description": "Curated collections for offline reference"
     },
-    "noContent": "No content-based capabilities selected. You can skip this step or go back to select capabilities that require content."
+    "noContent": "No content-based capabilities selected. You can skip this step or go back to select capabilities that require content.",
+    "englishContentNote": ""
   },
   "creatorPacks": {
     "title": "Stock Creator Packs",

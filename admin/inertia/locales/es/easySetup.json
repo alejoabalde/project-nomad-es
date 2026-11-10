@@ -76,7 +76,8 @@
       "title": "Contenido adicional",
       "description": "Colecciones seleccionadas para consulta sin conexión"
     },
-    "noContent": "No seleccionaste funciones que usen contenido. Puedes omitir este paso o volver atrás para elegir funciones que lo necesiten."
+    "noContent": "No seleccionaste funciones que usen contenido. Puedes omitir este paso o volver atrás para elegir funciones que lo necesiten.",
+    "englishContentNote": "El contenido de estas colecciones está en inglés. Después de la configuración, puedes buscar contenido en español en el Explorador de contenido, con el filtro de idioma."
   },
   "creatorPacks": {
     "title": "Packs de creadores",

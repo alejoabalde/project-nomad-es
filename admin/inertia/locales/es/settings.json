@@ -348,7 +348,8 @@
     "download": "Descargar",
     "confirmTitle": "¿Confirmar descarga?",
     "confirmBody": "¿Seguro que quieres descargar <b>{{name}}</b>? Puede tardar en estar disponible según el tamaño del archivo y tu conexión a internet. La aplicación Kiwix se reiniciará cuando termine la descarga.",
-    "confirmCustomBody": "¿Seguro que quieres descargar <b>{{name}}</b>{{size}}? La aplicación Kiwix se reiniciará cuando termine la descarga."
+    "confirmCustomBody": "¿Seguro que quieres descargar <b>{{name}}</b>{{size}}? La aplicación Kiwix se reiniciará cuando termine la descarga.",
+    "englishContentNote": "El contenido de estas colecciones está en inglés. Para buscar contenido en español, usa el filtro de idioma en «Explorar la biblioteca de Kiwix», más abajo."
   },
   "mapsMgr": {
     "baseMapOk": "El mapa base se descargó correctamente.",

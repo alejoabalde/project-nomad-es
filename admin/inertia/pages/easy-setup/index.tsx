@@ -923,6 +923,10 @@ export default function EasySetupWizard(props: {
           </p>
         </div>
 
+        {isInformationSelected && t('step3.englishContentNote') && (
+          <Alert title={t('step3.englishContentNote')} type="info" variant="bordered" className="mb-6" />
+        )}
+
         {/* Wikipedia Selection - Only show if Information capability is selected */}
         {isInformationSelected && (
           <div className="mb-8">
