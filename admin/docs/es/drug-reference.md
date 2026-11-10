@@ -19,8 +19,8 @@ Hay dos formas de obtener los datos, y las dos terminan en el mismo lugar.
 **Desde el Explorador de contenido**, como parte de una colección:
 
 1. Desde la pantalla de inicio, abre el **Explorador de contenido**.
-2. Elige la categoría **Medicine**.
-3. Selecciona el nivel **Standard**. Su contenido aparece en la tarjeta y entre lo incluido verás **FDA Drug Reference**.
+2. Elige la categoría **Medicina**.
+3. Selecciona el nivel **Estándar**. Su contenido aparece en la tarjeta y entre lo incluido verás **Guía de medicamentos de la FDA**.
 4. Confirma la descarga.
 
 **Desde la propia página de la Guía de medicamentos.** Abre la **Guía de medicamentos** desde la pantalla de inicio. Si no hay datos instalados, verás un panel «Todavía no hay datos de medicamentos de la FDA» con un botón **Descargar datos de medicamentos de la FDA**, que inicia el mismo proceso.
@@ -74,6 +74,6 @@ Con las actualizaciones automáticas desactivadas, los datos quedan exactamente 
 
 ## Sobre el espacio en disco
 
-La Guía de medicamentos es el elemento individual más grande de la colección Medicine → Standard. Calcula unos **8 a 10 GB** de disco después de la indexación, además de los 1,7 GB de la descarga.
+La Guía de medicamentos es el elemento individual más grande de la colección Medicina → Estándar. Calcula unos **8 a 10 GB** de disco después de la indexación, además de los 1,7 GB de la descarga.
 
 Si tienes poco espacio, el Explorador de contenido muestra el tamaño total de un nivel antes de que lo confirmes, así sabes qué estás por instalar.

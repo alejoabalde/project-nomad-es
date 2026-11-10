@@ -26,6 +26,7 @@ import { SERVICE_NAMES } from '../../../constants/service_names'
 import { Trans, useTranslation } from 'react-i18next'
 import type { TFunction } from 'i18next'
 import { useAssistantName } from '~/lib/assistant_name'
+import { useCollectionText } from '~/lib/collection_i18n'
 
 // Capability definitions - maps user-friendly categories to services
 interface Capability {
@@ -97,6 +98,7 @@ export default function EasySetupWizard(props: {
   system: { services: ServiceSlim[]; remoteOllamaUrl: string }
 }) {
   const { t } = useTranslation('easySetup')
+  const tc = useCollectionText()
   const aiAssistantName = useAssistantName()
   const CORE_CAPABILITIES = buildCoreCapabilities(aiAssistantName, t)
 
@@ -1254,7 +1256,7 @@ export default function EasySetupWizard(props: {
                     return (
                       <li key={slug} className="flex items-center">
                         <IconCheck size={20} className="text-desert-green mr-2" />
-                        <span className="text-text-primary">{collection?.name || slug}</span>
+                        <span className="text-text-primary">{tc(collection?.name) || slug}</span>
                       </li>
                     )
                   })}
@@ -1295,7 +1297,7 @@ export default function EasySetupWizard(props: {
                       <div className="flex items-center mb-2">
                         <IconCheck size={20} className="text-desert-green mr-2" />
                         <span className="text-text-primary font-medium">
-                          {category.name} - {tier.name}
+                          {tc(category.name)} - {tc(tier.name)}
                         </span>
                         <span className="text-text-muted text-sm ml-2">
                           {t('review.files', { count: resources.length })}
@@ -1304,7 +1306,7 @@ export default function EasySetupWizard(props: {
                       <ul className="ml-7 space-y-1">
                         {resources.map((resource, idx) => (
                           <li key={idx} className="text-sm text-text-secondary">
-                            {resource.title}
+                            {tc(resource.title)}
                           </li>
                         ))}
                       </ul>
@@ -1323,7 +1325,7 @@ export default function EasySetupWizard(props: {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <IconCheck size={20} className="text-desert-green mr-2" />
-                        <span className="text-text-primary">{option.name}</span>
+                        <span className="text-text-primary">{tc(option.name)}</span>
                       </div>
                       <span className="text-text-muted text-sm">
                         {option.size_mb > 0

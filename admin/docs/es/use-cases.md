@@ -139,7 +139,7 @@ Cuando no puedes llegar a un médico, tener información médica confiable puede
 **Importante:** las referencias médicas son solo informativas. No reemplazan la atención de un profesional. En una emergencia, busca siempre ayuda profesional cuando sea posible.
 
 **Contenido recomendado:**
-- Colección ZIM Medical Essentials
+- Colección Medicina, nivel Esencial
 - Referencia NHS Medicines
 - Guías de primeros auxilios y medicina de emergencia
 

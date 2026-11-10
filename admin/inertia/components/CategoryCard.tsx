@@ -4,6 +4,7 @@ import type { CategoryWithStatus, SpecTier } from '../../types/collections'
 import classNames from 'classnames'
 import { IconChevronRight, IconCircleCheck, IconLoader2 } from '@tabler/icons-react'
 import { useTranslation } from 'react-i18next'
+import { useCollectionText } from '~/lib/collection_i18n'
 
 export interface CategoryCardProps {
   category: CategoryWithStatus
@@ -13,6 +14,7 @@ export interface CategoryCardProps {
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onClick }) => {
   const { t } = useTranslation('components')
+  const tc = useCollectionText()
   // Calculate total size range across all tiers
   const getTierTotalSize = (tier: SpecTier, allTiers: SpecTier[]): number => {
     let total = tier.resources.reduce((acc, r) => acc + r.size_mb * 1024 * 1024, 0)
@@ -66,7 +68,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onC
         <div className="flex justify-between w-full items-center">
           <div className="flex items-center">
             <DynamicIcon icon={category.icon as DynamicIconName} className="w-6 h-6 mr-2" />
-            <h3 className="text-lg font-semibold">{category.name}</h3>
+            <h3 className="text-lg font-semibold">{tc(category.name)}</h3>
           </div>
           {badgeTier ? (
             <div className="flex items-center">
@@ -76,7 +78,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onC
                 <IconCircleCheck className="w-5 h-5 text-lime-400" />
               )}
               <span className="text-lime-400 text-sm ml-1">
-                {badgeTier.name}
+                {tc(badgeTier.name)}
                 {badgeStatus === 'downloading' &&
                   (category.downloadingTierIndexing ? ` (${t('category.indexing')})` : ` (${t('category.downloading')})`)}
               </span>
@@ -87,7 +89,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onC
         </div>
       </div>
 
-      <p className="text-gray-200 grow">{category.description}</p>
+      <p className="text-gray-200 grow">{tc(category.description)}</p>
 
       <div className="mt-4 pt-4 border-t border-white/20">
         <p className="text-sm text-gray-300 mb-2">
@@ -110,7 +112,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onC
                   selectedTier?.slug === tier.slug && 'ring-2 ring-lime-400'
                 )}
               >
-                {tier.name}
+                {tc(tier.name)}
               </span>
             )
           })}

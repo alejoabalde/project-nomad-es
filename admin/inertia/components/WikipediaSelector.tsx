@@ -5,6 +5,7 @@ import { IconCheck, IconDownload, IconWorld, IconAlertTriangle } from '@tabler/i
 import StyledButton from './StyledButton'
 import LoadingSpinner from './LoadingSpinner'
 import { useTranslation } from 'react-i18next'
+import { useCollectionText } from '~/lib/collection_i18n'
 
 export interface WikipediaSelectorProps {
   options: WikipediaOption[]
@@ -29,6 +30,7 @@ const WikipediaSelector: React.FC<WikipediaSelectorProps> = ({
 }) => {
   // Determine which option to highlight
   const { t } = useTranslation('components')
+  const tc = useCollectionText()
   const highlightedOptionId = selectedOptionId ?? currentSelection?.optionId ?? null
 
   // Check if current selection is downloading or failed
@@ -127,8 +129,8 @@ const WikipediaSelector: React.FC<WikipediaSelectorProps> = ({
 
               {/* Option content */}
               <div className="pr-16 flex flex-col h-full">
-                <h4 className="text-lg font-semibold text-text-primary mb-1">{option.name}</h4>
-                <p className="text-sm text-text-secondary mb-3 flex-grow">{option.description}</p>
+                <h4 className="text-lg font-semibold text-text-primary mb-1">{tc(option.name)}</h4>
+                <p className="text-sm text-text-secondary mb-3 flex-grow">{tc(option.description)}</p>
                 <div className="flex items-center gap-3">
                   {/* Radio indicator */}
                   <div

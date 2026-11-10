@@ -14,6 +14,7 @@ import { evaluateGuardrail, type GuardrailVerdict } from '~/lib/kb_guardrail'
 import { useSystemInfo } from '~/hooks/useSystemInfo'
 import { getPrimaryDiskInfo } from '~/hooks/useDiskDisplayData'
 import { Trans, useTranslation } from 'react-i18next'
+import { useCollectionText } from '~/lib/collection_i18n'
 
 /**
  * Filename for the embed-estimate registry lookup. Strips the URL path so
@@ -41,6 +42,7 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
   onSelectTier,
 }) => {
   const { t } = useTranslation('components')
+  const tc = useCollectionText()
   // Local selection state - initialized from prop
   const [localSelectedSlug, setLocalSelectedSlug] = useState<string | null>(null)
 
@@ -201,9 +203,9 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
                       />
                       <div>
                         <Dialog.Title className="text-xl font-semibold text-white">
-                          {category.name}
+                          {tc(category.name)}
                         </Dialog.Title>
-                        <p className="text-sm text-text-muted">{category.description}</p>
+                        <p className="text-sm text-text-muted">{tc(category.description)}</p>
                       </div>
                     </div>
                     <button
@@ -228,6 +230,7 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
                       const includedTierName = tier.includesTier
                         ? category.tiers.find(t => t.slug === tier.includesTier)?.name
                         : null
+                      const includedTierLabel = includedTierName ? tc(includedTierName) : undefined
                       // Only show this tier's own resources (not inherited)
                       const ownResources = tier.resources
                       const ownResourceCount = ownResources.length
@@ -247,15 +250,15 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
                             <div className="flex-1">
                               <div className="flex items-center gap-2 mb-1">
                                 <h3 className="text-lg font-semibold text-text-primary">
-                                  {tier.name}
+                                  {tc(tier.name)}
                                 </h3>
                                 {includedTierName && (
                                   <span className="text-xs text-text-muted">
-                                    {t('tiers.includes', { name: includedTierName })}
+                                    {t('tiers.includes', { name: includedTierLabel })}
                                   </span>
                                 )}
                               </div>
-                              <p className="text-text-secondary text-sm mb-3">{tier.description}</p>
+                              <p className="text-text-secondary text-sm mb-3">{tc(tier.description)}</p>
 
                               {/* Resources preview - only show this tier's own resources */}
                               <div className="bg-surface-secondary rounded p-3">
@@ -263,7 +266,7 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
                                   {includedTierName ? (
                                     <>
                                       {t('tiers.additionalResources', { count: ownResourceCount })}
-                                      <span className="text-text-muted"> {t('tiers.plusEverythingIn', { name: includedTierName })}</span>
+                                      <span className="text-text-muted"> {t('tiers.plusEverythingIn', { name: includedTierLabel })}</span>
                                     </>
                                   ) : (
                                     <>{t('tiers.resourcesIncluded', { count: ownResourceCount })}</>
@@ -274,7 +277,7 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
                                     <div key={idx} className="flex items-start text-sm">
                                       <IconCheck size={14} className="text-desert-green mr-1.5 mt-0.5 flex-shrink-0" />
                                       <div>
-                                        <span className="text-text-primary">{resource.title}</span>
+                                        <span className="text-text-primary">{tc(resource.title)}</span>
                                         <span className="text-text-muted text-xs ml-1">
                                           ({formatBytes(resource.size_mb * 1024 * 1024, 0)})
                                         </span>

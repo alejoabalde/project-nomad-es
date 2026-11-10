@@ -81,9 +81,9 @@ Para el contenido de Kiwix, NOMAD usa archivos ZIM estándar. Para el contenido 
 
 ### ¿Qué son los niveles de las colecciones seleccionadas?
 Cuando eliges contenido en el asistente de Configuración rápida o en el Explorador de contenido, las colecciones se organizan en tres niveles:
-- **Essential**: el contenido básico de la categoría (la descarga más chica)
-- **Standard**: lo de Essential más contenido útil adicional
-- **Comprehensive**: todo lo disponible para la categoría (la descarga más grande)
+- **Esencial**: el contenido básico de la categoría (la descarga más chica)
+- **Estándar**: lo de Esencial más contenido útil adicional
+- **Completo**: todo lo disponible para la categoría (la descarga más grande)
 
 Así puedes equilibrar cuánto contenido tienes con cuánto espacio ocupa.
 

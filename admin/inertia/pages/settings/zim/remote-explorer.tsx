@@ -42,6 +42,7 @@ import ActiveDownloads from '~/components/ActiveDownloads'
 import { SERVICE_NAMES } from '../../../../constants/service_names'
 import { ZimFileWithMetadata } from '../../../../types/zim'
 import { Trans, useTranslation } from 'react-i18next'
+import { useCollectionText } from '~/lib/collection_i18n'
 
 const CURATED_CATEGORIES_KEY = 'curated-categories'
 const WIKIPEDIA_STATE_KEY = 'wikipedia-state'
@@ -58,6 +59,7 @@ type BrowseResult = {
 export default function ZimRemoteExplorer() {
   const queryClient = useQueryClient()
   const { t, i18n } = useTranslation('settings')
+  const tc = useCollectionText()
   const tableParentRef = useRef<HTMLDivElement>(null)
 
   const { openModal, closeAllModals } = useModals()
@@ -387,7 +389,7 @@ export default function ZimRemoteExplorer() {
       await api.downloadCategoryTier(category.slug, tier.slug)
 
       addNotification({
-        message: t('explorer.started', { name: `${category.name} - ${tier.name}` }),
+        message: t('explorer.started', { name: `${tc(category.name)} - ${tc(tier.name)}` }),
         type: 'success',
       })
       invalidateDownloads()

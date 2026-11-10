@@ -64,9 +64,9 @@ Si es tu primera vez con NOMAD, el asistente de Configuración rápida te ayuda 
 El asistente te guía en cuatro pasos sencillos:
 1. **Funciones**: elige qué activar: Biblioteca de información, Asistente de IA, Plataforma educativa, Mapas, Herramientas de datos y Notas
 2. **Mapas**: selecciona regiones geográficas para los mapas sin conexión
-3. **Contenido**: elige colecciones de contenido seleccionadas en los niveles Essential, Standard o Comprehensive
+3. **Contenido**: elige colecciones de contenido seleccionadas en los niveles Esencial, Estándar o Completo
 
-![Niveles de contenido: Essential, Standard y Comprehensive](/docs/easy-setup-tiers.webp)
+![Niveles de contenido: Esencial, Estándar y Completo](/docs/es/easy-setup-tiers.webp)
 4. **Revisión**: confirma lo que elegiste y empieza la descarga
 
 Según lo que hayas elegido, las descargas pueden tardar. Puedes seguir el progreso en Ajustes, seguir usando las funciones que ya están instaladas o dejar el servidor encendido durante la noche para las descargas grandes.
@@ -197,7 +197,7 @@ A medida que cambien tus necesidades, puedes agregar contenido cuando quieras:
 
 ### Selector de Wikipedia
 
-![Explorador de contenido: explora y descarga paquetes de Wikipedia y colecciones seleccionadas](/docs/content-explorer.webp)
+![Explorador de contenido: explora y descarga paquetes de Wikipedia y colecciones seleccionadas](/docs/es/content-explorer.webp)
 
 NOMAD incluye una herramienta dedicada para explorar y descargar paquetes de Wikipedia.
 
