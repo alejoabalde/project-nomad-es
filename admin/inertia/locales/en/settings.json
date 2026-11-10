@@ -123,5 +123,89 @@
   },
   "creatorPacks": {
     "intro": "Install branded video collections from creators. Packs download in the background and play offline through Kiwix."
+  },
+  "update": {
+    "title": "System Update",
+    "intro": "Keep your Project NOMAD instance up to date with the latest features and improvements.",
+    "stages": {
+      "idle": "Preparing Update",
+      "starting": "Starting Update",
+      "pulling": "Pulling Images",
+      "pulled": "Images Pulled",
+      "recreating": "Recreating Containers",
+      "complete": "Update Complete",
+      "error": "Update Failed"
+    },
+    "errors": {
+      "fetchStatus": "Failed to fetch update status",
+      "start": "Failed to start update",
+      "fetchLogs": "Failed to fetch update logs",
+      "check": "Failed to check for updates"
+    },
+    "notifications": {
+      "available": "Update available: {{version}}",
+      "upToDate": "System is up to date"
+    },
+    "unknownError": "Unknown error",
+    "restarting": {
+      "title": "Container Restarting",
+      "message": "The admin container is restarting. This page will reload automatically when the update is complete."
+    },
+    "connectionLost": {
+      "title": "Connection Temporarily Lost (Expected)",
+      "message": "You may see error notifications while the backend restarts during the update. This is completely normal and expected. Connection should be restored momentarily."
+    },
+    "available": "Update Available",
+    "upToDate": "System Up to Date",
+    "availableDescription": "A new version ({{version}}) is available for your Project NOMAD instance.",
+    "upToDateDescription": "Your system is running the latest version!",
+    "currentVersion": "Current Version",
+    "latestVersion": "Latest Version",
+    "progress": "{{percent}}% complete",
+    "start": "Start Update",
+    "noUpdate": "No Update Available",
+    "checkAgain": "Check Again",
+    "steps": {
+      "title": "What happens during an update?",
+      "pull": {
+        "title": "Pull Latest Images",
+        "description": "Downloads the newest Docker images for all core containers"
+      },
+      "recreate": {
+        "title": "Recreate Containers",
+        "description": "Safely stops and recreates all core containers with the new images"
+      },
+      "reload": {
+        "title": "Automatic Reload",
+        "description": "This page will automatically reload when the update is complete"
+      }
+    },
+    "viewLogs": "View Update Logs",
+    "backup": {
+      "title": "Backup Reminder",
+      "message": "While updates are designed to be safe, it's always recommended to backup any critical data before proceeding."
+    },
+    "downtime": {
+      "title": "Temporary Downtime",
+      "message": "Services will be briefly unavailable during the update process. This typically takes 2-5 minutes depending on your internet connection."
+    },
+    "earlyAccess": {
+      "title": "Early Access",
+      "label": "Enable Early Access",
+      "description": "Receive release candidate (RC) versions before they are officially released. Note: RC versions may contain bugs and are not recommended for environments where stability and data integrity are critical."
+    },
+    "newsletter": {
+      "title": "Want to stay updated with the latest from Project NOMAD? Subscribe to receive release notes directly to your inbox. Unsubscribe anytime.",
+      "placeholder": "Your email address",
+      "subscribe": "Subscribe",
+      "privacy": "We care about your privacy. Project NOMAD will never share your email with third parties or send you spam.",
+      "subscribed": "Successfully subscribed to release notes!",
+      "failed": "Failed to subscribe: {{error}}",
+      "error": "Error subscribing to release notes: {{error}}"
+    },
+    "logs": {
+      "title": "Update Logs",
+      "empty": "No logs available yet..."
+    }
   }
 }

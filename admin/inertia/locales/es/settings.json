@@ -123,5 +123,89 @@
   },
   "creatorPacks": {
     "intro": "Instala colecciones de videos de creadores. Los packs se descargan en segundo plano y se reproducen sin conexión con Kiwix."
+  },
+  "update": {
+    "title": "Actualización del sistema",
+    "intro": "Mantén tu Project NOMAD al día con las últimas funciones y mejoras.",
+    "stages": {
+      "idle": "Preparando la actualización",
+      "starting": "Iniciando la actualización",
+      "pulling": "Descargando imágenes",
+      "pulled": "Imágenes descargadas",
+      "recreating": "Recreando contenedores",
+      "complete": "Actualización completada",
+      "error": "Falló la actualización"
+    },
+    "errors": {
+      "fetchStatus": "No se pudo obtener el estado de la actualización",
+      "start": "No se pudo iniciar la actualización",
+      "fetchLogs": "No se pudieron obtener los registros de la actualización",
+      "check": "No se pudo buscar actualizaciones"
+    },
+    "notifications": {
+      "available": "Actualización disponible: {{version}}",
+      "upToDate": "El sistema está al día"
+    },
+    "unknownError": "Error desconocido",
+    "restarting": {
+      "title": "Reiniciando el contenedor",
+      "message": "El contenedor de administración se está reiniciando. Esta página se recargará sola cuando termine la actualización."
+    },
+    "connectionLost": {
+      "title": "Conexión perdida temporalmente (es normal)",
+      "message": "Puede que veas notificaciones de error mientras el servidor se reinicia durante la actualización. Es completamente normal. La conexión debería volver en unos momentos."
+    },
+    "available": "Actualización disponible",
+    "upToDate": "Sistema al día",
+    "availableDescription": "Hay una nueva versión ({{version}}) disponible para tu Project NOMAD.",
+    "upToDateDescription": "¡Tu sistema tiene la última versión!",
+    "currentVersion": "Versión actual",
+    "latestVersion": "Última versión",
+    "progress": "{{percent}}% completado",
+    "start": "Iniciar actualización",
+    "noUpdate": "No hay actualizaciones",
+    "checkAgain": "Volver a comprobar",
+    "steps": {
+      "title": "¿Qué pasa durante una actualización?",
+      "pull": {
+        "title": "Descarga de imágenes",
+        "description": "Descarga las imágenes de Docker más recientes de todos los contenedores principales"
+      },
+      "recreate": {
+        "title": "Recreación de contenedores",
+        "description": "Detiene y vuelve a crear de forma segura los contenedores principales con las imágenes nuevas"
+      },
+      "reload": {
+        "title": "Recarga automática",
+        "description": "Esta página se recargará sola cuando termine la actualización"
+      }
+    },
+    "viewLogs": "Ver registros de la actualización",
+    "backup": {
+      "title": "Recuerda hacer una copia de seguridad",
+      "message": "Aunque las actualizaciones están pensadas para ser seguras, siempre conviene respaldar los datos importantes antes de continuar."
+    },
+    "downtime": {
+      "title": "Interrupción temporal",
+      "message": "Los servicios no estarán disponibles por un momento durante la actualización. Suele tardar de 2 a 5 minutos, según tu conexión a internet."
+    },
+    "earlyAccess": {
+      "title": "Acceso anticipado",
+      "label": "Activar acceso anticipado",
+      "description": "Recibe versiones candidatas (RC) antes de su lanzamiento oficial. Nota: las versiones RC pueden tener errores y no se recomiendan en entornos donde la estabilidad y la integridad de los datos son críticas."
+    },
+    "newsletter": {
+      "title": "¿Quieres estar al tanto de las novedades de Project NOMAD? Suscríbete para recibir las notas de cada versión en tu correo (en inglés). Puedes darte de baja cuando quieras.",
+      "placeholder": "Tu correo electrónico",
+      "subscribe": "Suscribirme",
+      "privacy": "Nos importa tu privacidad. Project NOMAD nunca compartirá tu correo con terceros ni te enviará spam.",
+      "subscribed": "¡Te suscribiste a las notas de versión!",
+      "failed": "No se pudo completar la suscripción: {{error}}",
+      "error": "Error al suscribirte a las notas de versión: {{error}}"
+    },
+    "logs": {
+      "title": "Registros de la actualización",
+      "empty": "Todavía no hay registros..."
+    }
   }
 }
