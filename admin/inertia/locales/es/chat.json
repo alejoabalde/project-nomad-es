@@ -235,5 +235,13 @@
   },
   "btn": {
     "open": "Abrir chat"
-  }
+  },
+  "vision": {
+    "guidance": {
+      "supported": "Las imágenes se envían solo con esta solicitud. No se guardan y desaparecen cuando las envías o recargas la página.",
+      "unknown": "NOMAD no puede confirmar si este modelo acepta imágenes. Puedes probar con una imagen, pero la solicitud fallará si el modelo solo admite texto. Las imágenes se envían solo con esta solicitud. No se guardan y desaparecen cuando las envías o recargas la página.",
+      "unsupported": "Este modelo no puede usar imágenes. Elige un modelo marcado como «Admite imágenes» en Modelos y ajustes."
+    }
+  },
+  "streamError": "El modelo tuvo un error. Vuelve a intentarlo."
 }

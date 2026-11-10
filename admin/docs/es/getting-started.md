@@ -59,7 +59,7 @@ Si es tu primera vez con NOMAD, el asistente de Configuración rápida te ayuda 
 
 **[Abrir la Configuración rápida →](/easy-setup)**
 
-![Asistente de Configuración rápida, paso 1: elige las funciones](/docs/easy-setup-step1.webp)
+![Asistente de Configuración rápida, paso 1: elige las funciones](/docs/es/easy-setup-step1.webp)
 
 El asistente te guía en cuatro pasos sencillos:
 1. **Funciones**: elige qué activar: Biblioteca de información, Asistente de IA, Plataforma educativa, Mapas, Herramientas de datos y Notas
@@ -113,7 +113,7 @@ La Plataforma educativa ofrece cursos completos que funcionan sin conexión.
 
 ### Asistente de IA: chat integrado
 
-![Interfaz del chat de IA](/docs/ai-chat.webp)
+![Interfaz del chat de IA](/docs/es/ai-chat.webp)
 
 NOMAD incluye un chat de IA integrado que funciona con Ollama. Corre por completo en tu servidor: no necesita internet y no envía datos a ningún lado.
 
@@ -139,7 +139,7 @@ NOMAD incluye un chat de IA integrado que funciona con Ollama. Corre por complet
 
 ### Base de conocimiento: IA que conoce tus documentos
 
-![Interfaz para subir archivos a la base de conocimiento](/docs/knowledge-base.webp)
+![Interfaz para subir archivos a la base de conocimiento](/docs/es/knowledge-base.webp)
 
 La base de conocimiento te permite subir documentos para que la IA los consulte al responder tus preguntas. Usa búsqueda semántica (RAG con Qdrant) para encontrar la información relevante en tus archivos.
 
@@ -210,7 +210,7 @@ NOMAD incluye una herramienta dedicada para explorar y descargar paquetes de Wik
 
 ### Benchmark del sistema
 
-![Benchmark del sistema con la puntuación NOMAD y la etiqueta de constructor](/docs/benchmark.webp)
+![Benchmark del sistema con la puntuación NOMAD y la etiqueta de constructor](/docs/es/benchmark.webp)
 
 Mide el rendimiento de tu equipo y compara tu NOMAD con los de la comunidad.
 

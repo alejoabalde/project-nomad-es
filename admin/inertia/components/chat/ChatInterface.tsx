@@ -293,9 +293,9 @@ export default function ChatInterface({
               <InfoTooltip
                 position="top"
                 align="left"
-                text={
-                  visionAttachmentGuidance(visionCapability)
-                }
+                text={t(`vision.guidance.${visionCapability}`, {
+                  defaultValue: visionAttachmentGuidance(visionCapability),
+                })}
               />
             )}
           </div>
@@ -330,7 +330,9 @@ export default function ChatInterface({
           </button>
         </form>
         <p className="mt-2 text-xs text-text-muted" aria-live="polite">
-          {visionAttachmentGuidance(visionCapability)}
+          {t(`vision.guidance.${visionCapability}`, {
+            defaultValue: visionAttachmentGuidance(visionCapability),
+          })}
         </p>
       </div>
     </div>

@@ -8,7 +8,7 @@ Tu servidor personal de conocimiento sin conexión está listo para usar.
 
 Piénsalo como tener Wikipedia, Khan Academy, un asistente de IA y mapas sin conexión en un solo lugar, funcionando en un equipo que controlas tú.
 
-![Panel del Centro de mando](/docs/dashboard.webp)
+![Panel del Centro de mando](/docs/es/dashboard.webp)
 
 ## ¿Qué puedes hacer?
 

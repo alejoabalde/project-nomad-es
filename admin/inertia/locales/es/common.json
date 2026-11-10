@@ -68,6 +68,8 @@
   "errors": {
     "notFound": "Página no encontrada",
     "notFoundBody": "Esta página no existe.",
-    "server": "Error del servidor"
-  }
+    "server": "Error del servidor",
+    "internal": "Ocurrió un error interno. Vuelve a intentarlo o revisa la consola para ver los detalles."
+  },
+  "loading": "Cargando..."
 }

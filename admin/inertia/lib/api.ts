@@ -17,7 +17,8 @@ import BenchmarkResult from '#models/benchmark_result'
 import { BenchmarkType, RunBenchmarkResponse, SubmitBenchmarkResponse, UpdateBuilderTagResponse } from '../../types/benchmark'
 import type { CreateMapMarkerPayload, MapMarkerResponse, UpdateMapMarkerPayload } from '../../types/maps'
 import type { ChatSource } from '../../types/chat'
-import { chatStreamErrorMessage } from './chat_stream.js'
+import { chatStreamErrorMessage, GENERIC_CHAT_STREAM_ERROR } from './chat_stream.js'
+import i18n from '~/i18n'
 
 type OllamaChatRequestWithImages = OllamaChatRequest & { images?: File[] }
 
@@ -400,7 +401,11 @@ class API {
           } catch { continue /* skip malformed chunks */ }
 
           const streamError = chatStreamErrorMessage(data)
-          if (streamError) throw new Error(streamError)
+          if (streamError) {
+            throw new Error(
+              streamError === GENERIC_CHAT_STREAM_ERROR ? i18n.t('chat:streamError') : streamError
+            )
+          }
 
           // Citation metadata (#1179) arrives as a distinct trailing event with no
           // `message` key -- route it separately rather than through onChunk.
@@ -989,12 +994,12 @@ class API {
     } catch (error: any) {
       // For 409 Conflict errors, throw a specific error that the UI can handle
       if (error.response?.status === 409) {
-        const err = new Error(error.response?.data?.error || 'This benchmark has already been submitted to the repository')
+        const err = new Error(error.response?.data?.error || i18n.t('settings:benchmark.errors.alreadySubmitted'))
           ; (err as any).status = 409
         throw err
       }
       // For other errors, extract the message and throw
-      const errorMessage = error.response?.data?.error || error.message || 'Failed to submit benchmark'
+      const errorMessage = error.response?.data?.error || error.message || i18n.t('settings:benchmark.errors.submitFailed')
       throw new Error(errorMessage)
     }
   }

@@ -665,7 +665,7 @@ export default function BenchmarkPage(props: {
                         </div>
                       </div>
                       <div>
-                        <div className="text-desert-stone-dark">NOMAD Score</div>
+                        <div className="text-desert-stone-dark">{t('benchmark.nomadScore')}</div>
                         <div className="font-bold text-desert-green">
                           {(latestResult.nomad_score_v2 ?? latestResult.nomad_score).toFixed(1)}
                         </div>

@@ -68,6 +68,8 @@
   "errors": {
     "notFound": "Page not found",
     "notFoundBody": "This page does not exist.",
-    "server": "Server Error"
-  }
+    "server": "Server Error",
+    "internal": "An internal error occurred. Please try again or check the console for details."
+  },
+  "loading": "Loading..."
 }

@@ -602,7 +602,11 @@
     "report": "Report",
     "idLabel": "Benchmark ID",
     "typeLabel": "Type",
-    "dateLabel": "Date"
+    "dateLabel": "Date",
+    "errors": {
+      "alreadySubmitted": "This benchmark has already been submitted to the repository",
+      "submitFailed": "Failed to submit benchmark"
+    }
   },
   "benchmarkRun": {
     "stage": {
