@@ -15,6 +15,12 @@ Uso:
     python3 build_package.py --out aemps-prospectos.jsonl.gz            # muestra
     python3 build_package.py --out ... --principios paracetamol,ibuprofeno
     python3 build_package.py --out ... --max-por-principio 3
+    python3 build_package.py --out aemps-prospectos.jsonl.gz --todos    # completo
+
+Con --todos recorre todos los medicamentos comercializados (unos 16.000) y
+pide un solo documento por medicamento. Es reanudable: va escribiendo en
+<out>.parcial.jsonl y, si se corta, al volver a correrlo saltea los que ya
+tiene. Al terminar comprime el resultado en <out>.
 
 Solo usa la biblioteca estándar de Python.
 """
@@ -169,12 +175,121 @@ def armar_registro(nregistro):
     }
 
 
+def html_secciones(nregistro):
+    """Todas las secciones del prospecto en un solo pedido."""
+    data = get('docSegmentado/contenido/2', {'nregistro': nregistro}) or []
+    out = []
+    for s in data:
+        texto = html_to_text(s.get('contenido') or '')
+        if texto:
+            out.append({'seccion': s.get('seccion', ''), 'titulo': s.get('titulo') or '', 'texto': texto})
+    return out
+
+
+def registro_desde_listado(m, secciones):
+    doc = next((d for d in m.get('docs') or [] if d.get('tipo') == 2), {})
+    fecha = doc.get('fecha')
+    vtm = ((m.get('vtm') or {}).get('nombre') or '').strip() or None
+    return {
+        'nregistro': m['nregistro'],
+        'nombre': m.get('nombre'),
+        'principios_activos': [p.strip().upper() for p in vtm.split('+')] if vtm else [],
+        'vtm': vtm,
+        'laboratorio': m.get('labtitular'),
+        'receta': bool(m.get('receta')),
+        'condicion_prescripcion': m.get('cpresc'),
+        'vias': [v.get('nombre') for v in m.get('viasAdministracion') or []],
+        'forma': (m.get('formaFarmaceutica') or {}).get('nombre'),
+        'atc': [],
+        'fecha_prospecto': (
+            datetime.fromtimestamp(fecha / 1000, tz=timezone.utc).strftime('%Y-%m-%d') if fecha else None
+        ),
+        'url_prospecto': doc.get('urlHtml'),
+        'secciones': secciones,
+    }
+
+
+def armar_todos(out_path, pausa):
+    import os
+    parcial = out_path + '.parcial.jsonl'
+    hechos = set()
+    if os.path.exists(parcial):
+        with open(parcial, encoding='utf-8') as f:
+            for line in f:
+                try:
+                    hechos.add(json.loads(line)['nregistro'])
+                except Exception:  # noqa: BLE001 — línea cortada por una interrupción
+                    pass
+    print(f'Reanudando: {len(hechos)} ya bajados', file=sys.stderr)
+
+    # 1) Listado completo de comercializados (200 por página).
+    meds, pagina = [], 1
+    while True:
+        data = get('medicamentos', {'comerc': 1, 'pagina': pagina}) or {}
+        res = data.get('resultados') or []
+        meds.extend(res)
+        if not res or pagina * (data.get('tamanioPagina') or 200) >= (data.get('totalFilas') or 0):
+            break
+        pagina += 1
+        time.sleep(pausa)
+    con_prospecto = [m for m in meds if any(d.get('tipo') == 2 and d.get('secc') for d in m.get('docs') or [])]
+    pendientes = [m for m in con_prospecto if m['nregistro'] not in hechos]
+    print(f'{len(meds)} comercializados, {len(con_prospecto)} con prospecto segmentado, '
+          f'{len(pendientes)} pendientes', file=sys.stderr)
+
+    # 2) Un pedido por medicamento.
+    errores = 0
+    with open(parcial, 'a', encoding='utf-8') as out:
+        for i, m in enumerate(pendientes, 1):
+            try:
+                secciones = html_secciones(m['nregistro'])
+            except Exception as err:  # noqa: BLE001
+                errores += 1
+                print(f"ERROR {m['nregistro']}: {err}", file=sys.stderr)
+                time.sleep(pausa * 10)
+                continue
+            if secciones:
+                out.write(json.dumps(registro_desde_listado(m, secciones), ensure_ascii=False) + '\n')
+                out.flush()
+            if i % 200 == 0:
+                print(f'  {i}/{len(pendientes)} ({errores} errores)', file=sys.stderr)
+            time.sleep(pausa)
+
+    # 3) Comprimir con la cabecera.
+    n = 0
+    with gzip.open(out_path, 'wt', encoding='utf-8') as gz, open(parcial, encoding='utf-8') as f:
+        gz.write(json.dumps({
+            '_paquete': 'aemps-prospectos',
+            'fuente': 'CIMA, Agencia Española de Medicamentos y Productos Sanitarios (AEMPS)',
+            'url': 'https://cima.aemps.es',
+            'generado': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+        }, ensure_ascii=False) + '\n')
+        vistos = set()
+        for line in f:
+            try:
+                rec = json.loads(line)
+            except Exception:  # noqa: BLE001
+                continue
+            if rec['nregistro'] in vistos:
+                continue
+            vistos.add(rec['nregistro'])
+            gz.write(line if line.endswith('\n') else line + '\n')
+            n += 1
+    print(f'{n} medicamentos en {out_path} ({errores} errores en esta pasada)', file=sys.stderr)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--out', required=True)
     ap.add_argument('--principios', help='lista separada por comas (por defecto, la muestra)')
     ap.add_argument('--max-por-principio', type=int, default=3)
+    ap.add_argument('--todos', action='store_true', help='todos los comercializados (reanudable)')
+    ap.add_argument('--pausa', type=float, default=0.3, help='segundos entre pedidos')
     args = ap.parse_args()
+
+    if args.todos:
+        armar_todos(args.out, args.pausa)
+        return
 
     principios = [p.strip() for p in args.principios.split(',')] if args.principios else MUESTRA
     n, errores = 0, []
