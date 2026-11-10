@@ -209,7 +209,13 @@ export function normalizeDrugName(
 
   const combined = parts.join(' ')
   // Lowercase, replace non-alphanumeric with space
-  const normalized = combined.toLowerCase().replace(/[^a-z0-9]+/g, ' ')
+  // Fold accents first ("ácido" → "acido") so Spanish names (AEMPS) and
+  // queries typed with or without accents produce the same tokens.
+  const normalized = combined
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
   // Split into tokens, deduplicate preserving first occurrence order
   const rawTokens = normalized.split(/\s+/).filter((t) => t.length > 0)
   const seen = new Set<string>()

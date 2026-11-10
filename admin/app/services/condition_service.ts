@@ -228,6 +228,7 @@ export class ConditionService {
         MIN(manufacturer) AS manufacturer,
         MIN(route) AS route,
         MIN(product_type) AS product_type,
+        MIN(source) AS source,
         COUNT(*) AS labelCount,
         MAX(MATCH(searchable_name, indications) AGAINST(? IN NATURAL LANGUAGE MODE)) AS relevance
       FROM drug_labels
@@ -275,6 +276,7 @@ export class ConditionService {
         MIN(manufacturer) AS manufacturer,
         MIN(route) AS route,
         MIN(product_type) AS product_type,
+        MIN(source) AS source,
         COUNT(*) AS labelCount
       FROM drug_labels
       WHERE (${likeClauses})
@@ -308,6 +310,7 @@ export class ConditionService {
       manufacturer: row.manufacturer ?? null,
       route: row.route ?? null,
       product_type: row.product_type ?? null,
+      source: row.source ?? 'fda',
       labelCount: Number(row.labelCount ?? row.labelcount ?? 1),
     }))
   }

@@ -221,5 +221,14 @@
     "eyes": "Eyes, ears & mouth",
     "general": "Sleep, stress & general",
     "infections": "Infections (OTC-treatable)"
+  },
+  "src": {
+    "label": "Source:",
+    "aemps": "Spain (AEMPS), in Spanish",
+    "fda": "US (FDA), in English",
+    "searchPhAemps": "Search a medicine by name or active ingredient: ibuprofeno, Clarityne, loratadina…",
+    "citeAemps": "<s>Source:</s> patient leaflet from CIMA, the online medicines information centre of the Spanish Agency of Medicines and Medical Devices (AEMPS), updated {{date}}. Brand names and presentations are those authorised in Spain. NOMAD is not affiliated with or endorsed by AEMPS.",
+    "original": "View the original leaflet",
+    "footerAemps": "<s>Source:</s> patient leaflets from CIMA, the Spanish Agency of Medicines and Medical Devices (AEMPS); each leaflet shows its own date. Brand names are those authorised in Spain. NOMAD is not affiliated with or endorsed by AEMPS."
   }
 }

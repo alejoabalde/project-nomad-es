@@ -106,6 +106,7 @@ export default class DrugReferenceController {
         limit: params.limit,
         offset: params.offset,
         scope: params.scope,
+        source: params.source,
       })
       return { results }
     } catch (err) {

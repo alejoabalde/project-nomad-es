@@ -167,7 +167,14 @@ export default function DrugReferenceIndex({
   conditions,
   remediesEnabled = false,
 }: PageProps) {
-  const { t } = useTranslation('drugs')
+  const { t, i18n } = useTranslation('drugs')
+  // ── Fork: label source. 'aemps' = Spanish leaflets (CIMA, Spain); 'fda' =
+  // openFDA labels (English). Defaults to the interface language.
+  const [source, setSource] = useState<'aemps' | 'fda'>(
+    i18n.language.startsWith('es') ? 'aemps' : 'fda'
+  )
+  const sourceRef = useRef(source)
+  sourceRef.current = source
   // ── Tab 1: drug-name search ────────────────────────────────────────────────
   const [query, setQuery] = useState('')
   const [productType, setProductType] = useState<string | null>(null)
@@ -241,6 +248,7 @@ export default function DrugReferenceIndex({
         if (pt) params.set('product_type', pt)
         if (rt) params.set('route', rt)
         if (srt && srt !== 'relevance') params.set('sort', srt)
+        params.set('source', sourceRef.current)
         const resp = await fetch(`/api/drug-reference/search?${params}`)
         if (!resp.ok) throw new Error(`Search failed: HTTP ${resp.status}`)
         const json = (await resp.json()) as { results: DrugSearchResult[] }
@@ -283,6 +291,11 @@ export default function DrugReferenceIndex({
   const handleSortChange = (srt: 'relevance' | 'name') => {
     setSort(srt)
     runDrugSearch(query, productType, route, srt)
+  }
+  const handleSourceChange = (src: 'aemps' | 'fda') => {
+    setSource(src)
+    sourceRef.current = src
+    runDrugSearch(query, productType, route, sort)
   }
   const handleLoadMore = () => {
     const newOffset = offset + LIMIT
@@ -494,7 +507,7 @@ t('idx.restartConfirm')
               </div>
             )}
           </div>
-          <SourceFooter />
+          <SourceFooter source={source} />
         </div>
       </AppLayout>
     )
@@ -536,6 +549,16 @@ t('idx.restartConfirm')
           <TabPanels>
             {/* ══ Tab 1: Search by drug ══════════════════════════════════════ */}
             <TabPanel>
+              {/* Fork: label source selector */}
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-semibold text-desert-green-darker">{t('src.label')}</span>
+                <FilterPill active={source === 'aemps'} onClick={() => handleSourceChange('aemps')}>
+                  {t('src.aemps')}
+                </FilterPill>
+                <FilterPill active={source === 'fda'} onClick={() => handleSourceChange('fda')}>
+                  {t('src.fda')}
+                </FilterPill>
+              </div>
               {/* Controls (always on top) */}
               <div className="relative mb-3">
                 <IconSearch
@@ -547,7 +570,7 @@ t('idx.restartConfirm')
                   value={query}
                   onChange={handleQueryChange}
                   autoFocus
-                  placeholder={t('idx.searchPh')}
+                  placeholder={source === 'aemps' ? t('src.searchPhAemps') : t('idx.searchPh')}
                   className="w-full rounded-lg border border-desert-stone-lighter bg-surface-primary py-2.5 pl-10 pr-4 text-sm text-desert-green-darker transition focus:border-desert-green focus:outline-none focus:ring-2 focus:ring-desert-green/20"
                 />
               </div>
@@ -869,7 +892,7 @@ t('idx.restartConfirm')
           </TabPanels>
         </TabGroup>
 
-        <SourceFooter />
+        <SourceFooter source={source} />
       </div>
     </AppLayout>
   )
@@ -900,11 +923,11 @@ function PageHeader({ rowCount }: { rowCount: number }) {
 
 // ─── Source citation ──────────────────────────────────────────────────────────
 
-function SourceFooter() {
+function SourceFooter({ source = 'fda' }: { source?: 'aemps' | 'fda' }) {
   const { t } = useTranslation('drugs')
   return (
     <footer className="mt-8 pt-4 border-t border-desert-stone-lighter/40 text-xs text-desert-stone">
-      <Trans t={t} i18nKey="source" components={{ s: <strong /> }} /> {t('idx.footer')}
+      <Trans t={t} i18nKey={source === 'aemps' ? 'src.footerAemps' : 'source'} components={{ s: <strong /> }} /> {t('idx.footer')}
     </footer>
   )
 }

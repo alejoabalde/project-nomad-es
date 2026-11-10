@@ -221,5 +221,14 @@
     "eyes": "Ojos, oídos y boca",
     "general": "Sueño, estrés y general",
     "infections": "Infecciones (tratables con venta libre)"
+  },
+  "src": {
+    "label": "Fuente:",
+    "aemps": "España (AEMPS), en español",
+    "fda": "EE. UU. (FDA), en inglés",
+    "searchPhAemps": "Busca un medicamento por su nombre o principio activo: ibuprofeno, Clarityne, loratadina…",
+    "citeAemps": "<s>Fuente:</s> prospecto del Centro de Información online de Medicamentos (CIMA) de la Agencia Española de Medicamentos y Productos Sanitarios (AEMPS), actualizado el {{date}}. Los nombres comerciales y presentaciones son los autorizados en España y pueden no coincidir con los de tu país. NOMAD no está afiliado a la AEMPS ni cuenta con su aval.",
+    "original": "Ver el prospecto original",
+    "footerAemps": "<s>Fuente:</s> prospectos del Centro de Información online de Medicamentos (CIMA) de la Agencia Española de Medicamentos y Productos Sanitarios (AEMPS); la fecha de cada prospecto figura en su ficha. Los nombres comerciales son los autorizados en España. NOMAD no está afiliado a la AEMPS ni cuenta con su aval."
   }
 }

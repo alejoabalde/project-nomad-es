@@ -157,6 +157,8 @@ export interface DrugSearchResult {
   manufacturer: string | null
   route: string | null
   product_type: string | null
+  /** Fork: 'fda' | 'aemps'. */
+  source: string
   labelCount: number
 }
 
@@ -183,6 +185,12 @@ export interface DrugLabelDetail {
   stop_use: string | null
   source_updated_at: string | null
   ingested_at: string
+  /** Fork: 'fda' (openFDA, English) | 'aemps' (CIMA prospecto, Spanish). */
+  source: string
+  /** AEMPS only: leaflet sections in order, with their original headings. */
+  sections: Array<{ titulo: string; texto: string }> | null
+  /** AEMPS only: link to the original leaflet, for attribution. */
+  source_url: string | null
 }
 
 // ─── Interaction comparison DTO ───────────────────────────────────────────────

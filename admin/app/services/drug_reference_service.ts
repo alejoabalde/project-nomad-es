@@ -69,6 +69,8 @@ export class DrugReferenceService {
       limit?: number
       offset?: number
       scope?: 'name' | 'indication'
+      /** Fork: restrict to one label source ('fda' | 'aemps'). */
+      source?: string
     }
   ): Promise<DrugSearchResult[]> {
     const limit = options.limit ?? 50
@@ -83,7 +85,7 @@ export class DrugReferenceService {
     if (scope === 'indication') {
       if (!useLike) {
         try {
-          return await this.searchIndicationFulltext(normalized, options.productType, limit, offset)
+          return await this.searchIndicationFulltext(normalized, options.productType, limit, offset, options.source)
         } catch (err) {
           logger.warn(
             `[DrugReferenceService] FULLTEXT indication search failed, falling back to LIKE: ${
@@ -92,7 +94,7 @@ export class DrugReferenceService {
           )
         }
       }
-      return await this.searchIndicationLike(normalized, options.productType, limit, offset)
+      return await this.searchIndicationLike(normalized, options.productType, limit, offset, options.source)
     }
 
     if (!useLike) {
@@ -114,7 +116,7 @@ export class DrugReferenceService {
 
   private async searchFulltext(
     normalized: string,
-    opts: { productType?: string; route?: string; sort?: 'relevance' | 'name' },
+    opts: { productType?: string; route?: string; sort?: 'relevance' | 'name'; source?: string },
     limit: number,
     offset: number
   ): Promise<DrugSearchResult[]> {
@@ -126,6 +128,7 @@ export class DrugReferenceService {
         MIN(manufacturer) AS manufacturer,
         MIN(route) AS route,
         MIN(product_type) AS product_type,
+        MIN(source) AS source,
         COUNT(*) AS labelCount,
         MAX(MATCH(searchable_name) AGAINST(? IN NATURAL LANGUAGE MODE)) AS relevance
       FROM drug_labels
@@ -136,6 +139,10 @@ export class DrugReferenceService {
     if (opts.productType) {
       sql += ' AND product_type = ?'
       bindings.push(opts.productType)
+    }
+    if (opts.source) {
+      sql += ' AND source = ?'
+      bindings.push(opts.source)
     }
     if (opts.route) {
       // `route` is a comma-joined uppercase list (e.g. "ORAL, TOPICAL").
@@ -156,7 +163,7 @@ export class DrugReferenceService {
 
   private async searchLike(
     normalized: string,
-    opts: { productType?: string; route?: string; sort?: 'relevance' | 'name' },
+    opts: { productType?: string; route?: string; sort?: 'relevance' | 'name'; source?: string },
     limit: number,
     offset: number
   ): Promise<DrugSearchResult[]> {
@@ -169,6 +176,7 @@ export class DrugReferenceService {
         MIN(manufacturer) AS manufacturer,
         MIN(route) AS route,
         MIN(product_type) AS product_type,
+        MIN(source) AS source,
         COUNT(*) AS labelCount
       FROM drug_labels
       WHERE (searchable_name LIKE ? OR brand_name LIKE ?)
@@ -178,6 +186,10 @@ export class DrugReferenceService {
     if (opts.productType) {
       sql += ' AND product_type = ?'
       bindings.push(opts.productType)
+    }
+    if (opts.source) {
+      sql += ' AND source = ?'
+      bindings.push(opts.source)
     }
     if (opts.route) {
       sql += ' AND route LIKE ?'
@@ -208,7 +220,8 @@ export class DrugReferenceService {
     normalized: string,
     productType: string | undefined,
     limit: number,
-    offset: number
+    offset: number,
+    source?: string
   ): Promise<DrugSearchResult[]> {
     let sql = `
       SELECT
@@ -218,6 +231,7 @@ export class DrugReferenceService {
         MIN(manufacturer) AS manufacturer,
         MIN(route) AS route,
         MIN(product_type) AS product_type,
+        MIN(source) AS source,
         COUNT(*) AS labelCount,
         MAX(MATCH(searchable_name, indications) AGAINST(? IN NATURAL LANGUAGE MODE)) AS relevance
       FROM drug_labels
@@ -228,6 +242,10 @@ export class DrugReferenceService {
     if (productType) {
       sql += ' AND product_type = ?'
       bindings.push(productType)
+    }
+    if (source) {
+      sql += ' AND source = ?'
+      bindings.push(source)
     }
 
     sql += `
@@ -251,7 +269,8 @@ export class DrugReferenceService {
     normalized: string,
     productType: string | undefined,
     limit: number,
-    offset: number
+    offset: number,
+    source?: string
   ): Promise<DrugSearchResult[]> {
     const term = `%${normalized}%`
     let sql = `
@@ -262,6 +281,7 @@ export class DrugReferenceService {
         MIN(manufacturer) AS manufacturer,
         MIN(route) AS route,
         MIN(product_type) AS product_type,
+        MIN(source) AS source,
         COUNT(*) AS labelCount
       FROM drug_labels
       WHERE (searchable_name LIKE ? OR indications LIKE ?)
@@ -271,6 +291,10 @@ export class DrugReferenceService {
     if (productType) {
       sql += ' AND product_type = ?'
       bindings.push(productType)
+    }
+    if (source) {
+      sql += ' AND source = ?'
+      bindings.push(source)
     }
 
     sql += `
@@ -293,6 +317,7 @@ export class DrugReferenceService {
       manufacturer: row.manufacturer ?? null,
       route: row.route ?? null,
       product_type: row.product_type ?? null,
+      source: row.source ?? 'fda',
       labelCount: Number(row.labelCount ?? row.labelcount ?? 1),
     }))
   }
@@ -327,6 +352,9 @@ export class DrugReferenceService {
       stop_use: row.stop_use,
       source_updated_at: row.source_updated_at,
       ingested_at: row.ingested_at.toISO() ?? '',
+      source: row.source ?? 'fda',
+      sections: row.sections ?? null,
+      source_url: row.source_url ?? null,
     }
   }
 

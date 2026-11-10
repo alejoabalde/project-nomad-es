@@ -22,6 +22,8 @@ export const searchDrugValidator = vine.compile(
     limit: vine.number().min(1).max(200).optional(),
     offset: vine.number().min(0).optional(),
     scope: vine.enum(['name', 'indication'] as const).optional(),
+    // Fork: label source — 'fda' (openFDA, English) or 'aemps' (CIMA, Spanish).
+    source: vine.enum(['fda', 'aemps'] as const).optional(),
   })
 )
 

@@ -25,6 +25,8 @@ export default function DrugReferenceShow({ label, situations = [] }: PageProps)
   const { t } = useTranslation('drugs')
   const isRx = label.product_type === PRODUCT_TYPES.RX
   const isOtc = label.product_type === PRODUCT_TYPES.OTC
+  // Fork: Spanish leaflets (CIMA/AEMPS) render their own sections in order.
+  const isAemps = label.source === 'aemps' && (label.sections?.length ?? 0) > 0
 
   return (
     <AppLayout compact>
@@ -99,6 +101,18 @@ export default function DrugReferenceShow({ label, situations = [] }: PageProps)
           </dl>
         </div>
 
+        {/* ── Fork: AEMPS leaflet, sections in their original order ───────── */}
+        {isAemps &&
+          label.sections!.map((sec, i) => (
+            <section key={i} className="mb-6">
+              <h2 className="text-base font-bold mb-2 border-b border-border-subtle pb-1">
+                {sec.titulo}
+              </h2>
+              <ProspectoText text={sec.texto} />
+            </section>
+          ))}
+
+        {!isAemps && (<>
         {/* ── Fixed clinical section order ─────────────────────────────────── */}
 
         {/* 1. Boxed Warning — red callout, most serious */}
@@ -178,13 +192,34 @@ export default function DrugReferenceShow({ label, situations = [] }: PageProps)
           <LabelSection title={t('show.stopUse')} body={label.stop_use} />
         )}
 
+        </>)}
+
         {/* ── Footer citation ───────────────────────────────────────────────── */}
         <footer className="mt-8 pt-4 border-t border-border-subtle text-xs text-text-secondary space-y-1">
-          <p><Trans t={t} i18nKey="source" components={{ s: <strong /> }} /></p>
+          {label.source === 'aemps' ? (
+            <p>
+              <Trans
+                t={t}
+                i18nKey="src.citeAemps"
+                values={{ date: label.source_updated_at ?? '—' }}
+                components={{ s: <strong /> }}
+              />
+              {label.source_url && (
+                <>
+                  {' '}
+                  <a href={label.source_url} target="_blank" rel="noreferrer" className="underline">
+                    {t('src.original')}
+                  </a>
+                </>
+              )}
+            </p>
+          ) : (
+            <p><Trans t={t} i18nKey="source" components={{ s: <strong /> }} /></p>
+          )}
           <p>
             {t('show.unvalidated')}
           </p>
-          {label.set_id && (
+          {label.set_id && label.source !== 'aemps' && (
             <p className="font-mono opacity-60">set_id: {label.set_id}</p>
           )}
           <p className="opacity-60">{t('show.refreshed', { date: label.ingested_at.slice(0, 10) })}</p>
@@ -213,5 +248,40 @@ function LabelSection({
         <p className="mt-2 text-xs text-text-secondary italic">{footnote}</p>
       )}
     </section>
+  )
+}
+
+/** Fork: leaflet text from the AEMPS package — one paragraph per line, "• " bullets. */
+function ProspectoText({ text }: { text: string }) {
+  const blocks: Array<{ bullets?: string[]; text?: string }> = []
+  for (const raw of text.split('\n')) {
+    const line = raw.trim()
+    if (!line) continue
+    const bullet = /^[•\-–]\s+/.exec(line)
+    if (bullet) {
+      const item = line.slice(bullet[0].length)
+      const last = blocks[blocks.length - 1]
+      if (last?.bullets) last.bullets.push(item)
+      else blocks.push({ bullets: [item] })
+    } else {
+      blocks.push({ text: line })
+    }
+  }
+  return (
+    <div className="space-y-2">
+      {blocks.map((b, i) =>
+        b.bullets ? (
+          <ul key={i} className="list-disc pl-5 space-y-1 text-sm text-text-primary leading-relaxed">
+            {b.bullets.map((item, j) => (
+              <li key={j}>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <p key={i} className="text-sm text-text-primary leading-relaxed">
+            {b.text}
+          </p>
+        )
+      )}
+    </div>
   )
 }
