@@ -1,17 +1,19 @@
 import { IconCheck } from '@tabler/icons-react'
 import type { BenchmarkPartialResult } from '../../../types/benchmark'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Horizontal strip of chips that fills in each stage's raw result as stages
  * complete during a live run. Renders nothing until the first result lands.
  */
 export default function ResultsSoFar({ partials }: { partials: BenchmarkPartialResult[] }) {
+  const { t } = useTranslation('settings')
   if (partials.length === 0) return null
 
   return (
     <div className="bg-desert-white rounded-lg p-4 border border-desert-stone-light">
       <div className="text-xs font-semibold text-desert-stone-dark uppercase tracking-wide mb-3">
-        Results so far
+        {t('benchmarkRun.soFar')}
       </div>
       <div className="flex flex-wrap gap-2">
         {partials.map((p) => (
@@ -21,7 +23,7 @@ export default function ResultsSoFar({ partials }: { partials: BenchmarkPartialR
           >
             <IconCheck className="w-4 h-4 text-desert-green" />
             <span className="text-xs font-semibold text-desert-stone-dark uppercase tracking-wide">
-              {p.label}
+              {t(`benchmarkRun.partial.${p.status}`, { defaultValue: p.label })}
             </span>
             <span className="text-sm font-bold font-mono tabular-nums text-desert-green">
               {p.value.toLocaleString()}
