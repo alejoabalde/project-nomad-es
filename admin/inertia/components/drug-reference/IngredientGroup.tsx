@@ -3,6 +3,7 @@ import { IconChevronDown } from '@tabler/icons-react'
 import DrugResultRow from './DrugResultRow'
 import type { DrugSearchResult } from '../../../types/drug_reference'
 import { PRODUCT_TYPES } from '../../../types/drug_reference'
+import { useTranslation } from 'react-i18next'
 
 export interface IngredientGrouping {
   key: string
@@ -26,6 +27,7 @@ export default function IngredientGroup({
   /** Expand this group on first render (used for the top/first result group). */
   defaultOpen?: boolean
 }) {
+  const { t } = useTranslation('drugs')
   const [open, setOpen] = useState(defaultOpen)
 
   if (group.products.length === 1) {
@@ -49,7 +51,7 @@ export default function IngredientGroup({
         <span className="font-semibold text-sm text-desert-green-darker truncate">{group.label}</span>
         {anyOtc && (
           <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-desert-olive/10 text-desert-olive-dark border border-desert-olive/30 flex-shrink-0">
-            OTC
+            {t('otc')}
           </span>
         )}
         {anyRx && (
@@ -58,7 +60,7 @@ export default function IngredientGroup({
           </span>
         )}
         <span className="ml-auto text-xs text-desert-stone flex-shrink-0">
-          {group.products.length} products
+          {t('productCount', { count: group.products.length })}
         </span>
       </button>
       {open && (
