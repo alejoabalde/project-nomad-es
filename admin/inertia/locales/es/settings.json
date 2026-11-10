@@ -73,5 +73,55 @@
       "cpuCores": "Núcleos de CPU",
       "storageDevices": "Dispositivos de almacenamiento"
     }
+  },
+  "advanced": {
+    "pageTitle": "Ajustes avanzados | Project NOMAD",
+    "title": "Avanzado",
+    "intro": "Configuración avanzada para administradores. Estos ajustes son opcionales: los valores predeterminados sirven para la mayoría de las instalaciones.",
+    "connectivity": "Conectividad",
+    "connectivityIntro": "NOMAD comprueba periódicamente si puede acceder a internet. De forma predeterminada consulta un servicio de Cloudflare, con algunas alternativas. Si tu red bloquea esas direcciones, indica abajo una propia. Déjalo vacío para usar las predeterminadas.",
+    "envOverride": {
+      "title": "Administrado por una variable de entorno",
+      "message": "La variable de entorno INTERNET_STATUS_TEST_URL está definida y tiene prioridad sobre este ajuste. Quítala para poder administrar aquí la URL de prueba."
+    },
+    "testUrl": {
+      "label": "URL de prueba de conexión a internet",
+      "help": "Una única URL http(s) para comprobar la conectividad. Cualquier respuesta HTTP cuenta como conectado."
+    },
+    "errors": {
+      "protocol": "La URL de prueba debe usar http o https.",
+      "invalid": "La URL de prueba debe ser válida (por ejemplo, \"https://example.com\")."
+    },
+    "updated": "Ajuste actualizado correctamente.",
+    "updateError": "Hubo un error al actualizar el ajuste. Inténtalo de nuevo."
+  },
+  "support": {
+    "pageTitle": "Apoya el proyecto | Project NOMAD",
+    "title": "Apoya el proyecto",
+    "intro": "Project NOMAD es 100% gratuito y de código abierto: sin suscripciones, sin muros de pago, sin trampas. Si quieres ayudar a que el proyecto siga adelante, aquí tienes algunas formas de apoyarlo.",
+    "coffee": {
+      "title": "Invítanos un café",
+      "description": "Cada aporte ayuda a financiar el desarrollo, los costos de servidores y nuevos paquetes de contenido para NOMAD. Hasta una donación pequeña hace la diferencia.",
+      "button": "Apoyar en Ko-fi"
+    },
+    "network": {
+      "title": "¿Necesitas ayuda con la red de tu casa?",
+      "alt": "Rogue Support: domina la red de tu casa",
+      "description": "Rogue Support es un servicio de asesoría en redes para usuarios domésticos. Es como un Uber de redes informáticas: ayuda experta cuando la necesitas.",
+      "button": "Visitar Rogue.Support"
+    },
+    "other": {
+      "title": "Otras formas de ayudar",
+      "star": "Dale una estrella al proyecto en GitHub",
+      "starSuffix": "ayuda a que más personas descubran NOMAD",
+      "report": "Reporta errores y sugiere funciones",
+      "reportSuffix": "cada reporte mejora NOMAD",
+      "share": "Comparte NOMAD con alguien que lo usaría: el boca a boca es la mejor publicidad",
+      "discord": "Únete a la comunidad de Discord",
+      "discordSuffix": "conversa, comparte tu equipo y ayuda a otros usuarios"
+    }
+  },
+  "creatorPacks": {
+    "intro": "Instala colecciones de videos de creadores. Los packs se descargan en segundo plano y se reproducen sin conexión con Kiwix."
   }
 }

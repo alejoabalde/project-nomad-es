@@ -3,19 +3,20 @@ import SettingsLayout from '~/layouts/SettingsLayout'
 import CreatorPacksSection from '~/components/CreatorPacksSection'
 import ActiveDownloads from '~/components/ActiveDownloads'
 import useCreatorPacks from '~/hooks/useCreatorPacks'
+import { useTranslation } from 'react-i18next'
 
 export default function CreatorPacksPage() {
+  const { t } = useTranslation('settings')
   const { configured } = useCreatorPacks()
 
   return (
     <SettingsLayout>
-      <Head title="Creator Packs" />
+      <Head title={t('nav.creatorPacks')} />
       <div className="xl:pl-72 w-full">
         <main className="px-12 py-6">
-          <h1 className="text-4xl font-semibold mb-2">Creator Packs</h1>
+          <h1 className="text-4xl font-semibold mb-2">{t('nav.creatorPacks')}</h1>
           <p className="text-text-muted mb-4">
-            Install branded video collections from creators. Packs download in the background and
-            play offline through Kiwix.
+            {t('creatorPacks.intro')}
           </p>
 
           {configured ? (

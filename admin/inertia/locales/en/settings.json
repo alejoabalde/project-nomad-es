@@ -73,5 +73,55 @@
       "cpuCores": "CPU Cores",
       "storageDevices": "Storage Devices"
     }
+  },
+  "advanced": {
+    "pageTitle": "Advanced Settings | Project NOMAD",
+    "title": "Advanced",
+    "intro": "Advanced configuration for operators. These settings are optional — the defaults work for most deployments.",
+    "connectivity": "Connectivity",
+    "connectivityIntro": "NOMAD periodically checks whether it can reach the internet. By default it probes Cloudflare's utility endpoint with a few fallbacks. Set a custom endpoint below if your network blocks the defaults. Leave blank to use the built-in defaults.",
+    "envOverride": {
+      "title": "Managed by environment variable",
+      "message": "The INTERNET_STATUS_TEST_URL environment variable is set and takes precedence over this setting. Remove it to manage the test URL here."
+    },
+    "testUrl": {
+      "label": "Internet Status Test URL",
+      "help": "A single http(s) URL used to check connectivity. Any HTTP response counts as online."
+    },
+    "errors": {
+      "protocol": "Test URL must use http or https.",
+      "invalid": "Test URL must be a valid URL (e.g. \"https://example.com\")."
+    },
+    "updated": "Setting updated successfully.",
+    "updateError": "There was an error updating the setting. Please try again."
+  },
+  "support": {
+    "pageTitle": "Support the Project | Project NOMAD",
+    "title": "Support the Project",
+    "intro": "Project NOMAD is 100% free and open source — no subscriptions, no paywalls, no catch. If you'd like to help keep the project going, here are a few ways to show your support.",
+    "coffee": {
+      "title": "Buy Us a Coffee",
+      "description": "Every contribution helps fund development, server costs, and new content packs for NOMAD. Even a small donation goes a long way.",
+      "button": "Support on Ko-fi"
+    },
+    "network": {
+      "title": "Need Help With Your Home Network?",
+      "alt": "Rogue Support — Conquer Your Home Network",
+      "description": "Rogue Support is a networking consultation service for home users. Think of it as Uber for computer networking — expert help when you need it.",
+      "button": "Visit Rogue.Support"
+    },
+    "other": {
+      "title": "Other Ways to Help",
+      "star": "Star the project on GitHub",
+      "starSuffix": "it helps more people discover NOMAD",
+      "report": "Report bugs and suggest features",
+      "reportSuffix": "every report makes NOMAD better",
+      "share": "Share NOMAD with someone who'd use it — word of mouth is the best marketing",
+      "discord": "Join the Discord community",
+      "discordSuffix": "hang out, share your build, help other users"
+    }
+  },
+  "creatorPacks": {
+    "intro": "Install branded video collections from creators. Packs download in the background and play offline through Kiwix."
   }
 }
