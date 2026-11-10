@@ -1,0 +1,75 @@
+{
+  "language": {
+    "label": "Idioma"
+  },
+  "layout": {
+    "backToHome": "Volver al inicio",
+    "logoAlt": "Logo de Project NOMAD",
+    "commandCenter": "Centro de mando",
+    "closeSidebar": "Cerrar menú lateral"
+  },
+  "footer": {
+    "version": "Project NOMAD™ Centro de mando v{{version}}",
+    "debugInfo": "Información de depuración"
+  },
+  "theme": {
+    "dayOps": "Modo día",
+    "nightOps": "Modo noche",
+    "switchToDay": "Cambiar a modo día",
+    "switchToNight": "Cambiar a modo noche"
+  },
+  "debugModal": {
+    "title": "Información de depuración",
+    "close": "Cerrar",
+    "loadFailed": "No se pudo cargar la información de depuración. Inténtalo de nuevo.",
+    "description": "Esta es información del sistema no sensible que puedes compartir al reportar problemas. No incluye contraseñas, direcciones IP ni claves de API.",
+    "loading": "Cargando...",
+    "copied": "¡Copiado!",
+    "copy": "Copiar al portapapeles",
+    "openIssue": "Abrir un issue en GitHub"
+  },
+  "actions": {
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "remove": "Quitar",
+    "save": "Guardar",
+    "confirm": "Confirmar",
+    "backHome": "Volver al inicio",
+    "moreInfo": "Más información",
+    "dismissAlert": "Cerrar aviso"
+  },
+  "docs": {
+    "title": "Documentación",
+    "titles": {
+      "home": "Inicio",
+      "getting-started": "Primeros pasos",
+      "use-cases": "Casos de uso",
+      "supply-depot-apps": "Apps del Depósito de suministros",
+      "drug-reference": "Guía de medicamentos",
+      "community-add-ons": "Complementos de la comunidad",
+      "updates": "Actualizaciones",
+      "faq": "Preguntas frecuentes",
+      "about": "Acerca de",
+      "release-notes": "Notas de la versión",
+      "api-reference": "Referencia de la API"
+    }
+  },
+  "assistant": {
+    "defaultName": "Asistente de IA"
+  },
+  "table": {
+    "noData": "No hay registros",
+    "collapse": "Contraer fila",
+    "expand": "Expandir fila"
+  },
+  "progress": {
+    "complete": "Descarga completa"
+  },
+  "errors": {
+    "notFound": "Página no encontrada",
+    "notFoundBody": "Esta página no existe.",
+    "server": "Error del servidor",
+    "internal": "Ocurrió un error interno. Vuelve a intentarlo o revisa la consola para ver los detalles."
+  },
+  "loading": "Cargando..."
+}

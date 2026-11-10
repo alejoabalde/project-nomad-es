@@ -14,6 +14,7 @@ import {
   CALIBRE_EMPTY_LIBRARY_ASSET_PATH,
   VAULTWARDEN_STORAGE_PATH,
   MESHCORE_WEB_STORAGE_PATH,
+  FILEBROWSER_DB_STORAGE_PATH,
   MEDIA_STORAGE_PATH,
   JELLYFIN_MEDIA_SUBFOLDERS,
 } from '../utils/fs.js'
@@ -724,6 +725,15 @@ export class DockerService {
         )
       }
 
+      if (service.service_name === SERVICE_NAMES.FILEBROWSER) {
+        await this._runPreinstallActions__FileBrowser(service, containerConfig)
+        this._broadcast(
+          service.service_name,
+          'preinstall-complete',
+          `Pre-install actions for File Browser completed successfully.`
+        )
+      }
+
       if (service.service_name === SERVICE_NAMES.MESHCORE_WEB) {
         await this._runPreinstallActions__MeshCoreWeb()
         this._broadcast(
@@ -1228,6 +1238,101 @@ export class DockerService {
         `Failed to prepare the Vaultwarden certificate: ${error.message}`
       )
       throw new Error(`Pre-install action failed: ${error.message}`)
+    }
+  }
+
+  /**
+   * project-nomad-es fork: File Browser's first-run "quick setup" always creates its settings and
+   * the admin user with the English locale, and there is no flag or env var to change that. On a
+   * fresh install (no database yet) we let quick setup run once in a throwaway container, stop it,
+   * and then set the default and admin locale to Spanish with File Browser's own CLI, so the app
+   * opens in Spanish. An existing database is never touched, and any failure here only logs a
+   * warning: the app still installs, just in English (the user can change it in its settings).
+   */
+  private async _runPreinstallActions__FileBrowser(service: Service, containerConfig: any): Promise<void> {
+    const dbFile = join(process.cwd(), FILEBROWSER_DB_STORAGE_PATH, '.filebrowser.db')
+    const exists = await access(dbFile)
+      .then(() => true)
+      .catch(() => false)
+    if (exists) return
+
+    this._broadcast(
+      SERVICE_NAMES.FILEBROWSER,
+      'preinstall',
+      `Setting File Browser's default language to Spanish...`
+    )
+
+    const image = service.container_image
+    const binds: string[] = containerConfig?.HostConfig?.Binds ?? []
+    const env: string[] = containerConfig?.Env ?? []
+    const dbArgs = ['--database', '/db/.filebrowser.db']
+    const helperName = `${SERVICE_NAMES.FILEBROWSER}_locale_setup`
+
+    const runOnce = async (cmd: string[]) => {
+      const c = await this.docker.createContainer({
+        Image: image,
+        Entrypoint: ['filebrowser'],
+        Cmd: cmd,
+        User: 'root',
+        HostConfig: { Binds: binds, AutoRemove: false },
+      })
+      try {
+        await c.start()
+        const result = await c.wait()
+        if (result?.StatusCode !== 0) {
+          throw new Error(`filebrowser ${cmd[0]} ${cmd[1]} exited with code ${result?.StatusCode}`)
+        }
+      } finally {
+        await c.remove({ force: true }).catch(() => {})
+      }
+    }
+
+    let setup: Docker.Container | null = null
+    try {
+      await mkdir(join(process.cwd(), FILEBROWSER_DB_STORAGE_PATH), { recursive: true })
+
+      // 1. Let quick setup create the database and admin user exactly as a normal first start would.
+      setup = await this.docker.createContainer({
+        name: helperName,
+        Image: image,
+        Cmd: service.container_command ? service.container_command.split(' ') : undefined,
+        Env: env,
+        User: 'root',
+        HostConfig: { Binds: binds },
+      })
+      await setup.start()
+      const deadline = Date.now() + 60_000
+      let ready = false
+      while (Date.now() < deadline) {
+        const logs = (await setup.logs({ stdout: true, stderr: true })).toString()
+        if (logs.includes('Listening on')) {
+          ready = true
+          break
+        }
+        await new Promise((r) => setTimeout(r, 1000))
+      }
+      await setup.stop().catch(() => {})
+      await setup.remove({ force: true }).catch(() => {})
+      setup = null
+      if (!ready) throw new Error('File Browser quick setup did not finish in time')
+
+      // 2. Spanish for new users, and for the admin user quick setup just created.
+      await runOnce(['config', 'set', '--locale', 'es', ...dbArgs])
+      await runOnce(['users', 'update', env.find((e) => e.startsWith('FB_USERNAME='))?.split('=')[1] || 'admin', '--locale', 'es', ...dbArgs])
+
+      this._broadcast(
+        SERVICE_NAMES.FILEBROWSER,
+        'preinstall',
+        `File Browser will open in Spanish.`
+      )
+    } catch (error: any) {
+      if (setup) await setup.remove({ force: true }).catch(() => {})
+      logger.warn(`[DockerService] Could not set File Browser locale: ${error.message}`)
+      this._broadcast(
+        SERVICE_NAMES.FILEBROWSER,
+        'preinstall',
+        `Could not set File Browser's language; it will start in English.`
+      )
     }
   }
 

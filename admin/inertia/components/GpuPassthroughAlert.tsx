@@ -6,6 +6,7 @@ import { useNotifications } from '~/context/NotificationContext'
 import { useModals } from '~/context/ModalContext'
 import api from '~/lib/api'
 import type { GpuHealthStatus } from '../../types/system'
+import { useTranslation } from 'react-i18next'
 
 const DISMISS_KEY = 'nomad:gpu-banner-dismissed'
 const HSA_OVERRIDE_PATTERN = /^\d{1,2}\.\d{1,2}\.\d{1,2}$/
@@ -28,6 +29,7 @@ export default function GpuPassthroughAlert({
 }) {
   const { addNotification } = useNotifications()
   const { openModal, closeAllModals } = useModals()
+  const { t } = useTranslation('components')
   const [reinstalling, setReinstalling] = useState(false)
   const [dismissed, setDismissed] = useState(() => {
     try {
@@ -54,10 +56,10 @@ export default function GpuPassthroughAlert({
     try {
       const response = await api.forceReinstallService('nomad_ollama')
       if (!response || !response.success) {
-        throw new Error(response?.message || 'Force reinstall failed')
+        throw new Error(response?.message || t('gpu.reinstallFailed'))
       }
       addNotification({
-        message: `${assistantName} is being reinstalled with GPU support. This page will reload shortly.`,
+        message: t('gpu.reinstalling', { name: assistantName }),
         type: 'success',
       })
       try {
@@ -66,7 +68,7 @@ export default function GpuPassthroughAlert({
       setTimeout(() => window.location.reload(), 5000)
     } catch (error) {
       addNotification({
-        message: `Failed to reinstall: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        message: t('gpu.reinstallError', { error: error instanceof Error ? error.message : t('gpu.unknown') }),
         type: 'error',
       })
       setReinstalling(false)
@@ -76,20 +78,18 @@ export default function GpuPassthroughAlert({
   const openReinstallModal = () => {
     openModal(
       <StyledModal
-        title={`Reinstall ${assistantName}?`}
+        title={t('gpu.reinstallTitle', { name: assistantName })}
         onConfirm={() => {
           closeAllModals()
           reinstall()
         }}
         onCancel={closeAllModals}
         open={true}
-        confirmText="Reinstall"
-        cancelText="Cancel"
+        confirmText={t('gpu.reinstall')}
+        cancelText={t('common:actions.cancel')}
       >
         <p className="text-text-primary">
-          This will recreate the {assistantName} container with GPU support enabled. Your
-          downloaded models will be preserved. The service will be briefly unavailable during
-          reinstall.
+          {t('gpu.reinstallBody', { name: assistantName })}
         </p>
       </StyledModal>,
       'gpu-health-force-reinstall-modal'
@@ -111,22 +111,23 @@ export default function GpuPassthroughAlert({
     )
   }
 
-  const vendorName = isAmd ? 'an AMD' : 'an NVIDIA'
   const message = needsHsaOverride
-    ? `Your system has an AMD GPU, but ${assistantName} is running on CPU only. Reinstalling won't fix this: the GPU${gpuHealth.amdGfxTarget ? ` (${gpuHealth.amdGfxTarget})` : ''} isn't on ROCm's supported list and needs a GFX version override.`
-    : `Your system has ${vendorName} GPU, but ${assistantName} can't access it. AI is running on CPU only, which is significantly slower.`
+    ? t('gpu.amdMsg', { name: assistantName, target: gpuHealth.amdGfxTarget ? ` (${gpuHealth.amdGfxTarget})` : '' })
+    : isAmd
+      ? t('gpu.noAccessAmd', { name: assistantName })
+      : t('gpu.noAccessNvidia', { name: assistantName })
 
   return (
     <Alert
       type="warning"
       variant="bordered"
-      title={`GPU Not Accessible to ${assistantName}`}
+      title={t('gpu.title', { name: assistantName })}
       message={message}
       className={className}
       dismissible={true}
       onDismiss={handleDismiss}
       buttonProps={{
-        children: needsHsaOverride ? 'Fix: Set GFX Override' : `Fix: Reinstall ${assistantName}`,
+        children: needsHsaOverride ? t('gpu.fixHsa') : t('gpu.fixReinstall', { name: assistantName }),
         icon: needsHsaOverride ? 'IconTool' : 'IconRefresh',
         variant: 'action',
         size: 'sm',
@@ -150,6 +151,7 @@ function HsaOverrideModal({
   onSaved: () => void
 }) {
   const { addNotification } = useNotifications()
+  const { t } = useTranslation('components')
   const [value, setValue] = useState(gpuHealth.suggestedHsaOverride ?? '')
   const [saving, setSaving] = useState(false)
   const valid = HSA_OVERRIDE_PATTERN.test(value.trim())
@@ -167,7 +169,7 @@ function HsaOverrideModal({
       onSaved()
     } catch (error) {
       addNotification({
-        message: `Failed to save the GFX override: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        message: t('gpu.saveError', { error: error instanceof Error ? error.message : t('gpu.unknown') }),
         type: 'error',
       })
       setSaving(false)
@@ -176,40 +178,37 @@ function HsaOverrideModal({
 
   return (
     <StyledModal
-      title="Set AMD GFX Override"
+      title={t('gpu.hsaTitle')}
       onConfirm={save}
       onCancel={onCancel}
       open={true}
-      confirmText="Save and Reinstall"
-      cancelText="Cancel"
+      confirmText={t('gpu.saveReinstall')}
+      cancelText={t('common:actions.cancel')}
       confirmLoading={saving}
       confirmDisabled={!valid || saving}
     >
       <div className="space-y-4 text-text-primary">
         <p>
-          ROCm ships GPU kernels for a fixed list of AMD chips. Integrated Radeon GPUs outside
-          that list run on CPU unless ROCm treats them as a supported chip, set through
-          HSA_OVERRIDE_GFX_VERSION.
+          {t('gpu.hsaBody')}
         </p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Radeon 780M / 760M (gfx1103): 11.0.0</li>
-          <li>Radeon 680M / 660M and other RDNA 2 iGPUs (gfx1031 to gfx1036): 10.3.0</li>
+          <li>{t('gpu.rdna2')}</li>
         </ul>
         <p className="text-sm text-text-secondary">
-          Detected GPU: {gpuHealth.amdGfxTarget ?? 'not reported by Ollama'}. Current override:{' '}
-          {gpuHealth.currentHsaOverride ?? 'none'}.
+          {t('gpu.detected', { gpu: gpuHealth.amdGfxTarget ?? t('gpu.notReported'), current: gpuHealth.currentHsaOverride ?? t('gpu.none') })}
           {gpuHealth.suggestedHsaOverride
-            ? ` Recommended for this GPU: ${gpuHealth.suggestedHsaOverride}.`
+            ? ` ${t('gpu.recommended', { value: gpuHealth.suggestedHsaOverride })}`
             : ''}
         </p>
         <Input
           name="amdHsaOverride"
-          label="GFX version override"
+          label={t('gpu.hsaLabel')}
           placeholder="11.0.0"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           error={value.trim() !== '' && !valid}
-          helpText={`Saving recreates the ${assistantName} container with this override. Downloaded models are preserved.`}
+          helpText={t('gpu.hsaHelp', { name: assistantName })}
         />
       </div>
     </StyledModal>

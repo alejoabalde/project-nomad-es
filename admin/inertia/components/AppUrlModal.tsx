@@ -5,6 +5,8 @@ import Input from './inputs/Input'
 import { getServiceLink, normalizeCustomUrl } from '~/lib/navigation'
 import { ServiceSlim } from '../../types/services'
 import api from '~/lib/api'
+import { Trans, useTranslation } from 'react-i18next'
+import { useServiceText } from '~/lib/service_i18n'
 
 interface AppUrlModalProps {
   open: boolean
@@ -24,6 +26,8 @@ interface AppUrlModalProps {
 export default function AppUrlModal({ open, service, onClose, onSaved, showError }: AppUrlModalProps) {
   const [value, setValue] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const { t } = useTranslation('components')
+  const serviceText = useServiceText()
 
   // Prefill from the app's stored override each time the modal opens for a service.
   useEffect(() => {
@@ -44,40 +48,43 @@ export default function AppUrlModal({ open, service, onClose, onSaved, showError
     const result = await api.setServiceCustomUrl(service.service_name, trimmed ? trimmed : null)
     setSubmitting(false)
     if (!result?.success) {
-      showError('Failed to save custom URL.')
+      showError(t('appUrl.saveError'))
       return
     }
     onSaved()
   }
 
-  const appName = service?.friendly_name || service?.service_name || 'this app'
+  const appName = service ? serviceText.name(service) : t('appUrl.thisApp')
 
   return (
     <StyledModal
-      title="Set Custom URL"
+      title={t('appUrl.title')}
       open={open}
       onCancel={onClose}
       onClose={onClose}
-      cancelText="Cancel"
+      cancelText={t('common:actions.cancel')}
       onConfirm={handleSave}
       confirmVariant="primary"
-      confirmText="Save"
+      confirmText={t('common:actions.save')}
       confirmIcon="IconCheck"
       confirmLoading={submitting}
       confirmDisabled={isInvalid}
     >
       <div className="space-y-4 text-sm">
         <p className="text-text-muted">
-          Set where <span className="font-medium text-text-primary">{appName}</span> opens from — useful
-          if you reach it through a reverse proxy or local DNS. Leave this empty to use the default
-          address ({service?.ui_location ? `host + port ${service.ui_location}` : 'host + port'}).
+          <Trans
+            t={t}
+            i18nKey="appUrl.body"
+            values={{ app: appName, address: service?.ui_location ? t('appUrl.hostPortN', { port: service.ui_location }) : t('appUrl.hostPort') }}
+            components={{ b: <span className="font-medium text-text-primary" /> }}
+          />
         </p>
 
         <div>
           <div className="flex items-end gap-2">
             <Input
               name="customUrl"
-              label="Custom URL"
+              label={t('appUrl.label')}
               placeholder="http://jellyfin.myhomelab.net"
               maxLength={255}
               value={value}
@@ -87,23 +94,22 @@ export default function AppUrlModal({ open, service, onClose, onSaved, showError
             />
             {value.length > 0 && (
               <StyledButton size="sm" variant="ghost" icon="IconX" onClick={() => setValue('')} className="mb-1.5">
-                Clear
+                {t('appUrl.clear')}
               </StyledButton>
             )}
           </div>
           {isInvalid ? (
             <p className="mt-1.5 text-xs text-red-500">
-              Enter a valid http(s) address (e.g. https://jellyfin.myhomelab.net). A bare host like
-              "jellyfin.lan" becomes http://jellyfin.lan.
+              {t('appUrl.invalid')}
             </p>
           ) : (
             <>
               <p className="mt-1.5 text-xs text-text-muted">
-                No scheme? We'll default to <span className="font-mono">http://</span>.</p>
+                <Trans t={t} i18nKey="appUrl.noScheme" components={{ c: <span className="font-mono" /> }} /></p>
               <p className="mt-1.5 text-xs text-text-muted">
-                Opens as:{' '}
+                {t('appUrl.opensAs')}{' '}
                 <span className="font-mono break-all text-text-primary">{previewLink}</span>
-                {usingDefault ? ' (default)' : ''}
+                {usingDefault ? ` (${t('appUrl.default')})` : ''}
               </p>
             </>
           )}

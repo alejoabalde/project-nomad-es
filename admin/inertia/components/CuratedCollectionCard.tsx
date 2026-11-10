@@ -3,6 +3,8 @@ import DynamicIcon, { DynamicIconName } from './DynamicIcon'
 import type { CollectionWithStatus } from '../../types/collections'
 import classNames from 'classnames'
 import { IconCircleCheck } from '@tabler/icons-react'
+import { useTranslation } from 'react-i18next'
+import { useCollectionText } from '~/lib/collection_i18n'
 
 export interface CuratedCollectionCardProps {
   collection: CollectionWithStatus
@@ -11,6 +13,8 @@ export interface CuratedCollectionCardProps {
 }
 
 const CuratedCollectionCard: React.FC<CuratedCollectionCardProps> = ({ collection, onClick, size = 'small' }) => {
+  const { t } = useTranslation('components')
+  const tc = useCollectionText()
   const totalSizeBytes = collection.resources?.reduce(
     (acc, resource) => acc + resource.size_mb * 1024 * 1024,
     0
@@ -35,22 +39,22 @@ const CuratedCollectionCard: React.FC<CuratedCollectionCardProps> = ({ collectio
         <div className="flex justify-between w-full items-center">
           <div className="flex">
             <DynamicIcon icon={collection.icon as DynamicIconName} className="w-6 h-6 mr-2" />
-            <h3 className="text-lg font-semibold">{collection.name}</h3>
+            <h3 className="text-lg font-semibold">{tc(collection.name)}</h3>
           </div>
           {collection.all_installed && (
             <div className="flex items-center">
               <IconCircleCheck
                 className="w-5 h-5 text-lime-400 ml-2"
-                title="All items downloaded"
+                title={t('collection.allDownloaded')}
               />
-              <p className="text-lime-400 text-sm ml-1">All items downloaded</p>
+              <p className="text-lime-400 text-sm ml-1">{t('collection.allDownloaded')}</p>
             </div>
           )}
         </div>
       </div>
-      <p className="text-gray-200 grow">{collection.description}</p>
+      <p className="text-gray-200 grow">{tc(collection.description)}</p>
       <p className="text-gray-200 text-xs mt-2">
-        Items: {collection.resources?.length} | Size: {formatBytes(totalSizeBytes, 0)}
+        {t('collection.itemsAndSize', { count: collection.resources?.length ?? 0, size: formatBytes(totalSizeBytes, 0) })}
       </p>
     </div>
   )

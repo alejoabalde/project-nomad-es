@@ -10,6 +10,7 @@ import { QueueService } from './queue_service.js'
 import { RunDownloadJob } from '#jobs/run_download_job'
 import { zimCategoriesSpecSchema, mapsSpecSchema, wikipediaSpecSchema, creatorPacksSpecSchema } from '#validators/curated_collections'
 import { isGatedResource } from '../utils/hosted_content.js'
+import { CONTENT_LANGUAGES, getContentLanguage, type ContentLanguage } from '../utils/content_language.js'
 import {
   ensureDirectoryExists,
   listDirectoryContents,
@@ -35,6 +36,26 @@ const SPEC_URLS: Record<ManifestType, string> = {
   creator_packs: 'https://raw.githubusercontent.com/Crosstalk-Solutions/project-nomad/refs/heads/main/collections/creator-packs.json',
 }
 
+// Spanish curated lists live in this fork. Types without a Spanish list (maps,
+// creator packs) use the upstream one in every language.
+export const ES_COLLECTIONS_BASE_URL =
+  process.env.NOMAD_ES_COLLECTIONS_BASE_URL ||
+  'https://raw.githubusercontent.com/alejoabalde/project-nomad-es/refs/heads/main/collections/es'
+
+const ES_SPEC_URLS: Partial<Record<ManifestType, string>> = {
+  zim_categories: `${ES_COLLECTIONS_BASE_URL}/kiwix-categories.json`,
+  wikipedia: `${ES_COLLECTIONS_BASE_URL}/wikipedia.json`,
+}
+
+export function specUrlFor(type: ManifestType, lang: ContentLanguage): string {
+  return (lang === 'es' && ES_SPEC_URLS[type]) || SPEC_URLS[type]
+}
+
+/** Cache row key: the plain type for the upstream list, `<type>_es` for the Spanish one. */
+function cacheKeyFor(type: ManifestType, lang: ContentLanguage): ManifestType {
+  return (lang === 'es' && ES_SPEC_URLS[type] ? `${type}_es` : type) as ManifestType
+}
+
 const VALIDATORS: Record<ManifestType, any> = {
   zim_categories: zimCategoriesSpecSchema,
   maps: mapsSpecSchema,
@@ -47,16 +68,17 @@ export class CollectionManifestService {
 
   // ---- Spec management ----
 
-  async fetchAndCacheSpec(type: ManifestType): Promise<boolean> {
+  async fetchAndCacheSpec(type: ManifestType, lang: ContentLanguage = getContentLanguage()): Promise<boolean> {
+    const key = cacheKeyFor(type, lang)
     try {
-      const response = await axios.get(SPEC_URLS[type], { timeout: 15000 })
+      const response = await axios.get(specUrlFor(type, lang), { timeout: 15000 })
 
       const validated = await vine.validate({
         schema: VALIDATORS[type],
         data: response.data,
       })
 
-      const existing = await CollectionManifest.find(type)
+      const existing = await CollectionManifest.find(key)
       const specVersion = validated.spec_version
 
       if (existing) {
@@ -69,7 +91,7 @@ export class CollectionManifestService {
       }
 
       await CollectionManifest.create({
-        type,
+        type: key,
         spec_version: specVersion,
         spec_data: validated,
         fetched_at: DateTime.now(),
@@ -82,19 +104,37 @@ export class CollectionManifestService {
     }
   }
 
-  async getCachedSpec<T>(type: ManifestType): Promise<T | null> {
-    const manifest = await CollectionManifest.find(type)
+  async getCachedSpec<T>(type: ManifestType, lang: ContentLanguage = getContentLanguage()): Promise<T | null> {
+    const manifest = await CollectionManifest.find(cacheKeyFor(type, lang))
     if (!manifest) return null
     return manifest.spec_data as T
   }
 
-  async getSpecWithFallback<T>(type: ManifestType): Promise<T | null> {
+  /**
+   * Cached specs of every language, for paths that run outside a request
+   * (update checks, reconcile) and must know about any resource the user may
+   * have installed from either list.
+   */
+  async getAllCachedSpecs<T>(type: ManifestType): Promise<T[]> {
+    const specs: T[] = []
+    const seen = new Set<string>()
+    for (const lang of CONTENT_LANGUAGES) {
+      const key = cacheKeyFor(type, lang)
+      if (seen.has(key)) continue
+      seen.add(key)
+      const spec = await this.getCachedSpec<T>(type, lang)
+      if (spec) specs.push(spec)
+    }
+    return specs
+  }
+
+  async getSpecWithFallback<T>(type: ManifestType, lang: ContentLanguage = getContentLanguage()): Promise<T | null> {
     try {
-      await this.fetchAndCacheSpec(type)
+      await this.fetchAndCacheSpec(type, lang)
     } catch {
       // Fetch failed, will fall back to cache
     }
-    return this.getCachedSpec<T>(type)
+    return this.getCachedSpec<T>(type, lang)
   }
 
   // ---- Status computation ----
@@ -335,10 +375,9 @@ export class CollectionManifestService {
    */
   async getGatedZimResourceIds(): Promise<Set<string>> {
     const ids = new Set<string>()
-    const spec = await this.getCachedSpec<ZimCategoriesSpec>('zim_categories')
-    if (!spec) return ids
+    const specs = await this.getAllCachedSpecs<ZimCategoriesSpec>('zim_categories')
 
-    for (const category of spec.categories) {
+    for (const category of specs.flatMap((spec) => spec.categories)) {
       for (const tier of category.tiers) {
         for (const resource of tier.resources) {
           if (isGatedResource(resource)) ids.add(resource.id)
@@ -430,9 +469,9 @@ export class CollectionManifestService {
       console.log(`Found ${zimFiles.length} ZIM files on disk. Reconciling with database...`)
 
       // Get spec for URL lookup
-      const zimSpec = await this.getCachedSpec<ZimCategoriesSpec>('zim_categories')
+      const zimSpecs = await this.getAllCachedSpecs<ZimCategoriesSpec>('zim_categories')
       const specResourceMap = new Map<string, SpecResource>()
-      if (zimSpec) {
+      for (const zimSpec of zimSpecs) {
         for (const cat of zimSpec.categories) {
           for (const tier of cat.tiers) {
             for (const res of tier.resources) {

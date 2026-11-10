@@ -1,8 +1,11 @@
+import { useTranslation } from 'react-i18next'
+
 const ProgressBar = ({ progress, speed }: { progress: number; speed?: string }) => {
+  const { t } = useTranslation()
   if (progress >= 100) {
     return (
       <div className="flex items-center justify-between">
-        <span className="text-sm text-desert-green">Download complete</span>
+        <span className="text-sm text-desert-green">{t('common:progress.complete')}</span>
       </div>
     )
   }

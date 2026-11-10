@@ -8,6 +8,12 @@ import logger from '@adonisjs/core/services/logger'
 export class DocsService {
   private docsPath = path.join(process.cwd(), 'docs')
 
+  /**
+   * Languages with translated docs in docs/<lang>/<slug>.md (project-nomad-es).
+   * A missing translation falls back to the English file in docs/.
+   */
+  private static readonly TRANSLATED_LANGUAGES = ['es']
+
   private static readonly DOC_ORDER: Record<string, number> = {
     'home': 1,
     'getting-started': 2,
@@ -26,7 +32,8 @@ export class DocsService {
     const files: Array<{ title: string; slug: string }> = []
 
     for (const item of contents) {
-      if (item.type === 'file' && item.name.endsWith('.md')) {
+      // Only top-level files: docs/<lang>/ holds translations of the same pages.
+      if (item.type === 'file' && item.name.endsWith('.md') && path.dirname(item.key) === this.docsPath) {
         const cleaned = this.prettify(item.name)
         files.push({
           title: cleaned,
@@ -62,7 +69,7 @@ export class DocsService {
     }
   }
 
-  async parseFile(_filename: string) {
+  async parseFile(_filename: string, language?: string) {
     try {
       if (!_filename) {
         throw new Error('Filename is required')
@@ -82,15 +89,73 @@ export class DocsService {
         throw new Error(`File not found: ${filename}`)
       }
 
-      const fileStream = await getFile(fullPath, 'stream')
+      // Prefer the translated page when there is one for the reader's language.
+      let pathToRead = fullPath
+      if (language && DocsService.TRANSLATED_LANGUAGES.includes(language)) {
+        const translatedPath = path.resolve(path.join(this.docsPath, language, filename))
+        if (translatedPath.startsWith(basePath + path.sep) && (await getFileStatsIfExists(translatedPath))) {
+          pathToRead = translatedPath
+        }
+      }
+
+      const fileStream = await getFile(pathToRead, 'stream')
       if (!fileStream) {
         throw new Error(`Failed to read file stream: ${filename}`)
       }
-      const content = await streamToString(fileStream)
+      let content = await streamToString(fileStream)
+      if (filename === 'release-notes.md' && pathToRead !== fullPath) {
+        content = await this.prependUntranslatedReleases(content, fullPath)
+      }
       return this.parse(content)
     } catch (error) {
       throw new InternalServerErrorException(`Error parsing file: ${(error as Error).message}`)
     }
+  }
+
+  /**
+   * A translated release-notes page goes stale as soon as a new version ships. Rather than hide
+   * those versions, show any English "## Version X.Y.Z" section whose version is missing from the
+   * translation at the top, so readers always see the latest changes.
+   */
+  private async prependUntranslatedReleases(translated: string, englishPath: string) {
+    const englishStream = await getFile(englishPath, 'stream')
+    if (!englishStream) return translated
+    const english = await streamToString(englishStream)
+
+    const versionOf = (heading: string) => /\d+\.\d+\.\d+/.exec(heading)?.[0]
+    const translatedVersions = new Set(
+      translated
+        .split('\n')
+        .filter((line) => line.startsWith('## '))
+        .map(versionOf)
+        .filter(Boolean)
+    )
+
+    const missing: string[] = []
+    let current: string[] | null = null
+    for (const line of english.split('\n')) {
+      if (line.startsWith('## ')) {
+        if (current) missing.push(current.join('\n').trimEnd())
+        const version = line.startsWith('## Version') ? versionOf(line) : undefined
+        current = version && !translatedVersions.has(version) ? [line] : null
+      } else if (current) {
+        current.push(line)
+      }
+    }
+    if (current) missing.push(current.join('\n').trimEnd())
+    if (missing.length === 0) return translated
+
+    const lines = translated.split('\n')
+    const titleIndex = lines.findIndex((line) => line.startsWith('# '))
+    const block = [
+      '',
+      '*Las versiones siguientes todavía no están traducidas y se muestran en inglés.*',
+      '',
+      ...missing.map((section) => section.replace(/\n---$/, '') + '\n'),
+      '---',
+    ]
+    lines.splice(titleIndex + 1, 0, ...block)
+    return lines.join('\n')
   }
 
   private static readonly TITLE_OVERRIDES: Record<string, string> = {

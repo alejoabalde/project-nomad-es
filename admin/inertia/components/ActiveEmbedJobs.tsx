@@ -5,8 +5,8 @@ import StyledSectionHeader from './StyledSectionHeader'
 import {
   JOB_HEALTH_DISPLAY,
   computeJobHealth,
-  formatTimeAgo,
 } from '~/lib/kb_job_health_display'
+import { useTranslation } from 'react-i18next'
 
 interface ActiveEmbedJobsProps {
   withHeader?: boolean
@@ -14,6 +14,17 @@ interface ActiveEmbedJobsProps {
 
 const ActiveEmbedJobs = ({ withHeader = false }: ActiveEmbedJobsProps) => {
   const { data: jobs } = useEmbedJobs()
+  const { t, i18n } = useTranslation('components')
+  // Localized "time ago" (the shared helper in ~/lib returns English).
+  const timeAgo = (ms: number) => {
+    const seconds = Math.max(0, Math.floor((tick - ms) / 1000))
+    if (seconds < 5) return t('embedJobs.justNow')
+    const rtf = new Intl.RelativeTimeFormat(i18n.language, { style: 'narrow' })
+    if (seconds < 60) return rtf.format(-seconds, 'second')
+    const minutes = Math.floor(seconds / 60)
+    if (minutes < 60) return rtf.format(-minutes, 'minute')
+    return rtf.format(-Math.floor(minutes / 60), 'hour')
+  }
 
   // Re-render every 5s to keep per-job "last activity Xs ago" timestamps fresh.
   const [tick, setTick] = useState(() => Date.now())
@@ -25,7 +36,7 @@ const ActiveEmbedJobs = ({ withHeader = false }: ActiveEmbedJobsProps) => {
   return (
     <>
       {withHeader && (
-        <StyledSectionHeader title="Processing Queue" className="mt-12 mb-4" />
+        <StyledSectionHeader title={t('embedJobs.title')} className="mt-12 mb-4" />
       )}
 
       <div className="space-y-4">
@@ -48,20 +59,20 @@ const ActiveEmbedJobs = ({ withHeader = false }: ActiveEmbedJobsProps) => {
                 <div className="flex items-center gap-3 mb-2">
                   <span
                     className={`inline-block w-2.5 h-2.5 rounded-full ${display.dot}`}
-                    aria-label={display.ariaLabel}
-                    title={display.ariaLabel}
+                    aria-label={t(`embedJobs.health.${health}.aria`, { defaultValue: display.ariaLabel })}
+                    title={t(`embedJobs.health.${health}.aria`, { defaultValue: display.ariaLabel })}
                   />
                   <span className="text-sm font-medium text-text-primary">
-                    {display.label}
+                    {t(`embedJobs.health.${health}.label`, { defaultValue: display.label })}
                   </span>
                   {lastActivityMs !== undefined && (
                     <span className="text-xs text-text-muted">
-                      · last activity {formatTimeAgo(lastActivityMs, tick)}
+                      · {t('embedJobs.lastActivity', { ago: timeAgo(lastActivityMs) })}
                     </span>
                   )}
                   {typeof job.chunks === 'number' && job.chunks > 0 && (
                     <span className="text-xs text-text-muted">
-                      · {job.chunks.toLocaleString()} chunks
+                      · {t('embedJobs.chunks', { count: job.chunks, formattedCount: job.chunks.toLocaleString() })}
                     </span>
                   )}
                 </div>
@@ -80,7 +91,7 @@ const ActiveEmbedJobs = ({ withHeader = false }: ActiveEmbedJobsProps) => {
             )
           })
         ) : (
-          <p className="text-text-muted">No files are currently being processed</p>
+          <p className="text-text-muted">{t('embedJobs.none')}</p>
         )}
       </div>
     </>

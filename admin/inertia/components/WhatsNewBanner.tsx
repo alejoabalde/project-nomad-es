@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { router, usePage } from '@inertiajs/react'
 import Alert from '~/components/Alert'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Post-upgrade "what's new" highlights shown once on the dashboard.
@@ -26,6 +27,9 @@ const WHATS_NEW = {
   ],
 }
 
+/** Translation key prefix for this release's highlights (project-nomad-es). */
+const whatsNewKey = `whatsNew.v${WHATS_NEW.version.replace('.', '_')}`
+
 /** Extract the major.minor line (e.g. "1.34.2" -> "1.34"). Returns null for
  *  non-numeric versions like the dev server's "dev". */
 function majorMinor(version: string | undefined | null): string | null {
@@ -34,6 +38,7 @@ function majorMinor(version: string | undefined | null): string | null {
 }
 
 export default function WhatsNewBanner() {
+  const { t } = useTranslation('components')
   const { appVersion } = usePage<{ appVersion: string }>().props
   const storageKey = `nomad:whatsnew-dismissed:${WHATS_NEW.version}`
 
@@ -64,7 +69,7 @@ export default function WhatsNewBanner() {
   return (
     <div className="flex justify-center items-center p-4 w-full">
       <Alert
-        title={WHATS_NEW.title}
+        title={t(`${whatsNewKey}.title`, { defaultValue: WHATS_NEW.title })}
         type="info-inverted"
         variant="solid"
         className="w-full"
@@ -72,14 +77,14 @@ export default function WhatsNewBanner() {
         onDismiss={handleDismiss}
         buttonProps={{
           variant: 'primary',
-          children: 'See release notes',
+          children: t('whatsNew.notes'),
           icon: 'IconBook',
           onClick: () => router.visit('/docs/release-notes'),
         }}
       >
         <ul className="mt-1 list-disc list-inside space-y-1 text-white text-opacity-90 text-sm leading-relaxed">
-          {WHATS_NEW.highlights.map((highlight) => (
-            <li key={highlight}>{highlight}</li>
+          {WHATS_NEW.highlights.map((highlight, i) => (
+            <li key={highlight}>{t(`${whatsNewKey}.h${i}`, { defaultValue: highlight })}</li>
           ))}
         </ul>
       </Alert>

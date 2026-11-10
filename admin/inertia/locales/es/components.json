@@ -1,0 +1,370 @@
+{
+  "status": {
+    "installed": "Instalado",
+    "selected": "Seleccionado",
+    "downloading": "Descargando",
+    "failed": "Falló"
+  },
+  "wikipedia": {
+    "subtitle": "Selecciona el paquete de Wikipedia que prefieras",
+    "downloading": "Descargando Wikipedia... Puede tardar un rato en los paquetes más grandes.",
+    "failed": "Falló la descarga de Wikipedia. Selecciona un paquete e inténtalo de nuevo.",
+    "noDownload": "Sin descarga",
+    "remove": "Quitar Wikipedia",
+    "downloadSelected": "Descargar selección"
+  },
+  "category": {
+    "indexing": "indexando",
+    "downloading": "descargando",
+    "tiersAvailable_one": "{{count}} nivel disponible",
+    "tiersAvailable_other": "{{count}} niveles disponibles",
+    "clickToChoose": "Haz clic para elegir",
+    "sizeRange": "Tamaño: {{min}} - {{max}}"
+  },
+  "collection": {
+    "allDownloaded": "Todos los elementos descargados",
+    "itemsAndSize": "Elementos: {{count}} | Tamaño: {{size}}"
+  },
+  "storage": {
+    "title": "Almacenamiento",
+    "selectedSuffix": "(+{{size}} seleccionado)",
+    "current": "En uso ({{size}})",
+    "selected": "Seleccionado (+{{size}})",
+    "exceeds": "Supera el espacio disponible por {{size}}",
+    "remaining": "Quedarán {{size}} libres"
+  },
+  "creatorPack": {
+    "install": "Instalar",
+    "videos_one": "{{count}} video",
+    "videos_other": "{{count}} videos",
+    "updateAvailable": "Actualización disponible",
+    "uninstall": "Desinstalar pack"
+  },
+  "tiers": {
+    "intro": "Elige un nivel según tu capacidad de almacenamiento y tus necesidades. Los niveles superiores incluyen todo el contenido de los inferiores.",
+    "includes": "(incluye {{name}})",
+    "additionalResources_one": "{{count}} recurso adicional",
+    "additionalResources_other": "{{count}} recursos adicionales",
+    "plusEverythingIn": "(más todo lo de {{name}})",
+    "resourcesIncluded_one": "{{count}} recurso incluido",
+    "resourcesIncluded_other": "{{count}} recursos incluidos",
+    "embedEstimate": "<strong>+~{{size}}</strong> de almacenamiento adicional si se indexan para el Asistente de IA",
+    "embedEstimateUnknown": "(la estimación excluye algunos archivos de los que no tenemos datos previos)",
+    "autoIndexAlways": "Tu ajuste de <strong>indexación automática</strong> está en <strong>Siempre</strong>, así que estos archivos se indexarán automáticamente al descargarse. Puedes cambiarlo en los ajustes de la Base de conocimiento.",
+    "autoIndexManual": "Tu ajuste de <strong>indexación automática</strong> está en <strong>Manual</strong>, así que estos archivos quedarán sin indexar hasta que lo apruebes desde los ajustes de la Base de conocimiento.",
+    "changeAnyTime": "Puedes cambiar tu selección en cualquier momento. Haz clic en Enviar para confirmar.",
+    "submit": "Enviar"
+  },
+  "appUrl": {
+    "saveError": "No se pudo guardar la URL personalizada.",
+    "thisApp": "esta app",
+    "title": "Definir URL personalizada",
+    "body": "Define desde dónde se abre <b>{{app}}</b>. Es útil si accedes a ella mediante un proxy inverso o un DNS local. Déjalo vacío para usar la dirección predeterminada ({{address}}).",
+    "hostPortN": "equipo + puerto {{port}}",
+    "hostPort": "equipo + puerto",
+    "label": "URL personalizada",
+    "clear": "Borrar",
+    "invalid": "Ingresa una dirección http(s) válida (por ejemplo, https://jellyfin.myhomelab.net). Un nombre de equipo solo, como \"jellyfin.lan\", se convierte en http://jellyfin.lan.",
+    "noScheme": "¿Sin esquema? Se usará <c>http://</c> por defecto.",
+    "opensAs": "Se abre como:",
+    "default": "predeterminada"
+  },
+  "updateService": {
+    "loadError": "No se pudieron cargar las versiones disponibles",
+    "title": "Actualizar servicio",
+    "confirm": "Actualizar",
+    "question": "¿Actualizar <b>{{app}}</b> de <c>{{from}}</c> a <c>{{to}}</c>?",
+    "preserved": "Tus datos y tu configuración se conservan durante la actualización.",
+    "viewNotes": "Ver notas de la versión",
+    "hideVersions": "Ocultar versiones disponibles",
+    "showVersions": "Mostrar versiones disponibles",
+    "loading": "Cargando versiones...",
+    "none": "No hay otras versiones disponibles",
+    "latest": "Última",
+    "notes": "Notas de la versión",
+    "majorWarning": "No se recomienda pasar a una nueva versión mayor (por ejemplo, 1.8.2 → 2.0.0) sin antes comprobar que es compatible con tu configuración actual. Revisa siempre las notas de la versión y, si puedes, pruébala en un entorno de pruebas."
+  },
+  "serviceLogs": {
+    "loadError": "No se pudieron cargar los registros de este contenedor.",
+    "title": "Registros: {{app}}",
+    "refresh": "Actualizar",
+    "empty": "No hay registros."
+  },
+  "loading": "Cargando…",
+  "serviceStats": {
+    "title": "Estadísticas: {{app}}",
+    "notRunning": "Esta app no está en ejecución. Iníciala para ver el uso de recursos en vivo.",
+    "none": "No hay estadísticas disponibles.",
+    "memory": "Memoria",
+    "interval": "Se actualiza cada 2 segundos."
+  },
+  "installFeed": {
+    "title": "Actividad de instalación"
+  },
+  "customApp": {
+    "categories": {
+      "custom": "Personalizada",
+      "productivity": "Productividad",
+      "media": "Multimedia",
+      "security": "Seguridad",
+      "networking": "Redes",
+      "utility": "Utilidades",
+      "ai": "IA",
+      "education": "Educación"
+    },
+    "icons": {
+      "IconBrandDocker": "Docker (predeterminado)",
+      "IconBox": "Caja",
+      "IconServer": "Servidor",
+      "IconDatabase": "Base de datos",
+      "IconCode": "Código",
+      "IconTool": "Herramienta",
+      "IconWorld": "Web",
+      "IconShieldLock": "Seguridad",
+      "IconMovie": "Multimedia",
+      "IconBook": "Libro",
+      "IconNotes": "Notas",
+      "IconCpu": "Cómputo",
+      "IconRobot": "IA / Bot",
+      "IconWifi": "Red",
+      "IconHome": "Inicio"
+    },
+    "errors": {
+      "required": "El nombre y la imagen son obligatorios.",
+      "blocked": "Resuelve los problemas bloqueantes antes de instalar.",
+      "create": "No se pudo crear la app personalizada.",
+      "unexpected": "Error inesperado al crear la app personalizada."
+    },
+    "editTitle": "Editar app",
+    "addTitle": "Agregar app personalizada",
+    "saveRecreate": "Guardar y recrear",
+    "install": "Instalar",
+    "image": "Imagen de Docker",
+    "imagePh": "p. ej., nginx:latest",
+    "name": "Nombre visible",
+    "namePh": "Mi app",
+    "category": "Categoría",
+    "categoryHelp": "Elige la categoría que mejor describe esta app. Sirve para organizarla y filtrarla.",
+    "icon": "Ícono",
+    "iconHelp": "Elige el ícono que se muestra en la tarjeta de la app.",
+    "iconPreview": "Vista previa del ícono",
+    "ports": "Mapeo de puertos",
+    "addPort": "Agregar puerto",
+    "noPorts": "Sin mapeo de puertos: no podrás abrir la app desde el navegador.",
+    "containerPort": "Puerto del contenedor",
+    "hostPort": "Puerto del equipo (8600+)",
+    "portsHelp": "Los puertos del equipo deben ser 8600 o mayores. Las apps personalizadas usan puertos a partir del {{port}}.",
+    "checkingPorts": "Comprobando si los puertos están libres…",
+    "volumes": "Volúmenes montados",
+    "addVolume": "Agregar volumen",
+    "noVolumes": "Sin volúmenes: los datos no se conservarán al reiniciar.",
+    "hostPath": "Ruta en el equipo (absoluta)",
+    "containerPath": "Ruta en el contenedor",
+    "env": "Variables de entorno",
+    "addEnv": "Agregar variable",
+    "noEnv": "No se indicaron variables de entorno.",
+    "limits": "Límites de recursos (opcional)",
+    "memoryPh": "Memoria (MB), predeterminado 1024",
+    "cpusPh": "CPU, predeterminado 1",
+    "limitsHelp": "Los límites evitan que un contenedor descontrolado agote los recursos del equipo. Déjalos vacíos para usar los valores predeterminados (1024 MB / 1 CPU).",
+    "notAllowed": "No permitido",
+    "portInUse": "El puerto {{port}} ya está en uso",
+    "portUsedBy": "Lo está usando: {{usedBy}}. La instalación podría fallar.",
+    "resourceWarning": "Advertencia de recursos",
+    "installAnyway": "Entiendo, instalar de todos modos",
+    "footer": "Los contenedores se crean con <c>--restart=unless-stopped</c>. Los datos no se conservan a menos que agregues volúmenes arriba."
+  },
+  "countryPicker": {
+    "continents": {
+      "North America": "América del Norte",
+      "South America": "América del Sur",
+      "Europe": "Europa",
+      "Africa": "África",
+      "Asia": "Asia",
+      "Oceania": "Oceanía",
+      "Other": "Otros"
+    },
+    "estimateFailed": "No se pudo estimar el tamaño",
+    "pickFirst": "Elige al menos un país antes de descargar.",
+    "stillEstimating": "Todavía se está estimando el tamaño, espera un momento.",
+    "downloadFailed": "La descarga falló",
+    "title": "Descargar mapa por país o región",
+    "start": "Iniciar descarga",
+    "search": "Buscar entre {{count}} países...",
+    "clearAll": "Quitar todos",
+    "quickPicks": "Selección rápida",
+    "noMatch": "Ningún país coincide con \"{{search}}\".",
+    "installedTip": "Ya descargado. Vuelve a seleccionarlo para actualizarlo con otro nivel de zoom",
+    "installed": "Instalado",
+    "selected": "{{count}} seleccionados",
+    "remove": "Quitar {{name}}",
+    "maxZoom": "Nivel de zoom máximo:",
+    "world": "mundo",
+    "street": "calle",
+    "zoomHelp": "Menos zoom = archivo más chico y menos detalle. El zoom 15 muestra calles individuales; el zoom 10, el nivel de ciudad.",
+    "estimating": "Estimando el tamaño…",
+    "estimate": "{{tiles}} mosaicos, ~{{size}}",
+    "sourceBuild": "versión de origen {{date}}",
+    "pickToEstimate": "Elige al menos un país para estimar el tamaño."
+  },
+  "downloadUrl": {
+    "running": "Ejecutando la verificación previa de la URL: {{url}}",
+    "unknown": "Ocurrió un error desconocido durante la verificación previa.",
+    "passed": "La verificación previa fue exitosa. Archivo: {{name}}, tamaño: {{size}} MB",
+    "failed": "La verificación previa falló: {{error}}",
+    "download": "Descargar",
+    "help": "Ingresa la URL del archivo de región de mapa que quieres descargar. La URL debe ser pública y terminar en .pmtiles. Se hará una verificación previa para comprobar que el archivo esté disponible, su tipo y su tamaño aproximado.",
+    "placeholder": "Ingresa la URL de descarga..."
+  },
+  "zimUploader": {
+    "failed": "La carga falló",
+    "exists": "Ya existe un archivo ZIM con ese nombre",
+    "oneWiki": "Solo se puede subir un archivo de Wikipedia a la vez",
+    "note": "Solo archivos ZIM. Se admiten archivos grandes (hasta 20 GB). Para mejores resultados, súbelos desde el mismo equipo o con una conexión de red local estable. Los archivos más grandes conviene copiarlos directamente al volumen de almacenamiento"
+  },
+  "downloads": {
+    "title": "Descargas activas",
+    "failedReason": "La descarga falló: {{reason}}",
+    "failed": "La descarga falló",
+    "dismiss": "Descartar descarga fallida",
+    "retryTip": "Reintentar descarga",
+    "retrying": "Reintentando...",
+    "retry": "Reintentar",
+    "pageTip": "Abrir la página de descarga del recurso",
+    "page": "Página de descarga",
+    "cancel": "Cancelar descarga",
+    "waiting": "En espera...",
+    "downloading": "Descargando...",
+    "stalled": "Sin datos recibidos hace {{minutes}} min...",
+    "none": "No hay descargas activas"
+  },
+  "creatorPacksSection": {
+    "started": "Se inició la instalación de \"{{name}}\"",
+    "installError": "Ocurrió un error al iniciar la instalación.",
+    "uninstalled": "Se desinstaló \"{{name}}\"",
+    "uninstallError": "Ocurrió un error al desinstalar.",
+    "title": "Packs de creadores",
+    "subtitle": "Colecciones de videos de creadores para ver sin conexión",
+    "none": "No hay packs de creadores disponibles.",
+    "installTitle": "¿Instalar {{name}}?",
+    "installGeneric": "Instalar pack de creador",
+    "update": "Actualizar pack",
+    "install": "Instalar pack",
+    "installBody": "{{count}} videos de {{creator}}, unos {{size}}. Se descargará en segundo plano y aparecerá en Kiwix cuando esté listo.",
+    "license": "Contenido con licencia: solo para uso personal, no se puede redistribuir.",
+    "viewLicense": "Ver licencia",
+    "uninstallTitle": "¿Desinstalar {{name}}?",
+    "uninstallGeneric": "Desinstalar pack de creador",
+    "uninstall": "Desinstalar pack",
+    "uninstallBody": "Se eliminarán los videos descargados ({{size}}) de este NOMAD. Puedes volver a instalar el pack cuando quieras."
+  },
+  "gpu": {
+    "unknown": "Error desconocido",
+    "reinstallFailed": "La reinstalación forzada falló",
+    "reinstalling": "{{name}} se está reinstalando con soporte de GPU. La página se recargará en breve.",
+    "reinstallError": "No se pudo reinstalar: {{error}}",
+    "reinstallTitle": "¿Reinstalar {{name}}?",
+    "reinstall": "Reinstalar",
+    "reinstallBody": "Se volverá a crear el contenedor de {{name}} con soporte de GPU. Tus modelos descargados se conservan. El servicio no estará disponible por un momento durante la reinstalación.",
+    "amdMsg": "Tu equipo tiene una GPU AMD, pero {{name}} está funcionando solo con la CPU. Reinstalar no lo soluciona: la GPU{{target}} no está en la lista compatible de ROCm y necesita un ajuste manual de la versión GFX.",
+    "noAccessAmd": "Tu equipo tiene una GPU AMD, pero {{name}} no puede usarla. La IA está funcionando solo con la CPU, que es bastante más lenta.",
+    "noAccessNvidia": "Tu equipo tiene una GPU NVIDIA, pero {{name}} no puede usarla. La IA está funcionando solo con la CPU, que es bastante más lenta.",
+    "title": "{{name}} no puede acceder a la GPU",
+    "fixHsa": "Solucionar: ajustar versión GFX",
+    "fixReinstall": "Solucionar: reinstalar {{name}}",
+    "saveError": "No se pudo guardar el ajuste de GFX: {{error}}",
+    "hsaTitle": "Ajustar versión GFX de AMD",
+    "saveReinstall": "Guardar y reinstalar",
+    "hsaBody": "ROCm incluye kernels de GPU para una lista fija de chips AMD. Las GPU Radeon integradas que no están en esa lista funcionan con la CPU, salvo que ROCm las trate como un chip compatible, algo que se define con HSA_OVERRIDE_GFX_VERSION.",
+    "rdna2": "Radeon 680M / 660M y otras GPU integradas RDNA 2 (gfx1031 a gfx1036): 10.3.0",
+    "notReported": "Ollama no la informó",
+    "none": "ninguno",
+    "detected": "GPU detectada: {{gpu}}. Ajuste actual: {{current}}.",
+    "recommended": "Recomendado para esta GPU: {{value}}.",
+    "hsaLabel": "Ajuste de versión GFX",
+    "hsaHelp": "Al guardar se vuelve a crear el contenedor de {{name}} con este ajuste. Los modelos descargados se conservan."
+  },
+  "modelDownloads": {
+    "cancelTitle": "¿Cancelar descarga?",
+    "cancel": "Cancelar descarga",
+    "keep": "Seguir descargando",
+    "stopBody": "¿Dejar de descargar <m>{{model}}</m>?",
+    "stopNote": "Lo que ya se descargó queda en el disco. Si vuelves a descargar este modelo más adelante, seguirá desde donde quedó en lugar de empezar de cero.",
+    "title": "Descargas de modelos activas",
+    "cancelTip": "Cancelar descarga",
+    "none": "No hay descargas de modelos activas"
+  },
+  "embedJobs": {
+    "health": {
+      "waiting": {
+        "label": "En espera",
+        "aria": "La tarea está en cola esperando para empezar"
+      },
+      "healthy": {
+        "label": "Activa",
+        "aria": "La tarea se está procesando a ritmo normal"
+      },
+      "slow": {
+        "label": "Lenta",
+        "aria": "La tarea no avanzó en al menos 2 minutos"
+      },
+      "stalled": {
+        "label": "Detenida",
+        "aria": "La tarea no avanzó en al menos 5 minutos"
+      },
+      "failed": {
+        "label": "Fallida",
+        "aria": "La tarea falló"
+      }
+    },
+    "title": "Cola de procesamiento",
+    "lastActivity": "última actividad {{ago}}",
+    "chunks": "{{count}} fragmentos",
+    "none": "No se están procesando archivos en este momento",
+    "justNow": "recién"
+  },
+  "whatsNew": {
+    "notes": "Ver notas de la versión",
+    "v1_34": {
+      "title": "Novedades de la v1.34",
+      "h0": "Packs de creadores: instala packs de videos seleccionados de tus creadores favoritos y míralos sin conexión.",
+      "h1": "Guía de medicamentos: consulta sin conexión los prospectos de la FDA para obtener información rápida y confiable.",
+      "h2": "Puntuación de benchmark v2: un modelo de puntuación renovado, con telemetría en vivo durante la prueba y tu puntuación al final.",
+      "h3": "NOMAD.md: dale a tu asistente de IA instrucciones permanentes que sigue en cada conversación.",
+      "h4": "Colecciones de la base de conocimiento: agrupa por tema lo que busca el asistente para que las respuestas no se vayan del tema."
+    }
+  },
+  "kbGuard": {
+    "title": "Confirmar una indexación grande para la IA",
+    "proceed": "Continuar de todos modos",
+    "body": "Indexar este lote para el asistente de IA usará aproximadamente <s>{{size}}</s> de espacio en disco para los embeddings, además de las descargas originales.",
+    "free": "Es más del 10 % del espacio libre que te queda en el disco ({{free}} libres). Generar los embeddings puede tardar varias horas y es difícil interrumpirlo limpiamente una vez iniciado.",
+    "manual": "Si prefieres revisar cada elemento antes de indexar, cancela aquí y cambia el ajuste de indexación automática a <s>Manual</s> desde el panel de la base de conocimiento."
+  },
+  "linkTile": {
+    "saveFail": "No se pudo guardar este enlace.",
+    "addFail": "No se pudo agregar este enlace. Puede que ya exista uno con ese nombre.",
+    "editTitle": "Editar enlace",
+    "addTitle": "Agregar un enlace",
+    "add": "Agregar enlace",
+    "name": "Nombre",
+    "namePh": "NAS del living",
+    "opensAs": "Se abre como:",
+    "notSet": "todavía sin definir",
+    "desc": "Descripción (opcional)",
+    "descPh": "Fotos y copias de seguridad",
+    "icon": "Ícono",
+    "color": "Color",
+    "intro": "Agrega un acceso directo a algo que ya tienes funcionando, en este equipo o en cualquier otro lugar de tu red. NOMAD no lo administra: solo pone un botón en tu panel.",
+    "invalid": "Ingresa una URL válida, por ejemplo 192.168.1.50:8080 o https://nas.local.",
+    "outlined": "Los enlaces se muestran con borde y sin relleno, elijas el color que elijas, para distinguirlos de las apps que administra NOMAD.",
+    "colors": {
+      "green": "Verde",
+      "olive": "Oliva",
+      "orange": "Naranja",
+      "red": "Rojo",
+      "sand": "Arena",
+      "stone": "Piedra"
+    }
+  }
+}

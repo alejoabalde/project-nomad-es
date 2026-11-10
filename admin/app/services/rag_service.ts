@@ -2091,7 +2091,8 @@ export class RagService {
       const dirContents = await listDirectoryContentsRecursive(DOCS_DIR)
       for (const entry of dirContents) {
         if (entry.type === 'file') {
-          filesToEmbed.push({ path: entry.key, source: join('docs', entry.name) })
+          // Relative path keeps translated pages (docs/es/*.md) distinct from the English ones.
+          filesToEmbed.push({ path: entry.key, source: join('docs', relative(DOCS_DIR, entry.key)) })
         }
       }
 

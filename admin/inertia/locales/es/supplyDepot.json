@@ -1,0 +1,125 @@
+{
+  "categories": {
+    "all": "Todas",
+    "installed": "Instaladas",
+    "productivity": "Productividad",
+    "media": "Multimedia",
+    "security": "Seguridad",
+    "networking": "Redes",
+    "utility": "Utilidades",
+    "ai": "IA",
+    "education": "Educación",
+    "custom": "Personalizadas"
+  },
+  "errors": {
+    "install": "No se pudo iniciar la instalación.",
+    "reinstall": "No se pudo iniciar la reinstalación.",
+    "delete": "No se pudo eliminar la app.",
+    "uninstall": "No se pudo desinstalar la app.",
+    "updateApp": "No se pudo actualizar la app.",
+    "offlineCheck": "Necesitas conexión a internet para buscar actualizaciones.",
+    "dispatchCheck": "No se pudo iniciar la búsqueda de actualizaciones",
+    "checkUpdates": "No se pudieron buscar actualizaciones: {{error}}",
+    "unknown": "Error desconocido",
+    "updateService": "No se pudo actualizar el servicio.",
+    "autoUpdatePref": "No se pudo guardar la preferencia de actualización automática.",
+    "loadEdit": "No se pudo cargar esta app para editarla.",
+    "action_start": "No se pudo iniciar el servicio.",
+    "action_stop": "No se pudo detener el servicio.",
+    "action_restart": "No se pudo reiniciar el servicio."
+  },
+  "autoUpdate": {
+    "onNotice": "Las actualizaciones automáticas de {{app}} están activadas.",
+    "offNotice": "Las actualizaciones automáticas de {{app}} están desactivadas.",
+    "on": "Actualización automática: activada",
+    "off": "Actualización automática: desactivada",
+    "masterOff": "Actualizaciones automáticas apagadas: abrir Ajustes"
+  },
+  "working": "Procesando...",
+  "offline": "Sin conexión a internet. Es posible que no puedas descargar archivos.",
+  "title": "Depósito de suministros",
+  "subtitle": "Explora e instala apps seleccionadas, o agrega tus propias apps indicando una imagen de Docker.",
+  "search": "Buscar apps...",
+  "checkUpdates": "Buscar actualizaciones",
+  "addCustom": "Agregar app personalizada",
+  "noMatch": "Ninguna app coincide con tu filtro.",
+  "installedCount": "Instaladas ({{count}})",
+  "availableCount": "Disponibles ({{count}})",
+  "migrateTo2": "Cómo migrar el contenido a la 2.ª gen.",
+  "migrateFrom1": "Cómo migrar el contenido desde la 1.ª gen.",
+  "installModal": {
+    "bodyPort": "Se descargará e iniciará <b>{{app}}</b> en el puerto <b>{{port}}</b>.",
+    "body": "Se descargará e iniciará <b>{{app}}</b>."
+  },
+  "poweredBy": "Basada en {{name}}",
+  "checkingConflicts": "Buscando conflictos…",
+  "portInUse": "El puerto {{port}} ya está en uso",
+  "portUsedBy": "Lo está usando: {{usedBy}}. La instalación podría fallar.",
+  "resourceWarning": "Advertencia de recursos",
+  "installAnyway": "Entiendo, instalar de todos modos",
+  "startModal": {
+    "body": "Se iniciará el contenedor."
+  },
+  "stopModal": {
+    "body": "Se detendrá el contenedor. Tus datos se conservan."
+  },
+  "restartModal": {
+    "body": "El contenedor se detendrá un momento y se volverá a iniciar."
+  },
+  "reinstallModal": {
+    "confirm": "Borrar y reinstalar",
+    "warning": "Se borrarán todos los datos de la app y no se puede deshacer.",
+    "body": "Se eliminarán el contenedor y sus volúmenes, y luego comenzará una instalación nueva."
+  },
+  "deleteModal": {
+    "warning": "Se eliminará esta app personalizada de forma permanente.",
+    "body": "El contenedor se detendrá y se eliminará. Los datos de los volúmenes del equipo quedarán en el disco.",
+    "removeImage": "Eliminar también la imagen de Docker para liberar espacio en disco"
+  },
+  "uninstallModal": {
+    "warning": "Se quitará la app de este equipo.",
+    "body": "El contenedor se detendrá y se eliminará, y la app volverá al catálogo de abajo. Los datos de la app en la carpeta de almacenamiento quedan en el disco, así que al reinstalarla vuelve tal como estaba."
+  },
+  "status": {
+    "installing": "Instalando",
+    "running": "En ejecución",
+    "stopped": "Detenida"
+  },
+  "badge": {
+    "custom": "personalizada",
+    "modifiedTip": "Personalizaste esta app, así que las actualizaciones del catálogo no la sobrescribirán.",
+    "modified": "modificada",
+    "legacyTip": "Es una versión antigua que ya no se mantiene. Instala la Plataforma educativa actual desde el catálogo y luego desinstala esta.",
+    "legacy": "antigua"
+  },
+  "updateTo": "Actualizar a {{version}}",
+  "updateAvailable": "Actualización disponible",
+  "actions": {
+    "install": "Instalar",
+    "open": "Abrir",
+    "manage": "Administrar",
+    "docs": "Documentación",
+    "logs": "Registros",
+    "stats": "Estadísticas",
+    "edit": "Editar",
+    "setUrl": "Definir URL personalizada",
+    "pullLatest": "Actualizar (descargar la última)",
+    "start": "Iniciar",
+    "stop": "Detener",
+    "restart": "Reiniciar",
+    "delete": "Eliminar",
+    "uninstall": "Desinstalar",
+    "forceReinstall": "Forzar reinstalación"
+  },
+  "migrationInstructions": "Instrucciones de migración",
+  "inProgress": "En curso…",
+  "modalTitle": {
+    "install": "Instalar {{app}}",
+    "start": "Iniciar {{app}}",
+    "stop": "Detener {{app}}",
+    "restart": "Reiniciar {{app}}",
+    "delete": "Eliminar {{app}}",
+    "uninstall": "Desinstalar {{app}}",
+    "reinstall": "Forzar reinstalación de {{app}}"
+  }
+}

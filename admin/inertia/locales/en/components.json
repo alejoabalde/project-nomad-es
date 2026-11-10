@@ -1,0 +1,370 @@
+{
+  "status": {
+    "installed": "Installed",
+    "selected": "Selected",
+    "downloading": "Downloading",
+    "failed": "Failed"
+  },
+  "wikipedia": {
+    "subtitle": "Select your preferred Wikipedia package",
+    "downloading": "Downloading Wikipedia... This may take a while for larger packages.",
+    "failed": "Wikipedia download failed. Select a package and try again.",
+    "noDownload": "No download",
+    "remove": "Remove Wikipedia",
+    "downloadSelected": "Download Selected"
+  },
+  "category": {
+    "indexing": "indexing",
+    "downloading": "downloading",
+    "tiersAvailable_one": "{{count}} tier available",
+    "tiersAvailable_other": "{{count}} tiers available",
+    "clickToChoose": "Click to choose",
+    "sizeRange": "Size: {{min}} - {{max}}"
+  },
+  "collection": {
+    "allDownloaded": "All items downloaded",
+    "itemsAndSize": "Items: {{count}} | Size: {{size}}"
+  },
+  "storage": {
+    "title": "Storage",
+    "selectedSuffix": "(+{{size}} selected)",
+    "current": "Current ({{size}})",
+    "selected": "Selected (+{{size}})",
+    "exceeds": "Exceeds available space by {{size}}",
+    "remaining": "{{size}} will remain free"
+  },
+  "creatorPack": {
+    "install": "Install",
+    "videos_one": "{{count}} video",
+    "videos_other": "{{count}} videos",
+    "updateAvailable": "Update available",
+    "uninstall": "Uninstall pack"
+  },
+  "tiers": {
+    "intro": "Select a tier based on your storage capacity and needs. Higher tiers include all content from lower tiers.",
+    "includes": "(includes {{name}})",
+    "additionalResources_one": "{{count}} additional resource",
+    "additionalResources_other": "{{count}} additional resources",
+    "plusEverythingIn": "(plus everything in {{name}})",
+    "resourcesIncluded_one": "{{count}} resource included",
+    "resourcesIncluded_other": "{{count}} resources included",
+    "embedEstimate": "<strong>+~{{size}}</strong> of additional storage if these are indexed for the AI Assistant",
+    "embedEstimateUnknown": "(estimate excludes some files we have no prior data for)",
+    "autoIndexAlways": "Your <strong>Auto-index</strong> setting is <strong>Always</strong>, so these files will be indexed automatically once downloaded. You can change this in the Knowledge Base settings.",
+    "autoIndexManual": "Your <strong>Auto-index</strong> setting is <strong>Manual</strong>, so these files will sit unindexed until you opt in from the Knowledge Base settings.",
+    "changeAnyTime": "You can change your selection at any time. Click Submit to confirm your choice.",
+    "submit": "Submit"
+  },
+  "appUrl": {
+    "saveError": "Failed to save custom URL.",
+    "thisApp": "this app",
+    "title": "Set Custom URL",
+    "body": "Set where <b>{{app}}</b> opens from — useful if you reach it through a reverse proxy or local DNS. Leave this empty to use the default address ({{address}}).",
+    "hostPortN": "host + port {{port}}",
+    "hostPort": "host + port",
+    "label": "Custom URL",
+    "clear": "Clear",
+    "invalid": "Enter a valid http(s) address (e.g. https://jellyfin.myhomelab.net). A bare host like \"jellyfin.lan\" becomes http://jellyfin.lan.",
+    "noScheme": "No scheme? We'll default to <c>http://</c>.",
+    "opensAs": "Opens as:",
+    "default": "default"
+  },
+  "updateService": {
+    "loadError": "Failed to load available versions",
+    "title": "Update Service",
+    "confirm": "Update",
+    "question": "Update <b>{{app}}</b> from <c>{{from}}</c> to <c>{{to}}</c>?",
+    "preserved": "Your data and configuration will be preserved during the update.",
+    "viewNotes": "View release notes",
+    "hideVersions": "Hide available versions",
+    "showVersions": "Show available versions",
+    "loading": "Loading versions...",
+    "none": "No other versions available",
+    "latest": "Latest",
+    "notes": "Release notes",
+    "majorWarning": "It's not recommended to upgrade to a new major version (e.g. 1.8.2 → 2.0.0) unless you have verified compatibility with your current configuration. Always review the release notes and test in a staging environment if possible."
+  },
+  "serviceLogs": {
+    "loadError": "Unable to load logs for this container.",
+    "title": "Logs — {{app}}",
+    "refresh": "Refresh",
+    "empty": "No log output."
+  },
+  "loading": "Loading…",
+  "serviceStats": {
+    "title": "Stats — {{app}}",
+    "notRunning": "This app is not running. Start it to see live resource usage.",
+    "none": "No stats available.",
+    "memory": "Memory",
+    "interval": "Updates every 2 seconds."
+  },
+  "installFeed": {
+    "title": "Installation Activity"
+  },
+  "customApp": {
+    "categories": {
+      "custom": "Custom",
+      "productivity": "Productivity",
+      "media": "Media",
+      "security": "Security",
+      "networking": "Networking",
+      "utility": "Utility",
+      "ai": "AI",
+      "education": "Education"
+    },
+    "icons": {
+      "IconBrandDocker": "Docker (default)",
+      "IconBox": "Box",
+      "IconServer": "Server",
+      "IconDatabase": "Database",
+      "IconCode": "Code",
+      "IconTool": "Tool",
+      "IconWorld": "Web",
+      "IconShieldLock": "Security",
+      "IconMovie": "Media",
+      "IconBook": "Book",
+      "IconNotes": "Notes",
+      "IconCpu": "Compute",
+      "IconRobot": "AI / Bot",
+      "IconWifi": "Network",
+      "IconHome": "Home"
+    },
+    "errors": {
+      "required": "Name and image are required.",
+      "blocked": "Resolve the blocked issues before installing.",
+      "create": "Failed to create custom app.",
+      "unexpected": "Unexpected error creating custom app."
+    },
+    "editTitle": "Edit App",
+    "addTitle": "Add Custom App",
+    "saveRecreate": "Save & Recreate",
+    "install": "Install",
+    "image": "Docker Image",
+    "imagePh": "e.g. nginx:latest",
+    "name": "Display Name",
+    "namePh": "My App",
+    "category": "Category",
+    "categoryHelp": "Select the most relevant category for this app. This helps with visual organization and filtering.",
+    "icon": "Icon",
+    "iconHelp": "Pick an icon shown on the app card.",
+    "iconPreview": "Icon preview",
+    "ports": "Port Mappings",
+    "addPort": "Add Port",
+    "noPorts": "No port mappings — the app won't be accessible from a browser.",
+    "containerPort": "Container port",
+    "hostPort": "Host port (8600+)",
+    "portsHelp": "Host ports should be in the 8600+ range. Custom apps get ports starting at {{port}}.",
+    "checkingPorts": "Checking port availability…",
+    "volumes": "Volume Mounts",
+    "addVolume": "Add Volume",
+    "noVolumes": "No volumes — data won't persist across restarts.",
+    "hostPath": "Host path (absolute)",
+    "containerPath": "Container path",
+    "env": "Environment Variables",
+    "addEnv": "Add Variable",
+    "noEnv": "No environment variables provided.",
+    "limits": "Resource Limits (optional)",
+    "memoryPh": "Memory (MB) — default 1024",
+    "cpusPh": "CPUs — default 1",
+    "limitsHelp": "Caps prevent a runaway container from starving the host. Leave blank to use the defaults (1024 MB / 1 CPU).",
+    "notAllowed": "Not allowed",
+    "portInUse": "Port {{port}} is already in use",
+    "portUsedBy": "Currently bound by: {{usedBy}}. Installation may fail.",
+    "resourceWarning": "Resource warning",
+    "installAnyway": "I understand — install anyway",
+    "footer": "Containers are created with <c>--restart=unless-stopped</c>. Data is not persisted unless you add volume mounts above."
+  },
+  "countryPicker": {
+    "continents": {
+      "North America": "North America",
+      "South America": "South America",
+      "Europe": "Europe",
+      "Africa": "Africa",
+      "Asia": "Asia",
+      "Oceania": "Oceania",
+      "Other": "Other"
+    },
+    "estimateFailed": "Estimate failed",
+    "pickFirst": "Pick at least one country before downloading.",
+    "stillEstimating": "Still estimating size — hold on a moment.",
+    "downloadFailed": "Download failed",
+    "title": "Download map by country or region",
+    "start": "Start Download",
+    "search": "Search {{count}} countries...",
+    "clearAll": "Clear all",
+    "quickPicks": "Quick picks",
+    "noMatch": "No countries match \"{{search}}\".",
+    "installedTip": "Already downloaded — re-select to update with a different zoom",
+    "installed": "Installed",
+    "selected": "{{count}} selected",
+    "remove": "Remove {{name}}",
+    "maxZoom": "Max zoom level:",
+    "world": "world",
+    "street": "street",
+    "zoomHelp": "Lower zoom = smaller file, less detail. Zoom 15 shows individual streets; zoom 10 shows city-level detail.",
+    "estimating": "Estimating size…",
+    "estimate": "{{tiles}} tiles, ~{{size}}",
+    "sourceBuild": "source build {{date}}",
+    "pickToEstimate": "Pick at least one country to estimate size."
+  },
+  "downloadUrl": {
+    "running": "Running preflight check for URL: {{url}}",
+    "unknown": "An unknown error occurred during the preflight check.",
+    "passed": "Preflight check passed. Filename: {{name}}, Size: {{size}} MB",
+    "failed": "Preflight check failed: {{error}}",
+    "download": "Download",
+    "help": "Enter the URL of the map region file you wish to download. The URL must be publicly reachable and end with .pmtiles. A preflight check will be run to verify the file's availability, type, and approximate size.",
+    "placeholder": "Enter download URL..."
+  },
+  "zimUploader": {
+    "failed": "Upload failed",
+    "exists": "A ZIM file with that name already exists",
+    "oneWiki": "Only one Wikipedia file can be uploaded at a time",
+    "note": "ZIM files only. Large files (up to 20 GB) are supported. For best results, upload from the same machine or over a stable LAN connection. Larger files should be copied directly to the storage volume"
+  },
+  "downloads": {
+    "title": "Active Downloads",
+    "failedReason": "Download failed: {{reason}}",
+    "failed": "Download failed",
+    "dismiss": "Dismiss failed download",
+    "retryTip": "Retry download",
+    "retrying": "Retrying...",
+    "retry": "Retry",
+    "pageTip": "Open resource download page",
+    "page": "Download page",
+    "cancel": "Cancel download",
+    "waiting": "Waiting...",
+    "downloading": "Downloading...",
+    "stalled": "No data received for {{minutes}}m...",
+    "none": "No active downloads"
+  },
+  "creatorPacksSection": {
+    "started": "Started installing \"{{name}}\"",
+    "installError": "An error occurred while starting the install.",
+    "uninstalled": "Uninstalled \"{{name}}\"",
+    "uninstallError": "An error occurred while uninstalling.",
+    "title": "Creator Packs",
+    "subtitle": "Branded video collections from creators, for offline viewing",
+    "none": "No creator packs available.",
+    "installTitle": "Install {{name}}?",
+    "installGeneric": "Install Creator Pack",
+    "update": "Update pack",
+    "install": "Install pack",
+    "installBody": "{{count}} videos from {{creator}}, about {{size}}. It will download in the background and appear in Kiwix when ready.",
+    "license": "Licensed content — personal use, not for redistribution.",
+    "viewLicense": "View license",
+    "uninstallTitle": "Uninstall {{name}}?",
+    "uninstallGeneric": "Uninstall Creator Pack",
+    "uninstall": "Uninstall pack",
+    "uninstallBody": "This removes the downloaded videos ({{size}}) from this NOMAD. You can reinstall the pack anytime."
+  },
+  "gpu": {
+    "unknown": "Unknown error",
+    "reinstallFailed": "Force reinstall failed",
+    "reinstalling": "{{name}} is being reinstalled with GPU support. This page will reload shortly.",
+    "reinstallError": "Failed to reinstall: {{error}}",
+    "reinstallTitle": "Reinstall {{name}}?",
+    "reinstall": "Reinstall",
+    "reinstallBody": "This will recreate the {{name}} container with GPU support enabled. Your downloaded models will be preserved. The service will be briefly unavailable during reinstall.",
+    "amdMsg": "Your system has an AMD GPU, but {{name}} is running on CPU only. Reinstalling won't fix this: the GPU{{target}} isn't on ROCm's supported list and needs a GFX version override.",
+    "noAccessAmd": "Your system has an AMD GPU, but {{name}} can't access it. AI is running on CPU only, which is significantly slower.",
+    "noAccessNvidia": "Your system has an NVIDIA GPU, but {{name}} can't access it. AI is running on CPU only, which is significantly slower.",
+    "title": "GPU Not Accessible to {{name}}",
+    "fixHsa": "Fix: Set GFX Override",
+    "fixReinstall": "Fix: Reinstall {{name}}",
+    "saveError": "Failed to save the GFX override: {{error}}",
+    "hsaTitle": "Set AMD GFX Override",
+    "saveReinstall": "Save and Reinstall",
+    "hsaBody": "ROCm ships GPU kernels for a fixed list of AMD chips. Integrated Radeon GPUs outside that list run on CPU unless ROCm treats them as a supported chip, set through HSA_OVERRIDE_GFX_VERSION.",
+    "rdna2": "Radeon 680M / 660M and other RDNA 2 iGPUs (gfx1031 to gfx1036): 10.3.0",
+    "notReported": "not reported by Ollama",
+    "none": "none",
+    "detected": "Detected GPU: {{gpu}}. Current override: {{current}}.",
+    "recommended": "Recommended for this GPU: {{value}}.",
+    "hsaLabel": "GFX version override",
+    "hsaHelp": "Saving recreates the {{name}} container with this override. Downloaded models are preserved."
+  },
+  "modelDownloads": {
+    "cancelTitle": "Cancel Download?",
+    "cancel": "Cancel Download",
+    "keep": "Keep Downloading",
+    "stopBody": "Stop downloading <m>{{model}}</m>?",
+    "stopNote": "Any data already downloaded will remain on disk. If you re-download this model later, it will resume from where it left off rather than starting over.",
+    "title": "Active Model Downloads",
+    "cancelTip": "Cancel download",
+    "none": "No active model downloads"
+  },
+  "embedJobs": {
+    "health": {
+      "waiting": {
+        "label": "Waiting",
+        "aria": "Job is queued and waiting to start"
+      },
+      "healthy": {
+        "label": "Active",
+        "aria": "Job is embedding at a normal rate"
+      },
+      "slow": {
+        "label": "Slow",
+        "aria": "Job has not made progress for at least 2 minutes"
+      },
+      "stalled": {
+        "label": "Stalled",
+        "aria": "Job has not made progress for at least 5 minutes"
+      },
+      "failed": {
+        "label": "Failed",
+        "aria": "Job failed"
+      }
+    },
+    "title": "Processing Queue",
+    "lastActivity": "last activity {{ago}}",
+    "chunks": "{{count}} chunks",
+    "none": "No files are currently being processed",
+    "justNow": "just now"
+  },
+  "whatsNew": {
+    "notes": "See release notes",
+    "v1_34": {
+      "title": "What's new in v1.34",
+      "h0": "Creator Packs - install curated video packs from your favorite creators and watch them fully offline.",
+      "h1": "Medication Reference - offline FDA drug-label lookup for quick, reliable medication information.",
+      "h2": "Benchmark Score v2 - a rebuilt scoring model, with live telemetry while the test runs and your score revealed at the end.",
+      "h3": "NOMAD.md - give your AI assistant standing instructions it follows in every conversation.",
+      "h4": "Knowledge Base collections - group what the assistant searches by subject, so answers stay on topic."
+    }
+  },
+  "kbGuard": {
+    "title": "Confirm large AI indexing operation",
+    "proceed": "Proceed anyway",
+    "body": "Indexing this batch for the AI Assistant will use approximately <s>{{size}}</s> of disk space for embeddings, on top of the raw downloads.",
+    "free": "That's more than 10% of your remaining free disk space ({{free}} free). Embedding can take several hours and is hard to interrupt cleanly once started.",
+    "manual": "If you'd rather review per-item before indexing, cancel here and switch your Auto-index setting to <s>Manual</s> from the Knowledge Base panel."
+  },
+  "linkTile": {
+    "saveFail": "Failed to save this link.",
+    "addFail": "Failed to add this link. A link with that name may already exist.",
+    "editTitle": "Edit Link",
+    "addTitle": "Add a Link",
+    "add": "Add Link",
+    "name": "Name",
+    "namePh": "Living room NAS",
+    "opensAs": "Opens as:",
+    "notSet": "not set yet",
+    "desc": "Description (optional)",
+    "descPh": "Photos and backups",
+    "icon": "Icon",
+    "color": "Color",
+    "intro": "Add a shortcut to something you already run, on this machine or anywhere else on your network. NOMAD does not manage it, it just puts a button on your dashboard.",
+    "invalid": "Enter a valid URL, for example 192.168.1.50:8080 or https://nas.local.",
+    "outlined": "Links stay outlined rather than filled whichever color you pick, so they are distinguishable from apps NOMAD manages.",
+    "colors": {
+      "green": "Green",
+      "olive": "Olive",
+      "orange": "Orange",
+      "red": "Red",
+      "sand": "Sand",
+      "stone": "Stone"
+    }
+  }
+}

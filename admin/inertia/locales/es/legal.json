@@ -1,0 +1,53 @@
+{
+  "headTitle": "Avisos legales",
+  "title": "Avisos legales",
+  "license": {
+    "title": "Licencia",
+    "copyright": "Copyright 2024-2026 Crosstalk Solutions, LLC",
+    "p1": "Con licencia Apache, versión 2.0 (la «Licencia»); no puedes usar este archivo salvo en cumplimiento de la Licencia. Puedes obtener una copia de la Licencia en",
+    "p2": "Salvo que lo exija la ley aplicable o se acuerde por escrito, el software distribuido bajo la Licencia se distribuye «TAL CUAL», SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas. Consulta la Licencia para conocer el texto específico que rige los permisos y las limitaciones de la Licencia.",
+    "unofficial": "Esta es una traducción no oficial, solo a modo informativo. El texto que tiene validez legal es el original en inglés de la Licencia Apache 2.0."
+  },
+  "thirdParty": {
+    "title": "Software de terceros",
+    "intro": "Project NOMAD™ integra los siguientes proyectos de código abierto. Agradecemos a sus desarrolladores y comunidades:",
+    "kiwix": "Lector de Wikipedia y otros contenidos sin conexión (licencia GPL-3.0)",
+    "kolibri": "Plataforma de aprendizaje sin conexión de Learning Equality (licencia MIT)",
+    "ollama": "Motor local de modelos de lenguaje grandes (licencia MIT)",
+    "cyberchef": "Herramientas de análisis y codificación de datos del GCHQ (licencia Apache 2.0)",
+    "flatnotes": "Aplicación de notas autoalojada (licencia MIT)",
+    "qdrant": "Motor de búsqueda vectorial para la base de conocimiento de la IA (licencia Apache 2.0)"
+  },
+  "privacy": {
+    "title": "Privacidad",
+    "intro": "Project NOMAD está diseñado con la privacidad como principio fundamental:",
+    "b1": "<s>Cero telemetría:</s> NOMAD no recopila, transmite ni almacena datos de uso, analíticas ni telemetría.",
+    "b2": "<s>Todo local:</s> todos tus datos, el contenido descargado, las conversaciones con la IA y las notas se quedan en tu equipo.",
+    "b3": "<s>Sin cuentas:</s> por defecto, NOMAD funciona sin cuentas de usuario ni autenticación.",
+    "b4": "<s>Red opcional:</s> solo necesitas conexión a internet para descargar contenido o actualizaciones. Todas las funciones instaladas funcionan completamente sin conexión."
+  },
+  "content": {
+    "title": "Aviso sobre el contenido",
+    "p1": "Project NOMAD ofrece herramientas para descargar y consultar contenido de fuentes de terceros, como Wikipedia, Wikilibros, referencias médicas, plataformas educativas y otros recursos de acceso público.",
+    "p2": "Crosstalk Solutions, LLC no crea, controla, verifica ni garantiza la exactitud, integridad o confiabilidad del contenido de terceros. Incluir un contenido no implica respaldarlo.",
+    "p3": "Cada usuario es responsable de evaluar si el contenido que descarga y usa es adecuado y exacto."
+  },
+  "medical": {
+    "title": "Aviso sobre información médica y de emergencias",
+    "p1": "Parte del contenido disponible en NOMAD incluye referencias médicas, guías de primeros auxilios e información para prepararse ante emergencias. Este contenido se ofrece solo con fines informativos generales.",
+    "p2": "Esta información NO reemplaza el consejo, el diagnóstico ni el tratamiento de un profesional de la salud.",
+    "b1": "Ante cualquier duda sobre una condición médica, consulta siempre a un profesional de la salud calificado.",
+    "b2": "Nunca ignores el consejo de un profesional ni demores en buscarlo por algo que leíste en un contenido sin conexión.",
+    "b3": "En una emergencia médica, llama de inmediato a los servicios de emergencia si están disponibles.",
+    "b4": "La información médica puede quedar desactualizada. Cuando sea posible, verifica la información crítica con fuentes profesionales actuales."
+  },
+  "storage": {
+    "title": "Almacenamiento de datos",
+    "intro": "Todos los datos de Project NOMAD se guardan localmente en tu equipo:",
+    "install": "Carpeta de instalación:",
+    "downloaded": "Contenido descargado:",
+    "appData": "Datos de la aplicación:",
+    "appDataValue": "Se guardan en volúmenes de Docker en tu sistema local",
+    "outro": "Tienes control total sobre tus datos. Si desinstalas NOMAD o borras estas carpetas, se eliminan para siempre todos los datos asociados."
+  }
+}

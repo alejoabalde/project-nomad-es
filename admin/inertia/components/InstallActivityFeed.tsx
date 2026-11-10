@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { IconCircleCheck, IconCircleX } from '@tabler/icons-react'
 import classNames from '~/lib/classNames'
+import { useTranslation } from 'react-i18next'
 
 export type InstallActivityFeedProps = {
   activity: Array<{
@@ -46,6 +47,7 @@ export type InstallActivityFeedProps = {
 
 const InstallActivityFeed: React.FC<InstallActivityFeedProps> = ({ activity, className, withHeader = false }) => {
   const listRef = useRef<HTMLUListElement>(null)
+  const { t } = useTranslation('components')
 
   useEffect(() => {
     if (listRef.current) {
@@ -55,7 +57,7 @@ const InstallActivityFeed: React.FC<InstallActivityFeedProps> = ({ activity, cla
 
   return (
     <div className={classNames('bg-surface-primary shadow-sm rounded-lg p-6', className)}>
-      {withHeader && <h2 className="text-lg font-semibold text-text-primary">Installation Activity</h2>}
+      {withHeader && <h2 className="text-lg font-semibold text-text-primary">{t('installFeed.title')}</h2>}
       <ul ref={listRef} role="list" className={classNames("space-y-6 text-desert-green max-h-[400px] overflow-y-auto scroll-smooth", withHeader ? 'mt-6' : '')}>
         {activity.map((activityItem, activityItemIdx) => (
           <li key={activityItem.timestamp} className="relative flex gap-x-4">

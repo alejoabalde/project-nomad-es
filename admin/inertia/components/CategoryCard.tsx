@@ -3,6 +3,8 @@ import DynamicIcon, { DynamicIconName } from './DynamicIcon'
 import type { CategoryWithStatus, SpecTier } from '../../types/collections'
 import classNames from 'classnames'
 import { IconChevronRight, IconCircleCheck, IconLoader2 } from '@tabler/icons-react'
+import { useTranslation } from 'react-i18next'
+import { useCollectionText } from '~/lib/collection_i18n'
 
 export interface CategoryCardProps {
   category: CategoryWithStatus
@@ -11,6 +13,8 @@ export interface CategoryCardProps {
 }
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onClick }) => {
+  const { t } = useTranslation('components')
+  const tc = useCollectionText()
   // Calculate total size range across all tiers
   const getTierTotalSize = (tier: SpecTier, allTiers: SpecTier[]): number => {
     let total = tier.resources.reduce((acc, r) => acc + r.size_mb * 1024 * 1024, 0)
@@ -64,7 +68,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onC
         <div className="flex justify-between w-full items-center">
           <div className="flex items-center">
             <DynamicIcon icon={category.icon as DynamicIconName} className="w-6 h-6 mr-2" />
-            <h3 className="text-lg font-semibold">{category.name}</h3>
+            <h3 className="text-lg font-semibold">{tc(category.name)}</h3>
           </div>
           {badgeTier ? (
             <div className="flex items-center">
@@ -74,9 +78,9 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onC
                 <IconCircleCheck className="w-5 h-5 text-lime-400" />
               )}
               <span className="text-lime-400 text-sm ml-1">
-                {badgeTier.name}
+                {tc(badgeTier.name)}
                 {badgeStatus === 'downloading' &&
-                  (category.downloadingTierIndexing ? ' (indexing)' : ' (downloading)')}
+                  (category.downloadingTierIndexing ? ` (${t('category.indexing')})` : ` (${t('category.downloading')})`)}
               </span>
             </div>
           ) : (
@@ -85,13 +89,13 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onC
         </div>
       </div>
 
-      <p className="text-gray-200 grow">{category.description}</p>
+      <p className="text-gray-200 grow">{tc(category.description)}</p>
 
       <div className="mt-4 pt-4 border-t border-white/20">
         <p className="text-sm text-gray-300 mb-2">
-          {category.tiers.length} tiers available
+          {t('category.tiersAvailable', { count: category.tiers.length })}
           {!highlightedTierSlug && (
-            <span className="text-gray-400"> - Click to choose</span>
+            <span className="text-gray-400"> - {t('category.clickToChoose')}</span>
           )}
         </p>
         <div className="flex flex-wrap gap-2">
@@ -108,13 +112,13 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, selectedTier, onC
                   selectedTier?.slug === tier.slug && 'ring-2 ring-lime-400'
                 )}
               >
-                {tier.name}
+                {tc(tier.name)}
               </span>
             )
           })}
         </div>
         <p className="text-gray-300 text-xs mt-3">
-          Size: {formatBytes(minSize, 1)} - {formatBytes(maxSize, 1)}
+          {t('category.sizeRange', { min: formatBytes(minSize, 1), max: formatBytes(maxSize, 1) })}
         </p>
       </div>
     </div>

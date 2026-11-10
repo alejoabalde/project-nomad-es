@@ -3,6 +3,7 @@ import Uppy from '@uppy/core'
 import '@uppy/core/css/style.min.css'
 import '@uppy/dashboard/css/style.min.css'
 import { useUppyEvent } from '@uppy/react'
+import { useUppyLocale } from '~/lib/uppy_locale'
 import Dashboard from '@uppy/react/dashboard'
 import classNames from 'classnames'
 import './index.css' // Custom styles for the uploader
@@ -48,6 +49,8 @@ const FileUploader = forwardRef<FileUploaderRef, FileUploaderProps>((props, ref)
     })
     return uppy
   })
+
+  useUppyLocale(uppy)
 
   useImperativeHandle(ref, () => ({
     clear: () => {

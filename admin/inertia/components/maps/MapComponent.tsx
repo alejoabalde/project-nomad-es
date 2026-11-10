@@ -20,6 +20,7 @@ import CoordinateOverlay from './CoordinateOverlay'
 import ViewMapMarkerPopup from './ViewMapMarkerPopup'
 import MapMarkerFormPopup from './MapMarkerFormPopup'
 import ScaleUnitToggle from './ScaleUnitSelector'
+import i18n from '~/i18n'
 
 type ScaleUnit = 'imperial' | 'metric' | 'nautical'
 
@@ -130,6 +131,33 @@ const isValidMarkerCoordinate = (marker: { longitude: number; latitude: number }
   marker.longitude <= 180 &&
   marker.latitude >= -90 &&
   marker.latitude <= 90
+/** Spanish strings for MapLibre's built-in controls (tooltips, scale units). */
+const MAPLIBRE_LOCALE_ES = {
+  'AttributionControl.ToggleAttribution': 'Mostrar u ocultar atribución',
+  'AttributionControl.MapFeedback': 'Comentarios sobre el mapa',
+  'FullscreenControl.Enter': 'Pantalla completa',
+  'FullscreenControl.Exit': 'Salir de pantalla completa',
+  'GeolocateControl.FindMyLocation': 'Buscar mi ubicación',
+  'GeolocateControl.LocationNotAvailable': 'Ubicación no disponible',
+  'LogoControl.Title': 'Logo de MapLibre',
+  'Map.Title': 'Mapa',
+  'Marker.Title': 'Marcador del mapa',
+  'NavigationControl.ResetBearing': 'Restablecer orientación al norte',
+  'NavigationControl.ZoomIn': 'Acercar',
+  'NavigationControl.ZoomOut': 'Alejar',
+  'Popup.Close': 'Cerrar ventana',
+  'ScaleControl.Feet': 'ft',
+  'ScaleControl.Meters': 'm',
+  'ScaleControl.Kilometers': 'km',
+  'ScaleControl.Miles': 'mi',
+  'ScaleControl.NauticalMiles': 'mn',
+  'TerrainControl.Enable': 'Activar relieve',
+  'TerrainControl.Disable': 'Desactivar relieve',
+  'CooperativeGesturesHandler.WindowsHelpText': 'Usa Ctrl + rueda del mouse para hacer zoom en el mapa',
+  'CooperativeGesturesHandler.MacHelpText': 'Usa ⌘ + rueda del mouse para hacer zoom en el mapa',
+  'CooperativeGesturesHandler.MobileHelpText': 'Usa dos dedos para mover el mapa',
+}
+
 export default function MapComponent({
                                        mapCommand,
                                        isHoveringUI = false,
@@ -188,7 +216,7 @@ export default function MapComponent({
 
   const confirmDiscardMarkerChanges = useCallback(() => {
     if (!hasUnsavedMarkerChanges) return true
-    return window.confirm('Discard unsaved marker changes?')
+    return window.confirm(i18n.t('maps:marker.discard'))
   }, [hasUnsavedMarkerChanges])
 
   useEffect(() => {
@@ -368,6 +396,7 @@ export default function MapComponent({
           cursor={isDraggingMap ? 'grabbing' : 'crosshair'}
           mapStyle={`${window.location.protocol}//${window.location.hostname}:${window.location.port}/api/maps/styles`}
           mapLib={maplibregl}
+          locale={i18n.language?.startsWith('es') ? MAPLIBRE_LOCALE_ES : undefined}
           initialViewState={initialViewState}
           onMoveEnd={(e) => {
             // Persist the view so a refresh restores where the user was, not the default.

@@ -1,11 +1,13 @@
 import classNames from '~/lib/classNames'
 import StyledButton from '../StyledButton'
-import { router, usePage } from '@inertiajs/react'
+import { router } from '@inertiajs/react'
 import { ChatSession } from '../../../types/chat'
 import { IconMessage } from '@tabler/icons-react'
 import { useState } from 'react'
 import KnowledgeBaseModal from './KnowledgeBaseModal'
 import NomadMdModal from './NomadMdModal'
+import { useAssistantName } from '~/lib/assistant_name'
+import { useTranslation } from 'react-i18next'
 
 interface ChatSidebarProps {
   sessions: ChatSession[]
@@ -28,7 +30,8 @@ export default function ChatSidebar({
   isMobileOpen = false,
   onMobileClose,
 }: ChatSidebarProps) {
-  const { aiAssistantName } = usePage<{ aiAssistantName: string }>().props
+  const aiAssistantName = useAssistantName()
+  const { t } = useTranslation('chat')
   const [isKnowledgeBaseModalOpen, setIsKnowledgeBaseModalOpen] = useState(
     () => new URLSearchParams(window.location.search).get('knowledge_base') === 'true'
   )
@@ -52,7 +55,7 @@ export default function ChatSidebar({
         'fixed inset-y-0 left-0 z-50 md:static md:z-auto md:flex',
         isMobileOpen ? 'flex' : 'hidden'
       )}
-      aria-label="Chat conversations"
+      aria-label={t('s.conversations')}
     >
       <div className="p-4 border-b border-border-subtle h-[75px] flex items-center justify-center">
         <StyledButton
@@ -64,13 +67,13 @@ export default function ChatSidebar({
           variant="primary"
           fullWidth
         >
-          New Chat
+          {t('c.newChat')}
         </StyledButton>
       </div>
 
       <div className="flex-1 overflow-y-auto">
         {sessions.length === 0 ? (
-          <div className="p-4 text-center text-text-muted text-sm">No previous chats</div>
+          <div className="p-4 text-center text-text-muted text-sm">{t('s.none')}</div>
         ) : (
           <div className="p-2 space-y-1">
             {sessions.map((session) => (
@@ -127,7 +130,7 @@ export default function ChatSidebar({
           size="sm"
           fullWidth
         >
-          {isInModal ? 'Open Full Chat' : 'Back to Home'}
+          {isInModal ? t('s.openFull') : t('s.backHome')}
         </StyledButton>
         <StyledButton
           onClick={() => {
@@ -138,7 +141,7 @@ export default function ChatSidebar({
           size="sm"
           fullWidth
         >
-          Models & Settings
+          {t('s.models')}
         </StyledButton>
         <StyledButton
           onClick={() => {
@@ -149,7 +152,7 @@ export default function ChatSidebar({
           size="sm"
           fullWidth
         >
-          Knowledge Base
+          {t('s.kb')}
         </StyledButton>
         <StyledButton
           onClick={() => {
@@ -170,7 +173,7 @@ export default function ChatSidebar({
             size="sm"
             fullWidth
           >
-            Clear History
+            {t('s.clear')}
           </StyledButton>
         )}
       </div>

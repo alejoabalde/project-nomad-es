@@ -1,0 +1,53 @@
+{
+  "spec_version": "2026-11-10",
+  "options": [
+    {
+      "id": "none",
+      "name": "Sin Wikipedia",
+      "description": "No instalar Wikipedia",
+      "size_mb": 0,
+      "url": null,
+      "version": null
+    },
+    {
+      "id": "es-top-nopic",
+      "name": "Lo mejor de Wikipedia",
+      "description": "Los 50.000 mejores artículos de Wikipedia en español, sin imágenes. Ideal para consultas rápidas.",
+      "size_mb": 1209,
+      "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_top_nopic_2026-10.zim",
+      "version": "2026-10"
+    },
+    {
+      "id": "es-top-maxi",
+      "name": "Lo mejor de Wikipedia (con imágenes)",
+      "description": "Los 50.000 mejores artículos, con todas sus imágenes.",
+      "size_mb": 4066,
+      "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_top_maxi_2026-10.zim",
+      "version": "2026-10"
+    },
+    {
+      "id": "es-all-mini",
+      "name": "Wikipedia completa (compacta)",
+      "description": "Todos los artículos de Wikipedia en español, resumidos a su introducción.",
+      "size_mb": 4114,
+      "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_all_mini_2026-10.zim",
+      "version": "2026-10"
+    },
+    {
+      "id": "es-all-nopic",
+      "name": "Wikipedia completa (sin imágenes)",
+      "description": "Todos los artículos completos, sin imágenes. Una referencia completa sin conexión.",
+      "size_mb": 13298,
+      "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_all_nopic_2026-10.zim",
+      "version": "2026-10"
+    },
+    {
+      "id": "es-all-maxi",
+      "name": "Wikipedia completa (con todo)",
+      "description": "La experiencia completa, con todas las imágenes y archivos multimedia.",
+      "size_mb": 36517,
+      "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_all_maxi_2026-10.zim",
+      "version": "2026-10"
+    }
+  ]
+}
