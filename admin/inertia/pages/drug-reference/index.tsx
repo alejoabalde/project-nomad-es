@@ -8,6 +8,7 @@ import IngredientGroup, { type IngredientGrouping } from '~/components/drug-refe
 import DrugDisclaimerModal, { hasAcknowledgedDrugDisclaimer } from '~/components/drug-reference/DrugDisclaimerModal'
 import IngestStatus from '~/components/drug-reference/IngestStatus'
 import AempsData from '~/components/drug-reference/AempsData'
+import ArBrands from '~/components/drug-reference/ArBrands'
 import SafetyBanner from '~/components/conditions/SafetyBanner'
 import RemedySafetyNote from '~/components/conditions/RemedySafetyNote'
 import {
@@ -667,6 +668,19 @@ t('idx.restartConfirm')
                     components={{ b: <button className="font-semibold text-desert-green underline" onClick={() => setTabIndex(1)} /> }}
                   />
                 </div>
+              )}
+
+              {/* Fork: Argentine brands → Spanish leaflets of the same ingredients */}
+              {source === 'aemps' && drugSearched && (
+                <ArBrands
+                  query={query}
+                  className="mb-6"
+                  onPick={(ingredientes) => {
+                    const q = ingredientes.join(' ')
+                    setQuery(q)
+                    runDrugSearch(q, productType, route, sort)
+                  }}
+                />
               )}
 
               {ingredientGroups.length > 0 && (

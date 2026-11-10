@@ -21,7 +21,16 @@ export const AEMPS_PACKAGE_URL =
   process.env.NOMAD_AEMPS_PACKAGE_URL ||
   'https://github.com/alejoabalde/project-nomad-es/releases/download/aemps-prospectos/aemps-prospectos.jsonl.gz'
 
-export type AempsJobPhase = 'downloading' | 'importing' | 'done'
+/**
+ * Argentine brands (ANMAT Vademécum Nacional), built by
+ * tools/anmat/vnm_extract.py and published next to the leaflets. Optional: if
+ * it is missing the leaflets still install.
+ */
+export const ANMAT_PACKAGE_URL =
+  process.env.NOMAD_ANMAT_PACKAGE_URL ||
+  'https://github.com/alejoabalde/project-nomad-es/releases/download/aemps-prospectos/anmat-vnm.jsonl.gz'
+
+export type AempsJobPhase = 'downloading' | 'importing' | 'brands' | 'done'
 
 export interface AempsJobData {
   phase?: AempsJobPhase
@@ -129,6 +138,27 @@ export class ImportAempsDataJob {
 
     // The rows are in the database; the package is not needed on disk anymore.
     await rm(filepath, { force: true })
+
+    // 3) Argentine brands (optional).
+    await job.updateData({ phase: 'brands', imported: result.imported, startedAt } satisfies AempsJobData)
+    const brandsPath = path.join(AEMPS_STORAGE_BASE, 'anmat-vnm.jsonl.gz')
+    try {
+      await doResumableDownload({
+        url: ANMAT_PACKAGE_URL,
+        filepath: brandsPath,
+        timeout: 60000,
+        allowedMimeTypes: [],
+      })
+      const { AnmatBrandService } = await import('#services/anmat_brand_service')
+      await new AnmatBrandService().importFile(brandsPath)
+    } catch (err) {
+      logger.warn(
+        `[ImportAempsDataJob] Argentine brands not installed: ${err instanceof Error ? err.message : String(err)}`
+      )
+    } finally {
+      await rm(brandsPath, { force: true })
+      await rm(brandsPath + '.tmp', { force: true })
+    }
     await job.updateData({ phase: 'done', imported: result.imported, startedAt } satisfies AempsJobData)
     logger.info(`[ImportAempsDataJob] done: ${result.imported} leaflets`)
     return result

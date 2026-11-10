@@ -334,4 +334,17 @@ export default class DrugReferenceController {
       return response.conflict({ error: msg })
     }
   }
+
+  /** GET /api/drug-reference/ar-brands?q= — Argentine brands (ANMAT) matching q. */
+  async arBrands({ request, response }: HttpContext) {
+    const q = String(request.input('q', '')).trim().slice(0, 80)
+    try {
+      const { AnmatBrandService } = await import('#services/anmat_brand_service')
+      return { results: await new AnmatBrandService().search(q) }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      logger.warn(`[DrugReferenceController] ar-brands failed: ${msg}`)
+      return response.badRequest({ error: msg })
+    }
+  }
 }

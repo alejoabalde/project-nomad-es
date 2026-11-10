@@ -901,6 +901,10 @@ router
       summary: 'Remove the AEMPS Spanish leaflets',
       tags: ['drug-reference'],
     })
+    documented(router.get('/ar-brands', [DrugReferenceController, 'arBrands']), {
+      summary: 'Find Argentine brands (ANMAT) and their active ingredients',
+      tags: ['drug-reference'],
+    })
   })
   .prefix('/api/drug-reference')
 

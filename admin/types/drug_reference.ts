@@ -270,9 +270,25 @@ export interface DrugIngestStatus {
 export interface AempsDataStatus {
   phase: 'idle' | 'downloading' | 'importing' | 'ready' | 'failed'
   rowCount: number
+  /** Argentine presentations (ANMAT) installed alongside the leaflets. */
+  brandCount: number
   packageDate: string | null
   bytesDownloaded?: number
   totalBytes?: number
   imported?: number
   error?: string
+}
+
+/**
+ * Fork (project-nomad-es): an Argentine brand (ANMAT Vademécum Nacional) that
+ * matches a search, with its active ingredients in AEMPS naming and how many
+ * Spanish leaflets cover them.
+ */
+export interface ArBrandResult {
+  nombre_comercial: string
+  laboratorio: string | null
+  generico: string | null
+  ingredientes: string[]
+  presentaciones: number
+  prospectos: number
 }

@@ -131,24 +131,28 @@ export class AempsDrugImportService {
       }
     }
     const removed = await this.removeAll()
+    const { AnmatBrandService } = await import('#services/anmat_brand_service')
+    await new AnmatBrandService().removeAll().catch(() => {})
     await KVStore.clearValue('drugReference.aempsPackageDate')
     return removed
   }
 
   async getStatus(): Promise<AempsDataStatus> {
-    const [job, rowCount, packageDate] = await Promise.all([
+    const { AnmatBrandService } = await import('#services/anmat_brand_service')
+    const [job, rowCount, packageDate, brandCount] = await Promise.all([
       ImportAempsDataJob.getJob().catch(() => undefined),
       this.rowCount(),
       KVStore.getValue('drugReference.aempsPackageDate'),
+      new AnmatBrandService().rowCount(),
     ])
-    const base = { rowCount, packageDate: packageDate ?? null }
+    const base = { rowCount, brandCount, packageDate: packageDate ?? null }
     const state = job ? await job.getState() : undefined
     const data = (job?.data ?? {}) as AempsJobData
 
     if (state === 'active' || state === 'waiting' || state === 'delayed') {
       return {
         ...base,
-        phase: data.phase === 'importing' ? 'importing' : 'downloading',
+        phase: data.phase === 'importing' || data.phase === 'brands' ? 'importing' : 'downloading',
         bytesDownloaded: data.bytesDownloaded,
         totalBytes: data.totalBytes,
         imported: data.imported,

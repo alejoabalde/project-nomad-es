@@ -247,5 +247,13 @@
     "ready": "{{count}} prospectos instalados (paquete del {{date}}).",
     "readyNoDate": "{{count}} prospectos instalados.",
     "notInstalled": "Todavía no están instalados."
+  },
+  "ar": {
+    "title": "Marcas de Argentina",
+    "help": "Los nombres comerciales cambian de un país a otro. Estas marcas argentinas coinciden con tu búsqueda; elige una para ver los prospectos en español de sus principios activos.",
+    "see_one": "Ver {{n}} prospecto",
+    "see_other": "Ver {{n}} prospectos",
+    "none": "Sin prospecto en español",
+    "source": "Marcas y principios activos: Vademécum Nacional de Medicamentos (ANMAT). Los prospectos son de la AEMPS (España); pueden diferir en dosis o presentación del producto argentino."
   }
 }
