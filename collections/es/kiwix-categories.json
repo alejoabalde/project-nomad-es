@@ -71,7 +71,7 @@
       "name": "Supervivencia y preparación",
       "slug": "survival",
       "icon": "IconShieldCheck",
-      "description": "Preparación para emergencias, planes de evacuación y técnicas de supervivencia. Lo que no existe en español se completa con contenido en inglés.",
+      "description": "Preparación para emergencias, planes de evacuación y técnicas de supervivencia para situaciones de crisis.",
       "language": "es",
       "tiers": [
         {
@@ -224,7 +224,7 @@
       "name": "Educación y referencia",
       "slug": "education",
       "icon": "IconSchool",
-      "description": "Enciclopedias, libros, diccionarios, simulaciones y videos educativos en español para aprender por tu cuenta.",
+      "description": "Enciclopedias, libros, diccionarios y videos educativos en español para aprender por tu cuenta.",
       "language": "es",
       "tiers": [
         {
@@ -329,7 +329,7 @@
       "name": "Hazlo tú mismo y reparaciones",
       "slug": "diy",
       "icon": "IconTool",
-      "description": "Arréglalo tú mismo: guías de reparación, mejoras para el hogar, carpintería y mantenimiento de vehículos. Lo que no existe en español se completa con contenido en inglés.",
+      "description": "Arréglalo tú mismo: guías de reparación, mejoras para el hogar, carpintería y vehículos.",
       "language": "es",
       "tiers": [
         {
@@ -402,7 +402,7 @@
       "name": "Agricultura y alimentos",
       "slug": "agriculture",
       "icon": "IconPlant",
-      "description": "Cultiva y prepara tu propia comida: huerta, técnicas de cocina y conservación de alimentos. Por ahora no hay contenido en español, así que esta colección está en inglés.",
+      "description": "Huerta, cocina y conservación de alimentos. Por ahora solo hay contenido en inglés.",
       "language": "es",
       "tiers": [
         {
@@ -491,7 +491,7 @@
       "name": "Computación y tecnología",
       "slug": "computing",
       "icon": "IconCode",
-      "description": "Tutoriales de programación, preguntas y respuestas y documentación técnica. Lo que no existe en español se completa con contenido en inglés.",
+      "description": "Tutoriales de programación, preguntas y respuestas y documentación técnica para desarrolladores.",
       "language": "es",
       "tiers": [
         {
