@@ -1,0 +1,58 @@
+{
+  "status": {
+    "installed": "Installed",
+    "selected": "Selected",
+    "downloading": "Downloading",
+    "failed": "Failed"
+  },
+  "wikipedia": {
+    "subtitle": "Select your preferred Wikipedia package",
+    "downloading": "Downloading Wikipedia... This may take a while for larger packages.",
+    "failed": "Wikipedia download failed. Select a package and try again.",
+    "noDownload": "No download",
+    "remove": "Remove Wikipedia",
+    "downloadSelected": "Download Selected"
+  },
+  "category": {
+    "indexing": "indexing",
+    "downloading": "downloading",
+    "tiersAvailable_one": "{{count}} tier available",
+    "tiersAvailable_other": "{{count}} tiers available",
+    "clickToChoose": "Click to choose",
+    "sizeRange": "Size: {{min}} - {{max}}"
+  },
+  "collection": {
+    "allDownloaded": "All items downloaded",
+    "itemsAndSize": "Items: {{count}} | Size: {{size}}"
+  },
+  "storage": {
+    "title": "Storage",
+    "selectedSuffix": "(+{{size}} selected)",
+    "current": "Current ({{size}})",
+    "selected": "Selected (+{{size}})",
+    "exceeds": "Exceeds available space by {{size}}",
+    "remaining": "{{size}} will remain free"
+  },
+  "creatorPack": {
+    "install": "Install",
+    "videos_one": "{{count}} video",
+    "videos_other": "{{count}} videos",
+    "updateAvailable": "Update available",
+    "uninstall": "Uninstall pack"
+  },
+  "tiers": {
+    "intro": "Select a tier based on your storage capacity and needs. Higher tiers include all content from lower tiers.",
+    "includes": "(includes {{name}})",
+    "additionalResources_one": "{{count}} additional resource",
+    "additionalResources_other": "{{count}} additional resources",
+    "plusEverythingIn": "(plus everything in {{name}})",
+    "resourcesIncluded_one": "{{count}} resource included",
+    "resourcesIncluded_other": "{{count}} resources included",
+    "embedEstimate": "<strong>+~{{size}}</strong> of additional storage if these are indexed for the AI Assistant",
+    "embedEstimateUnknown": "(estimate excludes some files we have no prior data for)",
+    "autoIndexAlways": "Your <strong>Auto-index</strong> setting is <strong>Always</strong>, so these files will be indexed automatically once downloaded. You can change this in the Knowledge Base settings.",
+    "autoIndexManual": "Your <strong>Auto-index</strong> setting is <strong>Manual</strong>, so these files will sit unindexed until you opt in from the Knowledge Base settings.",
+    "changeAnyTime": "You can change your selection at any time. Click Submit to confirm your choice.",
+    "submit": "Submit"
+  }
+}

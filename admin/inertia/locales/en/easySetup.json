@@ -152,5 +152,15 @@
     "creatorPacks_other": "{{count}} creator packs",
     "aiModels_one": "{{count}} AI model",
     "aiModels_other": "{{count}} AI models"
+  },
+  "complete": {
+    "pageTitle": "Easy Setup Wizard Complete",
+    "offlineMessage": "It looks like you're not connected to the internet. Installing apps and downloading content will require an internet connection.",
+    "activity": "App Installation Activity",
+    "background": {
+      "title": "Running in the Background",
+      "message": "Feel free to leave this page at any time - your app installs and downloads will continue in the background! Please note, the Information Library (if installed) may be unavailable until all initial downloads complete."
+    },
+    "goHome": "Go to Home"
   }
 }

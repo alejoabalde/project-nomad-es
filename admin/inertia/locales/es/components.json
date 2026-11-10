@@ -1,0 +1,58 @@
+{
+  "status": {
+    "installed": "Instalado",
+    "selected": "Seleccionado",
+    "downloading": "Descargando",
+    "failed": "Falló"
+  },
+  "wikipedia": {
+    "subtitle": "Selecciona el paquete de Wikipedia que prefieras",
+    "downloading": "Descargando Wikipedia... Puede tardar un rato en los paquetes más grandes.",
+    "failed": "Falló la descarga de Wikipedia. Selecciona un paquete e inténtalo de nuevo.",
+    "noDownload": "Sin descarga",
+    "remove": "Quitar Wikipedia",
+    "downloadSelected": "Descargar selección"
+  },
+  "category": {
+    "indexing": "indexando",
+    "downloading": "descargando",
+    "tiersAvailable_one": "{{count}} nivel disponible",
+    "tiersAvailable_other": "{{count}} niveles disponibles",
+    "clickToChoose": "Haz clic para elegir",
+    "sizeRange": "Tamaño: {{min}} - {{max}}"
+  },
+  "collection": {
+    "allDownloaded": "Todos los elementos descargados",
+    "itemsAndSize": "Elementos: {{count}} | Tamaño: {{size}}"
+  },
+  "storage": {
+    "title": "Almacenamiento",
+    "selectedSuffix": "(+{{size}} seleccionado)",
+    "current": "En uso ({{size}})",
+    "selected": "Seleccionado (+{{size}})",
+    "exceeds": "Supera el espacio disponible por {{size}}",
+    "remaining": "Quedarán {{size}} libres"
+  },
+  "creatorPack": {
+    "install": "Instalar",
+    "videos_one": "{{count}} video",
+    "videos_other": "{{count}} videos",
+    "updateAvailable": "Actualización disponible",
+    "uninstall": "Desinstalar pack"
+  },
+  "tiers": {
+    "intro": "Elige un nivel según tu capacidad de almacenamiento y tus necesidades. Los niveles superiores incluyen todo el contenido de los inferiores.",
+    "includes": "(incluye {{name}})",
+    "additionalResources_one": "{{count}} recurso adicional",
+    "additionalResources_other": "{{count}} recursos adicionales",
+    "plusEverythingIn": "(más todo lo de {{name}})",
+    "resourcesIncluded_one": "{{count}} recurso incluido",
+    "resourcesIncluded_other": "{{count}} recursos incluidos",
+    "embedEstimate": "<strong>+~{{size}}</strong> de almacenamiento adicional si se indexan para el Asistente de IA",
+    "embedEstimateUnknown": "(la estimación excluye algunos archivos de los que no tenemos datos previos)",
+    "autoIndexAlways": "Tu ajuste de <strong>indexación automática</strong> está en <strong>Siempre</strong>, así que estos archivos se indexarán automáticamente al descargarse. Puedes cambiarlo en los ajustes de la Base de conocimiento.",
+    "autoIndexManual": "Tu ajuste de <strong>indexación automática</strong> está en <strong>Manual</strong>, así que estos archivos quedarán sin indexar hasta que lo apruebes desde los ajustes de la Base de conocimiento.",
+    "changeAnyTime": "Puedes cambiar tu selección en cualquier momento. Haz clic en Enviar para confirmar.",
+    "submit": "Enviar"
+  }
+}

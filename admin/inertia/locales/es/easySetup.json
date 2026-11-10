@@ -152,5 +152,15 @@
     "creatorPacks_other": "{{count}} packs de creadores",
     "aiModels_one": "{{count}} modelo de IA",
     "aiModels_other": "{{count}} modelos de IA"
+  },
+  "complete": {
+    "pageTitle": "Configuración rápida completada",
+    "offlineMessage": "Parece que no tienes conexión a internet. Para instalar aplicaciones y descargar contenido necesitas conexión.",
+    "activity": "Actividad de instalación de aplicaciones",
+    "background": {
+      "title": "Se ejecuta en segundo plano",
+      "message": "Puedes salir de esta página cuando quieras: las instalaciones y descargas seguirán en segundo plano. Ten en cuenta que la Biblioteca de información (si la instalaste) puede no estar disponible hasta que terminen las descargas iniciales."
+    },
+    "goHome": "Ir al inicio"
   }
 }
