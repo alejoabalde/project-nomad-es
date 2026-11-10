@@ -4,6 +4,8 @@ import XHRUpload from '@uppy/xhr-upload'
 import '@uppy/core/css/style.min.css'
 import '@uppy/dashboard/css/style.min.css'
 import { useEffect, useRef, useState } from 'react'
+import { useUppyLocale } from '~/lib/uppy_locale'
+import { useTranslation } from 'react-i18next'
 
 interface ZimUploaderProps {
   onUploadComplete: (added: number) => void
@@ -11,6 +13,9 @@ interface ZimUploaderProps {
 }
 
 export default function ZimUploader({ onUploadComplete, existingFilenames }: ZimUploaderProps) {
+  const { t } = useTranslation('components')
+  const tRef = useRef(t)
+  tRef.current = t
   const existingFilenamesRef = useRef(existingFilenames)
   useEffect(() => {
     existingFilenamesRef.current = existingFilenames
@@ -41,16 +46,18 @@ export default function ZimUploader({ onUploadComplete, existingFilenames }: Zim
           const body = JSON.parse(responseText)
           if (body?.message) return new Error(body.message)
         } catch {}
-        return new Error('Upload failed')
+        return new Error(tRef.current('zimUploader.failed'))
       },
     })
   )
+
+  useUppyLocale(uppy)
 
   useEffect(() => {
     const handleFileAdded = (file: { id: string; name: string }) => {
       if (existingFilenamesRef.current.includes(file.name)) {
         uppy.removeFile(file.id)
-        uppy.info('A ZIM file with that name already exists', 'error', 6000)
+        uppy.info(tRef.current('zimUploader.exists'), 'error', 6000)
         return
       }
 
@@ -59,7 +66,7 @@ export default function ZimUploader({ onUploadComplete, existingFilenames }: Zim
         const alreadyQueued = uppy.getFiles().some((f) => f.id !== file.id && isWikipedia(f.name))
         if (alreadyQueued) {
           uppy.removeFile(file.id)
-          uppy.info('Only one Wikipedia file can be uploaded at a time', 'error', 6000)
+          uppy.info(tRef.current('zimUploader.oneWiki'), 'error', 6000)
         }
       }
     }
@@ -89,7 +96,7 @@ export default function ZimUploader({ onUploadComplete, existingFilenames }: Zim
       uppy={uppy}
       width="100%"
       height={300}
-      note="ZIM files only. Large files (up to 20 GB) are supported. For best results, upload from the same machine or over a stable LAN connection. Larger files should be copied directly to the storage volume"
+      note={t('zimUploader.note')}
     />
   )
 }
