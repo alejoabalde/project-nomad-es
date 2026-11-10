@@ -69,6 +69,10 @@ export function setLanguage(code: LanguageCode) {
 
 i18n.on('languageChanged', (lng) => {
   document.documentElement.setAttribute('lang', lng)
+  // Mirror the language into a cookie so the server can pick translated docs pages.
+  try {
+    document.cookie = `nomad_lang=${lng}; path=/; max-age=31536000; SameSite=Lax`
+  } catch {}
 })
 
 void i18n.use(initReactI18next).init({

@@ -39,7 +39,20 @@
     "dismissAlert": "Cerrar aviso"
   },
   "docs": {
-    "title": "Documentación"
+    "title": "Documentación",
+    "titles": {
+      "home": "Inicio",
+      "getting-started": "Primeros pasos",
+      "use-cases": "Casos de uso",
+      "supply-depot-apps": "Apps del Depósito de suministros",
+      "drug-reference": "Guía de medicamentos",
+      "community-add-ons": "Complementos de la comunidad",
+      "updates": "Actualizaciones",
+      "faq": "Preguntas frecuentes",
+      "about": "Acerca de",
+      "release-notes": "Notas de la versión",
+      "api-reference": "Referencia de la API"
+    }
   },
   "assistant": {
     "defaultName": "Asistente de IA"

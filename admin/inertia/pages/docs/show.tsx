@@ -1,11 +1,20 @@
-import { Head } from '@inertiajs/react'
-import { useEffect } from 'react'
+import { Head, router } from '@inertiajs/react'
+import { useEffect, useRef } from 'react'
 import MarkdocRenderer from '~/components/MarkdocRenderer'
 import DocsLayout from '~/layouts/DocsLayout'
 import { useTranslation } from 'react-i18next'
 
 export default function Show({ content }: { content: any; }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  // The page body comes from the server in the reader's language; fetch it again
+  // when the language changes (project-nomad-es).
+  const lastLanguage = useRef(i18n.language)
+  useEffect(() => {
+    if (lastLanguage.current === i18n.language) return
+    lastLanguage.current = i18n.language
+    router.reload({ only: ['content'] })
+  }, [i18n.language])
   // Deep-link support: when arriving at /docs/<slug>#<anchor> (e.g. from a Supply Depot app's
   // "Docs" menu item), scroll to that section. The content renders synchronously from props, so a
   // double rAF lets the headings paint before we look one up.

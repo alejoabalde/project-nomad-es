@@ -8,6 +8,12 @@ import logger from '@adonisjs/core/services/logger'
 export class DocsService {
   private docsPath = path.join(process.cwd(), 'docs')
 
+  /**
+   * Languages with translated docs in docs/<lang>/<slug>.md (project-nomad-es).
+   * A missing translation falls back to the English file in docs/.
+   */
+  private static readonly TRANSLATED_LANGUAGES = ['es']
+
   private static readonly DOC_ORDER: Record<string, number> = {
     'home': 1,
     'getting-started': 2,
@@ -26,7 +32,8 @@ export class DocsService {
     const files: Array<{ title: string; slug: string }> = []
 
     for (const item of contents) {
-      if (item.type === 'file' && item.name.endsWith('.md')) {
+      // Only top-level files: docs/<lang>/ holds translations of the same pages.
+      if (item.type === 'file' && item.name.endsWith('.md') && path.dirname(item.key) === this.docsPath) {
         const cleaned = this.prettify(item.name)
         files.push({
           title: cleaned,
@@ -62,7 +69,7 @@ export class DocsService {
     }
   }
 
-  async parseFile(_filename: string) {
+  async parseFile(_filename: string, language?: string) {
     try {
       if (!_filename) {
         throw new Error('Filename is required')
@@ -82,7 +89,16 @@ export class DocsService {
         throw new Error(`File not found: ${filename}`)
       }
 
-      const fileStream = await getFile(fullPath, 'stream')
+      // Prefer the translated page when there is one for the reader's language.
+      let pathToRead = fullPath
+      if (language && DocsService.TRANSLATED_LANGUAGES.includes(language)) {
+        const translatedPath = path.resolve(path.join(this.docsPath, language, filename))
+        if (translatedPath.startsWith(basePath + path.sep) && (await getFileStatsIfExists(translatedPath))) {
+          pathToRead = translatedPath
+        }
+      }
+
+      const fileStream = await getFile(pathToRead, 'stream')
       if (!fileStream) {
         throw new Error(`Failed to read file stream: ${filename}`)
       }

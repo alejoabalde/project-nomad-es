@@ -39,7 +39,20 @@
     "dismissAlert": "Dismiss alert"
   },
   "docs": {
-    "title": "Documentation"
+    "title": "Documentation",
+    "titles": {
+      "home": "Home",
+      "getting-started": "Getting Started",
+      "use-cases": "Use Cases",
+      "supply-depot-apps": "Supply Depot Apps",
+      "drug-reference": "Drug Reference",
+      "community-add-ons": "Community Add-Ons",
+      "updates": "Updates",
+      "faq": "FAQ",
+      "about": "About",
+      "release-notes": "Release Notes",
+      "api-reference": "API Reference"
+    }
   },
   "assistant": {
     "defaultName": "AI Assistant"

@@ -17,11 +17,11 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
     if (isLoading || !data) return []
 
     return data.map((doc) => ({
-      name: doc.title,
+      name: t(`docs.titles.${doc.slug}`, { defaultValue: doc.title }),
       href: `/docs/${doc.slug}`,
       current: false,
     }))
-  }, [data, isLoading])
+  }, [data, isLoading, t])
 
   return (
     <div className="min-h-screen flex flex-row bg-desert-white">
