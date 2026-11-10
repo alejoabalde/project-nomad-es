@@ -22,6 +22,10 @@ export const VAULTWARDEN_STORAGE_PATH = '/storage/vaultwarden'
 // served over HTTPS — required for its Web Bluetooth/Serial connections. See
 // _runPreinstallActions__MeshCoreWeb.
 export const MESHCORE_WEB_STORAGE_PATH = '/storage/meshcore-web'
+// File Browser's database folder (mounted at /db in the container). Used by the
+// project-nomad-es fork to set the default UI language on first install — see
+// _runPreinstallActions__FileBrowser.
+export const FILEBROWSER_DB_STORAGE_PATH = '/storage/filebrowser/db'
 
 export async function listDirectoryContents(path: string): Promise<FileEntry[]> {
   const entries = await readdir(path, { withFileTypes: true })
