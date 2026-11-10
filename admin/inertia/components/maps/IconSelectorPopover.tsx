@@ -1,4 +1,5 @@
 import { MARKER_ICONS } from './marker_icons'
+import { useTranslation } from 'react-i18next'
 
 type IconSelectorPopoverProps = {
   selectedIcon?: string | null
@@ -18,6 +19,7 @@ export default function IconSelectorPopover({
   onSelect,
   onClose,
 }: IconSelectorPopoverProps) {
+  const { t } = useTranslation('maps')
   return (
     <div
       className="absolute left-0 top-7 z-50 w-72 rounded-md border border-border-subtle bg-surface-primary p-2 shadow-lg"
@@ -26,7 +28,9 @@ export default function IconSelectorPopover({
       onPointerDown={(e) => e.stopPropagation()}
     >
       <div className="grid grid-cols-6 justify-items-center gap-1">
-        {MARKER_ICONS.map(({ name, label, Icon }) => (
+        {MARKER_ICONS.map(({ name, label: enLabel, Icon }) => {
+          const label = t(`icons.${name.replace('tabler:', '')}`, { defaultValue: enLabel })
+          return (
           <button
             key={name}
             type="button"
@@ -42,7 +46,7 @@ export default function IconSelectorPopover({
           >
             <Icon size={18} />
           </button>
-        ))}
+        )})}
       </div>
 
       <div className="mt-2 flex justify-end">
@@ -51,7 +55,7 @@ export default function IconSelectorPopover({
           onClick={onClose}
           className="rounded bg-[#424420] px-2 py-1 text-xs text-white hover:bg-[#525530]"
         >
-          Close
+          {t('common:actions.close')}
         </button>
       </div>
     </div>
