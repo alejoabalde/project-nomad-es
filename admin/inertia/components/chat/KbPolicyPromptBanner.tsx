@@ -4,6 +4,7 @@ import api from '~/lib/api'
 import StyledButton from '~/components/StyledButton'
 import { useNotifications } from '~/context/NotificationContext'
 import { useAssistantName } from '~/lib/assistant_name'
+import { useTranslation } from 'react-i18next'
 
 /**
  * First-chat onboarding banner (RFC #883 Phase 3 task 12).
@@ -32,6 +33,7 @@ export default function KbPolicyPromptBanner() {
   // "AI Assistant" when accessed outside that context (no-op for chat pages,
   // but keeps the component safe for future reuse elsewhere).
   const aiAssistantName = useAssistantName()
+  const { t } = useTranslation('chat')
 
   const { data: promptState } = useQuery({
     queryKey: ['kbPolicyPromptState'],
@@ -47,7 +49,7 @@ export default function KbPolicyPromptBanner() {
     onSuccess: () => {
       addNotification({
         type: 'success',
-        message: `${aiAssistantName} will index your existing content. You can track progress in the Knowledge Base panel.`,
+        message: t('p.indexing', { name: aiAssistantName }),
       })
       queryClient.invalidateQueries({ queryKey: ['kbPolicyPromptState'] })
       queryClient.invalidateQueries({ queryKey: ['ingestPolicy'] })
@@ -57,7 +59,7 @@ export default function KbPolicyPromptBanner() {
     onError: (error: any) => {
       addNotification({
         type: 'error',
-        message: error?.message || 'Could not start indexing. Try again from the Knowledge Base panel.',
+        message: error?.message || t('p.indexFail'),
       })
     },
   })
@@ -67,7 +69,7 @@ export default function KbPolicyPromptBanner() {
     onSuccess: () => {
       addNotification({
         type: 'success',
-        message: 'Your content stays unindexed for now. You can opt in any time from the Knowledge Base panel.',
+        message: t('p.later'),
       })
       queryClient.invalidateQueries({ queryKey: ['kbPolicyPromptState'] })
       queryClient.invalidateQueries({ queryKey: ['ingestPolicy'] })
@@ -75,7 +77,7 @@ export default function KbPolicyPromptBanner() {
     onError: (error: any) => {
       addNotification({
         type: 'error',
-        message: error?.message || 'Could not save your choice. Try again.',
+        message: error?.message || t('p.saveFail'),
       })
     },
   })
@@ -92,11 +94,9 @@ export default function KbPolicyPromptBanner() {
         <div className="flex-1 min-w-0">
           <p className="text-sm text-text-primary">
             <strong>
-              {fileCount === 1
-                ? `Index your existing file for ${aiAssistantName}?`
-                : `Index your ${fileCount.toLocaleString()} existing files for ${aiAssistantName}?`}
+              {t('p.question', { count: fileCount, name: aiAssistantName })}
             </strong>
-            {' '}When indexed, {aiAssistantName} can reference them while answering your questions.
+            {' '}{t('p.when', { name: aiAssistantName })}
           </p>
         </div>
         <div className="flex gap-2 flex-shrink-0">
@@ -107,7 +107,7 @@ export default function KbPolicyPromptBanner() {
             disabled={isBusy}
             loading={indexNowMutation.isPending}
           >
-            Index existing content
+            {t('p.indexNow')}
           </StyledButton>
           <StyledButton
             onClick={() => maybeLaterMutation.mutate()}
@@ -116,7 +116,7 @@ export default function KbPolicyPromptBanner() {
             disabled={isBusy}
             loading={maybeLaterMutation.isPending}
           >
-            Maybe later
+            {t('p.maybeLater')}
           </StyledButton>
         </div>
       </div>
