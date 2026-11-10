@@ -31,21 +31,11 @@ NOMAD está pensado para equipos con buena capacidad, sobre todo si quieres usar
 
 ### ¿Cuánta RAM necesito?
 
-**Sin el Asistente de IA, todo el conjunto ocupa menos de 1 GB.** Medido en una
-instalación en funcionamiento: el Centro de mando 241 MB, MySQL 444 MB, Redis 9 MB, Kiwix 101 MB y el
-índice de la base de conocimiento 155 MB. Por eso 4 GB es un mínimo real y no uno
-puesto por precaución.
+**Sin el Asistente de IA, todo el conjunto ocupa menos de 1 GB.** Medido en una instalación en funcionamiento: el Centro de mando 241 MB, MySQL 444 MB, Redis 9 MB, Kiwix 101 MB y el índice de la base de conocimiento 155 MB. Por eso 4 GB es un mínimo real y no uno puesto por precaución.
 
-**La IA es lo que varía, y depende del modelo, no de NOMAD.** Ollama en reposo usa
-alrededor de 1,2 GB, y un modelo necesita en memoria más o menos lo que pesa su descarga mientras responde,
-así que un modelo de 8B de ~4,6 GB pide más o menos eso adicional. **8 GB alcanzan para un modelo
-chico, 16 GB son cómodos y 32 GB es lo recomendado si quieres usar modelos
-más grandes.**
+**La IA es lo que varía, y depende del modelo, no de NOMAD.** Ollama en reposo usa alrededor de 1,2 GB, y un modelo necesita en memoria más o menos lo que pesa su descarga mientras responde, así que un modelo de 8B de ~4,6 GB pide más o menos eso adicional. **8 GB alcanzan para un modelo chico, 16 GB son cómodos y 32 GB es lo recomendado si quieres usar modelos más grandes.**
 
-De dónde sale esa memoria depende de tu equipo. Con una GPU dedicada, el modelo
-se carga en la VRAM y no toca la RAM del sistema, así que la VRAM es lo que limita qué
-modelos puedes usar. Con una GPU integrada o sin GPU, sale de la RAM
-del sistema, y por eso un equipo que solo usa el procesador necesita más.
+De dónde sale esa memoria depende de tu equipo. Con una GPU dedicada, el modelo se carga en la VRAM y no toca la RAM del sistema, así que la VRAM es lo que limita qué modelos puedes usar. Con una GPU integrada o sin GPU, sale de la RAM del sistema, y por eso un equipo que solo usa el procesador necesita más.
 
 ### ¿Cuánto espacio en disco necesito?
 
