@@ -27,6 +27,8 @@ import esMaps from '../locales/es/maps.json'
 import enMaps from '../locales/en/maps.json'
 import esDrugs from '../locales/es/drugs.json'
 import enDrugs from '../locales/en/drugs.json'
+import esLegal from '../locales/es/legal.json'
+import enLegal from '../locales/en/legal.json'
 import enCommon from '../locales/en/common.json'
 import enHome from '../locales/en/home.json'
 import enEasySetup from '../locales/en/easySetup.json'
@@ -42,8 +44,8 @@ export const DEFAULT_LANGUAGE: LanguageCode = 'es'
 export const LANGUAGE_STORAGE_KEY = 'nomad:language'
 
 export const resources = {
-  es: { common: esCommon, drugs: esDrugs, maps: esMaps, chat: esChat, supplyDepot: esSupplyDepot, services: esServices, settings: esSettings, components: esComponents, home: esHome, easySetup: esEasySetup },
-  en: { common: enCommon, drugs: enDrugs, maps: enMaps, chat: enChat, supplyDepot: enSupplyDepot, services: enServices, settings: enSettings, components: enComponents, home: enHome, easySetup: enEasySetup },
+  es: { common: esCommon, legal: esLegal, drugs: esDrugs, maps: esMaps, chat: esChat, supplyDepot: esSupplyDepot, services: esServices, settings: esSettings, components: esComponents, home: esHome, easySetup: esEasySetup },
+  en: { common: enCommon, legal: enLegal, drugs: enDrugs, maps: enMaps, chat: enChat, supplyDepot: enSupplyDepot, services: enServices, settings: enSettings, components: enComponents, home: enHome, easySetup: enEasySetup },
 } as const
 
 function isSupported(code: unknown): code is LanguageCode {
@@ -74,7 +76,7 @@ void i18n.use(initReactI18next).init({
   lng: getInitialLanguage(),
   fallbackLng: 'en',
   defaultNS: 'common',
-  ns: ['common', 'drugs', 'maps', 'chat', 'supplyDepot', 'services', 'settings', 'components', 'home', 'easySetup'],
+  ns: ['common', 'legal', 'drugs', 'maps', 'chat', 'supplyDepot', 'services', 'settings', 'components', 'home', 'easySetup'],
   interpolation: { escapeValue: false },
   returnNull: false,
 })
