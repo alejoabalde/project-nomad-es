@@ -1,0 +1,124 @@
+{
+  "categories": {
+    "all": "All",
+    "installed": "Installed",
+    "productivity": "Productivity",
+    "media": "Media",
+    "security": "Security",
+    "networking": "Networking",
+    "utility": "Utility",
+    "ai": "AI",
+    "education": "Education",
+    "custom": "Custom"
+  },
+  "errors": {
+    "install": "Failed to start installation.",
+    "reinstall": "Failed to start reinstall.",
+    "delete": "Failed to delete app.",
+    "uninstall": "Failed to uninstall app.",
+    "updateApp": "Failed to update app.",
+    "offlineCheck": "You must have an internet connection to check for updates.",
+    "dispatchCheck": "Failed to dispatch update check",
+    "checkUpdates": "Failed to check for updates: {{error}}",
+    "unknown": "Unknown error",
+    "updateService": "Failed to update service.",
+    "autoUpdatePref": "Failed to update auto-update preference.",
+    "loadEdit": "Could not load this app for editing.",
+    "action_start": "Failed to start service.",
+    "action_stop": "Failed to stop service.",
+    "action_restart": "Failed to restart service."
+  },
+  "autoUpdate": {
+    "onNotice": "Auto-updates for {{app}} are on.",
+    "offNotice": "Auto-updates for {{app}} are off.",
+    "on": "Auto-update: On",
+    "off": "Auto-update: Off",
+    "masterOff": "App auto-updates off — open Settings"
+  },
+  "working": "Working...",
+  "offline": "No internet connection. You may not be able to download files.",
+  "title": "Supply Depot",
+  "subtitle": "Browse and install curated apps, or add your own custom apps by providing a Docker image.",
+  "search": "Search apps...",
+  "checkUpdates": "Check for Updates",
+  "addCustom": "Add Custom App",
+  "noMatch": "No apps match your filter.",
+  "installedCount": "Installed ({{count}})",
+  "availableCount": "Available ({{count}})",
+  "migrateTo2": "How to migrate content to Gen 2",
+  "migrateFrom1": "How to migrate content from Gen 1",
+  "installModal": {
+    "bodyPort": "This will download and start <b>{{app}}</b> on port <b>{{port}}</b>.",
+    "body": "This will download and start <b>{{app}}</b>."
+  },
+  "poweredBy": "Powered by {{name}}",
+  "checkingConflicts": "Checking for conflicts…",
+  "portInUse": "Port {{port}} already in use",
+  "portUsedBy": "Currently bound by: {{usedBy}}. Installation may fail.",
+  "resourceWarning": "Resource warning",
+  "installAnyway": "I understand — install anyway",
+  "startModal": {
+    "body": "This will start the container."
+  },
+  "stopModal": {
+    "body": "The container will be stopped. Your data is preserved."
+  },
+  "restartModal": {
+    "body": "The container will be briefly stopped and restarted."
+  },
+  "reinstallModal": {
+    "confirm": "Wipe & Reinstall",
+    "warning": "This will delete all app data and cannot be undone.",
+    "body": "The container and its associated volumes will be removed, then a fresh installation will begin."
+  },
+  "deleteModal": {
+    "warning": "This will permanently remove this custom app.",
+    "body": "The container will be stopped and removed. Host volume data will remain on disk."
+  },
+  "uninstallModal": {
+    "warning": "This will remove the app from this device.",
+    "body": "The container will be stopped and removed, and the app returns to the catalog below. App data under the storage folder stays on disk, so reinstalling brings it back as it was."
+  },
+  "status": {
+    "installing": "Installing",
+    "running": "Running",
+    "stopped": "Stopped"
+  },
+  "badge": {
+    "custom": "custom",
+    "modifiedTip": "You've customized this app, so it won't be overwritten by catalog updates.",
+    "modified": "modified",
+    "legacyTip": "This is a legacy version that's no longer maintained. Install the current Education Platform from the catalog, then uninstall this one.",
+    "legacy": "legacy"
+  },
+  "updateTo": "Update to {{version}}",
+  "updateAvailable": "Update available",
+  "actions": {
+    "install": "Install",
+    "open": "Open",
+    "manage": "Manage",
+    "docs": "Docs",
+    "logs": "Logs",
+    "stats": "Stats",
+    "edit": "Edit",
+    "setUrl": "Set custom URL",
+    "pullLatest": "Update (pull latest)",
+    "start": "Start",
+    "stop": "Stop",
+    "restart": "Restart",
+    "delete": "Delete",
+    "uninstall": "Uninstall",
+    "forceReinstall": "Force Reinstall"
+  },
+  "migrationInstructions": "Migration instructions",
+  "inProgress": "In progress…",
+  "modalTitle": {
+    "install": "Install {{app}}",
+    "start": "Start {{app}}",
+    "stop": "Stop {{app}}",
+    "restart": "Restart {{app}}",
+    "delete": "Delete {{app}}",
+    "uninstall": "Uninstall {{app}}",
+    "reinstall": "Force Reinstall {{app}}"
+  }
+}
