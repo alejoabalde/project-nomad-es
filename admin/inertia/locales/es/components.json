@@ -257,5 +257,70 @@
     "uninstallGeneric": "Desinstalar pack de creador",
     "uninstall": "Desinstalar pack",
     "uninstallBody": "Se eliminarán los videos descargados ({{size}}) de este NOMAD. Puedes volver a instalar el pack cuando quieras."
+  },
+  "gpu": {
+    "unknown": "Error desconocido",
+    "reinstallFailed": "La reinstalación forzada falló",
+    "reinstalling": "{{name}} se está reinstalando con soporte de GPU. La página se recargará en breve.",
+    "reinstallError": "No se pudo reinstalar: {{error}}",
+    "reinstallTitle": "¿Reinstalar {{name}}?",
+    "reinstall": "Reinstalar",
+    "reinstallBody": "Se volverá a crear el contenedor de {{name}} con soporte de GPU. Tus modelos descargados se conservan. El servicio no estará disponible por un momento durante la reinstalación.",
+    "amdMsg": "Tu equipo tiene una GPU AMD, pero {{name}} está funcionando solo con la CPU. Reinstalar no lo soluciona: la GPU{{target}} no está en la lista compatible de ROCm y necesita un ajuste manual de la versión GFX.",
+    "noAccessAmd": "Tu equipo tiene una GPU AMD, pero {{name}} no puede usarla. La IA está funcionando solo con la CPU, que es bastante más lenta.",
+    "noAccessNvidia": "Tu equipo tiene una GPU NVIDIA, pero {{name}} no puede usarla. La IA está funcionando solo con la CPU, que es bastante más lenta.",
+    "title": "{{name}} no puede acceder a la GPU",
+    "fixHsa": "Solucionar: ajustar versión GFX",
+    "fixReinstall": "Solucionar: reinstalar {{name}}",
+    "saveError": "No se pudo guardar el ajuste de GFX: {{error}}",
+    "hsaTitle": "Ajustar versión GFX de AMD",
+    "saveReinstall": "Guardar y reinstalar",
+    "hsaBody": "ROCm incluye kernels de GPU para una lista fija de chips AMD. Las GPU Radeon integradas que no están en esa lista funcionan con la CPU, salvo que ROCm las trate como un chip compatible, algo que se define con HSA_OVERRIDE_GFX_VERSION.",
+    "rdna2": "Radeon 680M / 660M y otras GPU integradas RDNA 2 (gfx1031 a gfx1036): 10.3.0",
+    "notReported": "Ollama no la informó",
+    "none": "ninguno",
+    "detected": "GPU detectada: {{gpu}}. Ajuste actual: {{current}}.",
+    "recommended": "Recomendado para esta GPU: {{value}}.",
+    "hsaLabel": "Ajuste de versión GFX",
+    "hsaHelp": "Al guardar se vuelve a crear el contenedor de {{name}} con este ajuste. Los modelos descargados se conservan."
+  },
+  "modelDownloads": {
+    "cancelTitle": "¿Cancelar descarga?",
+    "cancel": "Cancelar descarga",
+    "keep": "Seguir descargando",
+    "stopBody": "¿Dejar de descargar <m>{{model}}</m>?",
+    "stopNote": "Lo que ya se descargó queda en el disco. Si vuelves a descargar este modelo más adelante, seguirá desde donde quedó en lugar de empezar de cero.",
+    "title": "Descargas de modelos activas",
+    "cancelTip": "Cancelar descarga",
+    "none": "No hay descargas de modelos activas"
+  },
+  "embedJobs": {
+    "health": {
+      "waiting": {
+        "label": "En espera",
+        "aria": "La tarea está en cola esperando para empezar"
+      },
+      "healthy": {
+        "label": "Activa",
+        "aria": "La tarea se está procesando a ritmo normal"
+      },
+      "slow": {
+        "label": "Lenta",
+        "aria": "La tarea no avanzó en al menos 2 minutos"
+      },
+      "stalled": {
+        "label": "Detenida",
+        "aria": "La tarea no avanzó en al menos 5 minutos"
+      },
+      "failed": {
+        "label": "Fallida",
+        "aria": "La tarea falló"
+      }
+    },
+    "title": "Cola de procesamiento",
+    "lastActivity": "última actividad {{ago}}",
+    "chunks": "{{count}} fragmentos",
+    "none": "No se están procesando archivos en este momento",
+    "justNow": "recién"
   }
 }

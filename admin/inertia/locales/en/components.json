@@ -257,5 +257,70 @@
     "uninstallGeneric": "Uninstall Creator Pack",
     "uninstall": "Uninstall pack",
     "uninstallBody": "This removes the downloaded videos ({{size}}) from this NOMAD. You can reinstall the pack anytime."
+  },
+  "gpu": {
+    "unknown": "Unknown error",
+    "reinstallFailed": "Force reinstall failed",
+    "reinstalling": "{{name}} is being reinstalled with GPU support. This page will reload shortly.",
+    "reinstallError": "Failed to reinstall: {{error}}",
+    "reinstallTitle": "Reinstall {{name}}?",
+    "reinstall": "Reinstall",
+    "reinstallBody": "This will recreate the {{name}} container with GPU support enabled. Your downloaded models will be preserved. The service will be briefly unavailable during reinstall.",
+    "amdMsg": "Your system has an AMD GPU, but {{name}} is running on CPU only. Reinstalling won't fix this: the GPU{{target}} isn't on ROCm's supported list and needs a GFX version override.",
+    "noAccessAmd": "Your system has an AMD GPU, but {{name}} can't access it. AI is running on CPU only, which is significantly slower.",
+    "noAccessNvidia": "Your system has an NVIDIA GPU, but {{name}} can't access it. AI is running on CPU only, which is significantly slower.",
+    "title": "GPU Not Accessible to {{name}}",
+    "fixHsa": "Fix: Set GFX Override",
+    "fixReinstall": "Fix: Reinstall {{name}}",
+    "saveError": "Failed to save the GFX override: {{error}}",
+    "hsaTitle": "Set AMD GFX Override",
+    "saveReinstall": "Save and Reinstall",
+    "hsaBody": "ROCm ships GPU kernels for a fixed list of AMD chips. Integrated Radeon GPUs outside that list run on CPU unless ROCm treats them as a supported chip, set through HSA_OVERRIDE_GFX_VERSION.",
+    "rdna2": "Radeon 680M / 660M and other RDNA 2 iGPUs (gfx1031 to gfx1036): 10.3.0",
+    "notReported": "not reported by Ollama",
+    "none": "none",
+    "detected": "Detected GPU: {{gpu}}. Current override: {{current}}.",
+    "recommended": "Recommended for this GPU: {{value}}.",
+    "hsaLabel": "GFX version override",
+    "hsaHelp": "Saving recreates the {{name}} container with this override. Downloaded models are preserved."
+  },
+  "modelDownloads": {
+    "cancelTitle": "Cancel Download?",
+    "cancel": "Cancel Download",
+    "keep": "Keep Downloading",
+    "stopBody": "Stop downloading <m>{{model}}</m>?",
+    "stopNote": "Any data already downloaded will remain on disk. If you re-download this model later, it will resume from where it left off rather than starting over.",
+    "title": "Active Model Downloads",
+    "cancelTip": "Cancel download",
+    "none": "No active model downloads"
+  },
+  "embedJobs": {
+    "health": {
+      "waiting": {
+        "label": "Waiting",
+        "aria": "Job is queued and waiting to start"
+      },
+      "healthy": {
+        "label": "Active",
+        "aria": "Job is embedding at a normal rate"
+      },
+      "slow": {
+        "label": "Slow",
+        "aria": "Job has not made progress for at least 2 minutes"
+      },
+      "stalled": {
+        "label": "Stalled",
+        "aria": "Job has not made progress for at least 5 minutes"
+      },
+      "failed": {
+        "label": "Failed",
+        "aria": "Job failed"
+      }
+    },
+    "title": "Processing Queue",
+    "lastActivity": "last activity {{ago}}",
+    "chunks": "{{count}} chunks",
+    "none": "No files are currently being processed",
+    "justNow": "just now"
   }
 }

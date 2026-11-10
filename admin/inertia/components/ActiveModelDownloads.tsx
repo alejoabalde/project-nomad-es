@@ -6,6 +6,7 @@ import { IconAlertTriangle, IconLoader2, IconX } from '@tabler/icons-react'
 import api from '~/lib/api'
 import { useModals } from '~/context/ModalContext'
 import { formatBytes } from '~/lib/util'
+import { Trans, useTranslation } from 'react-i18next'
 
 interface ActiveModelDownloadsProps {
     withHeader?: boolean
@@ -22,6 +23,7 @@ const ActiveModelDownloads = ({ withHeader = false }: ActiveModelDownloadsProps)
     const { downloads, removeDownload } = useOllamaModelDownloads()
     const { openModal, closeAllModals } = useModals()
     const [cancellingModels, setCancellingModels] = useState<Set<string>>(new Set())
+  const { t } = useTranslation('components')
 
     // Track previous downloadedBytes for speed calculation — mirrors the approach in
     // ActiveDownloads.tsx so content + model downloads feel identical.
@@ -87,24 +89,22 @@ const ActiveModelDownloads = ({ withHeader = false }: ActiveModelDownloadsProps)
 
         openModal(
             <StyledModal
-                title="Cancel Download?"
+                title={t('modelDownloads.cancelTitle')}
                 onConfirm={() => {
                     closeAllModals()
                     runCancel(download)
                 }}
                 onCancel={closeAllModals}
                 open={true}
-                confirmText="Cancel Download"
-                cancelText="Keep Downloading"
+                confirmText={t('modelDownloads.cancel')}
+                cancelText={t('modelDownloads.keep')}
             >
                 <div className="space-y-3 text-text-primary">
                     <p>
-                        Stop downloading <span className="font-mono font-semibold">{download.model}</span>?
+                        <Trans t={t} i18nKey="modelDownloads.stopBody" values={{ model: download.model }} components={{ m: <span className="font-mono font-semibold" /> }} />
                     </p>
                     <p className="text-sm text-text-muted">
-                        Any data already downloaded will remain on disk. If you re-download
-                        this model later, it will resume from where it left off rather than
-                        starting over.
+                        {t('modelDownloads.stopNote')}
                     </p>
                 </div>
             </StyledModal>,
@@ -114,7 +114,7 @@ const ActiveModelDownloads = ({ withHeader = false }: ActiveModelDownloadsProps)
 
     return (
         <>
-            {withHeader && <StyledSectionHeader title="Active Model Downloads" className="mt-12 mb-4" />}
+            {withHeader && <StyledSectionHeader title={t('modelDownloads.title')} className="mt-12 mb-4" />}
             <div className="space-y-4">
                 {downloads && downloads.length > 0 ? (
                     downloads.map((download) => {
@@ -161,7 +161,7 @@ const ActiveModelDownloads = ({ withHeader = false }: ActiveModelDownloadsProps)
                                                     <button
                                                         onClick={() => confirmCancel(download)}
                                                         className="flex-shrink-0 p-1 rounded hover:bg-red-100 transition-colors"
-                                                        title="Cancel download"
+                                                        title={t('modelDownloads.cancelTip')}
                                                     >
                                                         <IconX className="w-4 h-4 text-text-muted hover:text-red-500" />
                                                     </button>
@@ -201,7 +201,7 @@ const ActiveModelDownloads = ({ withHeader = false }: ActiveModelDownloadsProps)
                                         <div className="flex items-center gap-2">
                                             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                                             <span className="text-xs text-text-muted">
-                                                Downloading...{speed > 0 ? ` ${formatSpeed(speed)}` : ''}
+                                                {t('downloads.downloading')}{speed > 0 ? ` ${formatSpeed(speed)}` : ''}
                                             </span>
                                         </div>
                                     </div>
@@ -210,7 +210,7 @@ const ActiveModelDownloads = ({ withHeader = false }: ActiveModelDownloadsProps)
                         )
                     })
                 ) : (
-                    <p className="text-text-muted">No active model downloads</p>
+                    <p className="text-text-muted">{t('modelDownloads.none')}</p>
                 )}
             </div>
         </>
