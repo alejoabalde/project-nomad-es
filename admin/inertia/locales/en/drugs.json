@@ -126,7 +126,7 @@
     "restart": "Restart ingest",
     "tabDrug": "Search by drug",
     "tabSituation": "By situation",
-    "tabData": "FDA data",
+    "tabData": "Data",
     "searchPh": "Search a medicine by name — ibuprofen, Benadryl, loratadine…",
     "all": "All",
     "otc": "Over-the-counter",
@@ -153,7 +153,7 @@
     "emptyBody": "Download the openFDA drug-label dataset to enable offline search. Requires ~1.7 GB compressed download (~8–10 GB after ingestion).",
     "pickHint": "Pick a situation (or a few) above to see the over-the-counter drugs whose FDA labels list it.",
     "noIntersection": "No single option treats all {{count}} of these — here are options for each situation.",
-    "subtitle": "Look up a medicine by name, or start from a symptom to find over-the-counter options — all from offline FDA drug labels.",
+    "subtitle": "Look up a medicine by name, or start from a symptom to find over-the-counter options — all from drug labels stored offline (FDA in English, AEMPS in Spanish).",
     "trySituation": "Looking for something to treat a symptom instead? Try the <b>By situation</b> tab.",
     "typeHint": "Type a medicine name above to search {{count}} FDA drug labels.",
     "noMatch": "No medicines match “{{query}}”.",
@@ -230,5 +230,21 @@
     "citeAemps": "<s>Source:</s> patient leaflet from CIMA, the online medicines information centre of the Spanish Agency of Medicines and Medical Devices (AEMPS), updated {{date}}. Brand names and presentations are those authorised in Spain. NOMAD is not affiliated with or endorsed by AEMPS.",
     "original": "View the original leaflet",
     "footerAemps": "<s>Source:</s> patient leaflets from CIMA, the Spanish Agency of Medicines and Medical Devices (AEMPS); each leaflet shows its own date. Brand names are those authorised in Spain. NOMAD is not affiliated with or endorsed by AEMPS."
+  },
+  "aemps": {
+    "title": "Spanish leaflets (AEMPS)",
+    "body": "Patient leaflets for medicines marketed in Spain, in Spanish, from the CIMA database of the Spanish Agency of Medicines and Medical Devices. A single package built for this project is downloaded; after that it works offline.",
+    "download": "Download Spanish leaflets",
+    "update": "Update Spanish leaflets",
+    "working": "Installing…",
+    "remove": "Remove",
+    "removeConfirm": "Remove the Spanish leaflets? FDA data is left alone.",
+    "downloading": "Downloading the package…",
+    "downloadingBytes": "Downloading the package: {{done}} of {{total}} MB",
+    "importing": "Importing: {{count}} leaflets so far…",
+    "failed": "Installation failed: {{error}}",
+    "ready": "{{count}} leaflets installed (package from {{date}}).",
+    "readyNoDate": "{{count}} leaflets installed.",
+    "notInstalled": "Not installed yet."
   }
 }

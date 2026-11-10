@@ -226,7 +226,7 @@ export class IngestDrugDataJob {
     if (startRowCount === undefined) {
       try {
         const { default: db } = await import('@adonisjs/lucid/services/db')
-        const result = await db.rawQuery('SELECT COUNT(*) AS cnt FROM drug_labels')
+        const result = await db.rawQuery("SELECT COUNT(*) AS cnt FROM drug_labels WHERE source = 'fda'")
         const rows = result[0] as Array<{ cnt: number | string }>
         startRowCount = Number(rows[0]?.cnt ?? 0)
       } catch {

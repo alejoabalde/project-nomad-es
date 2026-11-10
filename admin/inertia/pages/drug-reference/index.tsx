@@ -7,6 +7,7 @@ import DrugResultRow from '~/components/drug-reference/DrugResultRow'
 import IngredientGroup, { type IngredientGrouping } from '~/components/drug-reference/IngredientGroup'
 import DrugDisclaimerModal, { hasAcknowledgedDrugDisclaimer } from '~/components/drug-reference/DrugDisclaimerModal'
 import IngestStatus from '~/components/drug-reference/IngestStatus'
+import AempsData from '~/components/drug-reference/AempsData'
 import SafetyBanner from '~/components/conditions/SafetyBanner'
 import RemedySafetyNote from '~/components/conditions/RemedySafetyNote'
 import {
@@ -19,7 +20,7 @@ import {
   IconX,
   IconChevronDown,
 } from '@tabler/icons-react'
-import type { DrugSearchResult, DrugIngestStatus } from '../../../types/drug_reference'
+import type { DrugSearchResult, DrugIngestStatus, AempsDataStatus } from '../../../types/drug_reference'
 import type { ConditionSummary, ConditionDrugsResult, NaturalRemedy } from '../../../types/conditions'
 import { remedySourceName } from '../../../util/conditions'
 import { PRODUCT_TYPES } from '../../../types/drug_reference'
@@ -28,6 +29,8 @@ import { Trans, useTranslation } from 'react-i18next'
 
 interface PageProps {
   ingestStatus: DrugIngestStatus | null
+  /** Fork: status of the AEMPS Spanish leaflet package. */
+  aempsStatus?: AempsDataStatus | null
   rowCount: number
   conditions: ConditionSummary[]
   remedies: NaturalRemedy[]
@@ -163,6 +166,7 @@ function groupByIngredient(results: DrugSearchResult[]): IngredientGrouping[] {
  */
 export default function DrugReferenceIndex({
   ingestStatus,
+  aempsStatus = null,
   rowCount,
   conditions,
   remediesEnabled = false,
@@ -456,7 +460,7 @@ t('idx.restartConfirm')
       if (resp.ok) {
         const newStatus = (await resp.json()) as DrugIngestStatus
         setStatus(newStatus)
-        if (newStatus.phase === 'ready' && newStatus.rowCount > rowCount) {
+        if (newStatus.phase === 'ready' && newStatus.rowCount > (status?.rowCount ?? 0)) {
           router.reload({ only: ['rowCount', 'ingestStatus'] })
         }
       }
@@ -464,6 +468,10 @@ t('idx.restartConfirm')
       // ignore
     }
   }
+
+  const reloadCounts = useCallback(() => {
+    router.reload({ only: ['rowCount', 'aempsStatus'] })
+  }, [])
 
   const isEmpty = rowCount === 0
 
@@ -475,6 +483,8 @@ t('idx.restartConfirm')
         <div className="p-4 max-w-4xl mx-auto">
           <PageHeader rowCount={rowCount} />
           <DrugDisclaimerModal open={showDisclaimer} onAcknowledge={() => setShowDisclaimer(false)} />
+          {/* Fork: Spanish leaflets (AEMPS) — a much smaller download than FDA. */}
+          <AempsData initial={aempsStatus} onChanged={reloadCounts} className={`${CARD_SURFACE} mb-4 p-5`} />
           <div className="border-2 border-dashed border-desert-stone-lighter rounded-2xl p-8 text-center bg-desert-white">
             <p className="text-lg font-semibold mb-2 text-desert-green-darker">{t('noData')}</p>
             <p className="mb-6 opacity-70">
@@ -643,7 +653,7 @@ t('idx.restartConfirm')
 
               {!drugSearched && (
                 <div className="rounded-2xl border border-dashed border-desert-stone-lighter/70 p-8 text-center text-sm text-desert-stone">
-                  {t('idx.typeHint', { count: rowCount.toLocaleString() })}
+                  {t('idx.typeHint', { count: (source === 'aemps' ? (aempsStatus?.rowCount ?? 0) : (status?.rowCount ?? 0)).toLocaleString() })}
                   <br />
                   <Trans
                     t={t}
@@ -863,8 +873,9 @@ t('idx.restartConfirm')
               })}
             </TabPanel>
 
-            {/* ══ Tab 3: FDA data ════════════════════════════════════════════ */}
+            {/* ══ Tab 3: data (fork: AEMPS + FDA) ═══════════════════════════ */}
             <TabPanel>
+              <AempsData initial={aempsStatus} onChanged={reloadCounts} className={`${CARD_SURFACE} mb-4 p-5`} />
               <div className={`${CARD_SURFACE} p-5`}>
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
                   <h2 className="text-sm font-bold text-desert-green-darker">{t('idx.dataTitle')}</h2>
@@ -884,7 +895,7 @@ t('idx.restartConfirm')
                   </div>
                 </div>
                 <p className="mb-4 text-xs text-desert-stone">
-                  {t('idx.installed', { count: rowCount.toLocaleString() })}
+                  {t('idx.installed', { count: (status?.rowCount ?? 0).toLocaleString() })}
                 </p>
                 {status && <IngestStatus status={status} onRefresh={handleStatusRefresh} />}
               </div>

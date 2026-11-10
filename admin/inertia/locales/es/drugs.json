@@ -126,7 +126,7 @@
     "restart": "Reiniciar indexación",
     "tabDrug": "Buscar por medicamento",
     "tabSituation": "Por situación",
-    "tabData": "Datos de la FDA",
+    "tabData": "Datos",
     "searchPh": "Busca un medicamento por su nombre en inglés: ibuprofen, Benadryl, loratadine…",
     "all": "Todos",
     "otc": "Venta libre",
@@ -153,7 +153,7 @@
     "emptyBody": "Descarga el conjunto de prospectos de openFDA para activar la búsqueda sin conexión. Es una descarga comprimida de ~1,7 GB (~8–10 GB después de indexar).",
     "pickHint": "Elige una situación (o varias) arriba para ver los medicamentos de venta libre cuyo prospecto de la FDA la menciona.",
     "noIntersection": "Ninguna opción sirve para las {{count}} a la vez. Aquí tienes opciones para cada situación.",
-    "subtitle": "Busca un medicamento por nombre o empieza por un síntoma para encontrar opciones de venta libre, todo a partir de los prospectos de la FDA sin conexión.",
+    "subtitle": "Busca un medicamento por nombre o empieza por un síntoma para encontrar opciones de venta libre, todo a partir de prospectos guardados sin conexión (de la AEMPS en español y de la FDA en inglés).",
     "trySituation": "¿Buscas algo para tratar un síntoma? Prueba la pestaña <b>Por situación</b>.",
     "typeHint": "Escribe el nombre de un medicamento arriba para buscar entre {{count}} prospectos de la FDA.",
     "noMatch": "Ningún medicamento coincide con «{{query}}».",
@@ -230,5 +230,21 @@
     "citeAemps": "<s>Fuente:</s> prospecto del Centro de Información online de Medicamentos (CIMA) de la Agencia Española de Medicamentos y Productos Sanitarios (AEMPS), actualizado el {{date}}. Los nombres comerciales y presentaciones son los autorizados en España y pueden no coincidir con los de tu país. NOMAD no está afiliado a la AEMPS ni cuenta con su aval.",
     "original": "Ver el prospecto original",
     "footerAemps": "<s>Fuente:</s> prospectos del Centro de Información online de Medicamentos (CIMA) de la Agencia Española de Medicamentos y Productos Sanitarios (AEMPS); la fecha de cada prospecto figura en su ficha. Los nombres comerciales son los autorizados en España. NOMAD no está afiliado a la AEMPS ni cuenta con su aval."
+  },
+  "aemps": {
+    "title": "Prospectos en español (AEMPS)",
+    "body": "Prospectos de los medicamentos comercializados en España, en español, tomados del CIMA de la Agencia Española de Medicamentos y Productos Sanitarios. Se descarga un único paquete preparado para este proyecto; después funciona sin conexión.",
+    "download": "Descargar prospectos en español",
+    "update": "Actualizar prospectos en español",
+    "working": "Instalando…",
+    "remove": "Quitar",
+    "removeConfirm": "¿Quitar los prospectos en español? Los datos de la FDA no se tocan.",
+    "downloading": "Descargando el paquete…",
+    "downloadingBytes": "Descargando el paquete: {{done}} de {{total}} MB",
+    "importing": "Importando: {{count}} prospectos hasta ahora…",
+    "failed": "La instalación falló: {{error}}",
+    "ready": "{{count}} prospectos instalados (paquete del {{date}}).",
+    "readyNoDate": "{{count}} prospectos instalados.",
+    "notInstalled": "Todavía no están instalados."
   }
 }

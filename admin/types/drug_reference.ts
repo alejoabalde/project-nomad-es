@@ -262,3 +262,17 @@ export interface DrugIngestStatus {
   rowCount: number
   error?: string
 }
+
+/**
+ * Fork (project-nomad-es): status of the AEMPS (CIMA) Spanish leaflet package
+ * in the Data tab. `rowCount` is the number of searchable AEMPS leaflets.
+ */
+export interface AempsDataStatus {
+  phase: 'idle' | 'downloading' | 'importing' | 'ready' | 'failed'
+  rowCount: number
+  packageDate: string | null
+  bytesDownloaded?: number
+  totalBytes?: number
+  imported?: number
+  error?: string
+}

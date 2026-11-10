@@ -38,13 +38,19 @@ export interface StallQueueNames {
   download: string
   drugDownload: string
   drugIngest: string
+  /** Fork (project-nomad-es): AEMPS package download + import, one job. */
+  drugAemps?: string
 }
 
 export function stallOptionsForQueue(queueName: string, queues: StallQueueNames): StallOptions {
   // Long single streams (a ~150 MB resumable HTTP pull, then an unzip +
   // JSON-stream ingest at concurrency 1). Re-running a part is safe: the
   // download resumes and the ingest upserts by key.
-  if (queueName === queues.drugDownload || queueName === queues.drugIngest) {
+  if (
+    queueName === queues.drugDownload ||
+    queueName === queues.drugIngest ||
+    (queues.drugAemps !== undefined && queueName === queues.drugAemps)
+  ) {
     return { lockDuration: LONG_LOCK_DURATION, maxStalledCount: 3 }
   }
 

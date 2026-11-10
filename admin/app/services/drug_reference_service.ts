@@ -427,6 +427,21 @@ export class DrugReferenceService {
   }
 
   /**
+   * Fork (project-nomad-es): FDA rows only. drug_labels also holds the AEMPS
+   * Spanish leaflets (source='aemps'), which must not make the FDA dataset look
+   * installed, nor be dropped by the FDA uninstall.
+   */
+  async fdaRowCount(): Promise<number> {
+    try {
+      const result = await db.rawQuery("SELECT COUNT(*) AS cnt FROM drug_labels WHERE source = 'fda'")
+      const rows = result[0] as Array<{ cnt: number | string }>
+      return Number(rows[0]?.cnt ?? 0)
+    } catch {
+      return 0
+    }
+  }
+
+  /**
    * Dispatch the download phase (idempotent — deduped by deterministic jobId).
    * Auto-chains the ingest phase on completion. Returns "already running" if the
    * download job is active/waiting.
@@ -478,7 +493,7 @@ export class DrugReferenceService {
     latestExportDate?: string | null
   }> {
     // Only act when the dataset is installed.
-    const rowCount = await this.rowCount()
+    const rowCount = await this.fdaRowCount()
     if (rowCount === 0) {
       return { started: false, reason: 'not-installed' }
     }
@@ -678,7 +693,7 @@ export class DrugReferenceService {
     rowsDropped: number
     message: string
   }> {
-    const rowsBefore = await this.rowCount()
+    const rowsBefore = await this.fdaRowCount()
     const errors: string[] = []
 
     // 1. Stop in-flight jobs on both drug queues (force removes locked/active).
@@ -707,8 +722,16 @@ export class DrugReferenceService {
     // 3. Drop the searchable data. TRUNCATE keeps schema + the FULLTEXT indexes
     // so reinstall re-ingests cleanly with no migration.
     try {
-      await db.rawQuery('TRUNCATE TABLE drug_labels')
-      logger.info('[DrugReferenceService] truncated drug_labels')
+      // Fork: keep the AEMPS Spanish leaflets. TRUNCATE only when nothing else
+      // lives in the table (it is much faster than a DELETE of ~259k rows).
+      const others = await db.rawQuery("SELECT 1 FROM drug_labels WHERE source <> 'fda' LIMIT 1")
+      if ((others[0] as unknown[]).length === 0) {
+        await db.rawQuery('TRUNCATE TABLE drug_labels')
+        logger.info('[DrugReferenceService] truncated drug_labels')
+      } else {
+        await db.rawQuery("DELETE FROM drug_labels WHERE source = 'fda'")
+        logger.info('[DrugReferenceService] deleted FDA rows from drug_labels')
+      }
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err)
       logger.error(`[DrugReferenceService] TRUNCATE drug_labels failed: ${msg}`)
@@ -739,7 +762,7 @@ export class DrugReferenceService {
       errors.push(`install-row: ${msg}`)
     }
 
-    const rowsDropped = rowsBefore - (await this.rowCount())
+    const rowsDropped = rowsBefore - (await this.fdaRowCount())
     const success = errors.length === 0
     return {
       success,
@@ -819,7 +842,7 @@ export class DrugReferenceService {
     const [lastUpdated, rawMarker, count] = await Promise.all([
       KVStore.getValue('drugReference.lastUpdatedExportDate'),
       KVStore.getValue('drugReference.downloadState'),
-      this.rowCount(),
+      this.fdaRowCount(),
     ])
     const marker = parseDownloadState(rawMarker)
 

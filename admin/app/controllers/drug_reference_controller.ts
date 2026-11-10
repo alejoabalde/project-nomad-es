@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import logger from '@adonisjs/core/services/logger'
 import { DrugReferenceService } from '#services/drug_reference_service'
+import { AempsDrugImportService } from '#services/aemps_drug_import_service'
 import { ConditionService } from '#services/condition_service'
 import { searchDrugValidator, interactionsValidator } from '#validators/drug_reference'
 import { parseCompareIds } from '../../util/compare_ids.js'
@@ -32,14 +33,16 @@ export default class DrugReferenceController {
   async index({ inertia }: HttpContext) {
     try {
       const conditionService = new ConditionService()
-      const [status, count, remediesOn] = await Promise.all([
+      const [status, count, remediesOn, aempsStatus] = await Promise.all([
         this.service.getIngestStatus(),
         this.service.rowCount(),
         affirmativeRemediesEnabled(),
+        new AempsDrugImportService().getStatus().catch(() => null),
       ])
 
       return inertia.render('drug-reference/index', {
         ingestStatus: status,
+        aempsStatus,
         rowCount: count,
         conditions: conditionService.listConditions(),
         // Affirmative remedy content is gated off by default (#1040): keep it out
@@ -53,6 +56,7 @@ export default class DrugReferenceController {
       logger.error(`[DrugReferenceController] index failed: ${msg}`)
       return inertia.render('drug-reference/index', {
         ingestStatus: null,
+        aempsStatus: null,
         rowCount: 0,
         conditions: [],
         remedies: [],
@@ -291,6 +295,43 @@ export default class DrugReferenceController {
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err)
       return response.notFound({ ok: false, path: LOG_PATH, error: msg })
+    }
+  }
+
+  // ── Fork (project-nomad-es): AEMPS Spanish leaflet package ────────────────
+
+  /** GET /api/drug-reference/aemps/status */
+  async aempsStatus({ response }: HttpContext) {
+    try {
+      return await new AempsDrugImportService().getStatus()
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      logger.error(`[DrugReferenceController] aemps status failed: ${msg}`)
+      return response.internalServerError({ error: 'Could not read AEMPS status' })
+    }
+  }
+
+  /** POST /api/drug-reference/aemps/download — download + import (idempotent). */
+  async aempsDownload({ response }: HttpContext) {
+    try {
+      const result = await new AempsDrugImportService().triggerDownload()
+      return { success: true, created: result.created, message: result.message }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      logger.error(`[DrugReferenceController] aemps download failed: ${msg}`)
+      return response.internalServerError({ error: 'Could not start the AEMPS download' })
+    }
+  }
+
+  /** POST /api/drug-reference/aemps/uninstall — drops only the AEMPS rows. */
+  async aempsUninstall({ response }: HttpContext) {
+    try {
+      const removed = await new AempsDrugImportService().uninstall()
+      return { success: true, rowsDropped: removed }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      logger.error(`[DrugReferenceController] aemps uninstall failed: ${msg}`)
+      return response.conflict({ error: msg })
     }
   }
 }
