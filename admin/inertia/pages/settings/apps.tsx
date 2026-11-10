@@ -18,6 +18,7 @@ import { BROADCAST_CHANNELS } from '../../../constants/broadcast'
 import { IconArrowUp, IconCheck, IconDownload } from '@tabler/icons-react'
 import UpdateServiceModal from '~/components/UpdateServiceModal'
 import { useServiceText } from '~/lib/service_i18n'
+import { Trans, useTranslation } from 'react-i18next'
 
 function extractTag(containerImage: string): string {
   if (!containerImage) return ''
@@ -27,6 +28,7 @@ function extractTag(containerImage: string): string {
 
 export default function SettingsPage(props: { system: { services: ServiceSlim[] } }) {
   const serviceText = useServiceText()
+  const { t } = useTranslation('settings')
   const { openModal, closeAllModals } = useModals()
   const { showError } = useErrorNotification()
   const { isOnline } = useInternetStatus()
@@ -66,17 +68,17 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
   async function handleCheckUpdates() {
     try {
       if (!isOnline) {
-        showError('You must have an internet connection to check for updates.')
+        showError(t('apps.offlineCheck'))
         return
       }
       setCheckingUpdates(true)
       const response = await api.checkServiceUpdates()
       if (!response?.success) {
-        throw new Error('Failed to dispatch update check')
+        throw new Error(t('apps.dispatchError'))
       }
     } catch (error) {
       console.error('Error checking for updates:', error)
-      showError(`Failed to check for updates: ${error.message || 'Unknown error'}`)
+      showError(t('apps.checkError', { error: error.message || t('apps.unknownError') }))
       setCheckingUpdates(false)
     }
   }
@@ -84,22 +86,20 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
   const handleInstallService = (service: ServiceSlim) => {
     openModal(
       <StyledModal
-        title="Install Service?"
+        title={t('apps.installTitle')}
         onConfirm={() => {
           installService(service.service_name)
           closeAllModals()
         }}
         onCancel={closeAllModals}
         open={true}
-        confirmText="Install"
-        cancelText="Cancel"
+        confirmText={t('apps.install')}
+        cancelText={t('common:actions.cancel')}
         confirmVariant="primary"
         icon={<IconDownload className="h-12 w-12 text-desert-green" />}
       >
         <p className="text-text-primary">
-          Are you sure you want to install {service.friendly_name || service.service_name}? This
-          will start the service and make it available in your Project NOMAD instance. It may
-          take some time to complete.
+          {t('apps.installBody', { app: serviceText.name(service) })}
         </p>
       </StyledModal>,
       'install-service-modal'
@@ -109,21 +109,21 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
   async function installService(serviceName: string) {
     try {
       if (!isOnline) {
-        showError('You must have an internet connection to install services.')
+        showError(t('apps.offlineInstall'))
         return
       }
 
       setIsInstalling(true)
       const response = await api.installService(serviceName)
       if (!response) {
-        throw new Error('An internal error occurred while trying to install the service.')
+        throw new Error(t('apps.internalInstall'))
       }
       if (!response.success) {
         throw new Error(response.message)
       }
     } catch (error) {
       console.error('Error installing service:', error)
-      showError(`Failed to install service: ${error.message || 'Unknown error'}`)
+      showError(t('apps.installError', { error: error.message || t('apps.unknownError') }))
     } finally {
       setIsInstalling(false)
     }
@@ -134,7 +134,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
       setLoading(true)
       const response = await api.affectService(record.service_name, action)
       if (!response) {
-        throw new Error('An internal error occurred while trying to affect the service.')
+        throw new Error(t('apps.internalAffect'))
       }
       if (!response.success) {
         throw new Error(response.message)
@@ -148,7 +148,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
       }, 3000)
     } catch (error) {
       console.error(`Error affecting service ${record.service_name}:`, error)
-      showError(`Failed to ${action} service: ${error.message || 'Unknown error'}`)
+      showError(t(`apps.affectError.${action}`, { error: error.message || t('apps.unknownError') }))
     }
   }
 
@@ -157,7 +157,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
       setLoading(true)
       const response = await api.forceReinstallService(record.service_name)
       if (!response) {
-        throw new Error('An internal error occurred while trying to force reinstall the service.')
+        throw new Error(t('apps.internalReinstall'))
       }
       if (!response.success) {
         throw new Error(response.message)
@@ -171,7 +171,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
       }, 3000)
     } catch (error) {
       console.error(`Error force reinstalling service ${record.service_name}:`, error)
-      showError(`Failed to force reinstall service: ${error.message || 'Unknown error'}`)
+      showError(t('apps.reinstallError', { error: error.message || t('apps.unknownError') }))
     }
   }
 
@@ -194,13 +194,13 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
           try {
             const response = await api.updateService(record.service_name, targetVersion)
             if (!response?.success) {
-              throw new Error(response?.message || 'Update failed')
+              throw new Error(response?.message || t('apps.updateFailed'))
             }
             // On success the backend broadcasts `update-complete`, which triggers the reload effect
             // above and refreshes the version + status. Leave the button disabled until then.
           } catch (error) {
             console.error(`Error updating service ${record.service_name}:`, error)
-            showError(`Failed to update service: ${error.message || 'Unknown error'}`)
+            showError(t('apps.updateError', { error: error.message || t('apps.unknownError') }))
             setUpdatingServices((prev) => {
               const next = new Set(prev)
               next.delete(record.service_name)
@@ -222,18 +222,20 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
         onClick={() => {
           openModal(
             <StyledModal
-              title={'Force Reinstall?'}
+              title={t('apps.reinstallTitle')}
               onConfirm={() => handleForceReinstall(record)}
               onCancel={closeAllModals}
               open={true}
-              confirmText={'Force Reinstall'}
-              cancelText="Cancel"
+              confirmText={t('apps.forceReinstall')}
+              cancelText={t('common:actions.cancel')}
             >
               <p className="text-text-primary">
-                Are you sure you want to force reinstall {record.service_name}? This will{' '}
-                <strong>WIPE ALL DATA</strong> for this service and cannot be undone. You should
-                only do this if the service is malfunctioning and other troubleshooting steps have
-                failed.
+                <Trans
+                  t={t}
+                  i18nKey="apps.reinstallBody"
+                  values={{ app: serviceText.name(record) }}
+                  components={{ b: <strong /> }}
+                />
               </p>
             </StyledModal>,
             `${record.service_name}-force-reinstall-modal`
@@ -241,7 +243,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
         }}
         disabled={isInstalling}
       >
-        Force Reinstall
+        {t('apps.forceReinstall')}
       </StyledButton>
     )
 
@@ -256,7 +258,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
             disabled={isInstalling || !isOnline}
             loading={isInstalling}
           >
-            Install
+            {t('apps.install')}
           </StyledButton>
           <ForceReinstallButton />
         </div>
@@ -271,7 +273,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
             window.open(getServiceLink(record.ui_location || 'unknown', record.custom_url), '_blank')
           }}
         >
-          Open
+          {t('apps.open')}
         </StyledButton>
         {record.available_update_version && (() => {
           const isUpdating =
@@ -284,7 +286,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
               disabled={isInstalling || !isOnline || isUpdating}
               loading={isUpdating}
             >
-              {isUpdating ? 'Updating...' : 'Update'}
+              {isUpdating ? t('apps.updating') : t('apps.update')}
             </StyledButton>
           )
         })()}
@@ -296,18 +298,19 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
               onClick={() => {
                 openModal(
                   <StyledModal
-                    title={`${record.status === 'running' ? 'Stop' : 'Start'} Service?`}
+                    title={record.status === 'running' ? t('apps.stopTitle') : t('apps.startTitle')}
                     onConfirm={() =>
                       handleAffectAction(record, record.status === 'running' ? 'stop' : 'start')
                     }
                     onCancel={closeAllModals}
                     open={true}
-                    confirmText={record.status === 'running' ? 'Stop' : 'Start'}
-                    cancelText="Cancel"
+                    confirmText={record.status === 'running' ? t('apps.stop') : t('apps.start')}
+                    cancelText={t('common:actions.cancel')}
                   >
                     <p className="text-text-primary">
-                      Are you sure you want to {record.status === 'running' ? 'stop' : 'start'}{' '}
-                      {record.service_name}?
+                      {record.status === 'running'
+                        ? t('apps.stopBody', { app: serviceText.name(record) })
+                        : t('apps.startBody', { app: serviceText.name(record) })}
                     </p>
                   </StyledModal>,
                   `${record.service_name}-affect-modal`
@@ -315,7 +318,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
               }}
               disabled={isInstalling}
             >
-              {record.status === 'running' ? 'Stop' : 'Start'}
+              {record.status === 'running' ? t('apps.stop') : t('apps.start')}
             </StyledButton>
             {record.status === 'running' && (
               <StyledButton
@@ -324,15 +327,15 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
                 onClick={() => {
                   openModal(
                     <StyledModal
-                      title={'Restart Service?'}
+                      title={t('apps.restartTitle')}
                       onConfirm={() => handleAffectAction(record, 'restart')}
                       onCancel={closeAllModals}
                       open={true}
-                      confirmText={'Restart'}
-                      cancelText="Cancel"
+                      confirmText={t('apps.restart')}
+                      cancelText={t('common:actions.cancel')}
                     >
                       <p className="text-text-primary">
-                        Are you sure you want to restart {record.service_name}?
+                        {t('apps.restartBody', { app: serviceText.name(record) })}
                       </p>
                     </StyledModal>,
                     `${record.service_name}-affect-modal`
@@ -340,7 +343,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
                 }}
                 disabled={isInstalling}
               >
-                Restart
+                {t('apps.restart')}
               </StyledButton>
             )}
             <ForceReinstallButton />
@@ -352,14 +355,14 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
 
   return (
     <SettingsLayout>
-      <Head title="App Settings" />
+      <Head title={t('apps.headTitle')} />
       <div className="xl:pl-72 w-full">
         <main className="px-12 py-6">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-4xl font-semibold">Apps</h1>
+              <h1 className="text-4xl font-semibold">{t('apps.title')}</h1>
               <p className="text-text-muted mt-1">
-                Manage the applications that are available in your Project NOMAD instance. Nightly update checks will automatically detect when new versions of these apps are available.
+                {t('apps.subtitle')}
               </p>
             </div>
             <StyledButton
@@ -368,7 +371,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
               disabled={checkingUpdates || !isOnline}
               loading={checkingUpdates}
             >
-              Check for Updates
+              {t('apps.checkUpdates')}
             </StyledButton>
           </div>
           {loading && <LoadingSpinner fullscreen />}
@@ -379,7 +382,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
               columns={[
                 {
                   accessor: 'friendly_name',
-                  title: 'Name',
+                  title: t('apps.col.name'),
                   render(record) {
                     return (
                       <div className="flex flex-col">
@@ -391,7 +394,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
                 },
                 {
                   accessor: 'ui_location',
-                  title: 'Location',
+                  title: t('apps.col.location'),
                   render: (record) => (
                     <a
                       href={getServiceLink(record.ui_location || 'unknown', record.custom_url)}
@@ -405,13 +408,13 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
                 },
                 {
                   accessor: 'installed',
-                  title: 'Installed',
+                  title: t('apps.col.installed'),
                   render: (record) =>
                     record.installed ? <IconCheck className="h-6 w-6 text-desert-green" /> : '',
                 },
                 {
                   accessor: 'container_image',
-                  title: 'Version',
+                  title: t('apps.col.version'),
                   render: (record) => {
                     if (!record.installed) return null
                     const currentTag = extractTag(record.container_image)
@@ -431,7 +434,7 @@ export default function SettingsPage(props: { system: { services: ServiceSlim[] 
                 },
                 {
                   accessor: 'actions',
-                  title: 'Actions',
+                  title: t('apps.col.actions'),
                   className: '!whitespace-normal',
                   render: (record) => <AppActions record={record} />,
                 },
