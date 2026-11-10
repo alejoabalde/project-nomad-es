@@ -1,0 +1,36 @@
+{
+  "language": {
+    "label": "Language"
+  },
+  "layout": {
+    "backToHome": "Back to Home",
+    "logoAlt": "Project NOMAD Logo",
+    "commandCenter": "Command Center"
+  },
+  "footer": {
+    "version": "Project NOMAD™ Command Center v{{version}}",
+    "debugInfo": "Debug Info"
+  },
+  "theme": {
+    "dayOps": "Day Ops",
+    "nightOps": "Night Ops",
+    "switchToDay": "Switch to Day Ops",
+    "switchToNight": "Switch to Night Ops"
+  },
+  "debugModal": {
+    "title": "Debug Info",
+    "close": "Close",
+    "loadFailed": "Failed to load debug info. Please try again.",
+    "description": "This is non-sensitive system info you can share when reporting issues. No passwords, IPs, or API keys are included.",
+    "loading": "Loading...",
+    "copied": "Copied!",
+    "copy": "Copy to Clipboard",
+    "openIssue": "Open a GitHub Issue"
+  },
+  "actions": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "remove": "Remove",
+    "save": "Save"
+  }
+}
