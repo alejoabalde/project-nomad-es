@@ -50,7 +50,8 @@
       ],
       "scopeType": "custom",
       "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/JavaScript|Web/HTML|Web/CSS|Learn)",
-      "type": "website"
+      "type": "website",
+      "scopeExcludeRx": "/contributors\\.txt$"
     },
     {
       "id": "cdc.gov_es_all",
