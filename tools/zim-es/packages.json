@@ -1,0 +1,46 @@
+{
+  "release_tag": "paquetes-es",
+  "packages": [
+    {
+      "id": "docs.python.org_es_3",
+      "title": "Documentación de Python",
+      "description": "Documentación oficial de Python 3 en español",
+      "license": "Licencia PSF (Python Software Foundation)",
+      "source": "https://docs.python.org/es/3/",
+      "seeds": ["https://docs.python.org/es/3/"],
+      "scopeType": "prefix"
+    },
+    {
+      "id": "git-scm.com_es_progit",
+      "title": "Pro Git en español",
+      "description": "El libro Pro Git (2.ª edición) en español",
+      "license": "CC BY-NC-SA 3.0",
+      "source": "https://git-scm.com/book/es/v2",
+      "seeds": ["https://git-scm.com/book/es/v2"],
+      "scopeType": "prefix"
+    },
+    {
+      "id": "es.react.dev_es_all",
+      "title": "Documentación de React",
+      "description": "Documentación oficial de React en español",
+      "license": "CC BY 4.0",
+      "source": "https://es.react.dev/",
+      "seeds": ["https://es.react.dev/"],
+      "scopeType": "host"
+    },
+    {
+      "id": "developer.mozilla.org_es_web",
+      "title": "MDN: JavaScript, HTML, CSS",
+      "description": "Referencia de MDN en español para JavaScript, HTML y CSS",
+      "license": "CC BY-SA 2.5",
+      "source": "https://developer.mozilla.org/es/",
+      "seeds": [
+        "https://developer.mozilla.org/es/docs/Web/JavaScript",
+        "https://developer.mozilla.org/es/docs/Web/HTML",
+        "https://developer.mozilla.org/es/docs/Web/CSS"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/JavaScript|Web/HTML|Web/CSS|Learn)"
+    }
+  ]
+}

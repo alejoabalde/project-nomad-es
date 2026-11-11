@@ -1,0 +1,71 @@
+name: Armar paquetes en español
+
+# Fork-only: arma los paquetes .zim en español que no publica Kiwix (ver
+# tools/zim-es/packages.json) y los sube a la versión "paquetes-es" del
+# repositorio, desde donde NOMAD los descarga.
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'ID del paquete (vacío = todos)'
+        required: false
+        default: ''
+  push:
+    paths:
+      - 'tools/zim-es/**'
+      - '.github/workflows/build-zim-es.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-zim-es
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      tag: ${{ steps.matrix.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: matrix
+        env:
+          ONLY: ${{ github.event.inputs.package }}
+        run: |
+          echo "tag=$(jq -r .release_tag tools/zim-es/packages.json)" >> "$GITHUB_OUTPUT"
+          echo "matrix=$(jq -c --arg p "$ONLY" '[.packages[] | select(.enabled != false) | select($p == "" or .id == $p)]' tools/zim-es/packages.json)" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: plan
+    if: needs.plan.outputs.matrix != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        package: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    name: ${{ matrix.package.id }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Armar el paquete
+        id: build
+        env:
+          PKG: ${{ toJSON(matrix.package) }}
+        run: python3 tools/zim-es/build_zimit.py
+
+      - name: Publicar en la versión del repositorio
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.plan.outputs.tag }}
+        run: |
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" \
+            --title "Paquetes en español" \
+            --notes "Paquetes .zim en español armados por el fork (ver tools/zim-es/packages.json). Cada uno conserva la licencia de su fuente." \
+            --latest=false
+          gh release upload "$TAG" "${{ steps.build.outputs.zim }}" --clobber
+          echo "Publicado: ${{ steps.build.outputs.zim_name }} (${{ steps.build.outputs.size_mb }} MB)"
