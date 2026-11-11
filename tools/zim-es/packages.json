@@ -190,7 +190,9 @@
           "title": "Páginas finales",
           "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_bm.pdf"
         }
-      ]
+      ],
+      "enabled": false,
+      "note": "Pausado: no se encuentra en hesperian.org el PDF de primeras páginas con la licencia (es_cgeh_2011_fm.pdf da 404, y los capítulos, el índice y las páginas finales no la muestran). Sin licencia confirmada no se arma."
     },
     {
       "id": "hesperian_es_donde-no-hay-doctor",
