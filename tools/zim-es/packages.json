@@ -120,28 +120,28 @@
       "title": "FAO: alimentos y huerta",
       "description": "Manuales de la FAO sobre huerta, semillas y conservación de granos y alimentos",
       "credit": "Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO)",
-      "license": "CC BY-NC-SA 3.0 IGO (solo se incluyen los manuales que lo indican)",
+      "license": "CC BY-NC-SA 3.0 IGO, o permiso de la FAO para reproducir y difundir con fines educativos no comerciales citando la fuente (solo se incluyen los manuales que lo indican)",
       "source": "https://openknowledge.fao.org/",
       "documents": [
         {
           "title": "Producción artesanal de semillas de hortalizas para la huerta familiar",
           "url": "https://openknowledge.fao.org/server/api/core/bitstreams/8b14cf90-62c1-467a-8f23-f2f218218a0a/content",
-          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|autoriza\\s+la\\s+reproducci[oó]n\\s+y\\s+(la\\s+)?difusi[oó]n[\\s\\S]{0,200}?fines\\s+educativos"
         },
         {
           "title": "Construcción y uso de silos metálicos familiares para granos",
           "url": "https://openknowledge.fao.org/server/api/core/bitstreams/725b5348-58ef-4eca-aad8-391420e777c6/content",
-          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|autoriza\\s+la\\s+reproducci[oó]n\\s+y\\s+(la\\s+)?difusi[oó]n[\\s\\S]{0,200}?fines\\s+educativos"
         },
         {
           "title": "Guía de capacitación en temas agrícolas para agricultores familiares",
           "url": "https://openknowledge.fao.org/server/api/core/bitstreams/325d8fbc-deb8-4418-900c-265d1ae42380/content",
-          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|autoriza\\s+la\\s+reproducci[oó]n\\s+y\\s+(la\\s+)?difusi[oó]n[\\s\\S]{0,200}?fines\\s+educativos"
         },
         {
           "title": "Manual para manipuladores de alimentos",
           "url": "https://openknowledge.fao.org/server/api/core/bitstreams/78f24b65-7a0e-468d-9e2c-3469d9d14a4b/content",
-          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|autoriza\\s+la\\s+reproducci[oó]n\\s+y\\s+(la\\s+)?difusi[oó]n[\\s\\S]{0,200}?fines\\s+educativos"
         }
       ]
     },
