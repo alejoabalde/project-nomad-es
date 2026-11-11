@@ -93,7 +93,13 @@ page_cache: dict[str, str] = {}
 package_license_ok = False
 if pkg.get("licenseProof"):
     proof = pkg["licenseProof"]
-    data = fetch(proof["url"])
+    # "url" puede ser una lista de nombres posibles: se usa el primero que exista
+    data = None
+    for url in proof["url"] if isinstance(proof["url"], list) else [proof["url"]]:
+        data = fetch(url)
+        if data and data.startswith(b"%PDF"):
+            proof = {**proof, "url": url}
+            break
     if data and data.startswith(b"%PDF"):
         proof_path = work / "licencia.pdf"
         proof_path.write_bytes(data)

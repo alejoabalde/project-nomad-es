@@ -156,8 +156,18 @@
       "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
       "source": "https://hesperian.org/",
       "licenseProof": {
-        "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_fm.pdf",
-        "pattern": "invita a (los demás|otros)[^.]{0,40}copiar|open-copyright|derechos de autor compartidos|copyleft"
+        "url": [
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_fm.pdf",
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_front.pdf",
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_frontmatter.pdf",
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_00.pdf",
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_cap00.pdf",
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_intro.pdf",
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_toc.pdf",
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_indice.pdf",
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_fm_web.pdf"
+        ],
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
       },
       "documents": [
         {
@@ -192,7 +202,7 @@
       "source": "https://hesperian.org/",
       "licenseProof": {
         "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_fm.pdf",
-        "pattern": "invita a (los demás|otros)[^.]{0,40}copiar|open-copyright|derechos de autor compartidos|copyleft"
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
       },
       "documents": [
         {
