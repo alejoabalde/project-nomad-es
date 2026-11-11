@@ -119,6 +119,12 @@ if pkg.get("licenseProof") and not package_license_ok:
             package_license_ok = True
             print(f"Licencia del paquete confirmada en: {doc['title']}")
             break
+    else:
+        # Para revisar a mano qué dicen sobre derechos el primer y el último documento
+        for doc, path in downloaded[:1] + downloaded[-1:]:
+            text = pdf_text(path)
+            for m in list(re.finditer(r"©|derechos|reproduc|copia|licen|copyright", text, re.IGNORECASE))[:3]:
+                print(f"    texto ({doc['title']}):", " ".join(text[max(0, m.start() - 80):m.start() + 220].split()))
 
 for doc, path in downloaded:
     ok, why = False, "sin licencia confirmada"
