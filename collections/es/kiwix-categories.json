@@ -23,6 +23,14 @@
               "size_mb": 171
             },
             {
+              "id": "hesperian_es_donde-no-hay-doctor",
+              "version": "2026-11",
+              "title": "Donde no hay doctor (Hesperian)",
+              "description": "La guía de salud de Hesperian para lugares sin médico: primeros auxilios, enfermedades comunes, medicinas y prevención",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_donde-no-hay-doctor_2026-11.zim",
+              "size_mb": 18
+            },
+            {
               "id": "zimgit-medicine_en",
               "version": "2024-08",
               "title": "Biblioteca médica (en inglés)",
@@ -159,6 +167,14 @@
               "description": "Guía oficial de EE. UU. para prepararse ante desastres: clima, incendios, planes de evacuación y kits de emergencia",
               "url": "https://download.kiwix.org/zim/zimit/ready.gov_es_all_2026-10.zim",
               "size_mb": 2066
+            },
+            {
+              "id": "cawst_es_agua",
+              "version": "2026-11",
+              "title": "Agua segura en casa (CAWST)",
+              "description": "Manuales de CAWST sobre tratamiento del agua a nivel domiciliario y análisis de la calidad del agua de consumo",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/cawst_es_agua_2026-11.zim",
+              "size_mb": 17
             },
             {
               "id": "zimgit-water_en",
