@@ -253,6 +253,113 @@
           "source": "https://commons.wikimedia.org/wiki/File:Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf"
         }
       ]
+    },
+    {
+      "id": "wikem.org_es_all",
+      "type": "website",
+      "title": "WikEM en español",
+      "description": "Páginas de WikEM (medicina de emergencia) traducidas al español",
+      "license": "CC BY-SA 4.0",
+      "source": "https://wikem.org/",
+      "seeds": [
+        "https://wikem.org/wiki/Main_Page/es"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://(www\\.)?wikem\\.org/wiki/[^?#]+/es$",
+      "scopeExcludeRx": "/wiki/(Special|Talk|User|File|Template|Category)[:%]",
+      "pageLimit": 20000,
+      "minSizeMB": 5,
+      "note": "Medición: si quedan pocas páginas clínicas traducidas, se descarta."
+    },
+    {
+      "id": "espanol.libretexts.org_es_fisica",
+      "type": "website",
+      "title": "LibreTexts: Física",
+      "description": "Libros de texto abiertos de LibreTexts en español: Física",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/F(i|%C3%AD|í)sica(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    },
+    {
+      "id": "espanol.libretexts.org_es_quimica",
+      "type": "website",
+      "title": "LibreTexts: Química",
+      "description": "Libros de texto abiertos de LibreTexts en español: Química",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Qu(i|%C3%AD|í)mica(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    },
+    {
+      "id": "espanol.libretexts.org_es_matematicas",
+      "type": "website",
+      "title": "LibreTexts: Matemáticas",
+      "description": "Libros de texto abiertos de LibreTexts en español: Matemáticas",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Matem(a|%C3%A1|á)ticas(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia",
+      "type": "website",
+      "title": "LibreTexts: Biología",
+      "description": "Libros de texto abiertos de LibreTexts en español: Biología",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biolog(i|%C3%AD|í)a(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    },
+    {
+      "id": "espanol.libretexts.org_es_ingenieria",
+      "type": "website",
+      "title": "LibreTexts: Ingeniería",
+      "description": "Libros de texto abiertos de LibreTexts en español: Ingeniería",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Ingenier(i|%C3%AD|í)a(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    },
+    {
+      "id": "espanol.libretexts.org_es_negocios",
+      "type": "website",
+      "title": "LibreTexts: Negocios",
+      "description": "Libros de texto abiertos de LibreTexts en español: Negocios",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Negocios?(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
     }
   ]
 }

@@ -48,6 +48,8 @@ if not zim.exists():
     sys.exit(f"No se generó {zim_name}")
 size = zim.stat().st_size
 print(f"{zim_name}: {size / 1024**2:.1f} MB")
+if size < pkg.get("minSizeMB", 0) * 1024**2:
+    sys.exit(f"{zim_name} pesa {size / 1024**2:.1f} MB, menos de lo esperado: probablemente no encontró el contenido")
 if size > MAX_BYTES:
     sys.exit(f"{zim_name} pesa más de 2 GB: hay que partir el paquete en packages.json")
 
