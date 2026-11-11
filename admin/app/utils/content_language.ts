@@ -24,3 +24,12 @@ export function getContentLanguage(): ContentLanguage {
 export function isWikipediaSelectorFile(nameOrUrl: string): boolean {
   return nameOrUrl.includes('wikipedia_en_') || /wikipedia_es_(?:all|top)_/.test(nameOrUrl)
 }
+
+/**
+ * Language of a Wikipedia selector file or URL. Each language keeps its own
+ * Wikipedia selection, so a Spanish and an English Wikipedia can be installed
+ * side by side.
+ */
+export function wikipediaLanguageOf(nameOrUrl: string): ContentLanguage {
+  return /wikipedia_es_/.test(nameOrUrl) ? 'es' : 'en'
+}

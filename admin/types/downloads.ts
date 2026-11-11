@@ -100,6 +100,8 @@ export type WikipediaCurrentSelection = {
 }
 
 export type WikipediaState = {
+  /** Fork-only: each language has its own Wikipedia selector. */
+  language?: 'en' | 'es'
   options: WikipediaOption[]
   currentSelection: WikipediaCurrentSelection | null
 }

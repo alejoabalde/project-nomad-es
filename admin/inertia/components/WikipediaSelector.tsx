@@ -16,6 +16,7 @@ export interface WikipediaSelectorProps {
   showSubmitButton?: boolean // true for Content Explorer, false for wizard
   onSubmit?: () => void
   isSubmitting?: boolean
+  title?: string // fork-only: names the language when both Wikipedias are shown
 }
 
 const WikipediaSelector: React.FC<WikipediaSelectorProps> = ({
@@ -27,6 +28,7 @@ const WikipediaSelector: React.FC<WikipediaSelectorProps> = ({
   showSubmitButton = false,
   onSubmit,
   isSubmitting = false,
+  title = 'Wikipedia',
 }) => {
   // Determine which option to highlight
   const { t } = useTranslation('components')
@@ -45,7 +47,7 @@ const WikipediaSelector: React.FC<WikipediaSelectorProps> = ({
           <IconWorld className="w-6 h-6 text-text-primary" />
         </div>
         <div>
-          <h3 className="text-xl font-semibold text-text-primary">Wikipedia</h3>
+          <h3 className="text-xl font-semibold text-text-primary">{title}</h3>
           <p className="text-sm text-text-muted">{t('wikipedia.subtitle')}</p>
         </div>
       </div>

@@ -32,7 +32,7 @@ import { DownloadDrugDataJob } from '#jobs/download_drug_data_job'
 import { DrugReferenceService } from './drug_reference_service.js'
 import { SERVICE_NAMES } from '../../constants/service_names.js'
 import { CollectionManifestService, specUrlFor } from './collection_manifest_service.js'
-import { CONTENT_LANGUAGES, getContentLanguage, isWikipediaSelectorFile, type ContentLanguage } from '../utils/content_language.js'
+import { CONTENT_LANGUAGES, getContentLanguage, isWikipediaSelectorFile, wikipediaLanguageOf, type ContentLanguage } from '../utils/content_language.js'
 import { KiwixCatalogService } from './kiwix_catalog_service.js'
 import { KiwixLibraryService } from './kiwix_library_service.js'
 import { RagService } from './rag_service.js'
@@ -643,14 +643,17 @@ export class ZimService {
     try {
       const manifests = await CollectionManifest.query().whereIn('type', ['wikipedia', 'wikipedia_es'])
       if (manifests.length > 0) {
-        const allOptions = manifests.flatMap(
-          (m) => (m.spec_data as { options: Array<{ id: string; url: string | null }> }).options
+        const allOptions = manifests.flatMap((m) =>
+          (m.spec_data as { options: Array<{ id: string; url: string | null }> }).options.map(
+            (opt) => ({ ...opt, language: ((m.type as string) === 'wikipedia_es' ? 'es' : 'en') as ContentLanguage })
+          )
         )
         const matchedOption = allOptions.find(
           (opt) => opt.url && opt.url.split('/').pop() === filename
         )
         if (matchedOption && matchedOption.url) {
-          const existing = await WikipediaSelection.query().first()
+          const lang = matchedOption.language
+          const existing = await this.getWikipediaSelection(lang)
           if (existing) {
             existing.option_id = matchedOption.id
             existing.url = matchedOption.url
@@ -662,15 +665,20 @@ export class ZimService {
               option_id: matchedOption.id,
               url: matchedOption.url,
               filename,
+              language: lang,
               status: 'installed',
             })
           }
           logger.info(`[ZimService] Marked Wikipedia option '${matchedOption.id}' as installed from local upload`)
 
-          // Remove any other wikipedia_en_*.zim files, same as the download flow
+          // Remove the other Wikipedia selector files of the same language, same as
+          // the download flow. The other language's Wikipedia stays installed.
           const allFiles = await this.list()
           const staleWikipediaFiles = allFiles.files.filter(
-            (f) => isWikipediaSelectorFile(f.name) && f.name !== filename
+            (f) =>
+              isWikipediaSelectorFile(f.name) &&
+              wikipediaLanguageOf(f.name) === lang &&
+              f.name !== filename
           )
           for (const stale of staleWikipediaFiles) {
             try {
@@ -784,10 +792,10 @@ export class ZimService {
       logger.info(`[ZimService] Deleted InstalledResource entry for: ${parsed.resource_id}`)
     }
 
-    // If this file was the active Wikipedia selection, clear the selection
+    // If this file was the active Wikipedia selection of its language, clear that selection
     try {
-      const selection = await WikipediaSelection.query().first()
-      if (selection && selection.filename === fileName) {
+      const selection = await WikipediaSelection.query().where('filename', fileName).first()
+      if (selection) {
         selection.option_id = 'none'
         selection.status = 'none'
         selection.filename = null
@@ -819,16 +827,20 @@ export class ZimService {
     }
   }
 
-  async getWikipediaSelection(): Promise<WikipediaSelection | null> {
-    // Get the single row from wikipedia_selections (there should only ever be one)
-    return WikipediaSelection.query().first()
+  async getWikipediaSelection(
+    lang: ContentLanguage = getContentLanguage()
+  ): Promise<WikipediaSelection | null> {
+    // One row per language (fork-only): a Spanish and an English Wikipedia can
+    // be installed side by side.
+    return WikipediaSelection.query().where('language', lang).first()
   }
 
-  async getWikipediaState(): Promise<WikipediaState> {
-    const options = await this.getWikipediaOptions()
-    const selection = await this.getWikipediaSelection()
+  async getWikipediaState(lang: ContentLanguage = getContentLanguage()): Promise<WikipediaState> {
+    const options = await this.getWikipediaOptions(lang)
+    const selection = await this.getWikipediaSelection(lang)
 
     return {
+      language: lang,
       options,
       currentSelection: selection
         ? {
@@ -841,15 +853,18 @@ export class ZimService {
     }
   }
 
-  async selectWikipedia(optionId: string): Promise<{ success: boolean; jobId?: string; message?: string }> {
-    const options = await this.getWikipediaOptions()
+  async selectWikipedia(
+    optionId: string,
+    lang: ContentLanguage = getContentLanguage()
+  ): Promise<{ success: boolean; jobId?: string; message?: string }> {
+    const options = await this.getWikipediaOptions(lang)
     const selectedOption = options.find((opt) => opt.id === optionId)
 
     if (!selectedOption) {
       throw new Error(`Invalid Wikipedia option: ${optionId}`)
     }
 
-    const currentSelection = await this.getWikipediaSelection()
+    const currentSelection = await this.getWikipediaSelection(lang)
 
     // If same as currently installed, no action needed
     if (currentSelection?.option_id === optionId && currentSelection.status === 'installed') {
@@ -880,6 +895,7 @@ export class ZimService {
           option_id: 'none',
           url: null,
           filename: null,
+          language: lang,
           status: 'none',
         })
       }
@@ -927,6 +943,7 @@ export class ZimService {
         option_id: optionId,
         url: selectedOption.url,
         filename: filename,
+        language: lang,
         status: 'downloading',
       })
     }
@@ -963,24 +980,29 @@ export class ZimService {
 
   async onWikipediaDownloadComplete(url: string, success: boolean): Promise<void> {
     const filename = url.split('/').pop() || ''
-    const selection = await this.getWikipediaSelection()
 
     // Determine which Wikipedia option this file belongs to by matching filename
     // Runs from the download job, outside any request, so check every
     // language's list (a Spanish Wikipedia only appears in the Spanish one).
     let matchedOptionId: string | null = null
+    let language: ContentLanguage = wikipediaLanguageOf(filename)
     for (const lang of CONTENT_LANGUAGES) {
       try {
         const options = await this.getWikipediaOptions(lang)
         const match = options.find((opt) => opt.url && opt.url.split('/').pop() === filename)
         if (match) {
           matchedOptionId = match.id
+          language = lang
           break
         }
       } catch {
         // If we can't fetch options, try to continue with existing selection
       }
     }
+
+    // Each language keeps its own selection, so this only touches the row of
+    // the file's language.
+    const selection = await this.getWikipediaSelection(language)
 
     if (success) {
       // Update or create the selection record
@@ -996,6 +1018,7 @@ export class ZimService {
           option_id: matchedOptionId || 'unknown',
           url: url,
           filename: filename,
+          language,
           status: 'installed',
         })
       }

@@ -11,7 +11,9 @@
     "failed": "Wikipedia download failed. Select a package and try again.",
     "noDownload": "No download",
     "remove": "Remove Wikipedia",
-    "downloadSelected": "Download Selected"
+    "downloadSelected": "Download Selected",
+    "titleEs": "Spanish Wikipedia",
+    "titleEn": "English Wikipedia"
   },
   "category": {
     "indexing": "indexing",

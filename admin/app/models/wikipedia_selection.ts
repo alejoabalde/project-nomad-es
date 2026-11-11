@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, SnakeCaseNamingStrategy } from '@adonisjs/lucid/orm'
+import type { ContentLanguage } from '../utils/content_language.js'
 
 export default class WikipediaSelection extends BaseModel {
   static namingStrategy = new SnakeCaseNamingStrategy()
@@ -15,6 +16,10 @@ export default class WikipediaSelection extends BaseModel {
 
   @column()
   declare filename: string | null
+
+  /** Each language has its own selection (fork-only). */
+  @column()
+  declare language: ContentLanguage
 
   @column()
   declare status: 'none' | 'downloading' | 'installed' | 'failed'

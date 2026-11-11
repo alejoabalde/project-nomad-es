@@ -1074,22 +1074,25 @@ class API {
 
   // Wikipedia selector methods
 
-  async getWikipediaState(): Promise<WikipediaState | undefined> {
+  async getWikipediaState(lang?: 'en' | 'es'): Promise<WikipediaState | undefined> {
     return catchInternal(async () => {
-      const response = await this.client.get<WikipediaState>('/zim/wikipedia')
+      const response = await this.client.get<WikipediaState>('/zim/wikipedia', {
+        params: lang ? { lang } : undefined,
+      })
       return response.data
     })()
   }
 
   async selectWikipedia(
-    optionId: string
+    optionId: string,
+    language?: 'en' | 'es'
   ): Promise<{ success: boolean; jobId?: string; message?: string } | undefined> {
     return catchInternal(async () => {
       const response = await this.client.post<{
         success: boolean
         jobId?: string
         message?: string
-      }>('/zim/wikipedia/select', { optionId })
+      }>('/zim/wikipedia/select', language ? { optionId, language } : { optionId })
       return response.data
     })()
   }

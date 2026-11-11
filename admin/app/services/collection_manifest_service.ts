@@ -488,12 +488,15 @@ export class CollectionManifestService {
       // ship Wikipedia-themed ZIMs like `wikipedia_en_medicine_maxi` that must reconcile
       // normally; otherwise their InstalledResource row gets wiped on every restart and the
       // tier detection silently downgrades.
-      const wikipediaSelection = await WikipediaSelection.query().first()
-      const managedWikipediaFilename = wikipediaSelection?.filename ?? null
+      // One selection per language (fork-only), so skip every selected file.
+      const wikipediaSelections = await WikipediaSelection.query()
+      const managedWikipediaFilenames = new Set(
+        wikipediaSelections.map((s) => s.filename).filter((f): f is string => !!f)
+      )
 
       for (const file of zimFiles) {
         console.log(`Processing ZIM file: ${file.name}`)
-        if (managedWikipediaFilename && file.name === managedWikipediaFilename) continue
+        if (managedWikipediaFilenames.has(file.name)) continue
 
         const parsed = CollectionManifestService.parseZimFilename(file.name)
         console.log(`Parsed ZIM filename:`, parsed)
