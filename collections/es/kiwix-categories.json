@@ -191,6 +191,14 @@
               "description": "Cómo elegir el equipo para la mochila de evacuación",
               "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_bugoutroll_2026-07.zim",
               "size_mb": 879
+            },
+            {
+              "id": "scoutwiki.org_es_all_maxi",
+              "version": "2026-10",
+              "title": "WikiRoca",
+              "description": "Wiki scout en español: nudos, campamento, orientación y vida al aire libre",
+              "url": "https://download.kiwix.org/zim/other/scoutwiki.org_es_all_maxi_2026-10.zim",
+              "size_mb": 19
             }
           ]
         },
@@ -287,6 +295,14 @@
               "description": "Guías prácticas de producción de alimentos, agua y saneamiento, construcción y fabricación a pequeña escala sin cadenas de suministro industriales",
               "url": "https://download.kiwix.org/zim/zimit/cd3wdproject.org_en_all_2025-11.zim",
               "size_mb": 581
+            },
+            {
+              "id": "solar.lowtechmagazine.com_mul_all",
+              "version": "2025-01",
+              "title": "Low-tech Magazine",
+              "description": "Soluciones técnicas sencillas: energía, calefacción, agua y reparaciones. Incluye la versión en español del sitio",
+              "url": "https://download.kiwix.org/zim/zimit/solar.lowtechmagazine.com_mul_all_2025-01.zim",
+              "size_mb": 668
             }
           ]
         }
@@ -432,6 +448,22 @@
               "description": "Cursos y libros de biología",
               "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_bio_2025-01.zim",
               "size_mb": 2240
+            },
+            {
+              "id": "wikipedia_es_geography_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Geografía",
+              "description": "Artículos de geografía de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_geography_nopic_2026-10.zim",
+              "size_mb": 60
+            },
+            {
+              "id": "wikipedia_es_history_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Historia",
+              "description": "Artículos de historia de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_history_nopic_2026-10.zim",
+              "size_mb": 187
             }
           ]
         },
