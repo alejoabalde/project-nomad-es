@@ -129,6 +129,13 @@ for doc, path in downloaded:
             ok = True
         else:
             why = f"el PDF no menciona la licencia ({doc['requireLicense']})"
+            # Para revisar a mano qué dice el PDF sobre derechos de autor
+            text = pdf_text(path)
+            hits = [m.start() for m in re.finditer(r"©|derechos|reproduc|licen|copyright", text, re.IGNORECASE)][:3]
+            for h in hits:
+                print("    texto:", " ".join(text[max(0, h - 80):h + 220].split()))
+            if not text.strip():
+                print("    texto: (el PDF no tiene texto extraíble)")
     if not ok and doc.get("licensePage"):
         lp = doc["licensePage"]
         if lp["url"] not in page_cache:
