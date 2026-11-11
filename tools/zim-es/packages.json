@@ -51,7 +51,9 @@
       "scopeType": "custom",
       "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/JavaScript|Web/HTML|Web/CSS|Learn)",
       "type": "website",
-      "scopeExcludeRx": "/contributors\\.txt$"
+      "scopeExcludeRx": "/contributors\\.txt$",
+      "enabled": false,
+      "note": "Pausado: en GitHub Actions el armado se traba o se corta después del rastreo, al escribir el .zim. Mientras tanto queda MDN en inglés en el catálogo."
     },
     {
       "id": "cdc.gov_es_all",
