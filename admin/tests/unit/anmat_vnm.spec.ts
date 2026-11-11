@@ -34,3 +34,12 @@ test('vnmRecordToRow builds a stable key and a folded search name', () => {
   assert.equal(a.ingredientes, 'ibuprofeno')
   assert.notEqual(a.clave, vnmRecordToRow({ ...rec, gtin: '07798032933437' }).clave)
 })
+
+test('normalizeIngredient handles prefixes, salts and Spain spellings', () => {
+  assert.equal(normalizeIngredient('N-ACETILCISTEINA 600 MG'), 'acetilcisteina')
+  assert.equal(normalizeIngredient('KETOROLACO TROMETAMINA 10 MG'), 'ketorolaco')
+  assert.equal(normalizeIngredient('AMLODIPINA 5 MG'), 'amlodipino')
+  assert.equal(normalizeIngredient('N-BUTILBROMURO DE HIOSCINA 20 MG'), 'butilescopolamina')
+  assert.equal(normalizeIngredient('ACIDO CLAVULANICO (COMO CLAVULANATO DE POTASIO) 125 MG'), 'acido clavulanico')
+  assert.equal(normalizeIngredient('IODOPOVIDONA 10 G / 100 ML'), 'povidona iodada')
+})

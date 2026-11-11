@@ -80,6 +80,26 @@ const SALT_WORDS = new Set([
   'equivalente',
   'como',
   'micronizado',
+  'micronizada',
+  'trometamina',
+  'trometamol',
+  'monohidratado',
+  'dihidratado',
+  'hidratado',
+  'hidratada',
+  'diclorohidrato',
+  'propinato',
+  'hidroxinaftoato',
+  'disodico',
+  'trisodico',
+  'hemitartrato',
+  'acetonida',
+  'acetonido',
+  'digluconato',
+  'etilsuccinato',
+  'cilexetil',
+  'policristalina',
+  'solucion',
 ])
 
 /** Argentine name → AEMPS (Spain) name, after folding and salt removal. */
@@ -98,6 +118,20 @@ const AR_TO_ES: Record<string, string> = {
   'cafeina anhidra': 'cafeina',
   'aciclovir': 'aciclovir',
   'salbutamol sulfato': 'salbutamol',
+  'amlodipina': 'amlodipino',
+  'vildagliptin': 'vildagliptina',
+  'sitagliptin': 'sitagliptina',
+  'atorvastatin': 'atorvastatina',
+  'rosuvastatin': 'rosuvastatina',
+  'entacapone': 'entacapona',
+  'ciprofloxacina': 'ciprofloxacino',
+  'levofloxacina': 'levofloxacino',
+  'iodopovidona': 'povidona iodada',
+  'yodopovidona': 'povidona iodada',
+  'povidona yodada': 'povidona iodada',
+  'acetilcisteina': 'acetilcisteina',
+  'n butilbromuro hioscina': 'butilescopolamina',
+  'butilbromuro hioscina': 'butilescopolamina',
 }
 
 /** One ingredient chunk ("DICLOFENAC SODICO 75 MG") → "diclofenaco". */
@@ -106,8 +140,15 @@ export function normalizeIngredient(chunk: string): string | null {
   // Drop the dose: everything from the first token that starts with a digit.
   s = s.replace(/\s\d.*$/, '').replace(/^\d.*$/, '')
   s = s.replace(/[(),.;]/g, ' ').replace(/\s+/g, ' ').trim()
+  // "N-ACETILCISTEINA", "L-CISTINA": drop the stereo/position prefix.
+  s = s.replace(/(^|\s)[nld]-/g, '$1')
   if (AR_TO_ES[s]) return AR_TO_ES[s]
-  const words = s.split(' ').filter((w) => w.length > 0 && !SALT_WORDS.has(w) && w !== 'de')
+  // Amoxicillin combinations spell the second ingredient several ways.
+  if (/clavulan/.test(s)) return 'acido clavulanico'
+  const words: string[] = []
+  for (const w of s.split(' ')) {
+    if (w.length > 0 && !SALT_WORDS.has(w) && w !== 'de' && !words.includes(w)) words.push(w)
+  }
   s = words.join(' ')
   if (AR_TO_ES[s]) return AR_TO_ES[s]
   return s.length >= 3 ? s : null
