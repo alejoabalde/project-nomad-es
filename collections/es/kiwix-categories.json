@@ -587,6 +587,14 @@
           "includesTier": "diy-essential",
           "resources": [
             {
+              "id": "educ.ar_es_plomeria",
+              "version": "2026-11",
+              "title": "Plomería (educ.ar)",
+              "description": "Curso de educ.ar sobre instalaciones sanitarias y plomería, con videos: materiales, uniones, agua fría y caliente, desagües",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_plomeria_2026-11.zim",
+              "size_mb": 1195
+            },
+            {
               "id": "diy.stackexchange.com_en_all",
               "version": "2026-02",
               "title": "Bricolaje y mejoras para el hogar (preguntas y respuestas) (en inglés)",
