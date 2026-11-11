@@ -11,6 +11,10 @@ on:
         description: 'ID del paquete (vacío = todos)'
         required: false
         default: ''
+      force:
+        description: 'Volver a armar aunque ya esté publicado este mes'
+        type: boolean
+        default: false
   push:
     paths:
       - 'tools/zim-es/**'
@@ -34,9 +38,24 @@ jobs:
       - id: matrix
         env:
           ONLY: ${{ github.event.inputs.package }}
+          FORCE: ${{ github.event.inputs.force }}
+          GH_TOKEN: ${{ github.token }}
         run: |
-          echo "tag=$(jq -r .release_tag tools/zim-es/packages.json)" >> "$GITHUB_OUTPUT"
-          echo "matrix=$(jq -c --arg p "$ONLY" '[.packages[] | select(.enabled != false) | select($p == "" or .id == $p)]' tools/zim-es/packages.json)" >> "$GITHUB_OUTPUT"
+          TAG=$(jq -r .release_tag tools/zim-es/packages.json)
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          # Lo ya publicado este mes no se vuelve a armar, salvo que se pida.
+          PERIOD=$(date -u +%Y-%m)
+          if [ "$FORCE" = "true" ]; then
+            echo '[]' > published.json
+          else
+            gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '[.assets[].name]' > published.json 2>/dev/null || echo '[]' > published.json
+          fi
+          MATRIX=$(jq -c --arg p "$ONLY" --arg period "$PERIOD" --slurpfile pub published.json \
+            '[.packages[] | select(.enabled != false) | select($p == "" or .id == $p)
+              | select((.id + "_" + $period + ".zim") as $f | ($pub[0] | index($f)) | not)]' \
+            tools/zim-es/packages.json)
+          echo "Paquetes a armar: $(echo "$MATRIX" | jq -r '[.[].id] | join(", ")')"
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
 
   build:
     needs: plan
@@ -52,11 +71,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Preparar herramientas para PDF
+        if: matrix.package.type == 'pdf'
+        run: |
+          sudo apt-get update -q && sudo apt-get install -y -q poppler-utils
+          pip install 'libzim==3.7.0'
+
       - name: Armar el paquete
         id: build
         env:
           PKG: ${{ toJSON(matrix.package) }}
-        run: python3 tools/zim-es/build_zimit.py
+          TYPE: ${{ matrix.package.type }}
+        run: |
+          if [ "$TYPE" = "pdf" ]; then
+            python3 tools/zim-es/build_pdf.py
+          else
+            python3 tools/zim-es/build_zimit.py
+          fi
 
       - name: Publicar en la versión del repositorio
         env:

@@ -7,8 +7,11 @@
       "description": "Documentación oficial de Python 3 en español",
       "license": "Licencia PSF (Python Software Foundation)",
       "source": "https://docs.python.org/es/3/",
-      "seeds": ["https://docs.python.org/es/3/"],
-      "scopeType": "prefix"
+      "seeds": [
+        "https://docs.python.org/es/3/"
+      ],
+      "scopeType": "prefix",
+      "type": "website"
     },
     {
       "id": "git-scm.com_es_progit",
@@ -16,8 +19,11 @@
       "description": "El libro Pro Git (2.ª edición) en español",
       "license": "CC BY-NC-SA 3.0",
       "source": "https://git-scm.com/book/es/v2",
-      "seeds": ["https://git-scm.com/book/es/v2"],
-      "scopeType": "prefix"
+      "seeds": [
+        "https://git-scm.com/book/es/v2"
+      ],
+      "scopeType": "prefix",
+      "type": "website"
     },
     {
       "id": "es.react.dev_es_all",
@@ -25,8 +31,11 @@
       "description": "Documentación oficial de React en español",
       "license": "CC BY 4.0",
       "source": "https://es.react.dev/",
-      "seeds": ["https://es.react.dev/"],
-      "scopeType": "host"
+      "seeds": [
+        "https://es.react.dev/"
+      ],
+      "scopeType": "host",
+      "type": "website"
     },
     {
       "id": "developer.mozilla.org_es_web",
@@ -40,7 +49,195 @@
         "https://developer.mozilla.org/es/docs/Web/CSS"
       ],
       "scopeType": "custom",
-      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/JavaScript|Web/HTML|Web/CSS|Learn)"
+      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/JavaScript|Web/HTML|Web/CSS|Learn)",
+      "type": "website"
+    },
+    {
+      "id": "cdc.gov_es_all",
+      "type": "website",
+      "title": "CDC en español",
+      "description": "Información de salud de los CDC en español: prevención, enfermedades y brotes",
+      "license": "Dominio público (gobierno de EE. UU.)",
+      "source": "https://www.cdc.gov/spanish/",
+      "seeds": [
+        "https://www.cdc.gov/spanish/index.html"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://www\\.cdc\\.gov/(spanish/|[^?#]*/es/)",
+      "pageLimit": 4000
+    },
+    {
+      "id": "educ.ar_es_plomeria",
+      "type": "website",
+      "title": "Curso de plomería (educ.ar)",
+      "description": "Oficios: curso de plomería de educ.ar, con Osvaldo Ariel Cano",
+      "license": "CC BY-NC-SA",
+      "source": "https://www.educ.ar/",
+      "seeds": [
+        "https://www.educ.ar/recursos/102309",
+        "https://www.educ.ar/recursos/102310",
+        "https://www.educ.ar/recursos/102311",
+        "https://www.educ.ar/recursos/102312",
+        "https://www.educ.ar/recursos/102313",
+        "https://www.educ.ar/recursos/102314",
+        "https://www.educ.ar/recursos/102315",
+        "https://www.educ.ar/recursos/102316"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://www\\.educ\\.ar/recursos/1023(09|1[0-6])(/|$)"
+    },
+    {
+      "id": "cawst_es_agua",
+      "type": "pdf",
+      "title": "Agua segura en casa (CAWST)",
+      "description": "Guías de CAWST para tratar y guardar agua de forma segura en el hogar",
+      "credit": "CAWST (Centre for Affordable Water and Sanitation Technology), www.cawst.org",
+      "license": "Creative Commons (CC BY 3.0 o CC BY-SA 4.0, según el documento)",
+      "note": "CAWST actualiza sus documentos seguido: busca la versión más nueva en washresources.cawst.org.",
+      "source": "https://washresources.cawst.org/es",
+      "documents": [
+        {
+          "title": "Introducción al tratamiento de agua a nivel domiciliario (2011)",
+          "url": "https://sswm.info/sites/default/files/reference_attachments/CAWST%202011.%20Introduccion%20al%20tratemiento%20de%20agua%20en%20el%20hogar.pdf",
+          "requireLicense": "Creative Commons"
+        },
+        {
+          "title": "Productos para el tratamiento del agua a nivel domiciliario y almacenamiento seguro (2018)",
+          "url": "https://old2019.sswm.info/sites/default/files/reference_attachments/CAWST%202018.%20Productos%20para%20el%20tratamiento%20del%20agua%20a%20nivel%20domiciliario%20y%20almacenamiento.pdf",
+          "requireLicense": "Creative Commons"
+        },
+        {
+          "title": "Introducción al análisis de la calidad del agua de consumo (2013)",
+          "url": "https://www.pseau.org/outils/ouvrages/cawst_introduccion_al_analisis_de_la_calidad_del_agua_de_consumo_2013.pdf",
+          "requireLicense": "Creative Commons"
+        }
+      ]
+    },
+    {
+      "id": "fao_es_alimentos-huerta",
+      "type": "pdf",
+      "title": "FAO: alimentos y huerta",
+      "description": "Manuales de la FAO sobre huerta, semillas y conservación de granos y alimentos",
+      "credit": "Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO)",
+      "license": "CC BY-NC-SA 3.0 IGO (solo se incluyen los manuales que lo indican)",
+      "source": "https://openknowledge.fao.org/",
+      "documents": [
+        {
+          "title": "Producción artesanal de semillas de hortalizas para la huerta familiar",
+          "url": "https://openknowledge.fao.org/server/api/core/bitstreams/8b14cf90-62c1-467a-8f23-f2f218218a0a/content",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+        },
+        {
+          "title": "Construcción y uso de silos metálicos familiares para granos",
+          "url": "https://openknowledge.fao.org/server/api/core/bitstreams/725b5348-58ef-4eca-aad8-391420e777c6/content",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+        },
+        {
+          "title": "Guía de capacitación en temas agrícolas para agricultores familiares",
+          "url": "https://openknowledge.fao.org/server/api/core/bitstreams/325d8fbc-deb8-4418-900c-265d1ae42380/content",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+        },
+        {
+          "title": "Manual para manipuladores de alimentos",
+          "url": "https://openknowledge.fao.org/server/api/core/bitstreams/78f24b65-7a0e-468d-9e2c-3469d9d14a4b/content",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+        }
+      ]
+    },
+    {
+      "id": "hesperian_es_salud-ambiental",
+      "type": "pdf",
+      "title": "Guía de salud ambiental",
+      "description": "Hesperian: guía comunitaria para la salud ambiental (agua, saneamiento, vivienda)",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://hesperian.org/",
+      "licenseProof": {
+        "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_fm.pdf",
+        "pattern": "invita a (los demás|otros)[^.]{0,40}copiar|open-copyright|derechos de autor compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_fm.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_cap{n:02d}.pdf",
+          "range": [
+            1,
+            30
+          ]
+        },
+        {
+          "title": "Recursos",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_recursos.pdf"
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_bm.pdf"
+        }
+      ]
+    },
+    {
+      "id": "hesperian_es_donde-no-hay-doctor",
+      "type": "pdf",
+      "title": "Donde no hay doctor",
+      "description": "Hesperian: manual de salud para la comunidad, para cuando no hay un médico cerca",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://hesperian.org/",
+      "licenseProof": {
+        "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_fm.pdf",
+        "pattern": "invita a (los demás|otros)[^.]{0,40}copiar|open-copyright|derechos de autor compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_fm.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_{n:02d}.pdf",
+          "range": [
+            1,
+            30
+          ]
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_bm.pdf"
+        }
+      ]
+    },
+    {
+      "id": "inta_es_huerta",
+      "type": "pdf",
+      "title": "Huerta orgánica (INTA)",
+      "description": "Manuales de huerta orgánica familiar del INTA ProHuerta (Argentina)",
+      "credit": "INTA, Programa ProHuerta (Argentina)",
+      "license": "Licencia libre indicada en Wikimedia Commons para cada manual",
+      "source": "https://repositorio.inta.gob.ar/",
+      "documents": [
+        {
+          "title": "La huerta orgánica",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/La_Huerta_Org%C3%A1nica.pdf",
+          "licensePage": {
+            "url": "https://commons.wikimedia.org/wiki/File:La_Huerta_Org%C3%A1nica.pdf",
+            "pattern": "licensetpl_short[^>]*>\\s*(CC[ -]BY[^<]*|Dominio p[uú]blico|Public domain)"
+          },
+          "source": "https://commons.wikimedia.org/wiki/File:La_Huerta_Org%C3%A1nica.pdf"
+        },
+        {
+          "title": "Manual de cultivos para la huerta orgánica familiar",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf",
+          "licensePage": {
+            "url": "https://commons.wikimedia.org/wiki/File:Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf",
+            "pattern": "licensetpl_short[^>]*>\\s*(CC[ -]BY[^<]*|Dominio p[uú]blico|Public domain)"
+          },
+          "source": "https://commons.wikimedia.org/wiki/File:Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf"
+        }
+      ]
     }
   ]
 }
