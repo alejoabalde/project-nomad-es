@@ -652,6 +652,22 @@
           "recommended": true,
           "resources": [
             {
+              "id": "inta_es_huerta",
+              "version": "2026-11",
+              "title": "Huerta orgánica (INTA)",
+              "description": "Manuales del INTA sobre huerta orgánica familiar: planificación, cultivos, siembra y cuidados",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/inta_es_huerta_2026-11.zim",
+              "size_mb": 11
+            },
+            {
+              "id": "fao_es_alimentos-huerta",
+              "version": "2026-11",
+              "title": "Agricultura familiar y granos (FAO)",
+              "description": "Manuales de la FAO: capacitación agrícola para agricultores familiares y silos metálicos para guardar granos",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fao_es_alimentos-huerta_2026-11.zim",
+              "size_mb": 8
+            },
+            {
               "id": "foss.cooking_en_all",
               "version": "2026-02",
               "title": "FOSS Cooking (en inglés)",
