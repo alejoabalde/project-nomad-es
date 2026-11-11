@@ -97,10 +97,7 @@ const WIKIPEDIA_STATE_KEY = 'wikipedia-state'
 export default function EasySetupWizard(props: {
   system: { services: ServiceSlim[]; remoteOllamaUrl: string }
 }) {
-  const { t, i18n } = useTranslation('easySetup')
-  // The curated map collections are US regions only; in Spanish they are hidden
-  // and step 2 points to the per-country download in the Maps Manager instead.
-  const showCuratedMaps = !i18n.language.startsWith('es')
+  const { t } = useTranslation('easySetup')
   const tc = useCollectionText()
   const aiAssistantName = useAssistantName()
   const CORE_CAPABILITIES = buildCoreCapabilities(aiAssistantName, t)
@@ -850,10 +847,9 @@ export default function EasySetupWizard(props: {
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold text-text-primary mb-2">{t('step2.title')}</h2>
         <p className="text-text-secondary">
-          {showCuratedMaps ? t('step2.subtitle') : t('step2.subtitleByCountry')}
+          {t('step2.subtitle')}
         </p>
       </div>
-      {showCuratedMaps && (
       <div className="mx-auto max-w-2xl rounded-lg border border-border-subtle bg-surface-secondary p-3 text-center">
         <p className="text-sm text-text-secondary">
           <Trans
@@ -871,10 +867,11 @@ export default function EasySetupWizard(props: {
           />
         </p>
       </div>
+      {/* Fork: the curated regions are US only; the Spanish text points to the per-country download */}
+      {t('step2.byCountryOnly') && (
+        <Alert title={t('step2.byCountryOnly')} type="info" variant="bordered" className="mt-4" />
       )}
-      {!showCuratedMaps ? (
-        <Alert title={t('step2.byCountryOnly')} type="info" variant="bordered" />
-      ) : isLoadingMaps ? (
+      {isLoadingMaps ? (
         <div className="flex justify-center py-12">
           <LoadingSpinner />
         </div>

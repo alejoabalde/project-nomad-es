@@ -67,7 +67,7 @@
     "subtitle": "Selecciona las colecciones de regiones que quieres descargar para usar sin conexión. Siempre puedes descargar más regiones después.",
     "mapsManagerHint": "¿Solo necesitas un país en particular o quieres el mundo entero? Puedes instalar países individuales y un mapa mundial completo en cualquier momento desde el <link>Administrador de mapas</link>.",
     "none": "No hay colecciones de mapas disponibles en este momento.",
-    "byCountryOnly": "Con la interfaz en español, los mapas se descargan por país. Cuando termines la configuración, ve a Ajustes → Administrador de mapas → «Elegir países» y elige, por ejemplo, Argentina. NOMAD descarga solo ese país del mapa mundial.",
+    "byCountryOnly": "Estas regiones de mapas son de EE. UU. Para otro país, cuando termines la configuración ve a Ajustes → Administrador de mapas → «Elegir países» y elige, por ejemplo, Argentina. NOMAD descarga solo ese país del mapa mundial.",
     "subtitleByCountry": "Los mapas sin conexión se eligen por país, desde el Administrador de mapas."
   },
   "step3": {

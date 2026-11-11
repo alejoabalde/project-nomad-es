@@ -388,7 +388,7 @@
     "byCountry": "Descargar por país o región",
     "byCountryMsg": "Elige solo los países que necesitas, desde uno solo hasta un continente entero, y se descargarán únicamente esos mosaicos del archivo global de Protomaps. Ocupa mucho menos que el mapa global completo de 125 GB.",
     "chooseCountries": "Elegir países",
-    "curated": "Regiones de mapas seleccionadas",
+    "curated": "Regiones de mapas seleccionadas (EE. UU.)",
     "forceRefresh": "Forzar actualización de colecciones",
     "noCollections": "No hay colecciones seleccionadas disponibles.",
     "stored": "Archivos de mapas guardados",
