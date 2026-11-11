@@ -71,11 +71,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
       - name: Preparar herramientas para PDF
         if: matrix.package.type == 'pdf'
         run: |
           sudo apt-get update -q && sudo apt-get install -y -q poppler-utils
-          pip install 'libzim==3.7.0'
+          python -m pip install 'libzim==3.7.0'
 
       - name: Armar el paquete
         id: build
