@@ -111,6 +111,21 @@ export default class DrugLabel extends BaseModel {
   @column()
   declare source_updated_at: string | null
 
+  /** 'fda' (openFDA, English) or 'aemps' (CIMA prospectos, Spanish). */
+  @column()
+  declare source: string
+
+  /** AEMPS only: leaflet sections in order, with their original headings. */
+  @column({
+    consume: (value: unknown) => (typeof value === 'string' ? JSON.parse(value) : value),
+    prepare: (value: unknown) => (value == null ? null : JSON.stringify(value)),
+  })
+  declare sections: Array<{ titulo: string; texto: string }> | null
+
+  /** Link to the original document at the source (AEMPS only, for attribution). */
+  @column()
+  declare source_url: string | null
+
   @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'ingested_at' })
   declare ingested_at: DateTime
 }

@@ -102,6 +102,9 @@ export const KV_STORE_SCHEMA = {
   // herbal REMEDY sections stay hidden until this flips true. Defaults off
   // (null → false); flipped on after a clinician content-pass, not user-toggled.
   'drugReference.remediesEnabled': 'boolean',
+  // Fork (project-nomad-es) — `generado` date of the AEMPS (CIMA) Spanish
+  // leaflet package last imported by ImportAempsDataJob. Null when never imported.
+  'drugReference.aempsPackageDate': 'string',
 } as const
 
 type KVTagToType<T extends string> = T extends 'boolean' ? boolean : string

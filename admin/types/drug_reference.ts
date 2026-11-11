@@ -157,6 +157,8 @@ export interface DrugSearchResult {
   manufacturer: string | null
   route: string | null
   product_type: string | null
+  /** Fork: 'fda' | 'aemps'. */
+  source: string
   labelCount: number
 }
 
@@ -183,6 +185,12 @@ export interface DrugLabelDetail {
   stop_use: string | null
   source_updated_at: string | null
   ingested_at: string
+  /** Fork: 'fda' (openFDA, English) | 'aemps' (CIMA prospecto, Spanish). */
+  source: string
+  /** AEMPS only: leaflet sections in order, with their original headings. */
+  sections: Array<{ titulo: string; texto: string }> | null
+  /** AEMPS only: link to the original leaflet, for attribution. */
+  source_url: string | null
 }
 
 // ─── Interaction comparison DTO ───────────────────────────────────────────────
@@ -253,4 +261,44 @@ export interface DrugIngestStatus {
   lastUpdated: string | null
   rowCount: number
   error?: string
+}
+
+/**
+ * Fork (project-nomad-es): status of the AEMPS (CIMA) Spanish leaflet package
+ * in the Data tab. `rowCount` is the number of searchable AEMPS leaflets.
+ */
+export interface AempsDataStatus {
+  phase: 'idle' | 'downloading' | 'importing' | 'ready' | 'failed'
+  rowCount: number
+  /** Argentine presentations (ANMAT) installed alongside the leaflets. */
+  brandCount: number
+  packageDate: string | null
+  bytesDownloaded?: number
+  totalBytes?: number
+  imported?: number
+  error?: string
+}
+
+/**
+ * Fork (project-nomad-es): an Argentine brand (ANMAT Vademécum Nacional) that
+ * matches a search, with its active ingredients in AEMPS naming and how many
+ * Spanish leaflets cover them.
+ */
+export interface ArBrandResult {
+  nombre_comercial: string
+  laboratorio: string | null
+  generico: string | null
+  ingredientes: string[]
+  presentaciones: number
+  prospectos: number
+  /** When no leaflet covers the combination: leaflets per single ingredient. */
+  porIngrediente: Array<{ nombre: string; prospectos: number; fda: FdaEquivalent | null }>
+  /** No Spanish leaflet: FDA labels (English) of the same ingredients, if any. */
+  fda: FdaEquivalent | null
+}
+
+/** English name to search in the FDA source, and how many labels it finds. */
+export interface FdaEquivalent {
+  consulta: string
+  etiquetas: number
 }

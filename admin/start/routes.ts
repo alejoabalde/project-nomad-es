@@ -888,6 +888,23 @@ router
       summary: 'Get the drug reference ingest log',
       tags: ['drug-reference'],
     })
+    // Fork (project-nomad-es): AEMPS (CIMA) Spanish leaflet package.
+    documented(router.get('/aemps/status', [DrugReferenceController, 'aempsStatus']), {
+      summary: 'Get the AEMPS Spanish leaflet package status',
+      tags: ['drug-reference'],
+    })
+    documented(router.post('/aemps/download', [DrugReferenceController, 'aempsDownload']), {
+      summary: 'Download and import the AEMPS Spanish leaflet package',
+      tags: ['drug-reference'],
+    })
+    documented(router.post('/aemps/uninstall', [DrugReferenceController, 'aempsUninstall']), {
+      summary: 'Remove the AEMPS Spanish leaflets',
+      tags: ['drug-reference'],
+    })
+    documented(router.get('/ar-brands', [DrugReferenceController, 'arBrands']), {
+      summary: 'Find Argentine brands (ANMAT) and their active ingredients',
+      tags: ['drug-reference'],
+    })
   })
   .prefix('/api/drug-reference')
 

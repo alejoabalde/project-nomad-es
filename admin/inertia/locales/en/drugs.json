@@ -4,7 +4,7 @@
   "disclaimer": {
     "title": "Before you use the Drug Reference",
     "ack": "I understand — continue",
-    "intro": "This tool shows general health information from official <s>FDA drug labels</s> and matches symptoms to over-the-counter options. It is provided for <s>information only</s>.",
+    "intro": "This tool shows general health information from official <s>drug labels</s> (AEMPS in Spanish, FDA in English) and matches symptoms to over-the-counter options. It is provided for <s>information only</s>.",
     "b1": "It is <s>not medical advice</s> and not a substitute for a doctor, pharmacist, or nurse.",
     "b2": "It is <s>not a drug-interaction checker</s>. Always read each product’s full label and check with a professional before combining medicines.",
     "b3": "Situation matches come from label text, not clinical recommendations — they can be incomplete or include products you wouldn’t expect.",
@@ -41,7 +41,8 @@
     "title": "Informational reference only — not medical advice.",
     "b1": "These results match FDA drug-label indications to a situation. They are <s>not a recommendation</s> and <s>not an FDA endorsement</s>.",
     "b2": "This is <s>not a drug-interaction checker</s>. Read each label’s full warnings, and check with a pharmacist or clinician before combining medicines.",
-    "b3": "In an emergency, or if symptoms are severe or worsening, <s>contact a medical professional or call emergency services</s>."
+    "b3": "In an emergency, or if symptoms are severe or worsening, <s>contact a medical professional or call emergency services</s>.",
+    "b1Aemps": "These results match the indications in AEMPS (Spain) leaflets to a situation. <s>They are not a recommendation</s> or <s>an AEMPS endorsement</s>. They are non-prescription medicines authorized in Spain; in your country they may have another name or need a prescription."
   },
   "remedyNote": {
     "title": "Informational only — not medical advice.",
@@ -112,7 +113,7 @@
   "remedyCount_other": "{{count}} remedies",
   "natural": "Natural remedies",
   "searchFailed": "Search failed",
-  "noData": "No FDA drug data yet",
+  "noData": "No drug data yet",
   "searching": "Searching…",
   "loading": "Loading…",
   "asIs": "Label data is provided as-is; do not rely on it for medical decisions.",
@@ -126,7 +127,7 @@
     "restart": "Restart ingest",
     "tabDrug": "Search by drug",
     "tabSituation": "By situation",
-    "tabData": "FDA data",
+    "tabData": "Data",
     "searchPh": "Search a medicine by name — ibuprofen, Benadryl, loratadine…",
     "all": "All",
     "otc": "Over-the-counter",
@@ -151,9 +152,9 @@
     "otcCount_one": "{{count}} OTC",
     "otcCount_other": "{{count}} OTC",
     "emptyBody": "Download the openFDA drug-label dataset to enable offline search. Requires ~1.7 GB compressed download (~8–10 GB after ingestion).",
-    "pickHint": "Pick a situation (or a few) above to see the over-the-counter drugs whose FDA labels list it.",
+    "pickHint": "Pick a situation (or a few) above to see the over-the-counter drugs whose labels list it.",
     "noIntersection": "No single option treats all {{count}} of these — here are options for each situation.",
-    "subtitle": "Look up a medicine by name, or start from a symptom to find over-the-counter options — all from offline FDA drug labels.",
+    "subtitle": "Look up a medicine by name, or start from a symptom to find over-the-counter options — all from drug labels stored offline (FDA in English, AEMPS in Spanish).",
     "trySituation": "Looking for something to treat a symptom instead? Try the <b>By situation</b> tab.",
     "typeHint": "Type a medicine name above to search {{count}} FDA drug labels.",
     "noMatch": "No medicines match “{{query}}”.",
@@ -221,5 +222,42 @@
     "eyes": "Eyes, ears & mouth",
     "general": "Sleep, stress & general",
     "infections": "Infections (OTC-treatable)"
+  },
+  "src": {
+    "label": "Source:",
+    "aemps": "Spain (AEMPS), in Spanish",
+    "fda": "US (FDA), in English",
+    "searchPhAemps": "Search a medicine by name or active ingredient: ibuprofeno, Clarityne, loratadina…",
+    "citeAemps": "<s>Source:</s> patient leaflet from CIMA, the online medicines information centre of the Spanish Agency of Medicines and Medical Devices (AEMPS), updated {{date}}. Brand names and presentations are those authorised in Spain. NOMAD is not affiliated with or endorsed by AEMPS.",
+    "original": "View the original leaflet",
+    "footerAemps": "<s>Source:</s> patient leaflets from CIMA, the Spanish Agency of Medicines and Medical Devices (AEMPS); each leaflet shows its own date. Brand names are those authorised in Spain. NOMAD is not affiliated with or endorsed by AEMPS."
+  },
+  "aemps": {
+    "title": "Spanish leaflets (AEMPS)",
+    "body": "Patient leaflets for medicines marketed in Spain, in Spanish, from the CIMA database of the Spanish Agency of Medicines and Medical Devices. A single package built for this project is downloaded; after that it works offline.",
+    "download": "Download Spanish leaflets",
+    "update": "Update Spanish leaflets",
+    "working": "Installing…",
+    "remove": "Remove",
+    "removeConfirm": "Remove the Spanish leaflets? FDA data is left alone.",
+    "downloading": "Downloading the package…",
+    "downloadingBytes": "Downloading the package: {{done}} of {{total}} MB",
+    "importing": "Importing: {{count}} leaflets so far…",
+    "failed": "Installation failed: {{error}}",
+    "ready": "{{count}} leaflets installed (package from {{date}}).",
+    "readyNoDate": "{{count}} leaflets installed.",
+    "notInstalled": "Not installed yet."
+  },
+  "ar": {
+    "title": "Brands from Argentina",
+    "help": "Brand names change from country to country. These Argentine brands match your search; pick one to see the Spanish leaflets for its active ingredients.",
+    "see_one": "See {{n}} leaflet",
+    "see_other": "See {{n}} leaflets",
+    "none": "No Spanish leaflet",
+    "source": "Brands and active ingredients: Argentina's National Medicines Vademecum (ANMAT). Leaflets are from AEMPS (Spain); dose or presentation may differ from the Argentine product.",
+    "separately": "No leaflet for this combination. Separately:",
+    "fda_one": "See {{n}} FDA label (English)",
+    "fda_other": "See {{n}} FDA labels (English)",
+    "fdaIngredient": "{{nombre}} (FDA, English: {{n}})"
   }
 }

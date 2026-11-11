@@ -7,6 +7,8 @@ import DrugResultRow from '~/components/drug-reference/DrugResultRow'
 import IngredientGroup, { type IngredientGrouping } from '~/components/drug-reference/IngredientGroup'
 import DrugDisclaimerModal, { hasAcknowledgedDrugDisclaimer } from '~/components/drug-reference/DrugDisclaimerModal'
 import IngestStatus from '~/components/drug-reference/IngestStatus'
+import AempsData from '~/components/drug-reference/AempsData'
+import ArBrands from '~/components/drug-reference/ArBrands'
 import SafetyBanner from '~/components/conditions/SafetyBanner'
 import RemedySafetyNote from '~/components/conditions/RemedySafetyNote'
 import {
@@ -19,7 +21,7 @@ import {
   IconX,
   IconChevronDown,
 } from '@tabler/icons-react'
-import type { DrugSearchResult, DrugIngestStatus } from '../../../types/drug_reference'
+import type { DrugSearchResult, DrugIngestStatus, AempsDataStatus } from '../../../types/drug_reference'
 import type { ConditionSummary, ConditionDrugsResult, NaturalRemedy } from '../../../types/conditions'
 import { remedySourceName } from '../../../util/conditions'
 import { PRODUCT_TYPES } from '../../../types/drug_reference'
@@ -28,6 +30,8 @@ import { Trans, useTranslation } from 'react-i18next'
 
 interface PageProps {
   ingestStatus: DrugIngestStatus | null
+  /** Fork: status of the AEMPS Spanish leaflet package. */
+  aempsStatus?: AempsDataStatus | null
   rowCount: number
   conditions: ConditionSummary[]
   remedies: NaturalRemedy[]
@@ -163,11 +167,19 @@ function groupByIngredient(results: DrugSearchResult[]): IngredientGrouping[] {
  */
 export default function DrugReferenceIndex({
   ingestStatus,
+  aempsStatus = null,
   rowCount,
   conditions,
   remediesEnabled = false,
 }: PageProps) {
-  const { t } = useTranslation('drugs')
+  const { t, i18n } = useTranslation('drugs')
+  // ── Fork: label source. 'aemps' = Spanish leaflets (CIMA, Spain); 'fda' =
+  // openFDA labels (English). Defaults to the interface language.
+  const [source, setSource] = useState<'aemps' | 'fda'>(
+    i18n.language.startsWith('es') ? 'aemps' : 'fda'
+  )
+  const sourceRef = useRef(source)
+  sourceRef.current = source
   // ── Tab 1: drug-name search ────────────────────────────────────────────────
   const [query, setQuery] = useState('')
   const [productType, setProductType] = useState<string | null>(null)
@@ -241,6 +253,7 @@ export default function DrugReferenceIndex({
         if (pt) params.set('product_type', pt)
         if (rt) params.set('route', rt)
         if (srt && srt !== 'relevance') params.set('sort', srt)
+        params.set('source', sourceRef.current)
         const resp = await fetch(`/api/drug-reference/search?${params}`)
         if (!resp.ok) throw new Error(`Search failed: HTTP ${resp.status}`)
         const json = (await resp.json()) as { results: DrugSearchResult[] }
@@ -284,6 +297,11 @@ export default function DrugReferenceIndex({
     setSort(srt)
     runDrugSearch(query, productType, route, srt)
   }
+  const handleSourceChange = (src: 'aemps' | 'fda') => {
+    setSource(src)
+    sourceRef.current = src
+    runDrugSearch(query, productType, route, sort)
+  }
   const handleLoadMore = () => {
     const newOffset = offset + LIMIT
     setOffset(newOffset)
@@ -310,6 +328,7 @@ export default function DrugReferenceIndex({
         // real OTC options surface above the homeopathic flood — and so the
         // cross-situation intersection can actually find the common drugs.
         const params = new URLSearchParams({ slug: c.slug, limit: '200' })
+        params.set('source', sourceRef.current)
         if (rt) params.set('route', rt)
         if (srt && srt !== 'relevance') params.set('sort', srt)
         const resp = await fetch(`/api/conditions/drugs?${params}`)
@@ -344,14 +363,14 @@ export default function DrugReferenceIndex({
     [selectedSlugs, fetchSituation, route, sort]
   )
 
-  // Re-fetch selected situations when route/sort change.
+  // Re-fetch selected situations when route/sort/source change.
   useEffect(() => {
     for (const slug of selectedSlugs) {
       const c = conditions.find((x) => x.slug === slug)
       if (c) fetchSituation(c, route, sort)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [route, sort])
+  }, [route, sort, source])
 
   // Honor a ?situation= deep link — jump to the situation tab and select it.
   useEffect(() => {
@@ -443,7 +462,7 @@ t('idx.restartConfirm')
       if (resp.ok) {
         const newStatus = (await resp.json()) as DrugIngestStatus
         setStatus(newStatus)
-        if (newStatus.phase === 'ready' && newStatus.rowCount > rowCount) {
+        if (newStatus.phase === 'ready' && newStatus.rowCount > (status?.rowCount ?? 0)) {
           router.reload({ only: ['rowCount', 'ingestStatus'] })
         }
       }
@@ -451,6 +470,10 @@ t('idx.restartConfirm')
       // ignore
     }
   }
+
+  const reloadCounts = useCallback(() => {
+    router.reload({ only: ['rowCount', 'aempsStatus'] })
+  }, [])
 
   const isEmpty = rowCount === 0
 
@@ -462,6 +485,8 @@ t('idx.restartConfirm')
         <div className="p-4 max-w-4xl mx-auto">
           <PageHeader rowCount={rowCount} />
           <DrugDisclaimerModal open={showDisclaimer} onAcknowledge={() => setShowDisclaimer(false)} />
+          {/* Fork: Spanish leaflets (AEMPS) — a much smaller download than FDA. */}
+          <AempsData initial={aempsStatus} onChanged={reloadCounts} className={`${CARD_SURFACE} mb-4 p-5`} />
           <div className="border-2 border-dashed border-desert-stone-lighter rounded-2xl p-8 text-center bg-desert-white">
             <p className="text-lg font-semibold mb-2 text-desert-green-darker">{t('noData')}</p>
             <p className="mb-6 opacity-70">
@@ -494,11 +519,24 @@ t('idx.restartConfirm')
               </div>
             )}
           </div>
-          <SourceFooter />
+          <SourceFooter source={source} />
         </div>
       </AppLayout>
     )
   }
+
+  // Fork: label source selector, shared by the drug and situation tabs.
+  const sourcePills = (
+    <div className="mb-3 flex flex-wrap items-center gap-2">
+      <span className="text-xs font-semibold text-desert-green-darker">{t('src.label')}</span>
+      <FilterPill active={source === 'aemps'} onClick={() => handleSourceChange('aemps')}>
+        {t('src.aemps')}
+      </FilterPill>
+      <FilterPill active={source === 'fda'} onClick={() => handleSourceChange('fda')}>
+        {t('src.fda')}
+      </FilterPill>
+    </div>
+  )
 
   const tabClass = ({ selected }: { selected: boolean }) =>
     `flex items-center gap-2 rounded-t-lg border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors focus:outline-none ${
@@ -536,6 +574,8 @@ t('idx.restartConfirm')
           <TabPanels>
             {/* ══ Tab 1: Search by drug ══════════════════════════════════════ */}
             <TabPanel>
+              {/* Fork: label source selector */}
+              {sourcePills}
               {/* Controls (always on top) */}
               <div className="relative mb-3">
                 <IconSearch
@@ -547,7 +587,7 @@ t('idx.restartConfirm')
                   value={query}
                   onChange={handleQueryChange}
                   autoFocus
-                  placeholder={t('idx.searchPh')}
+                  placeholder={source === 'aemps' ? t('src.searchPhAemps') : t('idx.searchPh')}
                   className="w-full rounded-lg border border-desert-stone-lighter bg-surface-primary py-2.5 pl-10 pr-4 text-sm text-desert-green-darker transition focus:border-desert-green focus:outline-none focus:ring-2 focus:ring-desert-green/20"
                 />
               </div>
@@ -620,7 +660,7 @@ t('idx.restartConfirm')
 
               {!drugSearched && (
                 <div className="rounded-2xl border border-dashed border-desert-stone-lighter/70 p-8 text-center text-sm text-desert-stone">
-                  {t('idx.typeHint', { count: rowCount.toLocaleString() })}
+                  {t('idx.typeHint', { count: (source === 'aemps' ? (aempsStatus?.rowCount ?? 0) : (status?.rowCount ?? 0)).toLocaleString() })}
                   <br />
                   <Trans
                     t={t}
@@ -628,6 +668,25 @@ t('idx.restartConfirm')
                     components={{ b: <button className="font-semibold text-desert-green underline" onClick={() => setTabIndex(1)} /> }}
                   />
                 </div>
+              )}
+
+              {/* Fork: Argentine brands → Spanish leaflets of the same ingredients */}
+              {source === 'aemps' && drugSearched && (
+                <ArBrands
+                  query={query}
+                  className="mb-6"
+                  onPick={(ingredientes) => {
+                    const q = ingredientes.join(' ')
+                    setQuery(q)
+                    runDrugSearch(q, productType, route, sort)
+                  }}
+                  onPickFda={(q) => {
+                    setSource('fda')
+                    sourceRef.current = 'fda'
+                    setQuery(q)
+                    runDrugSearch(q, productType, route, sort)
+                  }}
+                />
               )}
 
               {ingredientGroups.length > 0 && (
@@ -667,7 +726,8 @@ t('idx.restartConfirm')
 
             {/* ══ Tab 2: By situation ════════════════════════════════════════ */}
             <TabPanel>
-              <SafetyBanner />
+              {sourcePills}
+              <SafetyBanner source={source} />
 
               {/* Selected situations + collapsible browser (controls on top) */}
               <div className="my-4">
@@ -840,8 +900,9 @@ t('idx.restartConfirm')
               })}
             </TabPanel>
 
-            {/* ══ Tab 3: FDA data ════════════════════════════════════════════ */}
+            {/* ══ Tab 3: data (fork: AEMPS + FDA) ═══════════════════════════ */}
             <TabPanel>
+              <AempsData initial={aempsStatus} onChanged={reloadCounts} className={`${CARD_SURFACE} mb-4 p-5`} />
               <div className={`${CARD_SURFACE} p-5`}>
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
                   <h2 className="text-sm font-bold text-desert-green-darker">{t('idx.dataTitle')}</h2>
@@ -861,7 +922,7 @@ t('idx.restartConfirm')
                   </div>
                 </div>
                 <p className="mb-4 text-xs text-desert-stone">
-                  {t('idx.installed', { count: rowCount.toLocaleString() })}
+                  {t('idx.installed', { count: (status?.rowCount ?? 0).toLocaleString() })}
                 </p>
                 {status && <IngestStatus status={status} onRefresh={handleStatusRefresh} />}
               </div>
@@ -869,7 +930,7 @@ t('idx.restartConfirm')
           </TabPanels>
         </TabGroup>
 
-        <SourceFooter />
+        <SourceFooter source={source} />
       </div>
     </AppLayout>
   )
@@ -900,11 +961,11 @@ function PageHeader({ rowCount }: { rowCount: number }) {
 
 // ─── Source citation ──────────────────────────────────────────────────────────
 
-function SourceFooter() {
+function SourceFooter({ source = 'fda' }: { source?: 'aemps' | 'fda' }) {
   const { t } = useTranslation('drugs')
   return (
     <footer className="mt-8 pt-4 border-t border-desert-stone-lighter/40 text-xs text-desert-stone">
-      <Trans t={t} i18nKey="source" components={{ s: <strong /> }} /> {t('idx.footer')}
+      <Trans t={t} i18nKey={source === 'aemps' ? 'src.footerAemps' : 'source'} components={{ s: <strong /> }} /> {t('idx.footer')}
     </footer>
   )
 }

@@ -4,7 +4,7 @@
   "disclaimer": {
     "title": "Antes de usar la Guía de medicamentos",
     "ack": "Entiendo, continuar",
-    "intro": "Esta herramienta muestra información general de salud tomada de los <s>prospectos oficiales de la FDA</s> y relaciona síntomas con opciones de venta libre. Se ofrece <s>solo a modo informativo</s>.",
+    "intro": "Esta herramienta muestra información general de salud tomada de <s>prospectos oficiales</s> (de la AEMPS, en español, y de la FDA, en inglés) y relaciona síntomas con opciones de venta libre. Se ofrece <s>solo a modo informativo</s>.",
     "b1": "<s>No es consejo médico</s> y no reemplaza a un médico, farmacéutico o enfermero.",
     "b2": "<s>No es un verificador de interacciones entre medicamentos</s>. Lee siempre el prospecto completo de cada producto y consulta a un profesional antes de combinar medicamentos.",
     "b3": "Las coincidencias por situación salen del texto de los prospectos, no de recomendaciones clínicas: pueden estar incompletas o incluir productos inesperados.",
@@ -41,7 +41,8 @@
     "title": "Referencia solo informativa: no es consejo médico.",
     "b1": "Estos resultados relacionan las indicaciones de los prospectos de la FDA con una situación. <s>No son una recomendación</s> ni <s>un aval de la FDA</s>.",
     "b2": "<s>No es un verificador de interacciones entre medicamentos</s>. Lee todas las advertencias de cada prospecto y consulta a un farmacéutico o médico antes de combinar medicamentos.",
-    "b3": "En una emergencia, o si los síntomas son graves o empeoran, <s>contacta a un profesional de la salud o llama a emergencias</s>."
+    "b3": "En una emergencia, o si los síntomas son graves o empeoran, <s>contacta a un profesional de la salud o llama a emergencias</s>.",
+    "b1Aemps": "Estos resultados relacionan las indicaciones de los prospectos de la AEMPS con una situación. <s>No son una recomendación</s> ni <s>un aval de la AEMPS</s>. Son medicamentos sin receta autorizados en España; en tu país pueden tener otro nombre o requerir receta."
   },
   "remedyNote": {
     "title": "Solo informativo: no es consejo médico.",
@@ -112,7 +113,7 @@
   "remedyCount_other": "{{count}} remedios",
   "natural": "Remedios naturales",
   "searchFailed": "La búsqueda falló",
-  "noData": "Todavía no hay datos de medicamentos de la FDA",
+  "noData": "Todavía no hay datos de medicamentos",
   "searching": "Buscando…",
   "loading": "Cargando…",
   "asIs": "Los datos de los prospectos se ofrecen tal cual; no te bases en ellos para tomar decisiones médicas.",
@@ -126,7 +127,7 @@
     "restart": "Reiniciar indexación",
     "tabDrug": "Buscar por medicamento",
     "tabSituation": "Por situación",
-    "tabData": "Datos de la FDA",
+    "tabData": "Datos",
     "searchPh": "Busca un medicamento por su nombre en inglés: ibuprofen, Benadryl, loratadine…",
     "all": "Todos",
     "otc": "Venta libre",
@@ -151,9 +152,9 @@
     "otcCount_one": "{{count}} de venta libre",
     "otcCount_other": "{{count}} de venta libre",
     "emptyBody": "Descarga el conjunto de prospectos de openFDA para activar la búsqueda sin conexión. Es una descarga comprimida de ~1,7 GB (~8–10 GB después de indexar).",
-    "pickHint": "Elige una situación (o varias) arriba para ver los medicamentos de venta libre cuyo prospecto de la FDA la menciona.",
+    "pickHint": "Elige una situación (o varias) arriba para ver los medicamentos de venta libre cuyo prospecto la menciona.",
     "noIntersection": "Ninguna opción sirve para las {{count}} a la vez. Aquí tienes opciones para cada situación.",
-    "subtitle": "Busca un medicamento por nombre o empieza por un síntoma para encontrar opciones de venta libre, todo a partir de los prospectos de la FDA sin conexión.",
+    "subtitle": "Busca un medicamento por nombre o empieza por un síntoma para encontrar opciones de venta libre, todo a partir de prospectos guardados sin conexión (de la AEMPS en español y de la FDA en inglés).",
     "trySituation": "¿Buscas algo para tratar un síntoma? Prueba la pestaña <b>Por situación</b>.",
     "typeHint": "Escribe el nombre de un medicamento arriba para buscar entre {{count}} prospectos de la FDA.",
     "noMatch": "Ningún medicamento coincide con «{{query}}».",
@@ -221,5 +222,42 @@
     "eyes": "Ojos, oídos y boca",
     "general": "Sueño, estrés y general",
     "infections": "Infecciones (tratables con venta libre)"
+  },
+  "src": {
+    "label": "Fuente:",
+    "aemps": "España (AEMPS), en español",
+    "fda": "EE. UU. (FDA), en inglés",
+    "searchPhAemps": "Busca un medicamento por su nombre o principio activo: ibuprofeno, Clarityne, loratadina…",
+    "citeAemps": "<s>Fuente:</s> prospecto del Centro de Información online de Medicamentos (CIMA) de la Agencia Española de Medicamentos y Productos Sanitarios (AEMPS), actualizado el {{date}}. Los nombres comerciales y presentaciones son los autorizados en España y pueden no coincidir con los de tu país. NOMAD no está afiliado a la AEMPS ni cuenta con su aval.",
+    "original": "Ver el prospecto original",
+    "footerAemps": "<s>Fuente:</s> prospectos del Centro de Información online de Medicamentos (CIMA) de la Agencia Española de Medicamentos y Productos Sanitarios (AEMPS); la fecha de cada prospecto figura en su ficha. Los nombres comerciales son los autorizados en España. NOMAD no está afiliado a la AEMPS ni cuenta con su aval."
+  },
+  "aemps": {
+    "title": "Prospectos en español (AEMPS)",
+    "body": "Prospectos de los medicamentos comercializados en España, en español, tomados del CIMA de la Agencia Española de Medicamentos y Productos Sanitarios. Se descarga un único paquete preparado para este proyecto; después funciona sin conexión.",
+    "download": "Descargar prospectos en español",
+    "update": "Actualizar prospectos en español",
+    "working": "Instalando…",
+    "remove": "Quitar",
+    "removeConfirm": "¿Quitar los prospectos en español? Los datos de la FDA no se tocan.",
+    "downloading": "Descargando el paquete…",
+    "downloadingBytes": "Descargando el paquete: {{done}} de {{total}} MB",
+    "importing": "Importando: {{count}} prospectos hasta ahora…",
+    "failed": "La instalación falló: {{error}}",
+    "ready": "{{count}} prospectos instalados (paquete del {{date}}).",
+    "readyNoDate": "{{count}} prospectos instalados.",
+    "notInstalled": "Todavía no están instalados."
+  },
+  "ar": {
+    "title": "Marcas de Argentina",
+    "help": "Los nombres comerciales cambian de un país a otro. Estas marcas argentinas coinciden con tu búsqueda; elige una para ver los prospectos en español de sus principios activos.",
+    "see_one": "Ver {{n}} prospecto",
+    "see_other": "Ver {{n}} prospectos",
+    "none": "Sin prospecto en español",
+    "source": "Marcas y principios activos: Vademécum Nacional de Medicamentos (ANMAT). Los prospectos son de la AEMPS (España); pueden diferir en dosis o presentación del producto argentino.",
+    "separately": "No hay prospecto con esta combinación. Por separado:",
+    "fda_one": "Ver {{n}} prospecto de la FDA (en inglés)",
+    "fda_other": "Ver {{n}} prospectos de la FDA (en inglés)",
+    "fdaIngredient": "{{nombre}} (FDA, en inglés: {{n}})"
   }
 }
