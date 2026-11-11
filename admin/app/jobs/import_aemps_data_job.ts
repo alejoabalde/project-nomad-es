@@ -10,7 +10,7 @@ import { doResumableDownload } from '../utils/downloads.js'
  * (CIMA, Agencia Española de Medicamentos y Productos Sanitarios).
  *
  * The package is built offline by tools/aemps/build_package.py and published
- * as a release asset of the fork, so the device never queries CIMA itself.
+ * on the fork's `datos` branch (no history; replaced on each update), so the device never queries CIMA itself.
  * One job does both steps: a resumable download of a single ~60 MB .jsonl.gz,
  * then a streamed upsert into drug_labels (source='aemps'). Its own queue and
  * storage dir keep it apart from the FDA chain, whose uninstall wipes
@@ -19,7 +19,7 @@ import { doResumableDownload } from '../utils/downloads.js'
 export const AEMPS_STORAGE_BASE = '/app/storage/drug-data-aemps'
 export const AEMPS_PACKAGE_URL =
   process.env.NOMAD_AEMPS_PACKAGE_URL ||
-  'https://github.com/alejoabalde/project-nomad-es/releases/download/aemps-prospectos/aemps-prospectos.jsonl.gz'
+  'https://raw.githubusercontent.com/alejoabalde/project-nomad-es/datos/aemps-prospectos.jsonl.gz'
 
 /**
  * Argentine brands (ANMAT Vademécum Nacional), built by
@@ -28,7 +28,7 @@ export const AEMPS_PACKAGE_URL =
  */
 export const ANMAT_PACKAGE_URL =
   process.env.NOMAD_ANMAT_PACKAGE_URL ||
-  'https://github.com/alejoabalde/project-nomad-es/releases/download/aemps-prospectos/anmat-vnm.jsonl.gz'
+  'https://raw.githubusercontent.com/alejoabalde/project-nomad-es/datos/anmat-vnm.jsonl.gz'
 
 export type AempsJobPhase = 'downloading' | 'importing' | 'brands' | 'done'
 
@@ -99,7 +99,7 @@ export class ImportAempsDataJob {
         url: AEMPS_PACKAGE_URL,
         filepath,
         timeout: 60000,
-        allowedMimeTypes: [], // GitHub serves release assets as application/octet-stream
+        allowedMimeTypes: [], // GitHub serves the raw .gz as application/octet-stream
         onProgress: async ({ downloadedBytes, totalBytes }) => {
           const now = Date.now()
           if (now - lastWrite < 1000) return
