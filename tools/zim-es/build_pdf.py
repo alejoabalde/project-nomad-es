@@ -99,6 +99,7 @@ if pkg.get("licenseProof"):
         proof_path.write_bytes(data)
         package_license_ok = bool(re.search(proof["pattern"], pdf_text(proof_path), re.IGNORECASE))
     print(f"Licencia del paquete ({proof['url']}): {'confirmada' if package_license_ok else 'NO confirmada'}")
+downloaded = []
 for i, doc in enumerate(expand(pkg["documents"]), start=1):
     print(f"[{i}] {doc['title']}")
     data = fetch(doc["url"])
@@ -108,7 +109,18 @@ for i, doc in enumerate(expand(pkg["documents"]), start=1):
         continue
     path = work / f"doc{i:03d}.pdf"
     path.write_bytes(data)
+    downloaded.append((doc, path))
 
+# Si el PDF de prueba no estaba disponible, la licencia del paquete también
+# queda confirmada si alguno de los documentos descargados la muestra.
+if pkg.get("licenseProof") and not package_license_ok:
+    for doc, path in downloaded:
+        if re.search(pkg["licenseProof"]["pattern"], pdf_text(path), re.IGNORECASE):
+            package_license_ok = True
+            print(f"Licencia del paquete confirmada en: {doc['title']}")
+            break
+
+for doc, path in downloaded:
     ok, why = False, "sin licencia confirmada"
     if not doc.get("requireLicense") and not doc.get("licensePage") and package_license_ok:
         ok = True
@@ -127,10 +139,10 @@ for i, doc in enumerate(expand(pkg["documents"]), start=1):
             why = f"la página de licencia no muestra {lp['pattern']}"
     if ok:
         accepted.append((doc, path))
-        print("  aceptado")
+        print(f"  aceptado: {doc['title']}")
     else:
         rejected.append((doc, why))
-        print(f"  rechazado: {why}")
+        print(f"  rechazado: {doc['title']}: {why}")
 
 print(f"\nAceptados: {len(accepted)}  Rechazados: {len(rejected)}")
 for doc, why in rejected:
