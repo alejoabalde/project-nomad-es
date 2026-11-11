@@ -71,6 +71,14 @@
               "size_mb": 1767
             },
             {
+              "id": "cdc.gov_es_all",
+              "version": "2026-11",
+              "title": "CDC en español",
+              "description": "Información de salud pública de los CDC en español: enfermedades, prevención, vacunas, emergencias y primeros auxilios",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/cdc.gov_es_all_2026-11.zim",
+              "size_mb": 1113
+            },
+            {
               "id": "openfda-drug-labels",
               "type": "dataset",
               "version": "2025-01",
