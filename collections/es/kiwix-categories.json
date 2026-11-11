@@ -1,17 +1,17 @@
 {
-  "spec_version": "2026-11-10",
+  "spec_version": "2026-11-11",
   "categories": [
     {
       "name": "Medicina",
       "slug": "medicine",
       "icon": "IconStethoscope",
-      "description": "Referencias médicas y enciclopedias en español con información de salud y preparación para emergencias.",
+      "description": "Referencias médicas y enciclopedias con información de salud y preparación para emergencias, en español y en inglés.",
       "language": "es",
       "tiers": [
         {
           "name": "Esencial",
           "slug": "medicine-essential",
-          "description": "Artículos médicos de Wikipedia en español, livianos y sin imágenes. Empieza por aquí.",
+          "description": "Artículos médicos de Wikipedia en español, livianos y sin imágenes, más guías de medicina de emergencia en inglés. Empieza por aquí.",
           "recommended": true,
           "resources": [
             {
@@ -21,13 +21,45 @@
               "description": "Selección de artículos médicos de Wikipedia en español, sin imágenes",
               "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_medicine_nopic_2026-10.zim",
               "size_mb": 171
+            },
+            {
+              "id": "zimgit-medicine_en",
+              "version": "2024-08",
+              "title": "Biblioteca médica (en inglés)",
+              "description": "Libros y guías de medicina de emergencia y en el terreno",
+              "url": "https://download.kiwix.org/zim/other/zimgit-medicine_en_2024-08.zim",
+              "size_mb": 67
+            },
+            {
+              "id": "nhs.uk_en_medicines",
+              "version": "2025-12",
+              "title": "Medicamentos de la A a la Z del NHS (en inglés)",
+              "description": "Cómo actúan los medicamentos, dosis, efectos secundarios e interacciones",
+              "url": "https://download.kiwix.org/zim/zimit/nhs.uk_en_medicines_2025-12.zim",
+              "size_mb": 16
+            },
+            {
+              "id": "irp.fas.org_en_military-medicine",
+              "version": "2026-10",
+              "title": "Medicina militar (en inglés)",
+              "description": "Manuales de medicina táctica y en el terreno",
+              "url": "https://download.kiwix.org/zim/zimit/irp.fas.org_en_military-medicine_2026-10.zim",
+              "size_mb": 62
+            },
+            {
+              "id": "wwwnc.cdc.gov_en_all",
+              "version": "2024-11",
+              "title": "Información de salud de los CDC (en inglés)",
+              "description": "Prevención de enfermedades, salud en viajes e información sobre brotes",
+              "url": "https://download.kiwix.org/zim/zimit/wwwnc.cdc.gov_en_all_2024-11.zim",
+              "size_mb": 170
             }
           ]
         },
         {
           "name": "Estándar",
           "slug": "medicine-standard",
-          "description": "Enciclopedia de salud de MedlinePlus en español y la Guía de medicamentos de la FDA. Incluye todo lo del nivel Esencial.",
+          "description": "Enciclopedia de salud de MedlinePlus en español y en inglés, y la Guía de medicamentos de la FDA. Incluye todo lo del nivel Esencial.",
           "includesTier": "medicine-essential",
           "resources": [
             {
@@ -46,13 +78,21 @@
               "description": "Prospectos de la FDA sin conexión: busca por nombre del medicamento",
               "url": "https://api.fda.gov/download.json",
               "size_mb": 1700
+            },
+            {
+              "id": "medlineplus.gov_en_all",
+              "version": "2025-01",
+              "title": "MedlinePlus (en inglés)",
+              "description": "Enciclopedia de salud de los NIH: enfermedades, afecciones, medicamentos y suplementos",
+              "url": "https://download.kiwix.org/zim/zimit/medlineplus.gov_en_all_2025-01.zim",
+              "size_mb": 1800
             }
           ]
         },
         {
           "name": "Completo",
           "slug": "medicine-comprehensive",
-          "description": "Wikipedia Médica con todas sus imágenes e ilustraciones. Incluye todo lo del nivel Estándar.",
+          "description": "Wikipedia Médica con todas sus imágenes, más libros de medicina y patología en inglés. Incluye todo lo del nivel Estándar.",
           "includesTier": "medicine-standard",
           "resources": [
             {
@@ -62,6 +102,30 @@
               "description": "Artículos médicos de Wikipedia en español con imágenes e ilustraciones",
               "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_medicine_maxi_2026-10.zim",
               "size_mb": 469
+            },
+            {
+              "id": "wikipedia_en_medicine_maxi",
+              "version": "2026-01",
+              "title": "Wikipedia: Medicina (en inglés)",
+              "description": "Artículos médicos seleccionados de Wikipedia, con imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_en_medicine_maxi_2026-01.zim",
+              "size_mb": 2000
+            },
+            {
+              "id": "libretexts.org_en_med",
+              "version": "2025-01",
+              "title": "LibreTexts: Medicina (en inglés)",
+              "description": "Libros de medicina y material educativo de código abierto",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_med_2025-01.zim",
+              "size_mb": 1100
+            },
+            {
+              "id": "librepathology_en_all_maxi",
+              "version": "2026-09",
+              "title": "LibrePathology (en inglés)",
+              "description": "Referencia de patología para identificar enfermedades",
+              "url": "https://download.kiwix.org/zim/other/librepathology_en_all_maxi_2026-09.zim",
+              "size_mb": 95
             }
           ]
         }
@@ -167,6 +231,14 @@
               "description": "Serie de videos sobre preparación para emergencias en la ciudad",
               "url": "https://download.kiwix.org/zim/videos/urban-prepper_en_all_2026-08.zim",
               "size_mb": 2245
+            },
+            {
+              "id": "www.ready.gov_en",
+              "version": "2024-12",
+              "title": "Ready.gov (en inglés)",
+              "description": "Guía oficial de EE. UU. para prepararse ante desastres: clima, incendios, planes de evacuación y kits de emergencia",
+              "url": "https://download.kiwix.org/zim/zimit/www.ready.gov_en_2024-12.zim",
+              "size_mb": 2429
             }
           ]
         },
@@ -224,7 +296,7 @@
       "name": "Educación y referencia",
       "slug": "education",
       "icon": "IconSchool",
-      "description": "Enciclopedias, libros, diccionarios y videos educativos en español para aprender por tu cuenta.",
+      "description": "Enciclopedias, libros, diccionarios y videos educativos en español y en inglés para aprender por tu cuenta.",
       "language": "es",
       "tiers": [
         {
@@ -256,6 +328,14 @@
               "description": "Diccionario libre en español: definiciones, etimologías y traducciones",
               "url": "https://download.kiwix.org/zim/wiktionary/wiktionary_es_all_nopic_2026-09.zim",
               "size_mb": 656
+            },
+            {
+              "id": "wikibooks_en_all_nopic",
+              "version": "2026-01",
+              "title": "Wikibooks (en inglés)",
+              "description": "Libros de texto libres de matemáticas, ciencias, computación y más",
+              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_en_all_nopic_2026-01.zim",
+              "size_mb": 3100
             }
           ]
         },
@@ -304,13 +384,61 @@
               "description": "Biblioteca de textos libres en español: literatura, historia y documentos",
               "url": "https://download.kiwix.org/zim/wikisource/wikisource_es_all_maxi_2026-10.zim",
               "size_mb": 512
+            },
+            {
+              "id": "ted_mul_ted-ed",
+              "version": "2026-09",
+              "title": "TED-Ed",
+              "description": "Lecciones en video sobre ciencia, historia, literatura y más. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-ed_2026-09.zim",
+              "size_mb": 6381
+            },
+            {
+              "id": "wikiversity_en_all_maxi",
+              "version": "2026-02",
+              "title": "Wikiversity (en inglés)",
+              "description": "Tutoriales, cursos y material de estudio para todos los niveles",
+              "url": "https://download.kiwix.org/zim/wikiversity/wikiversity_en_all_maxi_2026-02.zim",
+              "size_mb": 2370
+            },
+            {
+              "id": "libretexts.org_en_math",
+              "version": "2026-01",
+              "title": "LibreTexts: Matemáticas (en inglés)",
+              "description": "Libros de matemáticas de código abierto, desde álgebra hasta cálculo",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_math_2026-01.zim",
+              "size_mb": 792
+            },
+            {
+              "id": "libretexts.org_en_phys",
+              "version": "2026-01",
+              "title": "LibreTexts: Física (en inglés)",
+              "description": "Cursos y libros de física",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_phys_2026-01.zim",
+              "size_mb": 534
+            },
+            {
+              "id": "libretexts.org_en_chem",
+              "version": "2025-01",
+              "title": "LibreTexts: Química (en inglés)",
+              "description": "Cursos y libros de química",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_chem_2025-01.zim",
+              "size_mb": 2180
+            },
+            {
+              "id": "libretexts.org_en_bio",
+              "version": "2025-01",
+              "title": "LibreTexts: Biología (en inglés)",
+              "description": "Cursos y libros de biología",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_bio_2025-01.zim",
+              "size_mb": 2240
             }
           ]
         },
         {
           "name": "Completo",
           "slug": "education-comprehensive",
-          "description": "Wikilibros con todas sus imágenes y diagramas. Incluye todo lo del nivel Estándar.",
+          "description": "Wikilibros con todas sus imágenes, conferencias TED y libros de LibreTexts en inglés. Incluye todo lo del nivel Estándar.",
           "includesTier": "education-standard",
           "resources": [
             {
@@ -320,6 +448,54 @@
               "description": "Libros de texto abiertos con todas sus ilustraciones y diagramas",
               "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_es_all_maxi_2026-10.zim",
               "size_mb": 281
+            },
+            {
+              "id": "wikibooks_en_all_maxi",
+              "version": "2026-01",
+              "title": "Wikibooks (con imágenes) (en inglés)",
+              "description": "Libros de texto libres con todas sus ilustraciones y diagramas",
+              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_en_all_maxi_2026-01.zim",
+              "size_mb": 5400
+            },
+            {
+              "id": "ted_mul_ted-conference",
+              "version": "2026-09",
+              "title": "Conferencias TED",
+              "description": "Charlas principales de las conferencias TED",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-conference_2026-09.zim",
+              "size_mb": 18136
+            },
+            {
+              "id": "libretexts.org_en_human",
+              "version": "2025-01",
+              "title": "LibreTexts: Humanidades (en inglés)",
+              "description": "Literatura, filosofía, historia y ciencias sociales",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_human_2025-01.zim",
+              "size_mb": 3730
+            },
+            {
+              "id": "libretexts.org_en_geo",
+              "version": "2026-01",
+              "title": "LibreTexts: Ciencias de la Tierra (en inglés)",
+              "description": "Ciencias de la Tierra, geología y estudios ambientales",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_geo_2026-01.zim",
+              "size_mb": 1127
+            },
+            {
+              "id": "libretexts.org_en_eng",
+              "version": "2025-01",
+              "title": "LibreTexts: Ingeniería (en inglés)",
+              "description": "Cursos de ingeniería y referencias técnicas",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_eng_2025-01.zim",
+              "size_mb": 678
+            },
+            {
+              "id": "libretexts.org_en_biz",
+              "version": "2026-01",
+              "title": "LibreTexts: Negocios (en inglés)",
+              "description": "Libros de negocios, economía y administración",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_biz_2026-01.zim",
+              "size_mb": 801
             }
           ]
         }
@@ -539,6 +715,14 @@
               "description": "Referencia de propiedades y selectores CSS de MDN",
               "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_css_2026-07.zim",
               "size_mb": 5
+            },
+            {
+              "id": "freecodecamp_en_all",
+              "version": "2026-08",
+              "title": "freeCodeCamp (en inglés)",
+              "description": "Tutoriales interactivos de programación: JavaScript, algoritmos y estructuras de datos",
+              "url": "https://download.kiwix.org/zim/freecodecamp/freecodecamp_en_all_2026-08.zim",
+              "size_mb": 8
             }
           ]
         },
