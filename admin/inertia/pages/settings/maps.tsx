@@ -17,6 +17,7 @@ import CountryPickerModal from '~/components/CountryPickerModal'
 import type { CollectionWithStatus } from '../../../types/collections'
 import ActiveDownloads from '~/components/ActiveDownloads'
 import Alert from '~/components/Alert'
+import FoldedInSpanish from '~/components/FoldedInSpanish'
 import { formatBytes } from '~/lib/util'
 import { hasDownloadedGlobalMap } from '~/lib/global_map_banner'
 import { Trans, useTranslation } from 'react-i18next'
@@ -396,6 +397,7 @@ export default function MapsManager(props: {
               {t('mapsMgr.forceRefresh')}
             </StyledButton>
           </div>
+          <FoldedInSpanish summary={t('mapsMgr.showUsRegions')}>
           <div className="!mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {curatedCollections?.map((collection) => (
               <CuratedCollectionCard
@@ -408,6 +410,7 @@ export default function MapsManager(props: {
               <p className="text-text-muted">{t('mapsMgr.noCollections')}</p>
             )}
           </div>
+          </FoldedInSpanish>
           <div className="mt-12 mb-6 flex items-center justify-between">
             <StyledSectionHeader title={t('mapsMgr.stored')} className="!mb-0" />
             <StyledButton

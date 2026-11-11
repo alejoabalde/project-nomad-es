@@ -400,7 +400,8 @@
     "eg": "p. ej.",
     "download": "Descargar",
     "confirmBody": "¿Seguro que quieres descargar <b>{{name}}</b>? Puede tardar en estar disponible según el tamaño del archivo y tu conexión a internet.",
-    "globalBody": "Se descargará el mapa global completo de Protomaps ({{size}}, versión {{date}}). Cubre todo el planeta, así que no necesitarás archivos de regiones por separado. Asegúrate de tener suficiente espacio en disco."
+    "globalBody": "Se descargará el mapa global completo de Protomaps ({{size}}, versión {{date}}). Cubre todo el planeta, así que no necesitarás archivos de regiones por separado. Asegúrate de tener suficiente espacio en disco.",
+    "showUsRegions": "Mostrar las regiones de mapas de EE. UU."
   },
   "models": {
     "presets": {

@@ -12,6 +12,7 @@ import TierSelectionModal from '~/components/TierSelectionModal'
 import WikipediaSelector from '~/components/WikipediaSelector'
 import LoadingSpinner from '~/components/LoadingSpinner'
 import Alert from '~/components/Alert'
+import FoldedInSpanish from '~/components/FoldedInSpanish'
 import { IconCheck, IconCpu, IconBooks } from '@tabler/icons-react'
 import StorageProjectionBar from '~/components/StorageProjectionBar'
 import { useNotifications } from '~/context/NotificationContext'
@@ -876,6 +877,7 @@ export default function EasySetupWizard(props: {
           <LoadingSpinner />
         </div>
       ) : mapCollections && mapCollections.length > 0 ? (
+        <FoldedInSpanish summary={t('step2.showUsRegions')}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {mapCollections.map((collection) => (
             <div
@@ -900,6 +902,7 @@ export default function EasySetupWizard(props: {
             </div>
           ))}
         </div>
+        </FoldedInSpanish>
       ) : (
         <div className="text-center py-12">
           <p className="text-text-secondary text-lg">{t('step2.none')}</p>

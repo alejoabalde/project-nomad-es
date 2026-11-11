@@ -400,7 +400,8 @@
     "eg": "e.g.",
     "download": "Download",
     "confirmBody": "Are you sure you want to download <b>{{name}}</b>? It may take some time for it to be available depending on the file size and your internet connection.",
-    "globalBody": "This will download the full Protomaps global map ({{size}}, build {{date}}). Covers the entire planet so you won't need individual region files. Make sure you have enough disk space."
+    "globalBody": "This will download the full Protomaps global map ({{size}}, build {{date}}). Covers the entire planet so you won't need individual region files. Make sure you have enough disk space.",
+    "showUsRegions": "Show US map regions"
   },
   "models": {
     "presets": {

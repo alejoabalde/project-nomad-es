@@ -68,7 +68,8 @@
     "mapsManagerHint": "Only need a specific country, or want the whole world? Individual countries and a full global map can be installed any time from the <link>Maps Manager</link>.",
     "none": "No map collections available at this time.",
     "byCountryOnly": "",
-    "subtitleByCountry": "Offline maps are chosen by country, from the Maps Manager."
+    "subtitleByCountry": "Offline maps are chosen by country, from the Maps Manager.",
+    "showUsRegions": "Show US map regions"
   },
   "step3": {
     "title": "Choose Content",

@@ -180,7 +180,7 @@ Mira mapas sin internet. Descarga las regiones que necesites antes de quedarte s
 2. En «Descargar por país o región», haz clic en **Elegir países**
 3. Elige los países que necesitas (por ejemplo, Argentina) y confirma la descarga
 
-También están las regiones de mapas seleccionadas de EE. UU., las mismas que en la versión en inglés.
+También están las regiones de mapas seleccionadas de EE. UU., las mismas que en la versión en inglés. Aparecen plegadas: haz clic en «Mostrar las regiones de mapas de EE. UU.» para verlas.
 
 **Consejo:** descarga los mapas de los lugares a los que viajas seguido y, por las dudas, también los de las regiones vecinas.
 
