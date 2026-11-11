@@ -717,6 +717,14 @@
               "size_mb": 12
             },
             {
+              "id": "docs.python.org_es_3",
+              "version": "2026-11",
+              "title": "Documentación de Python en español",
+              "description": "Documentación oficial de Python 3 traducida: tutorial, biblioteca estándar y referencia del lenguaje",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/docs.python.org_es_3_2026-11.zim",
+              "size_mb": 90
+            },
+            {
               "id": "devdocs_en_python",
               "version": "2026-08",
               "title": "Documentación de Python (en inglés)",
@@ -797,12 +805,28 @@
               "size_mb": 1
             },
             {
+              "id": "es.react.dev_es_all",
+              "version": "2026-11",
+              "title": "Documentación de React en español",
+              "description": "Documentación oficial de React traducida: aprender, referencia y guías",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/es.react.dev_es_all_2026-11.zim",
+              "size_mb": 15
+            },
+            {
               "id": "devdocs_en_react",
               "version": "2026-02",
               "title": "Documentación de React (en inglés)",
               "description": "Referencia y tutoriales de la biblioteca React",
               "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_react_2026-02.zim",
               "size_mb": 3
+            },
+            {
+              "id": "git-scm.com_es_progit",
+              "version": "2026-11",
+              "title": "Pro Git en español",
+              "description": "El libro Pro Git completo en español: control de versiones con Git, de lo básico a lo avanzado",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/git-scm.com_es_progit_2026-11.zim",
+              "size_mb": 6
             },
             {
               "id": "devdocs_en_git",
