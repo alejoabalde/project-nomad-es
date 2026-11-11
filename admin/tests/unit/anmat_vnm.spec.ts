@@ -12,6 +12,7 @@ test('parseVnmIngredients drops doses and splits combinations', () => {
 
 test('normalizeIngredient maps Argentine names and salts to AEMPS naming', () => {
   assert.equal(normalizeIngredient('DIPIRONA 500 MG / ML'), 'metamizol')
+  assert.equal(normalizeIngredient('DIPIRONA MONOHIDRATADA 500 MG'), 'metamizol')
   assert.equal(normalizeIngredient('DICLOFENAC SODICO 75 MG'), 'diclofenaco')
   assert.equal(normalizeIngredient('HIOSCINA BUTILBROMURO 10 MG'), 'butilescopolamina')
   assert.equal(normalizeIngredient('CLORFENIRAMINA MALEATO 4 MG'), 'clorfenamina')
