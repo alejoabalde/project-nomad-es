@@ -103,7 +103,11 @@ if pkg.get("licenseProof"):
     if data and data.startswith(b"%PDF"):
         proof_path = work / "licencia.pdf"
         proof_path.write_bytes(data)
-        package_license_ok = bool(re.search(proof["pattern"], pdf_text(proof_path), re.IGNORECASE))
+        proof_text = pdf_text(proof_path)
+        package_license_ok = bool(re.search(proof["pattern"], proof_text, re.IGNORECASE))
+        if not package_license_ok:
+            for m in list(re.finditer(r"©|derechos|copia|licen|copyright|Hesperian", proof_text, re.IGNORECASE))[:4]:
+                print("    texto (prueba):", " ".join(proof_text[max(0, m.start() - 80):m.start() + 220].split()))
     print(f"Licencia del paquete ({proof['url']}): {'confirmada' if package_license_ok else 'NO confirmada'}")
 downloaded = []
 for i, doc in enumerate(expand(pkg["documents"]), start=1):
