@@ -255,6 +255,9 @@
     "see_other": "Ver {{n}} prospectos",
     "none": "Sin prospecto en español",
     "source": "Marcas y principios activos: Vademécum Nacional de Medicamentos (ANMAT). Los prospectos son de la AEMPS (España); pueden diferir en dosis o presentación del producto argentino.",
-    "separately": "No hay prospecto con esta combinación. Por separado:"
+    "separately": "No hay prospecto con esta combinación. Por separado:",
+    "fda_one": "Ver {{n}} prospecto de la FDA (en inglés)",
+    "fda_other": "Ver {{n}} prospectos de la FDA (en inglés)",
+    "fdaIngredient": "{{nombre}} (FDA, en inglés: {{n}})"
   }
 }

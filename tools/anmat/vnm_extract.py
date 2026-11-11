@@ -218,6 +218,42 @@ def variantes_argentinas(terminos):
     return out - set(terminos)
 
 
+# Words too generic to search alone ("ACIDO" matches thousands of products):
+# for these the whole ingredient name is searched instead.
+PALABRAS_GENERICAS = {
+    'ACIDO', 'CLORURO', 'SULFATO', 'EXTRACTO', 'ACEITE', 'VITAMINA', 'SODIO', 'POTASIO', 'CALCIO',
+    'MAGNESIO', 'HIERRO', 'ZINC', 'AGUA', 'ALCOHOL', 'SOLUCION', 'POLVO', 'COMPLEJO', 'FOSFATO',
+    'CITRATO', 'CARBONATO', 'OXIDO', 'HIDROXIDO', 'TINTURA', 'ESENCIA', 'FRACCION', 'ACETATO',
+    'BICARBONATO', 'GLUCONATO', 'LACTATO', 'DEXTROSA', 'GLUCOSA', 'SAL', 'SALES', 'POLVOS', 'CREMA',
+}
+
+
+def candidatos_en_cadena(parcial, hechos):
+    """Ingredient names seen in the results that no finished search covers.
+
+    The VNM search matches by substring, so a candidate is already covered
+    when a finished term is contained in it ("IBUPROFENO" covers
+    "IBUPROFENO LISINA")."""
+    vistos = set()
+    with open(parcial, encoding='utf-8') as f:
+        for line in f:
+            try:
+                generico = json.loads(line).get('generico') or ''
+            except Exception:  # noqa: BLE001
+                continue
+            for trozo in generico.split('+'):
+                nombre = re.sub(r'\s\d.*$', '', sin_tildes(trozo).upper()).strip(' .,;()')
+                nombre = re.sub(r'\s+', ' ', nombre)
+                if len(nombre) < 4:
+                    continue
+                palabra = nombre.split(' ')[0]
+                termino = palabra if len(palabra) >= 5 and palabra not in PALABRAS_GENERICAS else nombre
+                if len(termino) >= 5 and termino not in PALABRAS_GENERICAS and termino.rstrip('S') not in PALABRAS_GENERICAS:
+                    vistos.add(termino)
+    hechos_lista = [h for h in hechos if len(h) >= 4]
+    return sorted(t for t in vistos if t not in hechos and not any(h in t for h in hechos_lista))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--desde-aemps', help='paquete AEMPS del que sacar los principios activos a buscar')
@@ -225,6 +261,8 @@ def main():
     ap.add_argument('--out', required=True, help='archivo final .jsonl.gz')
     ap.add_argument('--pausa', type=float, default=3.0, help='segundos entre pedidos (por defecto 3)')
     ap.add_argument('--max-terminos', type=int, default=0, help='parar después de N términos (para probar)')
+    ap.add_argument('--en-cadena', type=int, default=0, metavar='RONDAS',
+                    help='buscar también los principios activos que aparecen en los resultados, hasta N rondas')
     args = ap.parse_args()
 
     if args.terminos:
@@ -246,38 +284,55 @@ def main():
         pendientes = pendientes[:args.max_terminos]
 
     vnm = Vademecum(args.pausa)
-    abierta = False
-    fallos_seguidos = 0
-    with open(parcial, 'a', encoding='utf-8') as out, open(hechos_path, 'a', encoding='utf-8') as hechos_f:
-        i = 0
-        while i < len(pendientes):
-            termino = pendientes[i]
-            try:
-                if not abierta:
-                    vnm.abrir()
-                    abierta = True
-                filas, paginas = vnm.buscar(termino)
-                todas = list(filas)
-                for n in range(1, paginas):
-                    todas.extend(vnm.pagina(n))
-            except SessionLost as err:
-                abierta = False
-                fallos_seguidos += 1
-                espera = min(600, args.pausa * 10 * fallos_seguidos)
-                print(f'  {termino}: {err}; reintento en {espera:.0f} s', file=sys.stderr)
-                if fallos_seguidos >= 8:
-                    raise SystemExit('Demasiados fallos seguidos; se corta. Volver a correr para retomar.')
-                time.sleep(espera)
-                continue
-            fallos_seguidos = 0
-            for fila in todas:
-                fila['termino'] = termino
-                out.write(json.dumps(fila, ensure_ascii=False) + '\n')
-            out.flush()
-            hechos_f.write(termino + '\n')
-            hechos_f.flush()
-            i += 1
-            print(f'  [{i}/{len(pendientes)}] {termino}: {len(todas)} presentaciones ({paginas} pág.)', file=sys.stderr)
+    estado = {'abierta': False}
+
+    def correr(pendientes):
+        fallos_seguidos = 0
+        with open(parcial, 'a', encoding='utf-8') as out, open(hechos_path, 'a', encoding='utf-8') as hechos_f:
+            i = 0
+            while i < len(pendientes):
+                termino = pendientes[i]
+                try:
+                    if not estado['abierta']:
+                        vnm.abrir()
+                        estado['abierta'] = True
+                    filas, paginas = vnm.buscar(termino)
+                    todas = list(filas)
+                    for n in range(1, paginas):
+                        todas.extend(vnm.pagina(n))
+                except SessionLost as err:
+                    estado['abierta'] = False
+                    fallos_seguidos += 1
+                    espera = min(600, args.pausa * 10 * fallos_seguidos)
+                    print(f'  {termino}: {err}; reintento en {espera:.0f} s', file=sys.stderr)
+                    if fallos_seguidos >= 8:
+                        raise SystemExit('Demasiados fallos seguidos; se corta. Volver a correr para retomar.')
+                    time.sleep(espera)
+                    continue
+                fallos_seguidos = 0
+                for fila in todas:
+                    fila['termino'] = termino
+                    out.write(json.dumps(fila, ensure_ascii=False) + '\n')
+                out.flush()
+                hechos_f.write(termino + '\n')
+                hechos_f.flush()
+                hechos.add(termino)
+                i += 1
+                print(f'  [{i}/{len(pendientes)}] {termino}: {len(todas)} presentaciones ({paginas} pág.)',
+                      file=sys.stderr)
+
+    correr(pendientes)
+
+    # In chain: ingredients that only show up inside results (often drugs not
+    # sold in Spain, like PRIDINOL in a combination) are searched too, until
+    # no new ones appear.
+    if args.en_cadena:
+        for ronda in range(1, args.en_cadena + 1):
+            nuevos = candidatos_en_cadena(parcial, hechos)
+            print(f'Ronda {ronda} en cadena: {len(nuevos)} términos nuevos', file=sys.stderr)
+            if not nuevos:
+                break
+            correr(nuevos)
 
     # Package: header + one line per presentation (deduplicated).
     vistos, n = set(), 0

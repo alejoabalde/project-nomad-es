@@ -104,7 +104,33 @@ const SALT_WORDS = new Set([
   'cilexetil',
   'policristalina',
   'solucion',
+  'pentahidrato',
+  'sesquihidrato',
+  'hemihidrato',
+  'tetrahidrato',
+  'oxalato',
+  'dimeglumina',
+  'etanolato',
+  'metasulfonato',
+  'hiclato',
+  'bitartrato',
+  'lactobionato',
+  'dietilamina',
+  'dietilamonico',
+  'hemisuccinato',
+  'lisinato',
+  'ditosilato',
+  'furoato',
+  'libre',
+  'actividad',
 ])
+
+/**
+ * "sulfato" is a salt of the drug ("bleomicina sulfato") except in mineral
+ * salts, where the anion is part of the name ("sulfato ferroso", "sulfato de
+ * magnesio"): keep it there.
+ */
+const MINERALS = new Set(['ferroso', 'magnesio', 'zinc', 'cobre', 'sodio', 'potasio', 'calcio', 'aluminio', 'manganeso', 'bario'])
 
 /** Argentine name → AEMPS (Spain) name, after folding and salt removal. */
 const AR_TO_ES: Record<string, string> = {
@@ -166,6 +192,8 @@ export function normalizeIngredient(chunk: string): string | null {
     const sw = spainSpelling(w)
     if (sw.length > 0 && !SALT_WORDS.has(sw) && sw !== 'de' && !words.includes(sw)) words.push(sw)
   }
+  const sulfato = words.indexOf('sulfato')
+  if (sulfato >= 0 && words.length > 1 && !words.some((w) => MINERALS.has(w))) words.splice(sulfato, 1)
   s = words.join(' ')
   if (AR_TO_ES[s]) return AR_TO_ES[s]
   return s.length >= 3 ? s : null

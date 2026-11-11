@@ -4,7 +4,8 @@ import { createReadStream } from 'node:fs'
 import { createGunzip } from 'node:zlib'
 import { createInterface } from 'node:readline'
 import { foldName, vnmRecordToRow, type VnmRecord } from '../../util/anmat_vnm.js'
-import type { ArBrandResult } from '../../types/drug_reference.js'
+import { spanishToEnglishName } from '../../util/inn_es_en.js'
+import type { ArBrandResult, FdaEquivalent } from '../../types/drug_reference.js'
 
 /**
  * Fork (project-nomad-es): Argentine brand names (ANMAT Vademécum Nacional)
@@ -105,9 +106,17 @@ export class AnmatBrandService {
       const porIngrediente =
         prospectos === 0 && ingredientes.length > 1
           ? await Promise.all(
-              ingredientes.map(async (nombre) => ({ nombre, prospectos: await this.countLeaflets([nombre]) }))
+              ingredientes.map(async (nombre) => {
+                const n = await this.countLeaflets([nombre])
+                return { nombre, prospectos: n, fda: n === 0 ? await this.fdaEquivalent([nombre]) : null }
+              })
             )
           : []
+      // No Spanish leaflet at all: try the FDA labels (English) of the same ingredients.
+      const fda =
+        prospectos === 0 && !porIngrediente.some((p) => p.prospectos > 0)
+          ? await this.fdaEquivalent(ingredientes)
+          : null
       out.push({
         nombre_comercial: row.nombre_comercial,
         laboratorio: row.laboratorio ?? null,
@@ -116,6 +125,7 @@ export class AnmatBrandService {
         presentaciones: Number(row.presentaciones ?? 1),
         prospectos,
         porIngrediente,
+        fda,
       })
     }
     return out
@@ -125,14 +135,33 @@ export class AnmatBrandService {
    * AEMPS leaflets whose searchable name has every word of every ingredient.
    * Word by word because searchable_name drops repeated tokens ("acido").
    */
-  private async countLeaflets(ingredientes: string[]): Promise<number> {
+  private countLeaflets(ingredientes: string[]): Promise<number> {
+    return this.countLabels('aemps', ingredientes)
+  }
+
+  /**
+   * FDA labels (English) for the same ingredients, using a best-effort
+   * translation of the names. Only returned when labels are actually found,
+   * so a wrong translation never shows a link.
+   */
+  private async fdaEquivalent(ingredientes: string[]): Promise<FdaEquivalent | null> {
+    const english = ingredientes.map(spanishToEnglishName)
+    const etiquetas = await this.countLabels('fda', english)
+    return etiquetas > 0 ? { consulta: english.join(' '), etiquetas } : null
+  }
+
+  private async countLabels(source: 'aemps' | 'fda', ingredientes: string[]): Promise<number> {
     const words = [...new Set(ingredientes.flatMap((i) => i.split(/\s+/)).filter((w) => w.length >= 3))]
     if (words.length === 0) return 0
     const where = words.map(() => 'searchable_name LIKE ?').join(' AND ')
-    const result = await db.rawQuery(
-      `SELECT COUNT(*) AS cnt FROM drug_labels WHERE source = 'aemps' AND ${where}`,
-      words.map((w) => `%${w}%`)
-    )
-    return Number((result[0] as Array<{ cnt: number | string }>)[0]?.cnt ?? 0)
+    try {
+      const result = await db.rawQuery(
+        `SELECT COUNT(*) AS cnt FROM drug_labels WHERE source = ? AND ${where}`,
+        [source, ...words.map((w) => `%${w}%`)]
+      )
+      return Number((result[0] as Array<{ cnt: number | string }>)[0]?.cnt ?? 0)
+    } catch {
+      return 0
+    }
   }
 }

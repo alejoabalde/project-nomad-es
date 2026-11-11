@@ -680,6 +680,12 @@ t('idx.restartConfirm')
                     setQuery(q)
                     runDrugSearch(q, productType, route, sort)
                   }}
+                  onPickFda={(q) => {
+                    setSource('fda')
+                    sourceRef.current = 'fda'
+                    setQuery(q)
+                    runDrugSearch(q, productType, route, sort)
+                  }}
                 />
               )}
 

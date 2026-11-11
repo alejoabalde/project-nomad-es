@@ -292,5 +292,13 @@ export interface ArBrandResult {
   presentaciones: number
   prospectos: number
   /** When no leaflet covers the combination: leaflets per single ingredient. */
-  porIngrediente: Array<{ nombre: string; prospectos: number }>
+  porIngrediente: Array<{ nombre: string; prospectos: number; fda: FdaEquivalent | null }>
+  /** No Spanish leaflet: FDA labels (English) of the same ingredients, if any. */
+  fda: FdaEquivalent | null
+}
+
+/** English name to search in the FDA source, and how many labels it finds. */
+export interface FdaEquivalent {
+  consulta: string
+  etiquetas: number
 }

@@ -7,15 +7,19 @@ import type { ArBrandResult } from '../../../types/drug_reference'
  * Fork (project-nomad-es): Argentine brands (ANMAT Vademécum Nacional) that
  * match the search, each with its active ingredients. Picking one searches
  * the Spanish leaflets (AEMPS) of those ingredients, since Spanish brand
- * names differ from the Argentine ones.
+ * names differ from the Argentine ones. With no Spanish leaflet, it offers
+ * the FDA labels (English) of the same ingredients when there are any.
  */
 export default function ArBrands({
   query,
   onPick,
+  onPickFda,
   className = '',
 }: {
   query: string
   onPick: (ingredientes: string[]) => void
+  /** Search the FDA source (English) for this query. */
+  onPickFda: (consulta: string) => void
   className?: string
 }) {
   const { t, i18n } = useTranslation('drugs')
@@ -69,7 +73,7 @@ export default function ArBrands({
                 >
                   {t('ar.see', { count: b.prospectos, n: b.prospectos.toLocaleString(i18n.language) })}
                 </button>
-              ) : b.porIngrediente.some((p) => p.prospectos > 0) ? (
+              ) : b.porIngrediente.some((p) => p.prospectos > 0 || p.fda) ? (
                 <span className="text-xs text-desert-stone">
                   {t('ar.separately')}{' '}
                   {b.porIngrediente.map((p, i) => (
@@ -83,11 +87,33 @@ export default function ArBrands({
                         >
                           {p.nombre} ({p.prospectos.toLocaleString(i18n.language)})
                         </button>
+                      ) : p.fda ? (
+                        <button
+                          type="button"
+                          className="font-semibold text-desert-green underline"
+                          onClick={() => onPickFda(p.fda!.consulta)}
+                        >
+                          {t('ar.fdaIngredient', {
+                            nombre: p.nombre,
+                            n: p.fda.etiquetas.toLocaleString(i18n.language),
+                          })}
+                        </button>
                       ) : (
                         <span>{p.nombre} (0)</span>
                       )}
                     </span>
                   ))}
+                </span>
+              ) : b.fda ? (
+                <span className="text-xs text-desert-stone">
+                  {t('ar.none')}.{' '}
+                  <button
+                    type="button"
+                    className="text-sm font-semibold text-desert-green underline"
+                    onClick={() => onPickFda(b.fda!.consulta)}
+                  >
+                    {t('ar.fda', { count: b.fda.etiquetas, n: b.fda.etiquetas.toLocaleString(i18n.language) })}
+                  </button>
                 </span>
               ) : (
                 <span className="text-xs text-desert-stone">{t('ar.none')}</span>

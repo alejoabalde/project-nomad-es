@@ -62,3 +62,17 @@ test('normalizeIngredient applies regular Argentina → Spain endings', () => {
   assert.equal(normalizeIngredient('ROSUVASTATIN CALCICA 10 MG'), 'rosuvastatina')
   assert.equal(normalizeIngredient('ACECLOFENAC 100 MG'), 'aceclofenaco')
 })
+
+test('normalizeIngredient drops sulfate and hydrate salts but keeps mineral salts', () => {
+  assert.equal(normalizeIngredient('BLEOMICINA SULFATO 15 UI'), 'bleomicina')
+  assert.equal(normalizeIngredient('CEFTAZIDIMA PENTAHIDRATO 1 G'), 'ceftazidima')
+  assert.equal(normalizeIngredient('ESCITALOPRAM OXALATO 10 MG'), 'escitalopram')
+  assert.equal(normalizeIngredient('SULFATO FERROSO 200 MG'), 'sulfato ferroso')
+  assert.equal(normalizeIngredient('SULFATO DE MAGNESIO 25 G'), 'sulfato magnesio')
+})
+
+test('normalizeIngredient drops the less common salts', () => {
+  assert.equal(normalizeIngredient('DOXICICLINA HICLATO 100 MG'), 'doxiciclina')
+  assert.equal(normalizeIngredient('DICLOFENAC DIETILAMONICO 1,16 G'), 'diclofenaco')
+  assert.equal(normalizeIngredient('FUROATO DE FLUTICASONA 27,5 MCG'), 'fluticasona')
+})
