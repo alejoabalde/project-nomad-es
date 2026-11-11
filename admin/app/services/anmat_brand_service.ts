@@ -95,17 +95,27 @@ export class AnmatBrandService {
 
     const out: ArBrandResult[] = []
     for (const row of rows) {
+      let prospectos = 0
       const ingredientes = String(row.ingredientes)
         .split(',')
         .map((s) => s.trim())
         .filter(Boolean)
+      prospectos = await this.countLeaflets(ingredientes)
+      // No Spanish leaflet for the combination: offer each ingredient alone.
+      const porIngrediente =
+        prospectos === 0 && ingredientes.length > 1
+          ? await Promise.all(
+              ingredientes.map(async (nombre) => ({ nombre, prospectos: await this.countLeaflets([nombre]) }))
+            )
+          : []
       out.push({
         nombre_comercial: row.nombre_comercial,
         laboratorio: row.laboratorio ?? null,
         generico: row.generico ?? null,
         ingredientes,
         presentaciones: Number(row.presentaciones ?? 1),
-        prospectos: await this.countLeaflets(ingredientes),
+        prospectos,
+        porIngrediente,
       })
     }
     return out

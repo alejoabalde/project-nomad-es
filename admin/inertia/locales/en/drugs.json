@@ -254,6 +254,7 @@
     "see_one": "See {{n}} leaflet",
     "see_other": "See {{n}} leaflets",
     "none": "No Spanish leaflet",
-    "source": "Brands and active ingredients: Argentina's National Medicines Vademecum (ANMAT). Leaflets are from AEMPS (Spain); dose or presentation may differ from the Argentine product."
+    "source": "Brands and active ingredients: Argentina's National Medicines Vademecum (ANMAT). Leaflets are from AEMPS (Spain); dose or presentation may differ from the Argentine product.",
+    "separately": "No leaflet for this combination. Separately:"
   }
 }

@@ -69,6 +69,26 @@ export default function ArBrands({
                 >
                   {t('ar.see', { count: b.prospectos, n: b.prospectos.toLocaleString(i18n.language) })}
                 </button>
+              ) : b.porIngrediente.some((p) => p.prospectos > 0) ? (
+                <span className="text-xs text-desert-stone">
+                  {t('ar.separately')}{' '}
+                  {b.porIngrediente.map((p, i) => (
+                    <span key={p.nombre}>
+                      {i > 0 && ' · '}
+                      {p.prospectos > 0 ? (
+                        <button
+                          type="button"
+                          className="font-semibold text-desert-green underline"
+                          onClick={() => onPick([p.nombre])}
+                        >
+                          {p.nombre} ({p.prospectos.toLocaleString(i18n.language)})
+                        </button>
+                      ) : (
+                        <span>{p.nombre} (0)</span>
+                      )}
+                    </span>
+                  ))}
+                </span>
               ) : (
                 <span className="text-xs text-desert-stone">{t('ar.none')}</span>
               )}

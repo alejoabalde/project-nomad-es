@@ -107,8 +107,6 @@ const AR_TO_ES: Record<string, string> = {
   'dipirona': 'metamizol',
   'acetaminofeno': 'paracetamol',
   'acetaminofen': 'paracetamol',
-  'diclofenac': 'diclofenaco',
-  'ketorolac': 'ketorolaco',
   'clorfeniramina': 'clorfenamina',
   'hioscina butilbromuro': 'butilescopolamina',
   'hioscina': 'butilescopolamina',
@@ -118,20 +116,34 @@ const AR_TO_ES: Record<string, string> = {
   'cafeina anhidra': 'cafeina',
   'aciclovir': 'aciclovir',
   'salbutamol sulfato': 'salbutamol',
-  'amlodipina': 'amlodipino',
-  'vildagliptin': 'vildagliptina',
-  'sitagliptin': 'sitagliptina',
-  'atorvastatin': 'atorvastatina',
-  'rosuvastatin': 'rosuvastatina',
-  'entacapone': 'entacapona',
-  'ciprofloxacina': 'ciprofloxacino',
-  'levofloxacina': 'levofloxacino',
   'iodopovidona': 'povidona iodada',
   'yodopovidona': 'povidona iodada',
   'povidona yodada': 'povidona iodada',
   'acetilcisteina': 'acetilcisteina',
   'n butilbromuro hioscina': 'butilescopolamina',
   'butilbromuro hioscina': 'butilescopolamina',
+}
+
+/**
+ * Regular spelling differences, applied word by word (Argentina → Spain):
+ * nifedipina → nifedipino, ciprofloxacina → ciprofloxacino, vildagliptin →
+ * vildagliptina, atorvastatin → atorvastatina, entacapone → entacapona,
+ * diclofenac → diclofenaco.
+ */
+const SUFFIXES: Array<[RegExp, string]> = [
+  [/dipina$/, 'dipino'],
+  [/floxacina$/, 'floxacino'],
+  [/gliptin$/, 'gliptina'],
+  [/statin$/, 'statina'],
+  [/capone$/, 'capona'],
+  [/(fenac|rolac)$/, '$1o'],
+]
+
+function spainSpelling(word: string): string {
+  for (const [re, to] of SUFFIXES) {
+    if (re.test(word)) return word.replace(re, to)
+  }
+  return word
 }
 
 /** One ingredient chunk ("DICLOFENAC SODICO 75 MG") → "diclofenaco". */
@@ -147,7 +159,8 @@ export function normalizeIngredient(chunk: string): string | null {
   if (/clavulan/.test(s)) return 'acido clavulanico'
   const words: string[] = []
   for (const w of s.split(' ')) {
-    if (w.length > 0 && !SALT_WORDS.has(w) && w !== 'de' && !words.includes(w)) words.push(w)
+    const sw = spainSpelling(w)
+    if (sw.length > 0 && !SALT_WORDS.has(sw) && sw !== 'de' && !words.includes(sw)) words.push(sw)
   }
   s = words.join(' ')
   if (AR_TO_ES[s]) return AR_TO_ES[s]
@@ -165,23 +178,31 @@ export function parseVnmIngredients(generico: string | null | undefined): string
   return out
 }
 
+/** Trim and cut to the column width (drug_brands_ar); empty → null. */
+function fit(v: string | null | undefined, max: number): string | null {
+  const t = v?.trim()
+  return t ? t.slice(0, max) : null
+}
+
 export function vnmRecordToRow(rec: VnmRecord): ArBrandRow {
-  const gtin = rec.gtin?.trim() || null
-  const presentacion = rec.presentacion?.trim() || null
+  const gtin = fit(rec.gtin, 20)
+  const presentacion = fit(rec.presentacion, 255)
+  const nombre = fit(rec.nombre_comercial, 255) ?? ''
   const clave = createHash('sha1')
-    .update(`${rec.certificado}|${gtin ?? ''}|${presentacion ?? ''}|${rec.nombre_comercial}`)
+    .update(`${rec.certificado}|${gtin ?? ''}|${presentacion ?? ''}|${nombre}`)
     .digest('hex')
-  const ingredientes = parseVnmIngredients(rec.generico)
+  // Sorted so the same combination written in another order groups together.
+  const ingredientes = parseVnmIngredients(rec.generico).sort()
   return {
     clave,
-    certificado: rec.certificado,
-    nombre_comercial: rec.nombre_comercial.trim(),
-    laboratorio: rec.laboratorio?.trim() || null,
-    forma: rec.forma?.trim() || null,
+    certificado: rec.certificado.slice(0, 16),
+    nombre_comercial: nombre,
+    laboratorio: fit(rec.laboratorio, 255),
+    forma: fit(rec.forma, 128),
     presentacion,
     gtin,
-    generico: rec.generico?.trim() || null,
-    ingredientes: ingredientes.length > 0 ? ingredientes.join(', ') : null,
-    searchable: foldName(rec.nombre_comercial),
+    generico: fit(rec.generico, 512),
+    ingredientes: ingredientes.length > 0 ? ingredientes.join(', ').slice(0, 512) : null,
+    searchable: foldName(nombre),
   }
 }

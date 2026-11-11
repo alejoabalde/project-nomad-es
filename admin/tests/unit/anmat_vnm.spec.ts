@@ -43,3 +43,21 @@ test('normalizeIngredient handles prefixes, salts and Spain spellings', () => {
   assert.equal(normalizeIngredient('ACIDO CLAVULANICO (COMO CLAVULANATO DE POTASIO) 125 MG'), 'acido clavulanico')
   assert.equal(normalizeIngredient('IODOPOVIDONA 10 G / 100 ML'), 'povidona iodada')
 })
+
+test('vnmRecordToRow cuts long values to the column widths', () => {
+  const row = vnmRecordToRow({
+    certificado: '47302',
+    nombre_comercial: 'RIFAMICYN LAFEDAR',
+    presentacion: 'X'.repeat(400),
+    generico: 'RIFAMICINA SV 0.5 G / 100 ML',
+  })
+  assert.equal(row.presentacion?.length, 255)
+})
+
+test('normalizeIngredient applies regular Argentina → Spain endings', () => {
+  assert.equal(normalizeIngredient('NIFEDIPINA 20 MG'), 'nifedipino')
+  assert.equal(normalizeIngredient('LEVOFLOXACINA 500 MG'), 'levofloxacino')
+  assert.equal(normalizeIngredient('SITAGLIPTIN 100 MG'), 'sitagliptina')
+  assert.equal(normalizeIngredient('ROSUVASTATIN CALCICA 10 MG'), 'rosuvastatina')
+  assert.equal(normalizeIngredient('ACECLOFENAC 100 MG'), 'aceclofenaco')
+})

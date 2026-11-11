@@ -291,4 +291,6 @@ export interface ArBrandResult {
   ingredientes: string[]
   presentaciones: number
   prospectos: number
+  /** When no leaflet covers the combination: leaflets per single ingredient. */
+  porIngrediente: Array<{ nombre: string; prospectos: number }>
 }

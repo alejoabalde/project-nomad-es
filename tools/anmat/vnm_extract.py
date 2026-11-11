@@ -191,7 +191,31 @@ def terminos_desde_aemps(path):
                 t = sin_tildes(pa).upper().strip()
                 if len(t) >= 3:
                     out.add(t)
-    return sorted(out)
+    return sorted(out | variantes_argentinas(out))
+
+
+# Argentina names some ingredients differently, and the VNM search matches by
+# substring, so the Spanish name alone misses them ("DICLOFENACO" does not
+# find "DICLOFENAC SODICO"). These are searched too.
+NOMBRES_ARGENTINOS = ['DIPIRONA', 'HIOSCINA', 'CLORFENIRAMINA', 'ACETAMINOFENO', 'IODOPOVIDONA', 'YODOPOVIDONA']
+SUFIJOS = [  # (Spain, Argentina)
+    ('DIPINO', 'DIPINA'),
+    ('FLOXACINO', 'FLOXACINA'),
+    ('GLIPTINA', 'GLIPTIN'),
+    ('STATINA', 'STATIN'),
+    ('CAPONA', 'CAPONE'),
+    ('ACO', 'AC'),
+]
+
+
+def variantes_argentinas(terminos):
+    out = set(NOMBRES_ARGENTINOS)
+    for t in terminos:
+        primera = t.split(' ')[0]
+        for es, ar in SUFIJOS:
+            if primera.endswith(es) and len(primera) > len(es) + 3:
+                out.add(primera[: -len(es)] + ar)
+    return out - set(terminos)
 
 
 def main():
