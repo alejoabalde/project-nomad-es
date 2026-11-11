@@ -224,8 +224,8 @@
           "title": "La huerta orgánica",
           "url": "https://commons.wikimedia.org/wiki/Special:FilePath/La_Huerta_Org%C3%A1nica.pdf",
           "licensePage": {
-            "url": "https://commons.wikimedia.org/wiki/File:La_Huerta_Org%C3%A1nica.pdf",
-            "pattern": "licensetpl_short[^>]*>\\s*(CC[ -]BY[^<]*|Dominio p[uú]blico|Public domain)"
+            "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata&uselang=en&titles=File:La_Huerta_Org%C3%A1nica.pdf",
+            "pattern": "\"LicenseShortName\":\\s*\\{\\s*\"value\":\\s*\"(CC[ -]BY[^\"]*|CC0[^\"]*|Public domain)\""
           },
           "source": "https://commons.wikimedia.org/wiki/File:La_Huerta_Org%C3%A1nica.pdf"
         },
@@ -233,8 +233,8 @@
           "title": "Manual de cultivos para la huerta orgánica familiar",
           "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf",
           "licensePage": {
-            "url": "https://commons.wikimedia.org/wiki/File:Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf",
-            "pattern": "licensetpl_short[^>]*>\\s*(CC[ -]BY[^<]*|Dominio p[uú]blico|Public domain)"
+            "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata&uselang=en&titles=File:Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf",
+            "pattern": "\"LicenseShortName\":\\s*\\{\\s*\"value\":\\s*\"(CC[ -]BY[^\"]*|CC0[^\"]*|Public domain)\""
           },
           "source": "https://commons.wikimedia.org/wiki/File:Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf"
         }
