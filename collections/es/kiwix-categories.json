@@ -723,6 +723,14 @@
               "size_mb": 1195
             },
             {
+              "id": "educ.ar_es_electricidad",
+              "version": "2026-11",
+              "title": "Curso de electricidad (educ.ar)",
+              "description": "Oficios: curso de electricidad de educ.ar: circuitos de iluminación, lámparas, potencia, llaves térmicas y motores",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_electricidad_2026-11.zim",
+              "size_mb": 1028
+            },
+            {
               "id": "diy.stackexchange.com_en_all",
               "version": "2026-02",
               "title": "Bricolaje y mejoras para el hogar (preguntas y respuestas) (en inglés)",

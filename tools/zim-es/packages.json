@@ -148,6 +148,30 @@
       "scopeIncludeRx": "^https://www\\.educ\\.ar/recursos/1023(09|1[0-6])(/|$)"
     },
     {
+      "id": "educ.ar_es_electricidad",
+      "type": "website",
+      "title": "Curso de electricidad (educ.ar)",
+      "description": "Oficios: curso de electricidad de educ.ar: circuitos de iluminación, lámparas, potencia, llaves térmicas y motores",
+      "license": "CC BY-NC-SA",
+      "source": "https://www.educ.ar/",
+      "seeds": [
+        "https://www.educ.ar/recursos/50045",
+        "https://www.educ.ar/recursos/50046",
+        "https://www.educ.ar/recursos/50047",
+        "https://www.educ.ar/recursos/50048",
+        "https://www.educ.ar/recursos/50049",
+        "https://www.educ.ar/recursos/50050",
+        "https://www.educ.ar/recursos/50051",
+        "https://www.educ.ar/recursos/50052",
+        "https://www.educ.ar/recursos/50053",
+        "https://www.educ.ar/recursos/50054"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://www\\.educ\\.ar/recursos/(50045|50046|50047|50048|50049|50050|50051|50052|50053|50054)(/|$)",
+      "minSizeMB": 5,
+      "note": "educ.ar no responde a los servidores de GitHub: se arma en una PC (podman en Fedora necesita el volumen de salida con :Z)."
+    },
+    {
       "id": "cawst_es_agua",
       "type": "pdf",
       "title": "Agua segura en casa (CAWST)",
