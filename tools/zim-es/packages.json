@@ -199,6 +199,26 @@
       ]
     },
     {
+      "id": "oms_es_agua-saneamiento-emergencias",
+      "type": "pdf",
+      "title": "Agua y saneamiento en emergencias (OMS)",
+      "description": "Notas técnicas de la OMS y el WEDC: agua potable, letrinas, higiene y saneamiento después de un desastre",
+      "credit": "Organización Mundial de la Salud y WEDC (Universidad de Loughborough); edición en español de la OPS",
+      "license": "La que indique cada nota (solo entran las que permiten reproducirlas sin fines de lucro)",
+      "source": "https://www.paho.org/es/emergencias-salud/notas-tecnicas-sobre-agua-saneamiento-e-higiene-emergencias",
+      "documents": [
+        {
+          "title": "Nota técnica {n}",
+          "url": "https://paho.org/sites/default/files/2019-12/Nota-tecnica-sobre-agua-saneamiento-higiene-{n:02d}.pdf",
+          "range": [
+            1,
+            15
+          ],
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|(libremente|puede ser)[\\s\\S]{0,80}?(reproducid|traducid)[\\s\\S]{0,120}?(no (con fines comerciales|para (la )?venta)|sin fines de lucro)|freely[\\s\\S]{0,60}?reproduced[\\s\\S]{0,80}?not for sale"
+        }
+      ]
+    },
+    {
       "id": "fao_es_alimentos-huerta",
       "type": "pdf",
       "title": "FAO: alimentos y huerta",
@@ -237,6 +257,21 @@
           "url": "https://www.fao.org/3/cc0742es/cc0742es.pdf",
           "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales",
           "requireText": "huert"
+        },
+        {
+          "title": "Captación y almacenamiento de agua de lluvia para la agricultura familiar (FAO, 2013)",
+          "url": "https://www.fao.org/4/i3247s/i3247s.pdf",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales",
+          "requireText": "lluvia"
+        },
+        {
+          "title": "Manual de compostaje del agricultor (FAO, 2013)",
+          "url": [
+            "https://www.fao.org/3/i3388s/i3388s.pdf",
+            "https://www.fao.org/4/i3388s/i3388s.pdf"
+          ],
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales",
+          "requireText": "compost"
         }
       ]
     },
@@ -306,6 +341,102 @@
         {
           "title": "Páginas finales",
           "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_bm.pdf"
+        }
+      ]
+    },
+    {
+      "id": "hesperian_es_parteras",
+      "type": "pdf",
+      "title": "Un libro para parteras (Hesperian)",
+      "description": "Hesperian: embarazo, parto y cuidados después del parto, para parteras y promotoras de salud",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://es.hesperian.org/",
+      "licenseProof": {
+        "url": "https://hesperian.org/wp-content/uploads/pdf/es_midw_2013/es_midw_2013_fmb.pdf",
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_midw_2013/es_midw_2013_fmb.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_midw_2013/es_midw_2013_{n:02d}.pdf",
+          "range": [
+            1,
+            35
+          ]
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_midw_2013/es_midw_2013_bm.pdf",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "hesperian_es_salud-mujeres",
+      "type": "pdf",
+      "title": "Donde no hay doctor para mujeres (Hesperian)",
+      "description": "Hesperian: guía de salud para mujeres, para cuando no hay un médico cerca",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://es.hesperian.org/",
+      "licenseProof": {
+        "url": "https://hesperian.org/wp-content/uploads/pdf/es_wwhnd_2014/es_wwhnd_2014_fm.pdf",
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wwhnd_2014/es_wwhnd_2014_fm.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wwhnd_2014/es_wwhnd_2014_{n:02d}.pdf",
+          "range": [
+            1,
+            35
+          ]
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wwhnd_2014/es_wwhnd_2014_bm.pdf",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "hesperian_es_nino-discapacidad",
+      "type": "pdf",
+      "title": "El niño campesino deshabilitado (Hesperian)",
+      "description": "Hesperian: guía para ayudar a niñas y niños con discapacidad en la comunidad",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://es.hesperian.org/",
+      "licenseProof": {
+        "url": "https://hesperian.org/wp-content/uploads/pdf/es_dvc_2013/es_dvc_2013_fm.pdf",
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_dvc_2013/es_dvc_2013_fm.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_dvc_2013/es_dvc_2013_{n:02d}.pdf",
+          "range": [
+            1,
+            60
+          ]
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_dvc_2013/es_dvc_2013_bm.pdf",
+          "optional": true
         }
       ]
     },
