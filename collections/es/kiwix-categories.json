@@ -182,6 +182,14 @@
               "description": "Charlas TED sobre salud pública. Incluye subtítulos en español",
               "url": "https://download.kiwix.org/zim/ted/ted_mul_public-health_2026-09.zim",
               "size_mb": 2252
+            },
+            {
+              "id": "ted_mul_health",
+              "version": "2026-09",
+              "title": "Charlas TED: Salud",
+              "description": "Charlas TED sobre salud y medicina. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_health_2026-09.zim",
+              "size_mb": 7481
             }
           ]
         }
@@ -319,6 +327,14 @@
               "description": "Charlas TED sobre agua potable, saneamiento y recursos hídricos. Incluye subtítulos en español",
               "url": "https://download.kiwix.org/zim/ted/ted_mul_water_2026-09.zim",
               "size_mb": 831
+            },
+            {
+              "id": "ted_mul_natural-disaster",
+              "version": "2026-09",
+              "title": "Charlas TED: Desastres naturales",
+              "description": "Charlas TED sobre terremotos, huracanes, inundaciones y otros desastres. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_natural-disaster_2026-09.zim",
+              "size_mb": 682
             }
           ]
         },
@@ -640,6 +656,14 @@
               "description": "Artículos de biología molecular y celular de Wikipedia en español, sin imágenes",
               "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_molcell_nopic_2026-10.zim",
               "size_mb": 52
+            },
+            {
+              "id": "wikipedia_es_climate-change_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Cambio climático",
+              "description": "Artículos sobre cambio climático de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_climate-change_nopic_2026-10.zim",
+              "size_mb": 26
             }
           ]
         },
@@ -825,6 +849,14 @@
               "description": "Guías paso a paso para reparar electrónica, electrodomésticos y vehículos (más completa que la versión en español)",
               "url": "https://download.kiwix.org/zim/ifixit/ifixit_en_all_2025-12.zim",
               "size_mb": 3380
+            },
+            {
+              "id": "ted_mul_renewable-energy",
+              "version": "2026-09",
+              "title": "Charlas TED: Energía renovable",
+              "description": "Charlas TED sobre energía solar, eólica y otras renovables. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_renewable-energy_2026-09.zim",
+              "size_mb": 1016
             }
           ]
         }
@@ -954,6 +986,14 @@
               "description": "Charlas TED sobre agricultura y producción de alimentos. Incluye subtítulos en español",
               "url": "https://download.kiwix.org/zim/ted/ted_mul_agriculture_2026-09.zim",
               "size_mb": 1210
+            },
+            {
+              "id": "ted_mul_food",
+              "version": "2026-09",
+              "title": "Charlas TED: Comida",
+              "description": "Charlas TED sobre alimentación y producción de alimentos. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_food_2026-09.zim",
+              "size_mb": 2212
             }
           ]
         }
