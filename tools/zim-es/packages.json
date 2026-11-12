@@ -269,7 +269,8 @@
       "scopeExcludeRx": "/wiki/(Special|Talk|User|File|Template|Category)[:%]",
       "pageLimit": 20000,
       "minSizeMB": 5,
-      "note": "Medición: si quedan pocas páginas clínicas traducidas, se descarta."
+      "note": "Descartado tras medir: no existe la portada en español y las pocas páginas /es son listas de recursos, no contenido clínico. Queda WikEM en inglés.",
+      "enabled": false
     },
     {
       "id": "espanol.libretexts.org_es_fisica",

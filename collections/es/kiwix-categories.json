@@ -442,6 +442,14 @@
               "size_mb": 2370
             },
             {
+              "id": "espanol.libretexts.org_es_matematicas",
+              "version": "2026-11",
+              "title": "LibreTexts: Matemáticas",
+              "description": "Libros de texto abiertos de LibreTexts en español: álgebra, cálculo, estadística y más",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_matematicas_2026-11.zim",
+              "size_mb": 143
+            },
+            {
               "id": "libretexts.org_en_math",
               "version": "2026-01",
               "title": "LibreTexts: Matemáticas (en inglés)",
@@ -450,12 +458,28 @@
               "size_mb": 792
             },
             {
+              "id": "espanol.libretexts.org_es_fisica",
+              "version": "2026-11",
+              "title": "LibreTexts: Física",
+              "description": "Libros de texto abiertos de LibreTexts en español: mecánica, electricidad y magnetismo, ondas, termodinámica y más",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_fisica_2026-11.zim",
+              "size_mb": 190
+            },
+            {
               "id": "libretexts.org_en_phys",
               "version": "2026-01",
               "title": "LibreTexts: Física (en inglés)",
               "description": "Cursos y libros de física",
               "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_phys_2026-01.zim",
               "size_mb": 534
+            },
+            {
+              "id": "espanol.libretexts.org_es_quimica",
+              "version": "2026-11",
+              "title": "LibreTexts: Química",
+              "description": "Libros de texto abiertos de LibreTexts en español: química general, orgánica, analítica y más",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_quimica_2026-11.zim",
+              "size_mb": 619
             },
             {
               "id": "libretexts.org_en_chem",
