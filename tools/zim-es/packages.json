@@ -68,7 +68,9 @@
       "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/JavaScript)",
       "type": "website",
       "scopeExcludeRx": "/contributors\\.txt$",
-      "minSizeMB": 5
+      "minSizeMB": 5,
+      "enabled": false,
+      "note": "Descartado por ahora: el contenido de programación no es prioridad. MDN en inglés sigue en el catálogo."
     },
     {
       "id": "developer.mozilla.org_es_html",
@@ -84,7 +86,9 @@
       "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/HTML|Learn)",
       "type": "website",
       "scopeExcludeRx": "/contributors\\.txt$",
-      "minSizeMB": 5
+      "minSizeMB": 5,
+      "enabled": false,
+      "note": "Descartado por ahora: el contenido de programación no es prioridad. MDN en inglés sigue en el catálogo."
     },
     {
       "id": "developer.mozilla.org_es_css",
@@ -99,7 +103,9 @@
       "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/CSS)",
       "type": "website",
       "scopeExcludeRx": "/contributors\\.txt$",
-      "minSizeMB": 5
+      "minSizeMB": 5,
+      "enabled": false,
+      "note": "Descartado por ahora: el contenido de programación no es prioridad. MDN en inglés sigue en el catálogo."
     },
     {
       "id": "cdc.gov_es_all",
