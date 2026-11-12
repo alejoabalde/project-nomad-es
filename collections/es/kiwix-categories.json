@@ -919,7 +919,7 @@
               "id": "fao_es_alimentos-huerta",
               "version": "2026-11",
               "title": "Agricultura familiar y granos (FAO)",
-              "description": "Manuales de la FAO: huertos familiares, compostaje, captación de agua de lluvia, inocuidad de los alimentos en el hogar, capacitación agrícola para agricultores familiares y silos metálicos para guardar granos",
+              "description": "Manuales de la FAO: huertos familiares, compostaje, captación de agua de lluvia, conservación de frutas y hortalizas, inocuidad de los alimentos en el hogar, capacitación agrícola para agricultores familiares y silos metálicos para guardar granos",
               "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fao_es_alimentos-huerta_2026-11.zim",
               "size_mb": 49
             },
