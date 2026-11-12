@@ -31,6 +31,14 @@
               "size_mb": 18
             },
             {
+              "id": "who_es_atencion-basica-emergencia",
+              "version": "2026-11",
+              "title": "Atención básica de emergencia (OMS y CICR)",
+              "description": "Manual de la OMS y la Cruz Roja para atender heridas y enfermedades agudas con pocos recursos (enfoque ABCDE)",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/who_es_atencion-basica-emergencia_2026-11.zim",
+              "size_mb": 3
+            },
+            {
               "id": "zimgit-medicine_en",
               "version": "2024-08",
               "title": "Biblioteca médica (en inglés)",
@@ -520,6 +528,14 @@
               "description": "Libros de texto abiertos de LibreTexts en español: ecología, botánica y biotecnología",
               "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-ecologia_2026-11.zim",
               "size_mb": 1998
+            },
+            {
+              "id": "espanol.libretexts.org_es_biologia-microbiologia",
+              "version": "2026-11",
+              "title": "LibreTexts: Microbiología y genética",
+              "description": "Libros de texto abiertos de LibreTexts en español: microbiología y genética",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-microbiologia_2026-11.zim",
+              "size_mb": 556
             },
             {
               "id": "libretexts.org_en_bio",
