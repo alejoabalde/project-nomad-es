@@ -837,18 +837,58 @@
             {
               "id": "educ.ar_es_plomeria",
               "version": "2026-11",
-              "title": "Plomería (educ.ar)",
-              "description": "Curso de educ.ar sobre instalaciones sanitarias y plomería, con videos: materiales, uniones, agua fría y caliente, desagües",
+              "title": "Curso de plomería (educ.ar)",
+              "description": "Oficios: curso de plomería de educ.ar: filtraciones, ducha, cocina, griferías, reserva de agua, materiales, desagües y planos",
               "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_plomeria_2026-11.zim",
-              "size_mb": 1195
+              "size_mb": 1852
             },
             {
-              "id": "educ.ar_es_electricidad",
+              "id": "educ.ar_es_electricidad-1",
               "version": "2026-11",
-              "title": "Curso de electricidad (educ.ar)",
-              "description": "Oficios: curso de electricidad de educ.ar: circuitos de iluminación, lámparas, potencia, llaves térmicas y motores",
-              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_electricidad_2026-11.zim",
-              "size_mb": 1028
+              "title": "Curso de electricidad (educ.ar), parte 1",
+              "description": "Oficios: curso de electricidad de educ.ar, clases 1 a 5: circuitos de iluminación, lámparas y potencia",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_electricidad-1_2026-11.zim",
+              "size_mb": 1035
+            },
+            {
+              "id": "educ.ar_es_electricidad-2",
+              "version": "2026-11",
+              "title": "Curso de electricidad (educ.ar), parte 2",
+              "description": "Oficios: curso de electricidad de educ.ar, clases 6 a 10: potencia, llaves térmicas y motores",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_electricidad-2_2026-11.zim",
+              "size_mb": 1055
+            },
+            {
+              "id": "educ.ar_es_mecanica-automotor",
+              "version": "2026-11",
+              "title": "Curso de mecánica del automotor (educ.ar)",
+              "description": "Oficios: curso de mecánica del automotor de educ.ar: motor, distribución, lubricación, refrigeración, alimentación, encendido y sincronismo",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_mecanica-automotor_2026-11.zim",
+              "size_mb": 1613
+            },
+            {
+              "id": "educ.ar_es_carpinteria",
+              "version": "2026-11",
+              "title": "Curso de carpintería (educ.ar)",
+              "description": "Oficios: curso de carpintería de educ.ar: caballetes, sillas, cajas y cajones, revestimientos y muebles laminados",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_carpinteria_2026-11.zim",
+              "size_mb": 1952
+            },
+            {
+              "id": "educ.ar_es_terminaciones-1",
+              "version": "2026-11",
+              "title": "Curso de terminaciones (educ.ar), parte 1",
+              "description": "Oficios: curso de terminaciones de educ.ar, clases 1 a 6: tabiques, cielorrasos, revestimiento y empapelado",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_terminaciones-1_2026-11.zim",
+              "size_mb": 1445
+            },
+            {
+              "id": "educ.ar_es_terminaciones-2",
+              "version": "2026-11",
+              "title": "Curso de terminaciones (educ.ar), parte 2",
+              "description": "Oficios: curso de terminaciones de educ.ar, clases 7 a 11: preparación de superficies y pintura",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_terminaciones-2_2026-11.zim",
+              "size_mb": 1299
             },
             {
               "id": "diy.stackexchange.com_en_all",
