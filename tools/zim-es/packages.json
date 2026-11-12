@@ -226,7 +226,7 @@
       "title": "FAO: alimentos y huerta",
       "description": "Manuales de la FAO sobre huerta, semillas y conservación de granos y alimentos",
       "credit": "Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO)",
-      "license": "CC BY-NC-SA 3.0 IGO, o aviso de la FAO que permite copiar, descargar e imprimir para estudio, docencia o productos no comerciales citando a la FAO (solo entran los manuales que lo indican; los que dicen 'previa solicitud' quedan afuera)",
+      "license": "CC BY-NC-SA 3.0 IGO, o aviso de la FAO que permite copiar, descargar e imprimir para estudio, docencia o productos no comerciales citando a la FAO, o aviso anterior de la FAO que autoriza reproducir y difundir para fines educativos u otros fines no comerciales sin previa autorización (solo entran los manuales que lo indican; los que dicen 'previa solicitud' quedan afuera)",
       "source": "https://openknowledge.fao.org/",
       "documents": [
         {
@@ -274,6 +274,12 @@
           ],
           "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales",
           "requireText": "compost"
+        },
+        {
+          "title": "Conservación de frutas y hortalizas mediante tecnologías combinadas (FAO, 2004)",
+          "url": "https://www.fao.org/3/y5771s/y5771s.pdf",
+          "requireText": "tecnolog[ií]as combinadas",
+          "requireLicense": "Se\\s+autoriza\\s+la\\s+reproducci[oó]n\\s+y\\s+difusi[oó]n\\s+de\\s+material[\\s\\S]{0,120}?fines\\s+no\\s+comerciales\\s+sin\\s+previa\\s+autorizaci[oó]n"
         }
       ]
     },
