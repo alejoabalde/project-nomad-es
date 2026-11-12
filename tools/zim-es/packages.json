@@ -11,7 +11,9 @@
         "https://docs.python.org/es/3/"
       ],
       "scopeType": "prefix",
-      "type": "website"
+      "type": "website",
+      "enabled": false,
+      "note": "Descartado: el contenido de programación no es prioridad. Las versiones en inglés siguen en el catálogo."
     },
     {
       "id": "git-scm.com_es_progit",
@@ -23,7 +25,9 @@
         "https://git-scm.com/book/es/v2"
       ],
       "scopeType": "prefix",
-      "type": "website"
+      "type": "website",
+      "enabled": false,
+      "note": "Descartado: el contenido de programación no es prioridad. Las versiones en inglés siguen en el catálogo."
     },
     {
       "id": "es.react.dev_es_all",
@@ -35,7 +39,9 @@
         "https://es.react.dev/"
       ],
       "scopeType": "host",
-      "type": "website"
+      "type": "website",
+      "enabled": false,
+      "note": "Descartado: el contenido de programación no es prioridad. Las versiones en inglés siguen en el catálogo."
     },
     {
       "id": "developer.mozilla.org_es_web",
