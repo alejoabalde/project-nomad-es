@@ -166,6 +166,14 @@
               "description": "Referencia de patología para identificar enfermedades",
               "url": "https://download.kiwix.org/zim/other/librepathology_en_all_maxi_2026-09.zim",
               "size_mb": 95
+            },
+            {
+              "id": "ted_mul_public-health",
+              "version": "2026-09",
+              "title": "Charlas TED: Salud pública",
+              "description": "Charlas TED sobre salud pública. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_public-health_2026-09.zim",
+              "size_mb": 2252
             }
           ]
         }
@@ -295,6 +303,14 @@
               "description": "Guía oficial de EE. UU. para prepararse ante desastres: clima, incendios, planes de evacuación y kits de emergencia",
               "url": "https://download.kiwix.org/zim/zimit/www.ready.gov_en_2024-12.zim",
               "size_mb": 2429
+            },
+            {
+              "id": "ted_mul_water",
+              "version": "2026-09",
+              "title": "Charlas TED: Agua",
+              "description": "Charlas TED sobre agua potable, saneamiento y recursos hídricos. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_water_2026-09.zim",
+              "size_mb": 831
             }
           ]
         },
@@ -584,6 +600,38 @@
               "description": "Artículos de historia de Wikipedia en español, sin imágenes",
               "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_history_nopic_2026-10.zim",
               "size_mb": 187
+            },
+            {
+              "id": "wikipedia_es_mathematics_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Matemáticas",
+              "description": "Artículos de matemáticas de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_mathematics_nopic_2026-10.zim",
+              "size_mb": 100
+            },
+            {
+              "id": "wikipedia_es_physics_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Física",
+              "description": "Artículos de física de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_physics_nopic_2026-10.zim",
+              "size_mb": 88
+            },
+            {
+              "id": "wikipedia_es_chemistry_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Química",
+              "description": "Artículos de química de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_chemistry_nopic_2026-10.zim",
+              "size_mb": 37
+            },
+            {
+              "id": "wikipedia_es_molcell_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Biología molecular y celular",
+              "description": "Artículos de biología molecular y celular de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_molcell_nopic_2026-10.zim",
+              "size_mb": 52
             }
           ]
         },
@@ -616,6 +664,14 @@
               "description": "Charlas principales de las conferencias TED",
               "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-conference_2026-09.zim",
               "size_mb": 18136
+            },
+            {
+              "id": "gutenberg_es_all",
+              "version": "2026-01",
+              "title": "Biblioteca Proyecto Gutenberg en español",
+              "description": "Libros de dominio público en español del Proyecto Gutenberg",
+              "url": "https://download.kiwix.org/zim/gutenberg/gutenberg_es_all_2026-01.zim",
+              "size_mb": 1773
             },
             {
               "id": "libretexts.org_en_human",
@@ -834,6 +890,14 @@
               "description": "Recetas y técnicas para preparar y conservar alimentos",
               "url": "https://download.kiwix.org/zim/other/zimgit-food-preparation_en_2025-04.zim",
               "size_mb": 98
+            },
+            {
+              "id": "ted_mul_gardening",
+              "version": "2026-09",
+              "title": "Charlas TED: Jardinería y huerta",
+              "description": "Charlas TED sobre jardinería y huerta. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_gardening_2026-09.zim",
+              "size_mb": 310
             }
           ]
         },
@@ -858,6 +922,14 @@
               "description": "Textos clásicos sobre agricultura, cría de animales, cultivo de plantas y conservación de alimentos",
               "url": "https://download.kiwix.org/zim/gutenberg/gutenberg_en_lcc-s_2026-03.zim",
               "size_mb": 4300
+            },
+            {
+              "id": "ted_mul_agriculture",
+              "version": "2026-09",
+              "title": "Charlas TED: Agricultura",
+              "description": "Charlas TED sobre agricultura y producción de alimentos. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_agriculture_2026-09.zim",
+              "size_mb": 1210
             }
           ]
         }
