@@ -76,9 +76,11 @@ jobs:
           python-version: '3.13'
 
       - name: Preparar herramientas para PDF
-        if: matrix.package.type == 'pdf'
+        if: matrix.package.type == 'pdf' || matrix.package.type == 'video'
         run: |
-          sudo apt-get update -q && sudo apt-get install -y -q poppler-utils
+          if [ "${{ matrix.package.type }}" = "pdf" ]; then
+            sudo apt-get update -q && sudo apt-get install -y -q poppler-utils
+          fi
           python -m pip install 'libzim==3.7.0'
 
       - name: Armar el paquete
@@ -89,6 +91,8 @@ jobs:
         run: |
           if [ "$TYPE" = "pdf" ]; then
             python3 tools/zim-es/build_pdf.py
+          elif [ "$TYPE" = "video" ]; then
+            python3 tools/zim-es/build_video.py
           else
             python3 tools/zim-es/build_zimit.py
           fi
