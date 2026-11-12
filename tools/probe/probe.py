@@ -2,6 +2,7 @@
 import io, re, sys, html, urllib.request, urllib.parse
 UA = "Mozilla/5.0 (X11; Linux x86_64) project-nomad-es license check"
 KW = re.compile(r"licen|derechos|reproduc|copyright|permiso|creative|autoriz|comercial|lucro|permission|reuse|freely|copiar|copied", re.I)
+LK = re.compile(r"open.?access|acceso.?abierto|derech|copyright|permis|dentist|es_wtnd|es_hhwl|promover|\.pdf", re.I)
 for url in open(sys.argv[1]).read().split():
     print("\n=====", url)
     try:
@@ -12,16 +13,19 @@ for url in open(sys.argv[1]).read().split():
     if data[:4] == b"%PDF":
         from pypdf import PdfReader
         rd = PdfReader(io.BytesIO(data))
-        text = "\n".join((rd.pages[i].extract_text() or "") for i in list(range(min(6, len(rd.pages)))) + list(range(max(6, len(rd.pages) - 2), len(rd.pages))))
+        pages = list(range(min(6, len(rd.pages)))) + list(range(max(6, len(rd.pages) - 2), len(rd.pages)))
+        text = "\n".join((rd.pages[i].extract_text() or "") for i in pages)
+        print("  páginas:", len(rd.pages), "caracteres de texto:", len(text), "inicio:", re.sub(r"\s+", " ", text)[:600])
     else:
         body = data.decode("utf-8", "replace")
-        for l in sorted(set(re.findall(r'href="([^"]+\.pdf)"', body)))[:30]:
-            print("  pdf:", urllib.parse.urljoin(url, l))
+        for l in sorted(set(re.findall(r'href="([^"]+)"', body))):
+            if LK.search(l): print("  link:", urllib.parse.urljoin(url, html.unescape(l)))
         body = re.sub(r"(?is)<(script|style).*?</\1>", " ", body)
         text = html.unescape(re.sub(r"<[^>]+>", " ", body))
     text = re.sub(r"\s+", " ", text)
     seen = 0
     for m in KW.finditer(text):
         if m.start() < seen: continue
+        if "Hesperian is a tax exempt" in text[m.start()-100:m.start()+200]: continue
         print("  …", text[max(0, m.start() - 250): m.start() + 450])
         seen = m.start() + 450
