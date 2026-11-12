@@ -39,6 +39,22 @@
               "size_mb": 3
             },
             {
+              "id": "epes_es_primeros-auxilios",
+              "version": "2026-11",
+              "title": "Guía de primeros auxilios (EPES 061)",
+              "description": "Primeros auxilios para cualquier persona, de los servicios de emergencias de Andalucía",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/epes_es_primeros-auxilios_2026-11.zim",
+              "size_mb": 3
+            },
+            {
+              "id": "who_es_atencion-primaria-ninos",
+              "version": "2026-11",
+              "title": "Atención primaria de niños y adolescentes (OMS)",
+              "description": "Libro de bolsillo de la OMS: cómo tratar y cuándo derivar las enfermedades comunes de niños, niñas y adolescentes",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/who_es_atencion-primaria-ninos_2026-11.zim",
+              "size_mb": 6
+            },
+            {
               "id": "zimgit-medicine_en",
               "version": "2024-08",
               "title": "Biblioteca médica (en inglés)",
