@@ -313,6 +313,14 @@
               "size_mb": 2160
             },
             {
+              "id": "hesperian_es_salud-ambiental",
+              "version": "2026-11",
+              "title": "Guía comunitaria para la salud ambiental (Hesperian)",
+              "description": "Hesperian: agua potable, saneamiento, vivienda, productos tóxicos y salud ambiental en la comunidad",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_salud-ambiental_2026-11.zim",
+              "size_mb": 19
+            },
+            {
               "id": "zimgit-post-disaster_en",
               "version": "2024-05",
               "title": "Biblioteca de recursos para después de un desastre (en inglés)",
@@ -767,9 +775,9 @@
               "id": "fao_es_alimentos-huerta",
               "version": "2026-11",
               "title": "Agricultura familiar y granos (FAO)",
-              "description": "Manuales de la FAO: capacitación agrícola para agricultores familiares y silos metálicos para guardar granos",
+              "description": "Manuales de la FAO: huertos familiares, inocuidad de los alimentos en el hogar, capacitación agrícola para agricultores familiares y silos metálicos para guardar granos",
               "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fao_es_alimentos-huerta_2026-11.zim",
-              "size_mb": 8
+              "size_mb": 40
             },
             {
               "id": "foss.cooking_en_all",
