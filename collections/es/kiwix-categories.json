@@ -55,6 +55,14 @@
               "size_mb": 6
             },
             {
+              "id": "ops_es_dengue",
+              "version": "2026-11",
+              "title": "Dengue, chikunguña y zika (OPS)",
+              "description": "Directrices de la OPS (2022) para reconocer y tratar el dengue, el chikunguña y el zika",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/ops_es_dengue_2026-11.zim",
+              "size_mb": 62
+            },
+            {
               "id": "zimgit-medicine_en",
               "version": "2024-08",
               "title": "Biblioteca médica (en inglés)",
@@ -842,6 +850,14 @@
               "description": "Manuales del INTA sobre huerta orgánica familiar: planificación, cultivos, siembra y cuidados",
               "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/inta_es_huerta_2026-11.zim",
               "size_mb": 11
+            },
+            {
+              "id": "inta_es_granja",
+              "version": "2026-11",
+              "title": "Granja y conservas (INTA)",
+              "description": "Cartillas del INTA y ProHuerta: dulces y mermeladas caseras, y cómo construir un horno casero de barro y metal",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/inta_es_granja_2026-11.zim",
+              "size_mb": 1
             },
             {
               "id": "fao_es_alimentos-huerta",

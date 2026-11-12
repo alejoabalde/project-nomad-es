@@ -18,6 +18,7 @@ import re
 import struct
 import subprocess
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -42,8 +43,14 @@ def fetch(url: str) -> bytes | None:
     for attempt in range(3):
         req = urllib.request.Request(url, headers={"User-Agent": UA})
         try:
-            with urllib.request.urlopen(req, timeout=300) as resp:
-                return resp.read()
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                # Límite total de 15 minutos por archivo, por si el sitio manda muy de a poco
+                start, chunks = time.monotonic(), []
+                while chunk := resp.read(1 << 20):
+                    chunks.append(chunk)
+                    if time.monotonic() - start > 900:
+                        raise TimeoutError("más de 15 minutos descargando")
+                return b"".join(chunks)
         except urllib.error.HTTPError as exc:
             print(f"  no se pudo descargar {url}: {exc}")
             return None
