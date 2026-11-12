@@ -11,11 +11,11 @@ for url in open(sys.argv[1]).read().split():
             body = r.read(3_000_000).decode("utf-8", "replace"); print("final:", r.geturl(), r.status)
     except Exception as e:
         print("error:", e); continue
-    links = set(re.findall(r'href="([^"]*(?:copyright|derechos|licen|terms|termino|aviso|legal|politica|policy)[^"]*)"', body, re.I))
-    for l in sorted(links)[:20]: print("  enlace:", l)
+    links = set(re.findall(r'href="([^"]*(?:copyright|derechos|licen|terms|termino|aviso|legal|politica|policy|\.pdf|pdf|acceso|open-access|openaccess)[^"]*)"', body, re.I))
+    for l in sorted(links)[:40]: print("  enlace:", l)
     text = html.unescape(re.sub(r"<script.*?</script>|<style.*?</style>", " ", body, flags=re.S | re.I))
     text = " ".join(re.sub(r"<[^>]+>", " ", text).split())
     seen = 0
     for m in KW.finditer(text):
-        print("  texto:", text[max(0, m.start() - 150):m.start() + 250]); seen += 1
-        if seen >= 6: break
+        print("  texto:", text[max(0, m.start() - 150):m.start() + 700]); seen += 1
+        if seen >= 4: break
