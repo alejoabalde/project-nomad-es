@@ -2,7 +2,7 @@
 import io, re, sys, html, urllib.request, urllib.parse
 UA = "Mozilla/5.0 (X11; Linux x86_64) project-nomad-es license check"
 KW = re.compile(r"licen|derechos|reproduc|copyright|permiso|creative|autoriz|comercial|lucro|permission|reuse|freely|copiar|copied", re.I)
-LK = re.compile(r"open.?access|acceso.?abierto|derech|copyright|permis|dentist|es_wtnd|es_hhwl|promover|\.pdf", re.I)
+LK = re.compile(r"policy|pol%C3%ADtica|politica|open.?access|acceso.?abierto|derech|copyright|permis|dentist|es_wtnd|es_hhwl|promover|\.pdf", re.I)
 for url in open(sys.argv[1]).read().split():
     print("\n=====", url)
     try:
