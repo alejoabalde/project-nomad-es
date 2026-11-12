@@ -7,4 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python3 tools/probe/kiwix.py || true
+      - run: pip install -q pypdf
+      - run: python3 tools/probe/probe.py tools/probe/urls.txt || true
