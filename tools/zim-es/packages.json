@@ -422,32 +422,44 @@
       "id": "inta_es_granja",
       "type": "pdf",
       "title": "Granja y conservas (INTA)",
-      "description": "Cartillas del INTA y ProHuerta: gallinas, deshidratado de frutas y hortalizas, conservas, dulces y horno casero",
+      "description": "Cartillas del INTA y ProHuerta: gallinas, deshidratado de frutas y hortalizas, conservas de tomate, dulces caseros y horno de barro y metal",
       "credit": "INTA y Programa ProHuerta (Argentina)",
       "license": "Creative Commons BY-NC-SA (indicada en cada documento o en su ficha del repositorio del INTA)",
       "source": "https://repositorio.inta.gob.ar/",
       "documents": [
         {
           "title": "Cría de gallinas (microcurso del INTA)",
-          "url": "https://formacion.inta.gob.ar/wp-content/uploads/2024/01/GALLINAS.pdf",
+          "url": [
+            "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fuente-inta-gallinas.pdf",
+            "https://formacion.inta.gob.ar/wp-content/uploads/2024/01/GALLINAS.pdf"
+          ],
           "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
-          "requireText": "gallin"
+          "requireText": "gallin",
+          "source": "https://formacion.inta.gob.ar/wp-content/uploads/2024/01/GALLINAS.pdf"
         },
         {
           "title": "Deshidratación de frutas y hortalizas (microcurso del INTA)",
-          "url": "https://formacion.inta.gob.ar/wp-content/uploads/2025/12/Deshidratacion_de_frutas_y_hortalizas.pdf",
+          "url": [
+            "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fuente-inta-deshidratacion.pdf",
+            "https://formacion.inta.gob.ar/wp-content/uploads/2025/12/Deshidratacion_de_frutas_y_hortalizas.pdf"
+          ],
           "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
-          "requireText": "deshidrat"
+          "requireText": "deshidrat",
+          "source": "https://formacion.inta.gob.ar/wp-content/uploads/2025/12/Deshidratacion_de_frutas_y_hortalizas.pdf"
         },
         {
           "title": "Conservas de tomate (ProHuerta)",
-          "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451",
+          "url": [
+            "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fuente-inta-conservas-tomate.pdf",
+            "https://repositorio.inta.gob.ar/handle/20.500.12123/15451"
+          ],
           "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
           "licensePage": {
             "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451",
             "pattern": "creativecommons\\.org/licenses/by|Creative\\s+Commons|Atribuci[oó]n-NoComercial"
           },
-          "requireText": "tomate"
+          "requireText": "tomate",
+          "source": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451"
         },
         {
           "title": "Dulces caseros (ProHuerta)",
@@ -469,7 +481,8 @@
           },
           "requireText": "horno"
         }
-      ]
+      ],
+      "note": "Los sitios del INTA no responden bien a GitHub Actions: tres PDF se toman de una copia en la versión paquetes-es del fork (archivos fuente-*.pdf). La licencia se comprueba igual en cada PDF."
     },
     {
       "id": "wikem.org_es_all",
