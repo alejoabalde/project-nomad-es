@@ -490,6 +490,38 @@
               "size_mb": 2180
             },
             {
+              "id": "espanol.libretexts.org_es_biologia-general",
+              "version": "2026-11",
+              "title": "LibreTexts: Biología general",
+              "description": "Libros de texto abiertos de LibreTexts en español: biología introductoria y general",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-general_2026-11.zim",
+              "size_mb": 895
+            },
+            {
+              "id": "espanol.libretexts.org_es_biologia-celular",
+              "version": "2026-11",
+              "title": "LibreTexts: Biología celular",
+              "description": "Libros de texto abiertos de LibreTexts en español: biología celular y molecular, bioquímica",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-celular_2026-11.zim",
+              "size_mb": 216
+            },
+            {
+              "id": "espanol.libretexts.org_es_biologia-humana",
+              "version": "2026-11",
+              "title": "LibreTexts: Biología humana",
+              "description": "Libros de texto abiertos de LibreTexts en español: biología humana",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-humana_2026-11.zim",
+              "size_mb": 1713
+            },
+            {
+              "id": "espanol.libretexts.org_es_biologia-ecologia",
+              "version": "2026-11",
+              "title": "LibreTexts: Ecología y botánica",
+              "description": "Libros de texto abiertos de LibreTexts en español: ecología, botánica y biotecnología",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-ecologia_2026-11.zim",
+              "size_mb": 1998
+            },
+            {
               "id": "libretexts.org_en_bio",
               "version": "2025-01",
               "title": "LibreTexts: Biología (en inglés)",
