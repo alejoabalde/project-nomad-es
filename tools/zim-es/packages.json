@@ -53,7 +53,53 @@
       "type": "website",
       "scopeExcludeRx": "/contributors\\.txt$",
       "enabled": false,
-      "note": "Pausado: en GitHub Actions el armado se traba o se corta después del rastreo, al escribir el .zim. Mientras tanto queda MDN en inglés en el catálogo."
+      "note": "Pausado: entero se traba al escribir el .zim. Se arma por partes: developer.mozilla.org_es_javascript, _html y _css."
+    },
+    {
+      "id": "developer.mozilla.org_es_javascript",
+      "title": "MDN: JavaScript",
+      "description": "Referencia y guías de MDN en español para JavaScript",
+      "license": "CC BY-SA 2.5",
+      "source": "https://developer.mozilla.org/es/",
+      "seeds": [
+        "https://developer.mozilla.org/es/docs/Web/JavaScript"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/JavaScript)",
+      "type": "website",
+      "scopeExcludeRx": "/contributors\\.txt$",
+      "minSizeMB": 5
+    },
+    {
+      "id": "developer.mozilla.org_es_html",
+      "title": "MDN: HTML y Aprender",
+      "description": "Referencia de MDN en español para HTML y la sección Aprender desarrollo web",
+      "license": "CC BY-SA 2.5",
+      "source": "https://developer.mozilla.org/es/",
+      "seeds": [
+        "https://developer.mozilla.org/es/docs/Web/HTML",
+        "https://developer.mozilla.org/es/docs/Learn"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/HTML|Learn)",
+      "type": "website",
+      "scopeExcludeRx": "/contributors\\.txt$",
+      "minSizeMB": 5
+    },
+    {
+      "id": "developer.mozilla.org_es_css",
+      "title": "MDN: CSS",
+      "description": "Referencia de MDN en español para CSS",
+      "license": "CC BY-SA 2.5",
+      "source": "https://developer.mozilla.org/es/",
+      "seeds": [
+        "https://developer.mozilla.org/es/docs/Web/CSS"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/CSS)",
+      "type": "website",
+      "scopeExcludeRx": "/contributors\\.txt$",
+      "minSizeMB": 5
     },
     {
       "id": "cdc.gov_es_all",
