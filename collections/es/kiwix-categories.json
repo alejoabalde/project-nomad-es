@@ -562,12 +562,28 @@
               "size_mb": 1127
             },
             {
+              "id": "espanol.libretexts.org_es_ingenieria",
+              "version": "2026-11",
+              "title": "LibreTexts: Ingeniería",
+              "description": "Libros de texto abiertos de LibreTexts en español: electricidad y electrónica, circuitos, Arduino, mecánica, ambiental e industrial",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_ingenieria_2026-11.zim",
+              "size_mb": 268
+            },
+            {
               "id": "libretexts.org_en_eng",
               "version": "2025-01",
               "title": "LibreTexts: Ingeniería (en inglés)",
               "description": "Cursos de ingeniería y referencias técnicas",
               "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_eng_2025-01.zim",
               "size_mb": 678
+            },
+            {
+              "id": "espanol.libretexts.org_es_negocios",
+              "version": "2026-11",
+              "title": "LibreTexts: Negocios",
+              "description": "Libros de texto abiertos de LibreTexts en español: administración, contabilidad, economía y marketing",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_negocios_2026-11.zim",
+              "size_mb": 1129
             },
             {
               "id": "libretexts.org_en_biz",
