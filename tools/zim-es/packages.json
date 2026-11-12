@@ -226,6 +226,29 @@
       ]
     },
     {
+      "id": "who_es_atencion-basica-emergencia",
+      "type": "pdf",
+      "title": "Atención básica de emergencia (OMS y CICR)",
+      "description": "Manual de la OMS y el CICR para atender a personas heridas o con enfermedades agudas con pocos recursos (enfoque ABCDE)",
+      "credit": "Organización Mundial de la Salud y Comité Internacional de la Cruz Roja (CICR)",
+      "license": "CC BY-NC-SA 3.0 IGO",
+      "note": "Alternativa abierta en español a WikEM (que solo está en inglés).",
+      "source": "https://iris.who.int/handle/10665/332275",
+      "documents": [
+        {
+          "title": "Atención básica de emergencia: abordaje de lesionados y enfermos agudos (2020)",
+          "url": "https://iris.who.int/bitstream/handle/10665/332275/9789240006331-spa.pdf?sequence=1",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+        },
+        {
+          "title": "Respuesta de primeros auxilios en la comunidad: guía de bolsillo",
+          "url": "https://cdn.who.int/media/docs/default-source/documents/gui-a-de-bolsillo-cfar.pdf?sfvrsn=1112bd0a_1",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo",
+          "optional": true
+        }
+      ]
+    },
+    {
       "id": "inta_es_huerta",
       "type": "pdf",
       "title": "Huerta orgánica (INTA)",
