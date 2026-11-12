@@ -18,6 +18,7 @@ import re
 import struct
 import subprocess
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 import zlib
@@ -37,13 +38,18 @@ zim_name = f"{pkg['id']}_{period}.zim"
 
 
 def fetch(url: str) -> bytes | None:
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    try:
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            return resp.read()
-    except Exception as exc:  # noqa: BLE001
-        print(f"  no se pudo descargar {url}: {exc}")
-        return None
+    # Algunos sitios (INTA, por ejemplo) responden lento desde GitHub: 3 intentos.
+    for attempt in range(3):
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        try:
+            with urllib.request.urlopen(req, timeout=300) as resp:
+                return resp.read()
+        except urllib.error.HTTPError as exc:
+            print(f"  no se pudo descargar {url}: {exc}")
+            return None
+        except Exception as exc:  # noqa: BLE001
+            print(f"  no se pudo descargar {url} (intento {attempt + 1}): {exc}")
+    return None
 
 
 def fetch_pdf(url, depth: int = 0) -> bytes | None:
