@@ -18,6 +18,7 @@ import re
 import struct
 import subprocess
 import sys
+import urllib.parse
 import urllib.request
 import zlib
 
@@ -43,6 +44,34 @@ def fetch(url: str) -> bytes | None:
     except Exception as exc:  # noqa: BLE001
         print(f"  no se pudo descargar {url}: {exc}")
         return None
+
+
+def fetch_pdf(url: str) -> bytes | None:
+    """Descarga un PDF. Si la dirección da la ficha HTML de un repositorio
+    (por ejemplo IRIS de la OMS), busca ahí el enlace al PDF y lo sigue."""
+    data = fetch(url)
+    if not data or data.startswith(b"%PDF"):
+        return data
+    page = data[:2_000_000].decode("utf-8", "replace")
+    links = re.findall(r'<meta[^>]+name="citation_pdf_url"[^>]+content="([^"]+)"', page)
+    links += re.findall(r'href="([^"]+?\.pdf[^"]*)"', page)
+    tried = set()
+    for link in links:
+        link = html.unescape(urllib.parse.urljoin(url, link))
+        candidates = [link]
+        m = re.search(r"^(https?://[^/]+)/bitstreams/([0-9a-f-]{36})/download", link)
+        if m:
+            candidates.insert(0, f"{m.group(1)}/server/api/core/bitstreams/{m.group(2)}/content")
+        for c in candidates:
+            if c in tried:
+                continue
+            tried.add(c)
+            got = fetch(c)
+            if got and got.startswith(b"%PDF"):
+                print(f"  PDF encontrado en la ficha: {c}")
+                return got
+    print("  la dirección no dio un PDF; empieza con:", " ".join(page[:300].split()))
+    return data
 
 
 def pdf_text(path: pathlib.Path) -> str:
@@ -112,7 +141,7 @@ if pkg.get("licenseProof"):
 downloaded = []
 for i, doc in enumerate(expand(pkg["documents"]), start=1):
     print(f"[{i}] {doc['title']}")
-    data = fetch(doc["url"])
+    data = fetch_pdf(doc["url"])
     if not data or not data.startswith(b"%PDF"):
         if not doc.get("optional"):
             rejected.append((doc, "no se pudo descargar o no es un PDF"))
