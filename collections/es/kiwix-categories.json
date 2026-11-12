@@ -720,6 +720,14 @@
               "description": "Libros de negocios, economía y administración",
               "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_biz_2026-01.zim",
               "size_mb": 801
+            },
+            {
+              "id": "khanacademy_es_all",
+              "version": "2023-03",
+              "title": "Khan Academy en español",
+              "description": "Videos y ejercicios de Khan Academy en español: matemáticas, ciencias, economía y más. Muy grande (unos 150 GB)",
+              "url": "https://download.kiwix.org/zim/other/khanacademy_es_all_2023-03.zim",
+              "size_mb": 153643
             }
           ]
         }
