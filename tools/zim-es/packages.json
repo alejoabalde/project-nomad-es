@@ -458,8 +458,8 @@
             "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451",
             "pattern": "creativecommons\\.org/licenses/by|Creative\\s+Commons|Atribuci[oó]n-NoComercial"
           },
-          "requireText": "tomate",
-          "source": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451"
+          "source": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451",
+          "note": "PDF escaneado, sin texto: la licencia se comprueba en su ficha del repositorio del INTA."
         },
         {
           "title": "Dulces caseros (ProHuerta)",
