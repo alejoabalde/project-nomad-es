@@ -1,0 +1,11 @@
+name: Revisar licencias (temporal)
+on:
+  push:
+    paths: ['tools/probe/**', '.github/workflows/probe-licencias.yml']
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q pypdf
+      - run: python3 tools/probe/probe.py tools/probe/urls.txt || true
