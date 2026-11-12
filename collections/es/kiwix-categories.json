@@ -119,6 +119,30 @@
               "size_mb": 1113
             },
             {
+              "id": "hesperian_es_parteras",
+              "version": "2026-11",
+              "title": "Un libro para parteras (Hesperian)",
+              "description": "Hesperian: embarazo, parto, posparto y lactancia para parteras y promotoras de salud",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_parteras_2026-11.zim",
+              "size_mb": 17
+            },
+            {
+              "id": "hesperian_es_salud-mujeres",
+              "version": "2026-11",
+              "title": "Donde no hay doctor para mujeres (Hesperian)",
+              "description": "Hesperian: guía de salud para mujeres, desde la salud sexual hasta las enfermedades crónicas",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_salud-mujeres_2026-11.zim",
+              "size_mb": 18
+            },
+            {
+              "id": "hesperian_es_nino-discapacidad",
+              "version": "2026-11",
+              "title": "El niño campesino deshabilitado (Hesperian)",
+              "description": "Hesperian: rehabilitación y cuidado de niñas y niños con discapacidad en la comunidad",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_nino-discapacidad_2026-11.zim",
+              "size_mb": 61
+            },
+            {
               "id": "openfda-drug-labels",
               "type": "dataset",
               "version": "2025-01",
@@ -895,9 +919,9 @@
               "id": "fao_es_alimentos-huerta",
               "version": "2026-11",
               "title": "Agricultura familiar y granos (FAO)",
-              "description": "Manuales de la FAO: huertos familiares, inocuidad de los alimentos en el hogar, capacitación agrícola para agricultores familiares y silos metálicos para guardar granos",
+              "description": "Manuales de la FAO: huertos familiares, compostaje, captación de agua de lluvia, inocuidad de los alimentos en el hogar, capacitación agrícola para agricultores familiares y silos metálicos para guardar granos",
               "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fao_es_alimentos-huerta_2026-11.zim",
-              "size_mb": 40
+              "size_mb": 49
             },
             {
               "id": "foss.cooking_en_all",

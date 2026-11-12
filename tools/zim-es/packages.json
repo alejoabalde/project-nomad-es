@@ -200,6 +200,8 @@
     },
     {
       "id": "oms_es_agua-saneamiento-emergencias",
+      "enabled": false,
+      "note": "Descartado: los PDF de la OPS no traen ninguna licencia ni permiso de reproducción (revisado en noviembre de 2026).",
       "type": "pdf",
       "title": "Agua y saneamiento en emergencias (OMS)",
       "description": "Notas técnicas de la OMS y el WEDC: agua potable, letrinas, higiene y saneamiento después de un desastre",
