@@ -202,6 +202,17 @@
           "title": "Manual para manipuladores de alimentos",
           "url": "https://openknowledge.fao.org/server/api/core/bitstreams/78f24b65-7a0e-468d-9e2c-3469d9d14a4b/content",
           "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales"
+        },
+        {
+          "title": "Manual de inocuidad de los alimentos en el hogar (FAO y OMS, 2022)",
+          "url": "https://www.fao.org/3/cc0039es/cc0039es.pdf",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales"
+        },
+        {
+          "title": "Huertos familiares (FAO)",
+          "url": "https://www.fao.org/3/cc0742es/cc0742es.pdf",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales",
+          "requireText": "huert"
         }
       ]
     },
@@ -215,22 +226,14 @@
       "source": "https://hesperian.org/",
       "licenseProof": {
         "url": [
-          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_fm.pdf",
-          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_front.pdf",
-          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_frontmatter.pdf",
-          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_00.pdf",
-          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_cap00.pdf",
-          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_intro.pdf",
-          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_toc.pdf",
-          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_indice.pdf",
-          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_fm_web.pdf"
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_frente.pdf"
         ],
         "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
       },
       "documents": [
         {
           "title": "Primeras páginas e índice",
-          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_fm.pdf"
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_frente.pdf"
         },
         {
           "title": "Capítulo {n}",
@@ -249,8 +252,7 @@
           "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_bm.pdf"
         }
       ],
-      "enabled": false,
-      "note": "Pausado: no se encuentra en hesperian.org el PDF de primeras páginas con la licencia (es_cgeh_2011_fm.pdf da 404, y los capítulos, el índice y las páginas finales no la muestran). Sin licencia confirmada no se arma."
+      "note": "La licencia está en las primeras páginas (es_cgeh_2011_frente.pdf), enlazadas desde la página de derechos de autor del WikiSalud de Hesperian."
     },
     {
       "id": "hesperian_es_donde-no-hay-doctor",
