@@ -330,7 +330,78 @@
       "scopeType": "custom",
       "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biolog(i|%C3%AD|í)a(/|$)",
       "scopeExcludeRx": "\\?|/Special:",
-      "minSizeMB": 5
+      "minSizeMB": 5,
+      "enabled": false,
+      "note": "Reemplazado por paquetes más chicos: entero pasa de 2 GB (un intento parcial dio 2,7 GB)."
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia-general",
+      "type": "website",
+      "title": "LibreTexts: Biología general",
+      "description": "Libros de texto abiertos de LibreTexts en español: biología introductoria y general",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Biologia_introductoria_y_general"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biologia/(Biologia_introductoria_y_general)(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "pageLimit": 2500
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia-celular",
+      "type": "website",
+      "title": "LibreTexts: Biología celular",
+      "description": "Libros de texto abiertos de LibreTexts en español: biología celular y molecular, bioquímica",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Biologia_Celular_y_Molecular",
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Bioquimica"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biologia/(Biologia_Celular_y_Molecular|Bioquimica)(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "pageLimit": 2500
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia-humana",
+      "type": "website",
+      "title": "LibreTexts: Biología humana",
+      "description": "Libros de texto abiertos de LibreTexts en español: biología humana, microbiología y genética",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Biologia_Humana",
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Microbiologia",
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Genetica"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biologia/(Biologia_Humana|Microbiologia|Genetica)(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "pageLimit": 2500
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia-ecologia",
+      "type": "website",
+      "title": "LibreTexts: Ecología y botánic",
+      "description": "Libros de texto abiertos de LibreTexts en español: ecología, botánica y biotecnología",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Ecologia",
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Botanica",
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Biotecnologia"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biologia/(Ecologia|Botanica|Biotecnologia)(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "pageLimit": 2500
     },
     {
       "id": "espanol.libretexts.org_es_ingenieria",
