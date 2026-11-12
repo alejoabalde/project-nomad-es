@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install -q libzim
-      - run: curl -sSL -o e.zim https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_electricidad_2026-11.zim && ls -l e.zim
-      - run: python3 tools/probe/zimls.py e.zim
+      - run: |
+          for u in "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/05/02/270f5240-dc1e-11e0-809e-ed15e3c494af/Oficioselectricidad_T01C08_HD_PA-PP-10059PA-PP-11387.mp4" "https://www.educ.ar/recursos/50643"; do
+            echo "== $u"; curl -sS -m 60 -I -A "Mozilla/5.0" "$u" | head -8 || echo fallo
+          done
+          curl -sS -m 120 -A "Mozilla/5.0" -o /tmp/v.mp4 "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/05/02/270f5240-dc1e-11e0-809e-ed15e3c494af/Oficioselectricidad_T01C08_HD_PA-PP-10059PA-PP-11387.mp4" -w "bajado %{size_download} bytes en %{time_total}s\n" || true
