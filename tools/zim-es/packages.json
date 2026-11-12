@@ -289,6 +289,46 @@
       ]
     },
     {
+      "id": "epes_es_primeros-auxilios",
+      "type": "pdf",
+      "title": "Guía de primeros auxilios (EPES 061)",
+      "description": "Guía de primeros auxilios para la población general de la Empresa Pública de Emergencias Sanitarias de Andalucía",
+      "credit": "Empresa Pública de Emergencias Sanitarias (EPES 061), Junta de Andalucía",
+      "license": "CC BY-NC-SA 4.0",
+      "source": "https://www.epes.es/",
+      "documents": [
+        {
+          "title": "Guía de primeros auxilios (2019)",
+          "url": [
+            "https://personal.uca.es/guia-de-primeros-auxilios-061"
+          ],
+          "requireLicense": "Reconocimiento-NoComercial-CompartirIgual 4\\.0|Atribuci[oó]n-NoComercial-CompartirIgual 4\\.0|by-nc-sa/4\\.0|CC BY-NC-SA 4\\.0",
+          "requireText": "primeros\\s+auxilios"
+        }
+      ]
+    },
+    {
+      "id": "who_es_atencion-primaria-ninos",
+      "type": "pdf",
+      "title": "Atención primaria de niños y adolescentes (OMS)",
+      "description": "Libro de bolsillo de la OMS: cómo tratar y cuándo derivar las enfermedades comunes de niños, niñas y adolescentes",
+      "credit": "Organización Mundial de la Salud, Oficina Regional para Europa",
+      "license": "CC BY-NC-SA 3.0 IGO",
+      "source": "https://www.paho.org/es/documentos/libro-bolsillo-sobre-atencion-primaria-salud-para-ninos-ninas-adolescentes-orientaciones",
+      "documents": [
+        {
+          "title": "Libro de bolsillo sobre la atención primaria de salud para niños, niñas y adolescentes (2025)",
+          "url": [
+            "https://www.paho.org/es/documentos/libro-bolsillo-sobre-atencion-primaria-salud-para-ninos-ninas-adolescentes-orientaciones",
+            "https://docs.academia.cat/95504fad",
+            "https://medbox.org/index.php/pdf/69e0d43bc7843f4cb03f9602"
+          ],
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo",
+          "requireText": "atenci[oó]n\\s+primaria[\\s\\S]{0,80}?ni[nñ]os"
+        }
+      ]
+    },
+    {
       "id": "inta_es_huerta",
       "type": "pdf",
       "title": "Huerta orgánica (INTA)",

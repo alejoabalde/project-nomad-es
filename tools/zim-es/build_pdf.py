@@ -46,15 +46,26 @@ def fetch(url: str) -> bytes | None:
         return None
 
 
-def fetch_pdf(url: str) -> bytes | None:
+def fetch_pdf(url, depth: int = 0) -> bytes | None:
     """Descarga un PDF. Si la dirección da la ficha HTML de un repositorio
-    (por ejemplo IRIS de la OMS), busca ahí el enlace al PDF y lo sigue."""
+    (por ejemplo IRIS de la OMS), busca ahí el enlace al PDF y lo sigue.
+    Con una lista de direcciones, usa la primera que dé un PDF."""
+    if isinstance(url, list):
+        data = None
+        for u in url:
+            data = fetch_pdf(u)
+            if data and data.startswith(b"%PDF"):
+                return data
+        return data
     data = fetch(url)
     if not data or data.startswith(b"%PDF"):
         return data
     page = data[:2_000_000].decode("utf-8", "replace")
     links = re.findall(r'<meta[^>]+name="citation_pdf_url"[^>]+content="([^"]+)"', page)
     links += re.findall(r'href="([^"]+?\.pdf[^"]*)"', page)
+    # Una página que enlaza la ficha del repositorio (por ejemplo, la de la OPS
+    # que apunta a iris.paho.org/handle/...): se sigue un nivel.
+    handles = [] if depth else re.findall(r'href="(https?://[^"]*/handle/\d+/\d+)[^"]*"', page)
     tried = set()
     for link in links:
         link = html.unescape(urllib.parse.urljoin(url, link))
@@ -70,6 +81,10 @@ def fetch_pdf(url: str) -> bytes | None:
             if got and got.startswith(b"%PDF"):
                 print(f"  PDF encontrado en la ficha: {c}")
                 return got
+    for h in dict.fromkeys(handles):
+        got = fetch_pdf(html.unescape(h), depth + 1)
+        if got and got.startswith(b"%PDF"):
+            return got
     print("  la dirección no dio un PDF; empieza con:", " ".join(page[:300].split()))
     return data
 
@@ -189,6 +204,9 @@ for doc, path in downloaded:
             ok = True
         else:
             why = f"la página de licencia no muestra {lp['pattern']}"
+    # Que el PDF sea el documento buscado (si se encontró siguiendo enlaces)
+    if ok and doc.get("requireText") and not re.search(doc["requireText"], pdf_text(path), re.IGNORECASE):
+        ok, why = False, f"el PDF no parece ser el documento buscado ({doc['requireText']})"
     if ok:
         accepted.append((doc, path))
         print(f"  aceptado: {doc['title']}")
