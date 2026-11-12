@@ -855,9 +855,9 @@
               "id": "inta_es_granja",
               "version": "2026-11",
               "title": "Granja y conservas (INTA)",
-              "description": "Cartillas del INTA y ProHuerta: dulces y mermeladas caseras, y cómo construir un horno casero de barro y metal",
+              "description": "Cartillas del INTA y ProHuerta: gallinas, deshidratado de frutas y hortalizas, conservas de tomate, dulces caseros y horno de barro y metal",
               "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/inta_es_granja_2026-11.zim",
-              "size_mb": 1
+              "size_mb": 60
             },
             {
               "id": "fao_es_alimentos-huerta",
