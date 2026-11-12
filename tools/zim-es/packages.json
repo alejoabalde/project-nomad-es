@@ -367,6 +367,29 @@
       ]
     },
     {
+      "id": "ops_es_dengue",
+      "type": "pdf",
+      "title": "Dengue: atención de enfermos (OPS)",
+      "description": "Guías de la OPS para reconocer y tratar el dengue, el chikunguña y el zika",
+      "credit": "Organización Panamericana de la Salud (OPS/OMS)",
+      "license": "CC BY-NC-SA 3.0 IGO",
+      "source": "https://iris.paho.org/",
+      "documents": [
+        {
+          "title": "Dengue: guías para la atención de enfermos en la Región de las Américas (2.ª edición, 2016)",
+          "url": "https://iris.paho.org/handle/10665.2/31207",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo",
+          "requireText": "dengue"
+        },
+        {
+          "title": "Directrices para el diagnóstico clínico y el tratamiento del dengue, el chikunguña y el zika (2022)",
+          "url": "https://iris.paho.org/handle/10665.2/55125",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo",
+          "requireText": "dengue"
+        }
+      ]
+    },
+    {
       "id": "inta_es_huerta",
       "type": "pdf",
       "title": "Huerta orgánica (INTA)",
@@ -392,6 +415,59 @@
             "pattern": "\"LicenseShortName\":\\s*\\{\\s*\"value\":\\s*\"(CC[ -]BY[^\"]*|CC0[^\"]*|Public domain)\""
           },
           "source": "https://commons.wikimedia.org/wiki/File:Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf"
+        }
+      ]
+    },
+    {
+      "id": "inta_es_granja",
+      "type": "pdf",
+      "title": "Granja y conservas (INTA)",
+      "description": "Cartillas del INTA y ProHuerta: gallinas, deshidratado de frutas y hortalizas, conservas, dulces y horno casero",
+      "credit": "INTA y Programa ProHuerta (Argentina)",
+      "license": "Creative Commons BY-NC-SA (indicada en cada documento o en su ficha del repositorio del INTA)",
+      "source": "https://repositorio.inta.gob.ar/",
+      "documents": [
+        {
+          "title": "Cría de gallinas (microcurso del INTA)",
+          "url": "https://formacion.inta.gob.ar/wp-content/uploads/2024/01/GALLINAS.pdf",
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "requireText": "gallin"
+        },
+        {
+          "title": "Deshidratación de frutas y hortalizas (microcurso del INTA)",
+          "url": "https://formacion.inta.gob.ar/wp-content/uploads/2025/12/Deshidratacion_de_frutas_y_hortalizas.pdf",
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "requireText": "deshidrat"
+        },
+        {
+          "title": "Conservas de tomate (ProHuerta)",
+          "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451",
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "licensePage": {
+            "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451",
+            "pattern": "creativecommons\\.org/licenses/by|Creative\\s+Commons|Atribuci[oó]n-NoComercial"
+          },
+          "requireText": "tomate"
+        },
+        {
+          "title": "Dulces caseros (ProHuerta)",
+          "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15836",
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "licensePage": {
+            "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15836",
+            "pattern": "creativecommons\\.org/licenses/by|Creative\\s+Commons|Atribuci[oó]n-NoComercial"
+          },
+          "requireText": "dulce|mermelada"
+        },
+        {
+          "title": "Horno casero de barro y metal (ProHuerta)",
+          "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15967",
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "licensePage": {
+            "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15967",
+            "pattern": "creativecommons\\.org/licenses/by|Creative\\s+Commons|Atribuci[oó]n-NoComercial"
+          },
+          "requireText": "horno"
         }
       ]
     },
