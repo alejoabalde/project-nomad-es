@@ -1,0 +1,12 @@
+name: Revisar licencias (temporal)
+on:
+  push:
+    paths: ['tools/probe/**', '.github/workflows/probe-licencias.yml']
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q libzim
+      - run: curl -sSL -o e.zim https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_electricidad_2026-11.zim && ls -l e.zim
+      - run: python3 tools/probe/zimls.py e.zim
