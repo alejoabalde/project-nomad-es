@@ -1256,7 +1256,7 @@
       "note": "Videos de YouTube con licencia Creative Commons Atribución elegida por cada autor. Se arman en una PC con tools/zim-es/armar-local.sh porque YouTube no deja bajar desde los servidores de GitHub. Se bajan en 480p y no se modifican. Al armar el paquete se vuelve a comprobar la licencia de cada video.",
       "id": "youtube_es_lactancia-recien-nacido",
       "title": "Lactancia y recién nacido en video",
-      "description": "Cómo funciona la lactancia, posiciones, extracción de leche, cuidados del recién nacido y prematuros",
+      "description": "Cómo funciona la lactancia, posiciones, extracción manual de leche, cuidados del recién nacido y prematuros",
       "credit": "Quirónsalud, Fundación Santa Fe de Bogotá, Fundación OSDE y Hospital Clínic de Barcelona",
       "intro": "Videos de pediatras, matronas y consultoras de lactancia sobre amamantar, extraer leche y cuidar al recién nacido.",
       "videos": [
@@ -1269,12 +1269,6 @@
         {
           "title": "¿Cómo amamantar? Posiciones de la madre y el bebé",
           "youtube": "v1gh12SlSZA",
-          "credit": "Quirónsalud, Hospital Universitario Rey Juan Carlos (https://www.youtube.com/@grupo_quironsalud)",
-          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
-        },
-        {
-          "title": "Cómo extraer el calostro cuando el bebé no puede",
-          "youtube": "RK02PUW8cuU",
           "credit": "Quirónsalud, Hospital Universitario Rey Juan Carlos (https://www.youtube.com/@grupo_quironsalud)",
           "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
         },

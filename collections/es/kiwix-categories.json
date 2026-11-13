@@ -158,6 +158,22 @@
               "description": "Enciclopedia de salud de los NIH: enfermedades, afecciones, medicamentos y suplementos",
               "url": "https://download.kiwix.org/zim/zimit/medlineplus.gov_en_all_2025-01.zim",
               "size_mb": 1800
+            },
+            {
+              "id": "youtube_es_primeros-auxilios-1",
+              "version": "2026-11",
+              "title": "Primeros auxilios en video, parte 1",
+              "description": "Primeros auxilios en video: taller de Cruz Roja Española, charla de Fundación OSDE y consejos breves",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/youtube_es_primeros-auxilios-1_2026-11.zim",
+              "size_mb": 391
+            },
+            {
+              "id": "youtube_es_primeros-auxilios-2",
+              "version": "2026-11",
+              "title": "Primeros auxilios en video, parte 2",
+              "description": "Charlas de Fundación OSDE: RCP solo con las manos, accidentes en chicos y monóxido de carbono",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/youtube_es_primeros-auxilios-2_2026-11.zim",
+              "size_mb": 442
             }
           ]
         },
@@ -1139,6 +1155,14 @@
               "description": "Preguntas y respuestas para programadores y profesionales de la informática",
               "url": "https://download.kiwix.org/zim/stack_exchange/es.stackoverflow.com_mul_all_2026-10.zim",
               "size_mb": 1436
+            },
+            {
+              "id": "youtube_es_electronica-basica",
+              "version": "2026-11",
+              "title": "Electrónica básica en video",
+              "description": "Prácticas de laboratorio de electrónica (Pascual Bravo) y cómo comprobar componentes (Reparatumismo)",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/youtube_es_electronica-basica_2026-11.zim",
+              "size_mb": 328
             },
             {
               "id": "arduino.stackexchange.com_en_all",
