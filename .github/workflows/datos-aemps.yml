@@ -1,0 +1,126 @@
+name: Datos AEMPS (prospectos en español)
+
+# Fork-only: una vez por semana actualiza los prospectos de CIMA (AEMPS) que la
+# Guía de medicamentos descarga desde la rama «datos». Reusa los prospectos que
+# no cambiaron y solo baja los nuevos o cambiados. Si no termina en una corrida,
+# guarda lo avanzado y lanza otra que sigue desde ahí. Al terminar reemplaza el
+# archivo en la rama «datos», que queda con un solo commit (sin historial).
+
+on:
+  schedule:
+    - cron: '0 3 * * 2'
+  workflow_dispatch:
+    inputs:
+      vuelta:
+        description: 'Número de corrida (lo usa la propia tarea al seguir; dejar en 1)'
+        default: '1'
+  # En un PR que cambia esto, arma el paquete y muestra el resultado sin publicar.
+  pull_request:
+    paths:
+      - 'tools/aemps/**'
+      - 'tools/datos/**'
+      - '.github/workflows/datos-aemps.yml'
+
+permissions:
+  contents: write
+  actions: write
+
+env:
+  PAQUETE: aemps-prospectos.jsonl.gz
+  MAX_VUELTAS: 6
+
+jobs:
+  armar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    outputs:
+      terminado: ${{ steps.armar.outputs.terminado }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bajar el paquete actual
+        run: |
+          mkdir -p "$RUNNER_TEMP/previo" "$RUNNER_TEMP/nuevo"
+          curl -fsSL -o "$RUNNER_TEMP/previo/$PAQUETE" \
+            "https://raw.githubusercontent.com/${{ github.repository }}/datos/$PAQUETE"
+          echo "SEMANA=$(date -u +%G-%V)" >> "$GITHUB_ENV"
+
+      - name: Retomar lo avanzado esta semana
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/nuevo
+          key: aemps-${{ env.SEMANA }}-${{ github.run_id }}
+          restore-keys: aemps-${{ env.SEMANA }}-
+
+      - name: Armar el paquete
+        id: armar
+        run: |
+          set +e
+          python3 -I tools/aemps/build_package.py --todos --pausa 0.3 --max-minutos 300 \
+            --previo "$RUNNER_TEMP/previo/$PAQUETE" --out "$RUNNER_TEMP/nuevo/$PAQUETE"
+          code=$?
+          set -e
+          case $code in
+            0) echo "terminado=true" >> "$GITHUB_OUTPUT" ;;
+            2) echo "terminado=false" >> "$GITHUB_OUTPUT" ;;
+            *) exit $code ;;
+          esac
+
+      - name: Guardar lo avanzado para la próxima corrida
+        if: steps.armar.outputs.terminado == 'false' && github.event_name != 'pull_request'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/nuevo
+          key: aemps-${{ env.SEMANA }}-${{ github.run_id }}
+
+      - name: Lanzar la corrida siguiente
+        if: steps.armar.outputs.terminado == 'false' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VUELTA: ${{ github.event.inputs.vuelta || '1' }}
+        run: |
+          if [ "$VUELTA" -ge "$MAX_VUELTAS" ]; then
+            echo "::error::No terminó en $MAX_VUELTAS corridas; se deja para la semana próxima."
+            exit 1
+          fi
+          gh workflow run datos-aemps.yml --ref "${{ github.ref_name }}" -f vuelta=$((VUELTA + 1))
+
+      - name: Probar la publicación sin publicar
+        if: github.event_name == 'pull_request'
+        run: |
+          mkdir -p "$RUNNER_TEMP/rama"
+          git fetch --quiet --depth 1 origin datos
+          git archive origin/datos | tar -x -C "$RUNNER_TEMP/rama"
+          python3 -I tools/datos/publicar.py --carpeta "$RUNNER_TEMP/rama" \
+            --paquete "$RUNNER_TEMP/nuevo/$PAQUETE" --nombre "$PAQUETE"
+          cat "$RUNNER_TEMP/rama/README.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: steps.armar.outputs.terminado == 'true' && github.event_name != 'pull_request'
+        with:
+          name: paquete
+          path: ${{ runner.temp }}/nuevo/${{ env.PAQUETE }}
+          retention-days: 3
+
+  publicar:
+    needs: armar
+    if: needs.armar.outputs.terminado == 'true' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    # AEMPS y ANMAT escriben en la misma rama: de a una por vez.
+    concurrency:
+      group: rama-datos
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: paquete
+          path: ${{ runner.temp }}/nuevo
+
+      - name: Reemplazar el archivo en la rama datos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash tools/datos/reemplazar_rama.sh "$RUNNER_TEMP/nuevo/$PAQUETE" "$PAQUETE" \
+          "Prospectos AEMPS actualizados ($(date -u +%Y-%m-%d))"

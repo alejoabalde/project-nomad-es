@@ -22,6 +22,15 @@ pide un solo documento por medicamento. Es reanudable: va escribiendo en
 <out>.parcial.jsonl y, si se corta, al volver a correrlo saltea los que ya
 tiene. Al terminar comprime el resultado en <out>.
 
+Para la actualización semanal se agrega --previo con el paquete anterior: de
+cada medicamento cuyo prospecto tiene la misma fecha que antes se reusa el
+texto ya bajado, y solo se piden a CIMA los nuevos o cambiados. Los que ya no
+se comercializan quedan fuera. Con --max-minutos deja de pedir al llegar a ese
+tiempo, guarda lo avanzado y sale con código 2 para seguir en otra corrida.
+
+    python3 build_package.py --out nuevo.jsonl.gz --todos \
+        --previo aemps-prospectos.jsonl.gz --max-minutos 300
+
 Solo usa la biblioteca estándar de Python.
 """
 
@@ -209,8 +218,27 @@ def registro_desde_listado(m, secciones):
     }
 
 
-def armar_todos(out_path, pausa):
+def leer_previo(path):
+    """{nregistro: registro} del paquete anterior (sin la cabecera)."""
+    previo = {}
+    with gzip.open(path, 'rt', encoding='utf-8') as f:
+        for line in f:
+            rec = json.loads(line)
+            if 'nregistro' in rec:
+                previo[rec['nregistro']] = rec
+    return previo
+
+
+def fecha_doc(m):
+    doc = next((d for d in m.get('docs') or [] if d.get('tipo') == 2), {})
+    fecha = doc.get('fecha')
+    return datetime.fromtimestamp(fecha / 1000, tz=timezone.utc).strftime('%Y-%m-%d') if fecha else None
+
+
+def armar_todos(out_path, pausa, previo=None, max_minutos=0):
+    """Devuelve True si terminó, False si paró por tiempo (queda el parcial)."""
     import os
+    limite = time.monotonic() + max_minutos * 60 if max_minutos else None
     parcial = out_path + '.parcial.jsonl'
     hechos = set()
     if os.path.exists(parcial):
@@ -234,13 +262,35 @@ def armar_todos(out_path, pausa):
         time.sleep(pausa)
     con_prospecto = [m for m in meds if any(d.get('tipo') == 2 and d.get('secc') for d in m.get('docs') or [])]
     pendientes = [m for m in con_prospecto if m['nregistro'] not in hechos]
+    if previo is not None and len(con_prospecto) < 0.9 * len(previo):
+        raise SystemExit(f'CIMA devolvió {len(con_prospecto)} medicamentos con prospecto y el paquete '
+                         f'anterior tiene {len(previo)}: parece una falla de CIMA, no se sigue.')
+
+    # 1b) Los que no cambiaron se copian del paquete anterior.
+    reusados = 0
+    if previo:
+        with open(parcial, 'a', encoding='utf-8') as out:
+            quedan = []
+            for m in pendientes:
+                viejo = previo.get(m['nregistro'])
+                if viejo and viejo.get('secciones') and viejo.get('fecha_prospecto') == fecha_doc(m):
+                    out.write(json.dumps(registro_desde_listado(m, viejo['secciones']), ensure_ascii=False) + '\n')
+                    hechos.add(m['nregistro'])
+                    reusados += 1
+                else:
+                    quedan.append(m)
+            pendientes = quedan
     print(f'{len(meds)} comercializados, {len(con_prospecto)} con prospecto segmentado, '
-          f'{len(pendientes)} pendientes', file=sys.stderr)
+          f'{reusados} sin cambios, {len(pendientes)} para bajar', file=sys.stderr)
 
     # 2) Un pedido por medicamento.
     errores = 0
     with open(parcial, 'a', encoding='utf-8') as out:
         for i, m in enumerate(pendientes, 1):
+            if limite and time.monotonic() > limite:
+                print(f'Se acabó el tiempo: quedan {len(pendientes) - i + 1} para la próxima corrida.',
+                      file=sys.stderr)
+                return False
             try:
                 secciones = html_secciones(m['nregistro'])
             except Exception as err:  # noqa: BLE001
@@ -255,7 +305,8 @@ def armar_todos(out_path, pausa):
                 print(f'  {i}/{len(pendientes)} ({errores} errores)', file=sys.stderr)
             time.sleep(pausa)
 
-    # 3) Comprimir con la cabecera.
+    # 3) Comprimir con la cabecera. Solo entran los que siguen comercializados.
+    vigentes = {m['nregistro'] for m in con_prospecto}
     n = 0
     with gzip.open(out_path, 'wt', encoding='utf-8') as gz, open(parcial, encoding='utf-8') as f:
         gz.write(json.dumps({
@@ -270,12 +321,13 @@ def armar_todos(out_path, pausa):
                 rec = json.loads(line)
             except Exception:  # noqa: BLE001
                 continue
-            if rec['nregistro'] in vistos:
+            if rec['nregistro'] in vistos or rec['nregistro'] not in vigentes:
                 continue
             vistos.add(rec['nregistro'])
             gz.write(line if line.endswith('\n') else line + '\n')
             n += 1
     print(f'{n} medicamentos en {out_path} ({errores} errores en esta pasada)', file=sys.stderr)
+    return True
 
 
 def main():
@@ -285,10 +337,15 @@ def main():
     ap.add_argument('--max-por-principio', type=int, default=3)
     ap.add_argument('--todos', action='store_true', help='todos los comercializados (reanudable)')
     ap.add_argument('--pausa', type=float, default=0.3, help='segundos entre pedidos')
+    ap.add_argument('--previo', help='paquete anterior: reusa los prospectos que no cambiaron (con --todos)')
+    ap.add_argument('--max-minutos', type=float, default=0,
+                    help='con --todos, parar al llegar a este tiempo y salir con código 2')
     args = ap.parse_args()
 
     if args.todos:
-        armar_todos(args.out, args.pausa)
+        previo = leer_previo(args.previo) if args.previo else None
+        if not armar_todos(args.out, args.pausa, previo, args.max_minutos):
+            sys.exit(2)
         return
 
     principios = [p.strip() for p in args.principios.split(',')] if args.principios else MUESTRA
