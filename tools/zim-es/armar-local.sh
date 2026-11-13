@@ -6,6 +6,7 @@
 # Uso:  bash armar-local.sh                 # todos los paquetes "local" activos
 #       bash armar-local.sh <id> [<id>...]  # solo esos
 #
+# libzim va entre 3.7 y 4 porque la 3.7.0 de GitHub no instala en Python 3.14.
 # Necesita: python3, ffmpeg y gh (con sesión iniciada). En Fedora:
 #   sudo dnf install python3 ffmpeg-free gh
 # El resto (libzim, yt-dlp y Deno) se instala solo en un entorno aparte.
@@ -22,7 +23,7 @@ done
 if [ ! -x venv/bin/python ]; then
   python3 -m venv venv
 fi
-venv/bin/pip install -q -U 'libzim==3.7.0' 'yt-dlp[default]' deno
+venv/bin/pip install -q -U 'libzim>=3.7,<4' 'yt-dlp[default]' deno
 export PATH="$DIR/venv/bin:$PATH"
 
 if [ $# -eq 0 ]; then
