@@ -24,6 +24,37 @@ Ubuntu Desktop es la opción más amigable si vienes de Windows o macOS. Ubuntu 
 
 macOS y las distribuciones que no son Debian, como Fedora o Arch, no tienen soporte oficial.
 
+### Instalar en Fedora o Arch
+
+Esta versión en español incluye dos instaladores armados por la comunidad, uno para Fedora y otro para Arch Linux. Crosstalk no los prueba ni los mantiene. Hacen lo mismo que el instalador original, pero con las herramientas de cada sistema, y dejan instalado NOMAD en español.
+
+Abre una terminal y copia el comando de tu sistema.
+
+**Fedora:**
+
+```bash
+sudo dnf install -y curl && \
+curl -fsSL https://raw.githubusercontent.com/alejoabalde/project-nomad-es/refs/heads/main/install/install_nomad_fedora.sh \
+  -o install_nomad_fedora.sh && \
+sudo bash install_nomad_fedora.sh
+```
+
+**Arch Linux:**
+
+```bash
+sudo pacman -S --needed curl && \
+curl -fsSL https://raw.githubusercontent.com/alejoabalde/project-nomad-es/refs/heads/main/install/install_nomad_arch.sh \
+  -o install_nomad_arch.sh && \
+sudo bash install_nomad_arch.sh
+```
+
+Algunas cosas que conviene saber:
+
+- **En Arch**, el instalador actualiza todo el sistema antes de instalar lo que falta. Arch funciona así: instalar algo sin actualizar el resto puede romper otros programas.
+- **En Fedora**, el cortafuegos viene encendido. Si al terminar no puedes abrir NOMAD desde otro equipo de tu red, el instalador te muestra el comando para permitirlo.
+- **Para actualizar NOMAD** más adelante, usa `sudo bash /opt/project-nomad/update_nomad.sh`, igual que en Ubuntu. El instalador ya lo deja preparado para tu sistema.
+- **El controlador de la tarjeta gráfica** tiene que estar instalado antes, igual que en Ubuntu (mira «Sobre los controladores de la GPU», más abajo).
+
 ### Equipo
 
 NOMAD en sí es liviano. Lo que define los requisitos es el contenido y las herramientas que decidas instalar, y si quieres usar IA local.
