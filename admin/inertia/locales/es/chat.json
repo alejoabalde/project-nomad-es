@@ -243,5 +243,10 @@
       "unsupported": "Este modelo no puede usar imágenes. Elige un modelo marcado como «Admite imágenes» en Modelos y ajustes."
     }
   },
-  "streamError": "El modelo tuvo un error. Vuelve a intentarlo."
+  "streamError": "El modelo tuvo un error. Vuelve a intentarlo.",
+  "unavailable": {
+    "title": "El Asistente de IA no está instalado",
+    "body": "El chat de IA y la base de conocimiento necesitan el Asistente de IA. Puedes instalarlo desde el Depósito de suministros.",
+    "action": "Ir al Depósito de suministros"
+  }
 }

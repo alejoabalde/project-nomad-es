@@ -11,10 +11,11 @@ import logger from '@adonisjs/core/services/logger'
 export default class ChatsController {
   constructor(private chatService: ChatService, private systemService: SystemService) {}
 
-  async inertia({ inertia, response }: HttpContext) {
+  async inertia({ inertia }: HttpContext) {
     const aiAssistantInstalled = await this.systemService.checkServiceInstalled(SERVICE_NAMES.OLLAMA)
     if (!aiAssistantInstalled) {
-      return response.status(404).json({ error: 'AI Assistant service not installed' })
+      // Fork: help pages link here, so explain what to do instead of a bare JSON 404
+      return inertia.render('chat_unavailable')
     }
     
     const chatSuggestionsEnabled = await KVStore.getValue('chat.suggestionsEnabled')

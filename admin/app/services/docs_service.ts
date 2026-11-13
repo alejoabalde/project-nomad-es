@@ -4,6 +4,7 @@ import { getFile, getFileStatsIfExists, listDirectoryContentsRecursive } from '.
 import path from 'path'
 import InternalServerErrorException from '#exceptions/internal_server_error_exception'
 import logger from '@adonisjs/core/services/logger'
+import { Exception } from '@adonisjs/core/exceptions'
 
 export class DocsService {
   private docsPath = path.join(process.cwd(), 'docs')
@@ -81,12 +82,13 @@ export class DocsService {
       const basePath = path.resolve(this.docsPath)
       const fullPath = path.resolve(path.join(this.docsPath, filename))
       if (!fullPath.startsWith(basePath + path.sep)) {
-        throw new Error('Invalid document slug')
+        // Fork: a missing page is a 404, not a server error
+        throw new Exception('Invalid document slug', { status: 404, code: 'E_DOC_NOT_FOUND' })
       }
 
       const fileExists = await getFileStatsIfExists(fullPath)
       if (!fileExists) {
-        throw new Error(`File not found: ${filename}`)
+        throw new Exception(`File not found: ${filename}`, { status: 404, code: 'E_DOC_NOT_FOUND' })
       }
 
       // Prefer the translated page when there is one for the reader's language.
@@ -108,6 +110,7 @@ export class DocsService {
       }
       return this.parse(content)
     } catch (error) {
+      if (error instanceof Exception && error.status === 404) throw error
       throw new InternalServerErrorException(`Error parsing file: ${(error as Error).message}`)
     }
   }
