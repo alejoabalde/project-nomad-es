@@ -5,6 +5,11 @@ original no responde a GitHub o cuando zimit corta los videos largos. Cada
 video se baja completo y se arma una página por clase con su título,
 descripción, fuente y licencia.
 
+Cada video tiene "mp4" (enlace directo) o "youtube" (ID del video). Los de
+YouTube se bajan con yt-dlp, en 480p como máximo, y solo se aceptan si YouTube
+los muestra con licencia Creative Commons Atribución en ese momento. Un video
+puede llevar su propio "credit", "license" y "page"; si no, usa los del paquete.
+
 Lee la descripción del paquete desde la variable de entorno PKG (un elemento
 de tools/zim-es/packages.json con "type": "video") y deja el archivo en
 ./output/<id>_<AAAA-MM>.zim.
@@ -16,6 +21,7 @@ import json
 import struct
 import os
 import pathlib
+import subprocess
 import sys
 import time
 import urllib.error
@@ -61,6 +67,41 @@ def download(url: str, dest: pathlib.Path, expected: int | None) -> bool:
     return False
 
 
+YT_FORMAT = "bv*[height<=480][ext=mp4]+ba[ext=m4a]/b[height<=480][ext=mp4]/b[height<=480]"
+YT_CC = "creative commons"
+
+
+def download_youtube(video_id: str, dest: pathlib.Path) -> bool:
+    """Baja un video de YouTube a dest (.mp4) si su licencia es Creative Commons."""
+    url = f"https://www.youtube.com/watch?v={video_id}"
+    try:
+        info = subprocess.run(
+            ["yt-dlp", "--skip-download", "--no-warnings", "--print", "%(license)s", url],
+            capture_output=True, text=True, timeout=300, check=True,
+        ).stdout.strip()
+    except subprocess.CalledProcessError as exc:
+        print(f"  no se pudo leer {url}: {(exc.stderr or '').strip()[-500:]}")
+        return False
+    except Exception as exc:
+        print(f"  no se pudo leer {url}: {exc}")
+        return False
+    if YT_CC not in info.lower():
+        print(f"  {url}: la licencia ya no es Creative Commons ({info or 'sin dato'}), se rechaza")
+        return False
+    for attempt in range(3):
+        try:
+            subprocess.run(
+                ["yt-dlp", "--no-warnings", "--no-playlist", "-f", YT_FORMAT,
+                 "--merge-output-format", "mp4", "-o", str(dest), "--force-overwrites", url],
+                check=True, timeout=3600,
+            )
+            if dest.exists() and dest.stat().st_size > 0:
+                return True
+        except Exception as exc:
+            print(f"  no se pudo descargar {url} (intento {attempt + 1}): {exc}")
+    return False
+
+
 STYLE = (
     "body{font-family:sans-serif;max-width:52rem;margin:2rem auto;padding:0 1rem;line-height:1.5}"
     "video{width:100%;background:#000;border-radius:8px}li{margin:.4rem 0}"
@@ -76,19 +117,27 @@ def page(title: str, body: str) -> str:
     )
 
 
-credit_block = (
-    '<div class="credito">'
-    f"<p><strong>Autoría:</strong> {html.escape(pkg.get('credit', ''))}</p>"
-    f"<p><strong>Licencia:</strong> {html.escape(pkg.get('license', ''))}</p>"
-    + (f"<p>{html.escape(pkg['note'])}</p>" if pkg.get("note") else "")
-    + "</div>"
-)
+def credit_block(v: dict | None = None) -> str:
+    v = v or {}
+    return (
+        '<div class="credito">'
+        f"<p><strong>Autoría:</strong> {html.escape(v.get('credit') or pkg.get('credit', ''))}</p>"
+        f"<p><strong>Licencia:</strong> {html.escape(v.get('license') or pkg.get('license', ''))}</p>"
+        + (f"<p>{html.escape(pkg['note'])}</p>" if pkg.get("note") else "")
+        + "</div>"
+    )
+
+
+for v in pkg["videos"]:
+    if v.get("youtube") and not v.get("page"):
+        v["page"] = f"https://www.youtube.com/watch?v={v['youtube']}"
 
 accepted = []
 for n, v in enumerate(pkg["videos"], start=1):
     dest = work / f"{n:03d}.mp4"
     print(f"Bajando {v['title']} ...", flush=True)
-    if download(v["mp4"], dest, v.get("bytes")):
+    ok = download_youtube(v["youtube"], dest) if v.get("youtube") else download(v["mp4"], dest, v.get("bytes"))
+    if ok:
         accepted.append((n, v, dest))
         print(f"  aceptado: {v['title']} ({dest.stat().st_size / 1024**2:.0f} MB)")
     else:
@@ -104,7 +153,7 @@ rows = "".join(
 index = page(
     pkg["title"],
     f"<h1>{html.escape(pkg['title'])}</h1><p>{html.escape(pkg.get('intro') or pkg['description'])}</p>"
-    f"<ol>{rows}</ol>{credit_block}",
+    f"<ol>{rows}</ol>{credit_block()}",
 )
 
 
@@ -174,7 +223,7 @@ with Creator(str(zim)).config_indexing(True, "spa") as c:
             f'<video controls preload="metadata" src="../video/{n:03d}.mp4"></video>'
             f"<p>{html.escape(v.get('description', ''))}</p>"
             + (f'<p>Fuente: <a href="{html.escape(v["page"])}">{html.escape(v["page"])}</a></p>' if v.get("page") else "")
-            + credit_block
+            + credit_block(v)
         )
         c.add_item(Entry(f"clase/{n:03d}.html", v["title"], "text/html", content=page(v["title"], body), front=True))
         c.add_item(Entry(f"video/{n:03d}.mp4", v["title"], "video/mp4", filepath=dest))
