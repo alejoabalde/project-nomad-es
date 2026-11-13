@@ -246,7 +246,8 @@
     "failed": "La instalación falló: {{error}}",
     "ready": "{{count}} prospectos instalados (paquete del {{date}}).",
     "readyNoDate": "{{count}} prospectos instalados.",
-    "notInstalled": "Todavía no están instalados."
+    "notInstalled": "Todavía no están instalados.",
+    "updateAvailable": "Hay datos más nuevos, publicados el {{date}}. Toca «Actualizar prospectos en español» para bajarlos."
   },
   "ar": {
     "title": "Marcas de Argentina",

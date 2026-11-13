@@ -246,7 +246,8 @@
     "failed": "Installation failed: {{error}}",
     "ready": "{{count}} leaflets installed (package from {{date}}).",
     "readyNoDate": "{{count}} leaflets installed.",
-    "notInstalled": "Not installed yet."
+    "notInstalled": "Not installed yet.",
+    "updateAvailable": "Newer data was published on {{date}}. Select “Update Spanish leaflets” to download it."
   },
   "ar": {
     "title": "Brands from Argentina",

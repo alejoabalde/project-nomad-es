@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Fork (project-nomad-es): pone un paquete nuevo en la carpeta de la rama «datos»
-y rehace su README.md con los números de los dos paquetes.
+y rehace su README.md con los números de los dos paquetes, y paquetes.json con
+la fecha de la publicación (NOMAD lo usa para avisar que hay datos nuevos).
 
 No hace el commit: eso lo hace la tarea de GitHub, que reemplaza la rama entera
 con un solo commit (sin historial), para que el repositorio no crezca.
@@ -16,6 +17,7 @@ Uso:
 Solo usa la biblioteca estándar.
 """
 import argparse
+import datetime
 import gzip
 import json
 import os
@@ -91,6 +93,17 @@ def readme(carpeta):
     ])
 
 
+def version(carpeta):
+    """paquetes.json: NOMAD lo lee para avisar que hay datos más nuevos que los instalados."""
+    out = {'actualizado': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}
+    for nombre in (AEMPS, ANMAT):
+        path = os.path.join(carpeta, nombre)
+        if os.path.exists(path):
+            cab, regs = leer(path)
+            out[nombre.removesuffix('.jsonl.gz')] = {'generado': cab.get('generado'), 'registros': len(regs)}
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--carpeta', required=True, help='carpeta con los archivos actuales de la rama datos')
@@ -109,6 +122,9 @@ def main():
     shutil.copyfile(args.paquete, destino)
     with open(os.path.join(args.carpeta, 'README.md'), 'w', encoding='utf-8') as f:
         f.write(readme(args.carpeta))
+    with open(os.path.join(args.carpeta, 'paquetes.json'), 'w', encoding='utf-8') as f:
+        json.dump(version(args.carpeta), f, ensure_ascii=False, indent=2)
+        f.write('\n')
     return 0
 
 
