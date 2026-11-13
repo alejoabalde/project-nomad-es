@@ -44,6 +44,7 @@ jobs:
           TAG=$(jq -r .release_tag tools/zim-es/packages.json)
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           # Lo ya publicado este mes no se vuelve a armar, salvo que se pida.
+          # Los paquetes con "build": "local" se arman en una PC (ver armar-local.sh).
           PERIOD=$(date -u +%Y-%m)
           if [ "$FORCE" = "true" ]; then
             echo '[]' > published.json
@@ -51,7 +52,7 @@ jobs:
             gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '[.assets[].name]' > published.json 2>/dev/null || echo '[]' > published.json
           fi
           MATRIX=$(jq -c --arg p "$ONLY" --arg period "$PERIOD" --slurpfile pub published.json \
-            '[.packages[] | select(.enabled != false) | select($p == "" or .id == $p)
+            '[.packages[] | select(.enabled != false) | select(.build != "local") | select($p == "" or .id == $p)
               | select((.id + "_" + $period + ".zim") as $f | ($pub[0] | index($f)) | not)]' \
             tools/zim-es/packages.json)
           echo "Paquetes a armar: $(echo "$MATRIX" | jq -r '[.[].id] | join(", ")')"
@@ -82,17 +83,6 @@ jobs:
             sudo apt-get update -q && sudo apt-get install -y -q poppler-utils
           fi
           python -m pip install 'libzim==3.7.0'
-
-      # Los videos de YouTube se bajan con yt-dlp, que necesita Deno y ffmpeg
-      # (ffmpeg ya viene en ubuntu-latest).
-      - uses: denoland/setup-deno@v2
-        if: matrix.package.type == 'video' && contains(toJSON(matrix.package.videos), '"youtube"')
-        with:
-          deno-version: v2.x
-
-      - name: Preparar yt-dlp
-        if: matrix.package.type == 'video' && contains(toJSON(matrix.package.videos), '"youtube"')
-        run: python -m pip install -U 'yt-dlp[default]'
 
       - name: Armar el paquete
         id: build
