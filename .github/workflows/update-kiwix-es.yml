@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: '0 8 5 * *'
   workflow_dispatch:
+  # En un PR que cambia el script, solo se prueba contra Kiwix sin abrir nada.
+  pull_request:
+    paths:
+      - 'tools/kiwix-es/**'
+      - '.github/workflows/update-kiwix-es.yml'
 
 permissions:
   contents: write
@@ -29,7 +34,14 @@ jobs:
       - name: Buscar versiones nuevas
         run: python3 -I tools/kiwix-es/update_catalog.py --resumen "$RUNNER_TEMP/resumen.md"
 
+      - name: Mostrar lo que cambiaría
+        if: github.event_name == 'pull_request'
+        run: |
+          cat "$RUNNER_TEMP/resumen.md" >> "$GITHUB_STEP_SUMMARY"
+          git diff --stat -- collections/es
+
       - name: Abrir o actualizar el PR
+        if: github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
