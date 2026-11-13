@@ -83,6 +83,17 @@ jobs:
           fi
           python -m pip install 'libzim==3.7.0'
 
+      # Los videos de YouTube se bajan con yt-dlp, que necesita Deno y ffmpeg
+      # (ffmpeg ya viene en ubuntu-latest).
+      - uses: denoland/setup-deno@v2
+        if: matrix.package.type == 'video' && contains(toJSON(matrix.package.videos), '"youtube"')
+        with:
+          deno-version: v2.x
+
+      - name: Preparar yt-dlp
+        if: matrix.package.type == 'video' && contains(toJSON(matrix.package.videos), '"youtube"')
+        run: python -m pip install -U 'yt-dlp[default]'
+
       - name: Armar el paquete
         id: build
         env:

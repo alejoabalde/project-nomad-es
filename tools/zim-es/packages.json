@@ -1165,6 +1165,306 @@
       "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Negocios?(/|$)",
       "scopeExcludeRx": "\\?|/Special:",
       "minSizeMB": 5
+    },
+    {
+      "type": "video",
+      "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube",
+      "source": "https://www.youtube.com/",
+      "note": "Videos de YouTube con licencia Creative Commons Atribución elegida por cada autor. Se bajan en 480p y no se modifican. Al armar el paquete se vuelve a comprobar la licencia de cada video.",
+      "id": "youtube_es_primeros-auxilios-1",
+      "title": "Primeros auxilios en video, parte 1",
+      "description": "Primeros auxilios en video: taller de Cruz Roja Española, charla de Fundación OSDE y consejos breves",
+      "credit": "Cruz Roja Española, Fundación OSDE y Fundación Santa Fe de Bogotá",
+      "intro": "Videos para aprender primeros auxilios: un taller completo de iniciación, una charla de médicos de urgencias y consejos breves para situaciones frecuentes.",
+      "videos": [
+        {
+          "title": "Taller de iniciación a los primeros auxilios",
+          "youtube": "xXvyLpAfNDQ",
+          "credit": "Cruz Roja Española (https://www.youtube.com/@cruzrojaesp)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Primeros auxilios (charla con médicos de urgencias)",
+          "youtube": "ZtQT1RO1_LA",
+          "credit": "Fundación OSDE (https://www.youtube.com/@fundacionosdeoficial)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Asfixia y maniobra de Heimlich",
+          "youtube": "v-ZLFb1JPT8",
+          "credit": "Fundación Santa Fe de Bogotá (https://www.youtube.com/@fsfbsalud)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Reacciones alérgicas",
+          "youtube": "-MDHxSSPFaA",
+          "credit": "Fundación Santa Fe de Bogotá (https://www.youtube.com/@fsfbsalud)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Qué debe tener un botiquín",
+          "youtube": "4K7Ksr5mklc",
+          "credit": "Fundación Santa Fe de Bogotá (https://www.youtube.com/@fsfbsalud)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Primeros auxilios en salud mental",
+          "youtube": "tVLzGRqE9HY",
+          "credit": "Fundación Santa Fe de Bogotá (https://www.youtube.com/@fsfbsalud)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube",
+      "source": "https://www.youtube.com/",
+      "note": "Videos de YouTube con licencia Creative Commons Atribución elegida por cada autor. Se bajan en 480p y no se modifican. Al armar el paquete se vuelve a comprobar la licencia de cada video.",
+      "id": "youtube_es_primeros-auxilios-2",
+      "title": "Primeros auxilios en video, parte 2",
+      "description": "Charlas de Fundación OSDE: RCP solo con las manos, accidentes en chicos y monóxido de carbono",
+      "credit": "Fundación OSDE",
+      "intro": "Charlas de médicos especialistas sobre reanimación cardiopulmonar, prevención de accidentes en la infancia e intoxicación por monóxido de carbono.",
+      "videos": [
+        {
+          "title": "Aprendé RCP: solo manos",
+          "youtube": "BelXkehG6xM",
+          "credit": "Fundación OSDE (https://www.youtube.com/@fundacionosdeoficial)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Proteger a los más chicos: prevención de accidentes y primeros auxilios",
+          "youtube": "7uxksl56Ysc",
+          "credit": "Fundación OSDE (https://www.youtube.com/@fundacionosdeoficial)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Intoxicación por monóxido de carbono",
+          "youtube": "5evojX0ZQYI",
+          "credit": "Fundación OSDE (https://www.youtube.com/@fundacionosdeoficial)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube",
+      "source": "https://www.youtube.com/",
+      "note": "Videos de YouTube con licencia Creative Commons Atribución elegida por cada autor. Se bajan en 480p y no se modifican. Al armar el paquete se vuelve a comprobar la licencia de cada video.",
+      "id": "youtube_es_lactancia-recien-nacido",
+      "title": "Lactancia y recién nacido en video",
+      "description": "Cómo funciona la lactancia, posiciones, extracción de leche, cuidados del recién nacido y prematuros",
+      "credit": "Quirónsalud, Fundación Santa Fe de Bogotá, Fundación OSDE y Hospital Clínic de Barcelona",
+      "intro": "Videos de pediatras, matronas y consultoras de lactancia sobre amamantar, extraer leche y cuidar al recién nacido.",
+      "videos": [
+        {
+          "title": "¿Cómo funciona la lactancia materna?",
+          "youtube": "9ZlJyUE97PY",
+          "credit": "Quirónsalud, Hospital Universitario Rey Juan Carlos (https://www.youtube.com/@grupo_quironsalud)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "¿Cómo amamantar? Posiciones de la madre y el bebé",
+          "youtube": "v1gh12SlSZA",
+          "credit": "Quirónsalud, Hospital Universitario Rey Juan Carlos (https://www.youtube.com/@grupo_quironsalud)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Cómo extraer el calostro cuando el bebé no puede",
+          "youtube": "RK02PUW8cuU",
+          "credit": "Quirónsalud, Hospital Universitario Rey Juan Carlos (https://www.youtube.com/@grupo_quironsalud)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Extracción manual de leche materna",
+          "youtube": "PakWGg8M5WA",
+          "credit": "Fundación Santa Fe de Bogotá (https://www.youtube.com/@fsfbsalud)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Primeros cuidados del recién nacido",
+          "youtube": "S1fF7hrPRio",
+          "credit": "Fundación OSDE (https://www.youtube.com/@fundacionosdeoficial)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Bebés prematuros: cómo cuidarlos",
+          "youtube": "x1q4ONjzBsk",
+          "credit": "Hospital Clínic de Barcelona, PortalCLÍNIC (https://www.youtube.com/@clinicbarcelona)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube",
+      "source": "https://www.youtube.com/",
+      "note": "Videos de YouTube con licencia Creative Commons Atribución elegida por cada autor. Se bajan en 480p y no se modifican. Al armar el paquete se vuelve a comprobar la licencia de cada video.",
+      "id": "youtube_es_electronica-basica",
+      "title": "Electrónica básica en video",
+      "description": "Prácticas de laboratorio de electrónica (Pascual Bravo) y cómo comprobar componentes (Reparatumismo)",
+      "credit": "Institución Universitaria Pascual Bravo y Reparatumismo",
+      "intro": "Prácticas de laboratorio para aprender electrónica básica con instrumentos reales, y videos para comprobar componentes y reparar aparatos.",
+      "videos": [
+        {
+          "title": "Identificación de componentes",
+          "youtube": "Olh1FMBKWvw",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Manejo del multímetro",
+          "youtube": "FDZq8g7hs4M",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Manejo de la fuente de alimentación",
+          "youtube": "2S7vNJ3HTnM",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Ley de Ohm",
+          "youtube": "qxdKqNbu43E",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Circuito serie",
+          "youtube": "ixs5hbVnmWs",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Resistencias en paralelo",
+          "youtube": "UcH-3ng_aK0",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Circuitos serie, paralelo y mixto",
+          "youtube": "xwkW-xHGAuE",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Leyes de Kirchhoff y divisor de voltaje",
+          "youtube": "bLysmX_NMZk",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Circuitos RC",
+          "youtube": "YWLYYcWUIOk",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Manejo del diodo rectificador",
+          "youtube": "nfnVd309vGo",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Circuitos rectificadores",
+          "youtube": "6GdH0UoF3XA",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Diodo Zener",
+          "youtube": "csaBr-KSq4E",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Transistor como conmutador",
+          "youtube": "LXoVfgNYjJM",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Fuente de alimentación",
+          "youtube": "pwEQ_Z4UC1Q",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Manejo del osciloscopio",
+          "youtube": "OLKFOrjxuis",
+          "credit": "Institución Universitaria Pascual Bravo (https://www.youtube.com/@pascualbravovirtual)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Cómo usar y leer las escalas del multímetro",
+          "youtube": "YbFtO3770Oc",
+          "credit": "Reparatumismo (https://www.youtube.com/@reparatumismospain)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Cómo comprobar resistencias",
+          "youtube": "_zr3Sbed5XE",
+          "credit": "Reparatumismo (https://www.youtube.com/@reparatumismospain)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Cómo comprobar diodos y transistores sin sacarlos de la placa",
+          "youtube": "Rks6LeHjz7w",
+          "credit": "Reparatumismo (https://www.youtube.com/@reparatumismospain)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Puentes de diodos o puente rectificador",
+          "youtube": "A81S0FhYv-o",
+          "credit": "Reparatumismo (https://www.youtube.com/@reparatumismospain)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Cómo arrancar el compresor de una heladera con un condensador",
+          "youtube": "MGsJyie2GMQ",
+          "credit": "Reparatumismo (https://www.youtube.com/@reparatumismospain)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube",
+      "source": "https://www.youtube.com/",
+      "note": "Desactivado hasta confirmar que el canal es autor de estos videos: el mismo canal sube videos de fabricantes marcados como CC que no son suyos. Videos de YouTube con licencia Creative Commons Atribución elegida por cada autor. Se bajan en 480p y no se modifican. Al armar el paquete se vuelve a comprobar la licencia de cada video.",
+      "id": "youtube_es_energia-solar-termica",
+      "title": "Energía solar térmica en video",
+      "enabled": false,
+      "description": "Fundamentos de energía solar térmica, en 4 partes (FP Salesianos Carabanchel)",
+      "credit": "FP Eficiencia energética y energía solar térmica, Salesianos Carabanchel",
+      "intro": "Fundamentos de energía solar térmica, en cuatro partes.",
+      "videos": [
+        {
+          "title": "Fundamentos de energía solar térmica 1/4",
+          "youtube": "sayJlni2OB4",
+          "credit": "FP Eficiencia energética y energía solar térmica, Salesianos Carabanchel (https://www.youtube.com/@eficienciasolarips)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Fundamentos de energía solar térmica 2/4",
+          "youtube": "ShZ-jplKS9g",
+          "credit": "FP Eficiencia energética y energía solar térmica, Salesianos Carabanchel (https://www.youtube.com/@eficienciasolarips)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Fundamentos de energía solar térmica 3/4",
+          "youtube": "rqvZQVJvFwU",
+          "credit": "FP Eficiencia energética y energía solar térmica, Salesianos Carabanchel (https://www.youtube.com/@eficienciasolarips)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        },
+        {
+          "title": "Fundamentos de energía solar térmica 4/4",
+          "youtube": "bUl_WSJTjKw",
+          "credit": "FP Eficiencia energética y energía solar térmica, Salesianos Carabanchel (https://www.youtube.com/@eficienciasolarips)",
+          "license": "CC BY 3.0 (Creative Commons Atribución), indicada por el autor en YouTube"
+        }
+      ]
     }
   ]
 }
