@@ -40,7 +40,7 @@ jobs:
       - name: Traer las versiones de NOMAD original
         run: |
           git remote add upstream https://github.com/Crosstalk-Solutions/project-nomad.git
-          git fetch --quiet upstream --tags
+          git fetch --quiet --no-tags upstream '+refs/tags/*:refs/upstream-tags/*'
 
       - name: Probar con dos versiones ya publicadas
         if: github.event_name == 'pull_request'
