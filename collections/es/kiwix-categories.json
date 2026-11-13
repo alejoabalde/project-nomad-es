@@ -1,5 +1,5 @@
 {
-  "spec_version": "2026-11-11",
+  "spec_version": "2026-11-13",
   "categories": [
     {
       "name": "Medicina",
@@ -177,11 +177,11 @@
             },
             {
               "id": "wikipedia_en_medicine_maxi",
-              "version": "2026-01",
+              "version": "2026-10",
               "title": "Wikipedia: Medicina (en inglés)",
               "description": "Artículos médicos seleccionados de Wikipedia, con imágenes",
-              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_en_medicine_maxi_2026-01.zim",
-              "size_mb": 2000
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_en_medicine_maxi_2026-10.zim",
+              "size_mb": 1778
             },
             {
               "id": "libretexts.org_en_med",
@@ -282,11 +282,11 @@
             },
             {
               "id": "canadian-prepper_en_bugoutroll",
-              "version": "2026-07",
+              "version": "2026-10",
               "title": "Canadian Prepper: Bug Out Roll (en inglés)",
               "description": "Cómo elegir el equipo para la mochila de evacuación",
-              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_bugoutroll_2026-07.zim",
-              "size_mb": 879
+              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_bugoutroll_2026-10.zim",
+              "size_mb": 838
             },
             {
               "id": "scoutwiki.org_es_all_maxi",
@@ -306,19 +306,19 @@
           "resources": [
             {
               "id": "outdoors.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Vida al aire libre (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas sobre senderismo, campamento, orientación y vida en la naturaleza",
-              "url": "https://download.kiwix.org/zim/stack_exchange/outdoors.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 142
+              "url": "https://download.kiwix.org/zim/stack_exchange/outdoors.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 135
             },
             {
               "id": "ham.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Radioafición (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas sobre equipos de radio, antenas, licencias y comunicaciones de emergencia",
-              "url": "https://download.kiwix.org/zim/stack_exchange/ham.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 75
+              "url": "https://download.kiwix.org/zim/stack_exchange/ham.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 74
             },
             {
               "id": "canadian-prepper_en_bugoutconcepts",
@@ -370,11 +370,11 @@
           "resources": [
             {
               "id": "canadian-prepper_en_preppingfood",
-              "version": "2026-07",
+              "version": "2026-10",
               "title": "Canadian Prepper: Prepping Food (en inglés)",
               "description": "Almacenamiento de alimentos a largo plazo y comidas de supervivencia",
-              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_preppingfood_2026-07.zim",
-              "size_mb": 2160
+              "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_preppingfood_2026-10.zim",
+              "size_mb": 2093
             },
             {
               "id": "hesperian_es_salud-ambiental",
@@ -394,11 +394,11 @@
             },
             {
               "id": "100r.co_en_all",
-              "version": "2026-06",
+              "version": "2026-08",
               "title": "Hundred Rabbits (en inglés)",
               "description": "Notas de campo sobre vida de baja tecnología: energía solar, agua, comida y reparaciones tras una década fuera de la red",
-              "url": "https://download.kiwix.org/zim/zimit/100r.co_en_all_2026-06.zim",
-              "size_mb": 172
+              "url": "https://download.kiwix.org/zim/zimit/100r.co_en_all_2026-08.zim",
+              "size_mb": 169
             },
             {
               "id": "gutenberg_en_lcc-u",
@@ -410,11 +410,11 @@
             },
             {
               "id": "cd3wdproject.org_en_all",
-              "version": "2025-11",
+              "version": "2026-11",
               "title": "CD3WD: Biblioteca de tecnología apropiada (en inglés)",
               "description": "Guías prácticas de producción de alimentos, agua y saneamiento, construcción y fabricación a pequeña escala sin cadenas de suministro industriales",
-              "url": "https://download.kiwix.org/zim/zimit/cd3wdproject.org_en_all_2025-11.zim",
-              "size_mb": 581
+              "url": "https://download.kiwix.org/zim/zimit/cd3wdproject.org_en_all_2026-11.zim",
+              "size_mb": 546
             },
             {
               "id": "solar.lowtechmagazine.com_mul_all",
@@ -467,11 +467,11 @@
             },
             {
               "id": "wikibooks_en_all_nopic",
-              "version": "2026-01",
+              "version": "2026-10",
               "title": "Wikibooks (en inglés)",
               "description": "Libros de texto libres de matemáticas, ciencias, computación y más",
-              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_en_all_nopic_2026-01.zim",
-              "size_mb": 3100
+              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_en_all_nopic_2026-10.zim",
+              "size_mb": 3380
             }
           ]
         },
@@ -531,11 +531,11 @@
             },
             {
               "id": "wikiversity_en_all_maxi",
-              "version": "2026-02",
+              "version": "2026-11",
               "title": "Wikiversity (en inglés)",
               "description": "Tutoriales, cursos y material de estudio para todos los niveles",
-              "url": "https://download.kiwix.org/zim/wikiversity/wikiversity_en_all_maxi_2026-02.zim",
-              "size_mb": 2370
+              "url": "https://download.kiwix.org/zim/wikiversity/wikiversity_en_all_maxi_2026-11.zim",
+              "size_mb": 2012
             },
             {
               "id": "espanol.libretexts.org_es_matematicas",
@@ -707,11 +707,11 @@
             },
             {
               "id": "wikibooks_en_all_maxi",
-              "version": "2026-01",
+              "version": "2026-10",
               "title": "Wikibooks (con imágenes) (en inglés)",
               "description": "Libros de texto libres con todas sus ilustraciones y diagramas",
-              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_en_all_maxi_2026-01.zim",
-              "size_mb": 5400
+              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_en_all_maxi_2026-10.zim",
+              "size_mb": 4520
             },
             {
               "id": "ted_mul_ted-conference",
@@ -731,11 +731,11 @@
             },
             {
               "id": "libretexts.org_en_human",
-              "version": "2025-01",
+              "version": "2026-07",
               "title": "LibreTexts: Humanidades (en inglés)",
               "description": "Literatura, filosofía, historia y ciencias sociales",
-              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_human_2025-01.zim",
-              "size_mb": 3730
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_human_2026-07.zim",
+              "size_mb": 4228
             },
             {
               "id": "libretexts.org_en_geo",
@@ -812,19 +812,19 @@
             },
             {
               "id": "woodworking.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Carpintería (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas de Stack Exchange sobre carpintería, ensambles y trabajo en madera",
-              "url": "https://download.kiwix.org/zim/stack_exchange/woodworking.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 99
+              "url": "https://download.kiwix.org/zim/stack_exchange/woodworking.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 102
             },
             {
               "id": "mechanics.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Mantenimiento de vehículos (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas de Stack Exchange sobre reparación de autos y motos",
-              "url": "https://download.kiwix.org/zim/stack_exchange/mechanics.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 321
+              "url": "https://download.kiwix.org/zim/stack_exchange/mechanics.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 326
             }
           ]
         },
@@ -892,11 +892,11 @@
             },
             {
               "id": "diy.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Bricolaje y mejoras para el hogar (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas de Stack Exchange sobre reparaciones del hogar, electricidad, plomería y construcción",
-              "url": "https://download.kiwix.org/zim/stack_exchange/diy.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 1900
+              "url": "https://download.kiwix.org/zim/stack_exchange/diy.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 1989
             }
           ]
         },
@@ -965,19 +965,19 @@
             },
             {
               "id": "foss.cooking_en_all",
-              "version": "2026-02",
+              "version": "2026-11",
               "title": "FOSS Cooking (en inglés)",
               "description": "Guías y recetas de cocina rápidas y fáciles",
-              "url": "https://download.kiwix.org/zim/zimit/foss.cooking_en_all_2026-02.zim",
-              "size_mb": 24
+              "url": "https://download.kiwix.org/zim/zimit/foss.cooking_en_all_2026-11.zim",
+              "size_mb": 29
             },
             {
               "id": "based.cooking_en_all",
-              "version": "2026-08",
+              "version": "2026-11",
               "title": "Based.Cooking (en inglés)",
               "description": "Recetas simples y prácticas de la comunidad",
-              "url": "https://download.kiwix.org/zim/zimit/based.cooking_en_all_2026-08.zim",
-              "size_mb": 16
+              "url": "https://download.kiwix.org/zim/zimit/based.cooking_en_all_2026-11.zim",
+              "size_mb": 22
             }
           ]
         },
@@ -989,19 +989,19 @@
           "resources": [
             {
               "id": "gardening.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Huerta y jardinería (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas de Stack Exchange sobre cultivar tus alimentos, cuidado de plantas y paisajismo",
-              "url": "https://download.kiwix.org/zim/stack_exchange/gardening.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 923
+              "url": "https://download.kiwix.org/zim/stack_exchange/gardening.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 890
             },
             {
               "id": "cooking.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Cocina (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas de Stack Exchange sobre técnicas de cocina, seguridad alimentaria y recetas",
-              "url": "https://download.kiwix.org/zim/stack_exchange/cooking.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 236
+              "url": "https://download.kiwix.org/zim/stack_exchange/cooking.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 227
             },
             {
               "id": "zimgit-food-preparation_en",
@@ -1029,10 +1029,10 @@
           "resources": [
             {
               "id": "lrnselfreliance_en_all",
-              "version": "2026-06",
+              "version": "2026-09",
               "title": "Learning Self-Reliance: Homesteading (en inglés)",
               "description": "Apicultura, cría de animales y prácticas de vida sustentable",
-              "url": "https://download.kiwix.org/zim/videos/lrnselfreliance_en_all_2026-06.zim",
+              "url": "https://download.kiwix.org/zim/videos/lrnselfreliance_en_all_2026-09.zim",
               "size_mb": 3790
             },
             {
@@ -1086,35 +1086,35 @@
             },
             {
               "id": "devdocs_en_python",
-              "version": "2026-08",
+              "version": "2026-10",
               "title": "Documentación de Python (en inglés)",
               "description": "Referencia completa y tutoriales del lenguaje Python",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_python_2026-08.zim",
-              "size_mb": 4
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_python_2026-10.zim",
+              "size_mb": 5
             },
             {
               "id": "devdocs_en_javascript",
-              "version": "2026-07",
+              "version": "2026-10",
               "title": "Documentación de JavaScript (en inglés)",
               "description": "Referencia y guías de JavaScript de MDN",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_javascript_2026-07.zim",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_javascript_2026-10.zim",
               "size_mb": 3
             },
             {
               "id": "devdocs_en_html",
-              "version": "2026-07",
+              "version": "2026-10",
               "title": "Documentación de HTML (en inglés)",
               "description": "Referencia de elementos y atributos HTML de MDN",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_html_2026-07.zim",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_html_2026-10.zim",
               "size_mb": 2
             },
             {
               "id": "devdocs_en_css",
-              "version": "2026-07",
+              "version": "2026-10",
               "title": "Documentación de CSS (en inglés)",
               "description": "Referencia de propiedades y selectores CSS de MDN",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_css_2026-07.zim",
-              "size_mb": 5
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_css_2026-10.zim",
+              "size_mb": 3
             },
             {
               "id": "freecodecamp_en_all",
@@ -1142,18 +1142,18 @@
             },
             {
               "id": "arduino.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Arduino (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas de Stack Exchange sobre proyectos con microcontroladores Arduino",
-              "url": "https://download.kiwix.org/zim/stack_exchange/arduino.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 247
+              "url": "https://download.kiwix.org/zim/stack_exchange/arduino.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 248
             },
             {
               "id": "raspberrypi.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Raspberry Pi (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas de Stack Exchange sobre proyectos y problemas con Raspberry Pi",
-              "url": "https://download.kiwix.org/zim/stack_exchange/raspberrypi.stackexchange.com_en_all_2026-02.zim",
+              "url": "https://download.kiwix.org/zim/stack_exchange/raspberrypi.stackexchange.com_en_all_2026-10.zim",
               "size_mb": 285
             },
             {
@@ -1166,18 +1166,18 @@
             },
             {
               "id": "devdocs_en_react",
-              "version": "2026-02",
+              "version": "2026-05",
               "title": "Documentación de React (en inglés)",
               "description": "Referencia y tutoriales de la biblioteca React",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_react_2026-02.zim",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_react_2026-05.zim",
               "size_mb": 3
             },
             {
               "id": "devdocs_en_git",
-              "version": "2026-07",
+              "version": "2026-10",
               "title": "Documentación de Git (en inglés)",
               "description": "Referencia del control de versiones Git",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_git_2026-07.zim",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_git_2026-10.zim",
               "size_mb": 2
             }
           ]
@@ -1190,34 +1190,34 @@
           "resources": [
             {
               "id": "electronics.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Electrónica (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas de Stack Exchange sobre diseño de circuitos, componentes e ingeniería eléctrica",
-              "url": "https://download.kiwix.org/zim/stack_exchange/electronics.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 3800
+              "url": "https://download.kiwix.org/zim/stack_exchange/electronics.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 4064
             },
             {
               "id": "robotics.stackexchange.com_en_all",
-              "version": "2026-02",
+              "version": "2026-10",
               "title": "Robótica (preguntas y respuestas) (en inglés)",
               "description": "Preguntas y respuestas de Stack Exchange sobre robótica y automatización",
-              "url": "https://download.kiwix.org/zim/stack_exchange/robotics.stackexchange.com_en_all_2026-02.zim",
-              "size_mb": 233
+              "url": "https://download.kiwix.org/zim/stack_exchange/robotics.stackexchange.com_en_all_2026-10.zim",
+              "size_mb": 232
             },
             {
               "id": "devdocs_en_docker",
-              "version": "2026-07",
+              "version": "2026-10",
               "title": "Documentación de Docker (en inglés)",
               "description": "Referencia y guías de contenedores Docker",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_docker_2026-07.zim",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_docker_2026-10.zim",
               "size_mb": 2
             },
             {
               "id": "devdocs_en_bash",
-              "version": "2026-01",
+              "version": "2026-10",
               "title": "Documentación de Linux (en inglés)",
               "description": "Referencia de comandos de Linux y administración del sistema",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_bash_2026-01.zim",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_bash_2026-10.zim",
               "size_mb": 1
             }
           ]
