@@ -5,17 +5,26 @@ name: Publicar NOMAD en español
 # install/install_nomad_fedora.sh e install/install_nomad_arch.sh.
 # No toca la imagen original de Crosstalk ni el flujo build-primary-image.yml.
 #
+# Corre sola cuando cambia la versión en package.json de main (al unir el PR
+# que trae una versión nueva de NOMAD original) y también se puede correr a
+# mano. Además de la imagen, crea la versión «vX.Y.Z» en GitHub: NOMAD en
+# español la usa para avisar que hay una actualización y para actualizarse solo.
+#
 # Después de la primera publicación, el paquete queda privado: hay que hacerlo
 # público una vez desde GitHub (Your profile → Packages → project-nomad-es →
 # Package settings → Change visibility → Public) para que los instaladores
 # puedan bajarlo.
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'package.json'
   workflow_dispatch:
     inputs:
       version:
-        description: 'Versión (sin "v"), por ejemplo 1.35.1. Conviene usar la del NOMAD original en el que se basa.'
-        required: true
+        description: 'Versión (sin "v"), por ejemplo 1.35.1. Vacío = la de package.json.'
+        required: false
         type: string
       tag_latest:
         description: 'Marcar también como :latest (la que bajan los instaladores y el script de actualización)'
@@ -24,31 +33,45 @@ on:
         default: true
 
 permissions:
-  contents: read
+  contents: write
   packages: write
+
+concurrency:
+  group: publicar-nomad-es
+  cancel-in-progress: false
 
 jobs:
   build:
     name: Armar y publicar la imagen en español
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
       - name: Revisar la versión
+        id: version
         env:
-          VERSION: ${{ inputs.version }}
+          INPUT_VERSION: ${{ inputs.version }}
+          GH_TOKEN: ${{ github.token }}
         run: |
+          VERSION="${INPUT_VERSION:-$(jq -r .version package.json)}"
           if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "La versión tiene que tener la forma 1.2.3 (sin «v»)." >&2
+            echo "La versión tiene que tener la forma 1.2.3 (sin «v»): «$VERSION»." >&2
             exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          # Al correr sola, no se vuelve a publicar una versión que ya existe.
+          if [ "${{ github.event_name }}" = "push" ] && gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo "La versión v$VERSION ya está publicada; no hay nada que hacer."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Nombre de la imagen
         id: image
         run: echo "name=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
 
-      - name: Checkout code
-        uses: actions/checkout@v6
-
       - name: Log in to GitHub Container Registry
+        if: steps.version.outputs.skip != 'true'
         uses: docker/login-action@v4
         with:
           registry: ghcr.io
@@ -56,16 +79,35 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
+        if: steps.version.outputs.skip != 'true'
         uses: docker/build-push-action@v7
         with:
           push: true
           tags: |
-            ${{ steps.image.outputs.name }}:${{ inputs.version }}
-            ${{ steps.image.outputs.name }}:v${{ inputs.version }}
-            ${{ inputs.tag_latest && format('{0}:latest', steps.image.outputs.name) || '' }}
+            ${{ steps.image.outputs.name }}:${{ steps.version.outputs.version }}
+            ${{ steps.image.outputs.name }}:v${{ steps.version.outputs.version }}
+            ${{ (github.event_name == 'push' || inputs.tag_latest) && format('{0}:latest', steps.image.outputs.name) || '' }}
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.description=Project NOMAD en español (fork comunitario, no oficial)
           build-args: |
-            VERSION=${{ inputs.version }}
+            VERSION=${{ steps.version.outputs.version }}
             VCS_REF=${{ github.sha }}
+
+      - name: Crear la versión en GitHub
+        if: steps.version.outputs.skip != 'true' && (github.event_name == 'push' || inputs.tag_latest)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo "La versión v$VERSION ya existía en GitHub; se deja como está."
+            exit 0
+          fi
+          {
+            echo "NOMAD en español, basado en la versión $VERSION de [Project NOMAD](https://github.com/Crosstalk-Solutions/project-nomad/releases/tag/v$VERSION)."
+            echo
+            echo "Imagen: \`${{ steps.image.outputs.name }}:$VERSION\`. Las instalaciones en español se actualizan desde la app o con \`update_nomad.sh\`."
+          } > "$RUNNER_TEMP/notas.md"
+          gh release create "v$VERSION" --target "$GITHUB_SHA" --title "NOMAD en español $VERSION" \
+            --notes-file "$RUNNER_TEMP/notas.md" --latest

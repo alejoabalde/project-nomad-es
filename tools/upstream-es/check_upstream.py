@@ -12,8 +12,11 @@ fork. Si hay una más nueva, escribe el texto de un aviso (issue) con:
   - las instrucciones para que un agente haga la unión y la traducción
     y deje un PR para aprobar.
 
-Necesita un clon con la historia completa y el remoto «upstream» con sus
-etiquetas (git fetch upstream --tags).
+Necesita un clon con la historia completa y las etiquetas del remoto
+«upstream» guardadas aparte, en refs/upstream-tags/ (el fork tiene sus propias
+etiquetas vX.Y.Z, las de cada versión en español, y no deben pisarse):
+
+  git fetch --no-tags upstream '+refs/tags/*:refs/upstream-tags/*'
 
 Uso:
   python3 -I tools/upstream-es/check_upstream.py --salida aviso.md
@@ -41,23 +44,29 @@ def git(*args, check=True):
     return r.stdout
 
 
+def ref(tag):
+    """Etiqueta de NOMAD original, guardada aparte de las del fork."""
+    return f"refs/upstream-tags/{tag}"
+
+
 def stable_tags():
-    tags = [t for t in git("tag", "--list", "v*").split() if TAG_RE.match(t)]
+    names = git("for-each-ref", "--format=%(refname:strip=2)", "refs/upstream-tags/").split()
+    tags = [t for t in names if TAG_RE.match(t)]
     return sorted(tags, key=lambda t: tuple(int(x) for x in TAG_RE.match(t).groups()))
 
 
-def is_ancestor(tag, ref="HEAD"):
-    return subprocess.run(["git", "merge-base", "--is-ancestor", tag, ref]).returncode == 0
+def is_ancestor(tag, head="HEAD"):
+    return subprocess.run(["git", "merge-base", "--is-ancestor", ref(tag), head]).returncode == 0
 
 
 def changed(base, new):
     """[(estado, archivo, lineas_cambiadas)] entre dos etiquetas."""
     stats = {}
-    for line in git("diff", "--numstat", base, new).splitlines():
+    for line in git("diff", "--numstat", ref(base), ref(new)).splitlines():
         add, rem, path = line.split("\t", 2)
         stats[path] = (0 if add == "-" else int(add)) + (0 if rem == "-" else int(rem))
     out = []
-    for line in git("diff", "--name-status", base, new).splitlines():
+    for line in git("diff", "--name-status", ref(base), ref(new)).splitlines():
         parts = line.split("\t")
         status, path = parts[0][0], parts[-1]
         out.append((status, path, stats.get(path, stats.get(parts[1], 0))))
@@ -125,7 +134,9 @@ def build_body(base, new):
         f"({UPSTREAM_URL}) y traduce lo nuevo al español. Este aviso tiene la lista de archivos.",
         "",
         f"1. Crea una rama desde main y une la etiqueta {new} del remoto upstream "
-        f"(git fetch upstream --tags && git merge {new}).",
+        f"(git fetch --no-tags upstream refs/tags/{new}:refs/upstream-tags/{new} && "
+        f"git merge refs/upstream-tags/{new}). No traigas las etiquetas de upstream con --tags: "
+        "el fork tiene sus propias etiquetas vX.Y.Z.",
         "2. Si hay conflictos, conserva lo del fork (textos con t(), locales, archivos de collections/es, "
         "admin/docs/es) y suma lo nuevo de NOMAD original. No borres nada que NOMAD original tenga: "
         "el fork suma, no reemplaza.",
@@ -134,8 +145,11 @@ def build_body(base, new):
         "4. Documentación: actualiza la página equivalente en admin/docs/es/, incluida release-notes.md.",
         "5. Catálogo: anota en el PR qué contenido nuevo sumó NOMAD original a collections/*.json, "
         "sin agregarlo a collections/es/ hasta que yo lo decida.",
-        "6. Español neutro, tratando de tú. Sin jerga técnica en los textos que ve la persona.",
-        "7. Corre las pruebas de admin (npm test) y la compilación, y abre un PR contra main que cierre "
+        "6. Instaladores: si cambió install/install_nomad.sh, aplica el mismo cambio en "
+        "install/install_nomad_debian.sh, install_nomad_fedora.sh e install_nomad_arch.sh, "
+        "manteniendo lo propio de cada uno (la imagen en español y los comandos de cada sistema).",
+        "7. Español neutro, tratando de tú. Sin jerga técnica en los textos que ve la persona.",
+        "8. Corre las pruebas de admin (npm test) y la compilación, y abre un PR contra main que cierre "
         "este aviso. Explica en el PR qué se tradujo y qué quedó pendiente.",
         "```",
     ]
@@ -151,7 +165,7 @@ def main():
 
     tags = stable_tags()
     if not tags:
-        sys.exit("No hay etiquetas vX.Y.Z: falta git fetch upstream --tags")
+        sys.exit("No hay etiquetas vX.Y.Z de upstream: falta git fetch --no-tags upstream '+refs/tags/*:refs/upstream-tags/*'")
     base = args.desde or next((t for t in reversed(tags) if is_ancestor(t)), None)
     new = args.hasta or tags[-1]
     if base is None:
