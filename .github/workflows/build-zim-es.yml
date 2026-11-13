@@ -1,0 +1,110 @@
+name: Armar paquetes en español
+
+# Fork-only: arma los paquetes .zim en español que no publica Kiwix (ver
+# tools/zim-es/packages.json) y los sube a la versión "paquetes-es" del
+# repositorio, desde donde NOMAD los descarga.
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'ID del paquete (vacío = todos)'
+        required: false
+        default: ''
+      force:
+        description: 'Volver a armar aunque ya esté publicado este mes'
+        type: boolean
+        default: false
+  push:
+    paths:
+      - 'tools/zim-es/**'
+      - '.github/workflows/build-zim-es.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-zim-es
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      tag: ${{ steps.matrix.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: matrix
+        env:
+          ONLY: ${{ github.event.inputs.package }}
+          FORCE: ${{ github.event.inputs.force }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG=$(jq -r .release_tag tools/zim-es/packages.json)
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          # Lo ya publicado este mes no se vuelve a armar, salvo que se pida.
+          PERIOD=$(date -u +%Y-%m)
+          if [ "$FORCE" = "true" ]; then
+            echo '[]' > published.json
+          else
+            gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '[.assets[].name]' > published.json 2>/dev/null || echo '[]' > published.json
+          fi
+          MATRIX=$(jq -c --arg p "$ONLY" --arg period "$PERIOD" --slurpfile pub published.json \
+            '[.packages[] | select(.enabled != false) | select($p == "" or .id == $p)
+              | select((.id + "_" + $period + ".zim") as $f | ($pub[0] | index($f)) | not)]' \
+            tools/zim-es/packages.json)
+          echo "Paquetes a armar: $(echo "$MATRIX" | jq -r '[.[].id] | join(", ")')"
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: plan
+    if: needs.plan.outputs.matrix != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        package: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    name: ${{ matrix.package.id }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Preparar herramientas para PDF
+        if: matrix.package.type == 'pdf' || matrix.package.type == 'video'
+        run: |
+          if [ "${{ matrix.package.type }}" = "pdf" ]; then
+            sudo apt-get update -q && sudo apt-get install -y -q poppler-utils
+          fi
+          python -m pip install 'libzim==3.7.0'
+
+      - name: Armar el paquete
+        id: build
+        env:
+          PKG: ${{ toJSON(matrix.package) }}
+          TYPE: ${{ matrix.package.type }}
+        run: |
+          if [ "$TYPE" = "pdf" ]; then
+            python3 tools/zim-es/build_pdf.py
+          elif [ "$TYPE" = "video" ]; then
+            python3 tools/zim-es/build_video.py
+          else
+            python3 tools/zim-es/build_zimit.py
+          fi
+
+      - name: Publicar en la versión del repositorio
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.plan.outputs.tag }}
+        run: |
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" \
+            --title "Paquetes en español" \
+            --notes "Paquetes .zim en español armados por el fork (ver tools/zim-es/packages.json). Cada uno conserva la licencia de su fuente." \
+            --latest=false
+          gh release upload "$TAG" "${{ steps.build.outputs.zim }}" --clobber
+          echo "Publicado: ${{ steps.build.outputs.zim_name }} (${{ steps.build.outputs.size_mb }} MB)"

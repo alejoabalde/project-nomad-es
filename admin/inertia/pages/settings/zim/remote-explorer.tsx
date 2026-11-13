@@ -75,9 +75,6 @@ export default function ZimRemoteExplorer() {
   const [tierModalOpen, setTierModalOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState<CategoryWithStatus | null>(null)
 
-  // Wikipedia selection state
-  const [selectedWikipedia, setSelectedWikipedia] = useState<string | null>(null)
-  const [isSubmittingWikipedia, setIsSubmittingWikipedia] = useState(false)
 
   // Custom library state - persist selection to localStorage
   const [selectedSource, setSelectedSource] = useState<'default' | number>(() => {
@@ -113,12 +110,11 @@ export default function ZimRemoteExplorer() {
     refetchOnWindowFocus: false,
   })
 
-  // Fetch Wikipedia options and state
-  const { data: wikipediaState, isLoading: isLoadingWikipedia } = useQuery({
-    queryKey: [WIKIPEDIA_STATE_KEY],
-    queryFn: () => api.getWikipediaState(),
-    refetchOnWindowFocus: false,
-  })
+  // Fork-only: one Wikipedia selector per language, so a Spanish and an English
+  // Wikipedia can be installed side by side. The interface language goes first.
+  const wikipediaLanguages: Array<'en' | 'es'> = i18n.resolvedLanguage?.startsWith('en')
+    ? ['en', 'es']
+    : ['es', 'en']
 
   const { data: localFiles } = useQuery<ZimFileWithMetadata[]>({
     queryKey: [ZIM_FILES_KEY],
@@ -410,46 +406,6 @@ export default function ZimRemoteExplorer() {
     setActiveCategory(null)
   }
 
-  // Wikipedia selection handlers
-  const handleWikipediaSelect = (optionId: string) => {
-    if (!isOnline) return
-    setSelectedWikipedia(optionId)
-  }
-
-  const handleWikipediaSubmit = async () => {
-    if (!selectedWikipedia) return
-
-    setIsSubmittingWikipedia(true)
-    try {
-      const result = await api.selectWikipedia(selectedWikipedia)
-      if (result?.success) {
-        addNotification({
-          message:
-            selectedWikipedia === 'none'
-              ? t('explorer.wikiRemoved')
-              : t('explorer.wikiStarted'),
-          type: 'success',
-        })
-        invalidateDownloads()
-        queryClient.invalidateQueries({ queryKey: [WIKIPEDIA_STATE_KEY] })
-        setSelectedWikipedia(null)
-      } else {
-        addNotification({
-          message: result?.message || t('explorer.wikiFailed'),
-          type: 'error',
-        })
-      }
-    } catch (error) {
-      console.error('Error selecting Wikipedia:', error)
-      addNotification({
-        message: t('explorer.wikiError'),
-        type: 'error',
-      })
-    } finally {
-      setIsSubmittingWikipedia(false)
-    }
-  }
-
   const refreshManifests = useMutation({
     mutationFn: () => api.refreshManifests(),
     onSuccess: () => {
@@ -533,27 +489,15 @@ export default function ZimRemoteExplorer() {
             <Alert title={t('explorer.englishContentNote')} type="info" variant="bordered" className="mb-6" />
           )}
 
-          {/* Wikipedia Selector */}
-          {isLoadingWikipedia ? (
-            <div className="mt-8 bg-surface-primary rounded-lg border border-border-subtle p-6">
-              <div className="flex justify-center py-6">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-desert-green"></div>
-              </div>
-            </div>
-          ) : wikipediaState && wikipediaState.options.length > 0 ? (
-            <div className="mt-8 bg-surface-primary rounded-lg border border-border-subtle p-6">
-              <WikipediaSelector
-                options={wikipediaState.options}
-                currentSelection={wikipediaState.currentSelection}
-                selectedOptionId={selectedWikipedia}
-                onSelect={handleWikipediaSelect}
-                disabled={!isOnline}
-                showSubmitButton
-                onSubmit={handleWikipediaSubmit}
-                isSubmitting={isSubmittingWikipedia}
-              />
-            </div>
-          ) : null}
+          {/* Wikipedia Selectors (one per language) */}
+          {wikipediaLanguages.map((lang) => (
+            <WikipediaLanguagePanel
+              key={lang}
+              lang={lang}
+              isOnline={isOnline}
+              onStarted={invalidateDownloads}
+            />
+          ))}
 
           {/* Creator Packs (hidden entirely when this build isn't configured) */}
           <CreatorPacksSection />
@@ -1008,5 +952,97 @@ export default function ZimRemoteExplorer() {
         </main>
       </div>
     </SettingsLayout>
+  )
+}
+
+/**
+ * Fork-only: the Wikipedia selector for one language. Each language keeps its
+ * own selection, so installing one never removes the other language's Wikipedia.
+ */
+function WikipediaLanguagePanel({
+  lang,
+  isOnline,
+  onStarted,
+}: {
+  lang: 'en' | 'es'
+  isOnline: boolean
+  onStarted: () => void
+}) {
+  const queryClient = useQueryClient()
+  const { t } = useTranslation('settings')
+  const { t: tComponents } = useTranslation('components')
+  const { addNotification } = useNotifications()
+  const [selectedWikipedia, setSelectedWikipedia] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const { data: wikipediaState, isLoading } = useQuery({
+    queryKey: [WIKIPEDIA_STATE_KEY, lang],
+    queryFn: () => api.getWikipediaState(lang),
+    refetchOnWindowFocus: false,
+  })
+
+  const handleSelect = (optionId: string) => {
+    if (!isOnline) return
+    setSelectedWikipedia(optionId)
+  }
+
+  const handleSubmit = async () => {
+    if (!selectedWikipedia) return
+
+    setIsSubmitting(true)
+    try {
+      const result = await api.selectWikipedia(selectedWikipedia, lang)
+      if (result?.success) {
+        addNotification({
+          message:
+            selectedWikipedia === 'none' ? t('explorer.wikiRemoved') : t('explorer.wikiStarted'),
+          type: 'success',
+        })
+        onStarted()
+        queryClient.invalidateQueries({ queryKey: [WIKIPEDIA_STATE_KEY] })
+        setSelectedWikipedia(null)
+      } else {
+        addNotification({
+          message: result?.message || t('explorer.wikiFailed'),
+          type: 'error',
+        })
+      }
+    } catch (error) {
+      console.error('Error selecting Wikipedia:', error)
+      addNotification({
+        message: t('explorer.wikiError'),
+        type: 'error',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="mt-8 bg-surface-primary rounded-lg border border-border-subtle p-6">
+        <div className="flex justify-center py-6">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-desert-green"></div>
+        </div>
+      </div>
+    )
+  }
+
+  if (!wikipediaState || wikipediaState.options.length === 0) return null
+
+  return (
+    <div className="mt-8 bg-surface-primary rounded-lg border border-border-subtle p-6">
+      <WikipediaSelector
+        title={tComponents(lang === 'es' ? 'wikipedia.titleEs' : 'wikipedia.titleEn')}
+        options={wikipediaState.options}
+        currentSelection={wikipediaState.currentSelection}
+        selectedOptionId={selectedWikipedia}
+        onSelect={handleSelect}
+        disabled={!isOnline}
+        showSubmitButton
+        onSubmit={handleSubmit}
+        isSubmitting={isSubmitting}
+      />
+    </div>
   )
 }

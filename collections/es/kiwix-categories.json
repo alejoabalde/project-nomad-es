@@ -1,17 +1,17 @@
 {
-  "spec_version": "2026-11-10",
+  "spec_version": "2026-11-11",
   "categories": [
     {
       "name": "Medicina",
       "slug": "medicine",
       "icon": "IconStethoscope",
-      "description": "Referencias médicas y enciclopedias en español con información de salud y preparación para emergencias.",
+      "description": "Referencias médicas y enciclopedias con información de salud y preparación para emergencias, en español y en inglés.",
       "language": "es",
       "tiers": [
         {
           "name": "Esencial",
           "slug": "medicine-essential",
-          "description": "Artículos médicos de Wikipedia en español, livianos y sin imágenes. Empieza por aquí.",
+          "description": "Artículos médicos de Wikipedia en español, livianos y sin imágenes, más guías de medicina de emergencia en inglés. Empieza por aquí.",
           "recommended": true,
           "resources": [
             {
@@ -21,13 +21,85 @@
               "description": "Selección de artículos médicos de Wikipedia en español, sin imágenes",
               "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_medicine_nopic_2026-10.zim",
               "size_mb": 171
+            },
+            {
+              "id": "hesperian_es_donde-no-hay-doctor",
+              "version": "2026-11",
+              "title": "Donde no hay doctor (Hesperian)",
+              "description": "La guía de salud de Hesperian para lugares sin médico: primeros auxilios, enfermedades comunes, medicinas y prevención",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_donde-no-hay-doctor_2026-11.zim",
+              "size_mb": 18
+            },
+            {
+              "id": "who_es_atencion-basica-emergencia",
+              "version": "2026-11",
+              "title": "Atención básica de emergencia (OMS y CICR)",
+              "description": "Manual de la OMS y la Cruz Roja para atender heridas y enfermedades agudas con pocos recursos (enfoque ABCDE)",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/who_es_atencion-basica-emergencia_2026-11.zim",
+              "size_mb": 3
+            },
+            {
+              "id": "epes_es_primeros-auxilios",
+              "version": "2026-11",
+              "title": "Guía de primeros auxilios (EPES 061)",
+              "description": "Primeros auxilios para cualquier persona, de los servicios de emergencias de Andalucía",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/epes_es_primeros-auxilios_2026-11.zim",
+              "size_mb": 3
+            },
+            {
+              "id": "who_es_atencion-primaria-ninos",
+              "version": "2026-11",
+              "title": "Atención primaria de niños y adolescentes (OMS)",
+              "description": "Libro de bolsillo de la OMS: cómo tratar y cuándo derivar las enfermedades comunes de niños, niñas y adolescentes",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/who_es_atencion-primaria-ninos_2026-11.zim",
+              "size_mb": 6
+            },
+            {
+              "id": "ops_es_dengue",
+              "version": "2026-11",
+              "title": "Dengue, chikunguña y zika (OPS)",
+              "description": "Directrices de la OPS (2022) para reconocer y tratar el dengue, el chikunguña y el zika",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/ops_es_dengue_2026-11.zim",
+              "size_mb": 62
+            },
+            {
+              "id": "zimgit-medicine_en",
+              "version": "2024-08",
+              "title": "Biblioteca médica (en inglés)",
+              "description": "Libros y guías de medicina de emergencia y en el terreno",
+              "url": "https://download.kiwix.org/zim/other/zimgit-medicine_en_2024-08.zim",
+              "size_mb": 67
+            },
+            {
+              "id": "nhs.uk_en_medicines",
+              "version": "2025-12",
+              "title": "Medicamentos de la A a la Z del NHS (en inglés)",
+              "description": "Cómo actúan los medicamentos, dosis, efectos secundarios e interacciones",
+              "url": "https://download.kiwix.org/zim/zimit/nhs.uk_en_medicines_2025-12.zim",
+              "size_mb": 16
+            },
+            {
+              "id": "irp.fas.org_en_military-medicine",
+              "version": "2026-10",
+              "title": "Medicina militar (en inglés)",
+              "description": "Manuales de medicina táctica y en el terreno",
+              "url": "https://download.kiwix.org/zim/zimit/irp.fas.org_en_military-medicine_2026-10.zim",
+              "size_mb": 62
+            },
+            {
+              "id": "wwwnc.cdc.gov_en_all",
+              "version": "2024-11",
+              "title": "Información de salud de los CDC (en inglés)",
+              "description": "Prevención de enfermedades, salud en viajes e información sobre brotes",
+              "url": "https://download.kiwix.org/zim/zimit/wwwnc.cdc.gov_en_all_2024-11.zim",
+              "size_mb": 170
             }
           ]
         },
         {
           "name": "Estándar",
           "slug": "medicine-standard",
-          "description": "Enciclopedia de salud de MedlinePlus en español y la Guía de medicamentos de la FDA. Incluye todo lo del nivel Esencial.",
+          "description": "Enciclopedia de salud de MedlinePlus en español y en inglés, y la Guía de medicamentos de la FDA. Incluye todo lo del nivel Esencial.",
           "includesTier": "medicine-essential",
           "resources": [
             {
@@ -39,6 +111,38 @@
               "size_mb": 1767
             },
             {
+              "id": "cdc.gov_es_all",
+              "version": "2026-11",
+              "title": "CDC en español",
+              "description": "Información de salud pública de los CDC en español: enfermedades, prevención, vacunas, emergencias y primeros auxilios",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/cdc.gov_es_all_2026-11.zim",
+              "size_mb": 1113
+            },
+            {
+              "id": "hesperian_es_parteras",
+              "version": "2026-11",
+              "title": "Un libro para parteras (Hesperian)",
+              "description": "Hesperian: embarazo, parto, posparto y lactancia para parteras y promotoras de salud",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_parteras_2026-11.zim",
+              "size_mb": 17
+            },
+            {
+              "id": "hesperian_es_salud-mujeres",
+              "version": "2026-11",
+              "title": "Donde no hay doctor para mujeres (Hesperian)",
+              "description": "Hesperian: guía de salud para mujeres, desde la salud sexual hasta las enfermedades crónicas",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_salud-mujeres_2026-11.zim",
+              "size_mb": 18
+            },
+            {
+              "id": "hesperian_es_nino-discapacidad",
+              "version": "2026-11",
+              "title": "El niño campesino deshabilitado (Hesperian)",
+              "description": "Hesperian: rehabilitación y cuidado de niñas y niños con discapacidad en la comunidad",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_nino-discapacidad_2026-11.zim",
+              "size_mb": 61
+            },
+            {
               "id": "openfda-drug-labels",
               "type": "dataset",
               "version": "2025-01",
@@ -46,13 +150,21 @@
               "description": "Prospectos de la FDA sin conexión: busca por nombre del medicamento",
               "url": "https://api.fda.gov/download.json",
               "size_mb": 1700
+            },
+            {
+              "id": "medlineplus.gov_en_all",
+              "version": "2025-01",
+              "title": "MedlinePlus (en inglés)",
+              "description": "Enciclopedia de salud de los NIH: enfermedades, afecciones, medicamentos y suplementos",
+              "url": "https://download.kiwix.org/zim/zimit/medlineplus.gov_en_all_2025-01.zim",
+              "size_mb": 1800
             }
           ]
         },
         {
           "name": "Completo",
           "slug": "medicine-comprehensive",
-          "description": "Wikipedia Médica con todas sus imágenes e ilustraciones. Incluye todo lo del nivel Estándar.",
+          "description": "Wikipedia Médica con todas sus imágenes, más libros de medicina y patología en inglés. Incluye todo lo del nivel Estándar.",
           "includesTier": "medicine-standard",
           "resources": [
             {
@@ -62,6 +174,46 @@
               "description": "Artículos médicos de Wikipedia en español con imágenes e ilustraciones",
               "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_medicine_maxi_2026-10.zim",
               "size_mb": 469
+            },
+            {
+              "id": "wikipedia_en_medicine_maxi",
+              "version": "2026-01",
+              "title": "Wikipedia: Medicina (en inglés)",
+              "description": "Artículos médicos seleccionados de Wikipedia, con imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_en_medicine_maxi_2026-01.zim",
+              "size_mb": 2000
+            },
+            {
+              "id": "libretexts.org_en_med",
+              "version": "2025-01",
+              "title": "LibreTexts: Medicina (en inglés)",
+              "description": "Libros de medicina y material educativo de código abierto",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_med_2025-01.zim",
+              "size_mb": 1100
+            },
+            {
+              "id": "librepathology_en_all_maxi",
+              "version": "2026-09",
+              "title": "LibrePathology (en inglés)",
+              "description": "Referencia de patología para identificar enfermedades",
+              "url": "https://download.kiwix.org/zim/other/librepathology_en_all_maxi_2026-09.zim",
+              "size_mb": 95
+            },
+            {
+              "id": "ted_mul_public-health",
+              "version": "2026-09",
+              "title": "Charlas TED: Salud pública",
+              "description": "Charlas TED sobre salud pública. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_public-health_2026-09.zim",
+              "size_mb": 2252
+            },
+            {
+              "id": "ted_mul_health",
+              "version": "2026-09",
+              "title": "Charlas TED: Salud",
+              "description": "Charlas TED sobre salud y medicina. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_health_2026-09.zim",
+              "size_mb": 7481
             }
           ]
         }
@@ -87,6 +239,14 @@
               "description": "Guía oficial de EE. UU. para prepararse ante desastres: clima, incendios, planes de evacuación y kits de emergencia",
               "url": "https://download.kiwix.org/zim/zimit/ready.gov_es_all_2026-10.zim",
               "size_mb": 2066
+            },
+            {
+              "id": "cawst_es_agua",
+              "version": "2026-11",
+              "title": "Agua segura en casa (CAWST)",
+              "description": "Manuales de CAWST sobre tratamiento del agua a nivel domiciliario y análisis de la calidad del agua de consumo",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/cawst_es_agua_2026-11.zim",
+              "size_mb": 17
             },
             {
               "id": "zimgit-water_en",
@@ -127,6 +287,14 @@
               "description": "Cómo elegir el equipo para la mochila de evacuación",
               "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_bugoutroll_2026-07.zim",
               "size_mb": 879
+            },
+            {
+              "id": "scoutwiki.org_es_all_maxi",
+              "version": "2026-10",
+              "title": "WikiRoca",
+              "description": "Wiki scout en español: nudos, campamento, orientación y vida al aire libre",
+              "url": "https://download.kiwix.org/zim/other/scoutwiki.org_es_all_maxi_2026-10.zim",
+              "size_mb": 19
             }
           ]
         },
@@ -167,6 +335,30 @@
               "description": "Serie de videos sobre preparación para emergencias en la ciudad",
               "url": "https://download.kiwix.org/zim/videos/urban-prepper_en_all_2026-08.zim",
               "size_mb": 2245
+            },
+            {
+              "id": "www.ready.gov_en",
+              "version": "2024-12",
+              "title": "Ready.gov (en inglés)",
+              "description": "Guía oficial de EE. UU. para prepararse ante desastres: clima, incendios, planes de evacuación y kits de emergencia",
+              "url": "https://download.kiwix.org/zim/zimit/www.ready.gov_en_2024-12.zim",
+              "size_mb": 2429
+            },
+            {
+              "id": "ted_mul_water",
+              "version": "2026-09",
+              "title": "Charlas TED: Agua",
+              "description": "Charlas TED sobre agua potable, saneamiento y recursos hídricos. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_water_2026-09.zim",
+              "size_mb": 831
+            },
+            {
+              "id": "ted_mul_natural-disaster",
+              "version": "2026-09",
+              "title": "Charlas TED: Desastres naturales",
+              "description": "Charlas TED sobre terremotos, huracanes, inundaciones y otros desastres. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_natural-disaster_2026-09.zim",
+              "size_mb": 682
             }
           ]
         },
@@ -183,6 +375,14 @@
               "description": "Almacenamiento de alimentos a largo plazo y comidas de supervivencia",
               "url": "https://download.kiwix.org/zim/videos/canadian-prepper_en_preppingfood_2026-07.zim",
               "size_mb": 2160
+            },
+            {
+              "id": "hesperian_es_salud-ambiental",
+              "version": "2026-11",
+              "title": "Guía comunitaria para la salud ambiental (Hesperian)",
+              "description": "Hesperian: agua potable, saneamiento, vivienda, productos tóxicos y salud ambiental en la comunidad",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/hesperian_es_salud-ambiental_2026-11.zim",
+              "size_mb": 19
             },
             {
               "id": "zimgit-post-disaster_en",
@@ -215,6 +415,14 @@
               "description": "Guías prácticas de producción de alimentos, agua y saneamiento, construcción y fabricación a pequeña escala sin cadenas de suministro industriales",
               "url": "https://download.kiwix.org/zim/zimit/cd3wdproject.org_en_all_2025-11.zim",
               "size_mb": 581
+            },
+            {
+              "id": "solar.lowtechmagazine.com_mul_all",
+              "version": "2025-01",
+              "title": "Low-tech Magazine",
+              "description": "Soluciones técnicas sencillas: energía, calefacción, agua y reparaciones. Incluye la versión en español del sitio",
+              "url": "https://download.kiwix.org/zim/zimit/solar.lowtechmagazine.com_mul_all_2025-01.zim",
+              "size_mb": 668
             }
           ]
         }
@@ -224,7 +432,7 @@
       "name": "Educación y referencia",
       "slug": "education",
       "icon": "IconSchool",
-      "description": "Enciclopedias, libros, diccionarios y videos educativos en español para aprender por tu cuenta.",
+      "description": "Enciclopedias, libros, diccionarios y videos educativos en español y en inglés para aprender por tu cuenta.",
       "language": "es",
       "tiers": [
         {
@@ -256,6 +464,14 @@
               "description": "Diccionario libre en español: definiciones, etimologías y traducciones",
               "url": "https://download.kiwix.org/zim/wiktionary/wiktionary_es_all_nopic_2026-09.zim",
               "size_mb": 656
+            },
+            {
+              "id": "wikibooks_en_all_nopic",
+              "version": "2026-01",
+              "title": "Wikibooks (en inglés)",
+              "description": "Libros de texto libres de matemáticas, ciencias, computación y más",
+              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_en_all_nopic_2026-01.zim",
+              "size_mb": 3100
             }
           ]
         },
@@ -304,13 +520,181 @@
               "description": "Biblioteca de textos libres en español: literatura, historia y documentos",
               "url": "https://download.kiwix.org/zim/wikisource/wikisource_es_all_maxi_2026-10.zim",
               "size_mb": 512
+            },
+            {
+              "id": "ted_mul_ted-ed",
+              "version": "2026-09",
+              "title": "TED-Ed",
+              "description": "Lecciones en video sobre ciencia, historia, literatura y más. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-ed_2026-09.zim",
+              "size_mb": 6381
+            },
+            {
+              "id": "wikiversity_en_all_maxi",
+              "version": "2026-02",
+              "title": "Wikiversity (en inglés)",
+              "description": "Tutoriales, cursos y material de estudio para todos los niveles",
+              "url": "https://download.kiwix.org/zim/wikiversity/wikiversity_en_all_maxi_2026-02.zim",
+              "size_mb": 2370
+            },
+            {
+              "id": "espanol.libretexts.org_es_matematicas",
+              "version": "2026-11",
+              "title": "LibreTexts: Matemáticas",
+              "description": "Libros de texto abiertos de LibreTexts en español: álgebra, cálculo, estadística y más",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_matematicas_2026-11.zim",
+              "size_mb": 143
+            },
+            {
+              "id": "libretexts.org_en_math",
+              "version": "2026-01",
+              "title": "LibreTexts: Matemáticas (en inglés)",
+              "description": "Libros de matemáticas de código abierto, desde álgebra hasta cálculo",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_math_2026-01.zim",
+              "size_mb": 792
+            },
+            {
+              "id": "espanol.libretexts.org_es_fisica",
+              "version": "2026-11",
+              "title": "LibreTexts: Física",
+              "description": "Libros de texto abiertos de LibreTexts en español: mecánica, electricidad y magnetismo, ondas, termodinámica y más",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_fisica_2026-11.zim",
+              "size_mb": 190
+            },
+            {
+              "id": "libretexts.org_en_phys",
+              "version": "2026-01",
+              "title": "LibreTexts: Física (en inglés)",
+              "description": "Cursos y libros de física",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_phys_2026-01.zim",
+              "size_mb": 534
+            },
+            {
+              "id": "espanol.libretexts.org_es_quimica",
+              "version": "2026-11",
+              "title": "LibreTexts: Química",
+              "description": "Libros de texto abiertos de LibreTexts en español: química general, orgánica, analítica y más",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_quimica_2026-11.zim",
+              "size_mb": 619
+            },
+            {
+              "id": "libretexts.org_en_chem",
+              "version": "2025-01",
+              "title": "LibreTexts: Química (en inglés)",
+              "description": "Cursos y libros de química",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_chem_2025-01.zim",
+              "size_mb": 2180
+            },
+            {
+              "id": "espanol.libretexts.org_es_biologia-general",
+              "version": "2026-11",
+              "title": "LibreTexts: Biología general",
+              "description": "Libros de texto abiertos de LibreTexts en español: biología introductoria y general",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-general_2026-11.zim",
+              "size_mb": 895
+            },
+            {
+              "id": "espanol.libretexts.org_es_biologia-celular",
+              "version": "2026-11",
+              "title": "LibreTexts: Biología celular",
+              "description": "Libros de texto abiertos de LibreTexts en español: biología celular y molecular, bioquímica",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-celular_2026-11.zim",
+              "size_mb": 216
+            },
+            {
+              "id": "espanol.libretexts.org_es_biologia-humana",
+              "version": "2026-11",
+              "title": "LibreTexts: Biología humana",
+              "description": "Libros de texto abiertos de LibreTexts en español: biología humana",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-humana_2026-11.zim",
+              "size_mb": 1713
+            },
+            {
+              "id": "espanol.libretexts.org_es_biologia-ecologia",
+              "version": "2026-11",
+              "title": "LibreTexts: Ecología y botánica",
+              "description": "Libros de texto abiertos de LibreTexts en español: ecología, botánica y biotecnología",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-ecologia_2026-11.zim",
+              "size_mb": 1998
+            },
+            {
+              "id": "espanol.libretexts.org_es_biologia-microbiologia",
+              "version": "2026-11",
+              "title": "LibreTexts: Microbiología y genética",
+              "description": "Libros de texto abiertos de LibreTexts en español: microbiología y genética",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_biologia-microbiologia_2026-11.zim",
+              "size_mb": 556
+            },
+            {
+              "id": "libretexts.org_en_bio",
+              "version": "2025-01",
+              "title": "LibreTexts: Biología (en inglés)",
+              "description": "Cursos y libros de biología",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_bio_2025-01.zim",
+              "size_mb": 2240
+            },
+            {
+              "id": "wikipedia_es_geography_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Geografía",
+              "description": "Artículos de geografía de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_geography_nopic_2026-10.zim",
+              "size_mb": 60
+            },
+            {
+              "id": "wikipedia_es_history_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Historia",
+              "description": "Artículos de historia de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_history_nopic_2026-10.zim",
+              "size_mb": 187
+            },
+            {
+              "id": "wikipedia_es_mathematics_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Matemáticas",
+              "description": "Artículos de matemáticas de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_mathematics_nopic_2026-10.zim",
+              "size_mb": 100
+            },
+            {
+              "id": "wikipedia_es_physics_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Física",
+              "description": "Artículos de física de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_physics_nopic_2026-10.zim",
+              "size_mb": 88
+            },
+            {
+              "id": "wikipedia_es_chemistry_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Química",
+              "description": "Artículos de química de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_chemistry_nopic_2026-10.zim",
+              "size_mb": 37
+            },
+            {
+              "id": "wikipedia_es_molcell_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Biología molecular y celular",
+              "description": "Artículos de biología molecular y celular de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_molcell_nopic_2026-10.zim",
+              "size_mb": 52
+            },
+            {
+              "id": "wikipedia_es_climate-change_nopic",
+              "version": "2026-10",
+              "title": "Wikipedia: Cambio climático",
+              "description": "Artículos sobre cambio climático de Wikipedia en español, sin imágenes",
+              "url": "https://download.kiwix.org/zim/wikipedia/wikipedia_es_climate-change_nopic_2026-10.zim",
+              "size_mb": 26
             }
           ]
         },
         {
           "name": "Completo",
           "slug": "education-comprehensive",
-          "description": "Wikilibros con todas sus imágenes y diagramas. Incluye todo lo del nivel Estándar.",
+          "description": "Wikilibros con todas sus imágenes, conferencias TED y libros de LibreTexts en inglés. Incluye todo lo del nivel Estándar.",
           "includesTier": "education-standard",
           "resources": [
             {
@@ -320,6 +704,86 @@
               "description": "Libros de texto abiertos con todas sus ilustraciones y diagramas",
               "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_es_all_maxi_2026-10.zim",
               "size_mb": 281
+            },
+            {
+              "id": "wikibooks_en_all_maxi",
+              "version": "2026-01",
+              "title": "Wikibooks (con imágenes) (en inglés)",
+              "description": "Libros de texto libres con todas sus ilustraciones y diagramas",
+              "url": "https://download.kiwix.org/zim/wikibooks/wikibooks_en_all_maxi_2026-01.zim",
+              "size_mb": 5400
+            },
+            {
+              "id": "ted_mul_ted-conference",
+              "version": "2026-09",
+              "title": "Conferencias TED",
+              "description": "Charlas principales de las conferencias TED",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_ted-conference_2026-09.zim",
+              "size_mb": 18136
+            },
+            {
+              "id": "gutenberg_es_all",
+              "version": "2026-01",
+              "title": "Biblioteca Proyecto Gutenberg en español",
+              "description": "Libros de dominio público en español del Proyecto Gutenberg",
+              "url": "https://download.kiwix.org/zim/gutenberg/gutenberg_es_all_2026-01.zim",
+              "size_mb": 1773
+            },
+            {
+              "id": "libretexts.org_en_human",
+              "version": "2025-01",
+              "title": "LibreTexts: Humanidades (en inglés)",
+              "description": "Literatura, filosofía, historia y ciencias sociales",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_human_2025-01.zim",
+              "size_mb": 3730
+            },
+            {
+              "id": "libretexts.org_en_geo",
+              "version": "2026-01",
+              "title": "LibreTexts: Ciencias de la Tierra (en inglés)",
+              "description": "Ciencias de la Tierra, geología y estudios ambientales",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_geo_2026-01.zim",
+              "size_mb": 1127
+            },
+            {
+              "id": "espanol.libretexts.org_es_ingenieria",
+              "version": "2026-11",
+              "title": "LibreTexts: Ingeniería",
+              "description": "Libros de texto abiertos de LibreTexts en español: electricidad y electrónica, circuitos, Arduino, mecánica, ambiental e industrial",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_ingenieria_2026-11.zim",
+              "size_mb": 268
+            },
+            {
+              "id": "libretexts.org_en_eng",
+              "version": "2025-01",
+              "title": "LibreTexts: Ingeniería (en inglés)",
+              "description": "Cursos de ingeniería y referencias técnicas",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_eng_2025-01.zim",
+              "size_mb": 678
+            },
+            {
+              "id": "espanol.libretexts.org_es_negocios",
+              "version": "2026-11",
+              "title": "LibreTexts: Negocios",
+              "description": "Libros de texto abiertos de LibreTexts en español: administración, contabilidad, economía y marketing",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/espanol.libretexts.org_es_negocios_2026-11.zim",
+              "size_mb": 1129
+            },
+            {
+              "id": "libretexts.org_en_biz",
+              "version": "2026-01",
+              "title": "LibreTexts: Negocios (en inglés)",
+              "description": "Libros de negocios, economía y administración",
+              "url": "https://download.kiwix.org/zim/libretexts/libretexts.org_en_biz_2026-01.zim",
+              "size_mb": 801
+            },
+            {
+              "id": "khanacademy_es_all",
+              "version": "2023-03",
+              "title": "Khan Academy en español",
+              "description": "Videos y ejercicios de Khan Academy en español: matemáticas, ciencias, economía y más. Muy grande (unos 150 GB)",
+              "url": "https://download.kiwix.org/zim/other/khanacademy_es_all_2023-03.zim",
+              "size_mb": 153643
             }
           ]
         }
@@ -371,6 +835,62 @@
           "includesTier": "diy-essential",
           "resources": [
             {
+              "id": "educ.ar_es_plomeria",
+              "version": "2026-11",
+              "title": "Curso de plomería (educ.ar)",
+              "description": "Oficios: curso de plomería de educ.ar: filtraciones, ducha, cocina, griferías, reserva de agua, materiales, desagües y planos",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_plomeria_2026-11.zim",
+              "size_mb": 1852
+            },
+            {
+              "id": "educ.ar_es_electricidad-1",
+              "version": "2026-11",
+              "title": "Curso de electricidad (educ.ar), parte 1",
+              "description": "Oficios: curso de electricidad de educ.ar, clases 1 a 5: circuitos de iluminación, lámparas y potencia",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_electricidad-1_2026-11.zim",
+              "size_mb": 1035
+            },
+            {
+              "id": "educ.ar_es_electricidad-2",
+              "version": "2026-11",
+              "title": "Curso de electricidad (educ.ar), parte 2",
+              "description": "Oficios: curso de electricidad de educ.ar, clases 6 a 10: potencia, llaves térmicas y motores",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_electricidad-2_2026-11.zim",
+              "size_mb": 1055
+            },
+            {
+              "id": "educ.ar_es_mecanica-automotor",
+              "version": "2026-11",
+              "title": "Curso de mecánica del automotor (educ.ar)",
+              "description": "Oficios: curso de mecánica del automotor de educ.ar: motor, distribución, lubricación, refrigeración, alimentación, encendido y sincronismo",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_mecanica-automotor_2026-11.zim",
+              "size_mb": 1613
+            },
+            {
+              "id": "educ.ar_es_carpinteria",
+              "version": "2026-11",
+              "title": "Curso de carpintería (educ.ar)",
+              "description": "Oficios: curso de carpintería de educ.ar: caballetes, sillas, cajas y cajones, revestimientos y muebles laminados",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_carpinteria_2026-11.zim",
+              "size_mb": 1952
+            },
+            {
+              "id": "educ.ar_es_terminaciones-1",
+              "version": "2026-11",
+              "title": "Curso de terminaciones (educ.ar), parte 1",
+              "description": "Oficios: curso de terminaciones de educ.ar, clases 1 a 6: tabiques, cielorrasos, revestimiento y empapelado",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_terminaciones-1_2026-11.zim",
+              "size_mb": 1445
+            },
+            {
+              "id": "educ.ar_es_terminaciones-2",
+              "version": "2026-11",
+              "title": "Curso de terminaciones (educ.ar), parte 2",
+              "description": "Oficios: curso de terminaciones de educ.ar, clases 7 a 11: preparación de superficies y pintura",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/educ.ar_es_terminaciones-2_2026-11.zim",
+              "size_mb": 1299
+            },
+            {
               "id": "diy.stackexchange.com_en_all",
               "version": "2026-02",
               "title": "Bricolaje y mejoras para el hogar (preguntas y respuestas) (en inglés)",
@@ -393,6 +913,14 @@
               "description": "Guías paso a paso para reparar electrónica, electrodomésticos y vehículos (más completa que la versión en español)",
               "url": "https://download.kiwix.org/zim/ifixit/ifixit_en_all_2025-12.zim",
               "size_mb": 3380
+            },
+            {
+              "id": "ted_mul_renewable-energy",
+              "version": "2026-09",
+              "title": "Charlas TED: Energía renovable",
+              "description": "Charlas TED sobre energía solar, eólica y otras renovables. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_renewable-energy_2026-09.zim",
+              "size_mb": 1016
             }
           ]
         }
@@ -411,6 +939,30 @@
           "description": "Recetas rápidas y nociones básicas de cocina para las comidas de todos los días.",
           "recommended": true,
           "resources": [
+            {
+              "id": "inta_es_huerta",
+              "version": "2026-11",
+              "title": "Huerta orgánica (INTA)",
+              "description": "Manuales del INTA sobre huerta orgánica familiar: planificación, cultivos, siembra y cuidados",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/inta_es_huerta_2026-11.zim",
+              "size_mb": 11
+            },
+            {
+              "id": "inta_es_granja",
+              "version": "2026-11",
+              "title": "Granja y conservas (INTA)",
+              "description": "Cartillas del INTA y ProHuerta: gallinas, deshidratado de frutas y hortalizas, conservas de tomate, dulces caseros y horno de barro y metal",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/inta_es_granja_2026-11.zim",
+              "size_mb": 60
+            },
+            {
+              "id": "fao_es_alimentos-huerta",
+              "version": "2026-11",
+              "title": "Agricultura familiar y granos (FAO)",
+              "description": "Manuales de la FAO: huertos familiares, compostaje, captación de agua de lluvia, conservación de frutas y hortalizas, inocuidad de los alimentos en el hogar, capacitación agrícola para agricultores familiares y silos metálicos para guardar granos",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fao_es_alimentos-huerta_2026-11.zim",
+              "size_mb": 49
+            },
             {
               "id": "foss.cooking_en_all",
               "version": "2026-02",
@@ -458,6 +1010,14 @@
               "description": "Recetas y técnicas para preparar y conservar alimentos",
               "url": "https://download.kiwix.org/zim/other/zimgit-food-preparation_en_2025-04.zim",
               "size_mb": 98
+            },
+            {
+              "id": "ted_mul_gardening",
+              "version": "2026-09",
+              "title": "Charlas TED: Jardinería y huerta",
+              "description": "Charlas TED sobre jardinería y huerta. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_gardening_2026-09.zim",
+              "size_mb": 310
             }
           ]
         },
@@ -482,6 +1042,22 @@
               "description": "Textos clásicos sobre agricultura, cría de animales, cultivo de plantas y conservación de alimentos",
               "url": "https://download.kiwix.org/zim/gutenberg/gutenberg_en_lcc-s_2026-03.zim",
               "size_mb": 4300
+            },
+            {
+              "id": "ted_mul_agriculture",
+              "version": "2026-09",
+              "title": "Charlas TED: Agricultura",
+              "description": "Charlas TED sobre agricultura y producción de alimentos. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_agriculture_2026-09.zim",
+              "size_mb": 1210
+            },
+            {
+              "id": "ted_mul_food",
+              "version": "2026-09",
+              "title": "Charlas TED: Comida",
+              "description": "Charlas TED sobre alimentación y producción de alimentos. Incluye subtítulos en español",
+              "url": "https://download.kiwix.org/zim/ted/ted_mul_food_2026-09.zim",
+              "size_mb": 2212
             }
           ]
         }
@@ -539,6 +1115,14 @@
               "description": "Referencia de propiedades y selectores CSS de MDN",
               "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_css_2026-07.zim",
               "size_mb": 5
+            },
+            {
+              "id": "freecodecamp_en_all",
+              "version": "2026-08",
+              "title": "freeCodeCamp (en inglés)",
+              "description": "Tutoriales interactivos de programación: JavaScript, algoritmos y estructuras de datos",
+              "url": "https://download.kiwix.org/zim/freecodecamp/freecodecamp_en_all_2026-08.zim",
+              "size_mb": 8
             }
           ]
         },

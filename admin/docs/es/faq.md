@@ -141,7 +141,7 @@ El acceso anticipado te permite recibir, si lo activas, versiones candidatas con
 
 La función de mapas necesita datos de mapas descargados. Si ves una zona en blanco:
 1. Ve a **Ajustes → Administrador de mapas**
-2. Usa **Elegir países** y descarga el país de tu zona
+2. Usa **Elegir países** y descarga el país de tu zona (o elige una de las regiones de EE. UU.)
 3. Espera a que terminen las descargas
 4. Vuelve a los mapas y recarga la página
 

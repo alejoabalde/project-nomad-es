@@ -63,7 +63,7 @@ Si es tu primera vez con NOMAD, el asistente de Configuración rápida te ayuda 
 
 El asistente te guía en cuatro pasos sencillos:
 1. **Funciones**: elige qué activar: Biblioteca de información, Asistente de IA, Plataforma educativa, Mapas, Herramientas de datos y Notas
-2. **Mapas**: en la versión en español, los mapas se eligen por país desde el Administrador de mapas cuando termines la configuración
+2. **Mapas**: selecciona regiones de EE. UU. para los mapas sin conexión. Para otro país (por ejemplo, Argentina), descárgalo por país desde el Administrador de mapas cuando termines la configuración
 3. **Contenido**: elige colecciones de contenido seleccionadas en los niveles Esencial, Estándar o Completo
 
 ![Niveles de contenido: Esencial, Estándar y Completo](/docs/es/easy-setup-tiers.webp)
@@ -179,6 +179,8 @@ Mira mapas sin internet. Descarga las regiones que necesites antes de quedarte s
 1. Ve a **Ajustes → Administrador de mapas**
 2. En «Descargar por país o región», haz clic en **Elegir países**
 3. Elige los países que necesitas (por ejemplo, Argentina) y confirma la descarga
+
+También están las regiones de mapas seleccionadas de EE. UU., las mismas que en la versión en inglés. Aparecen plegadas: haz clic en «Mostrar las regiones de mapas de EE. UU.» para verlas.
 
 **Consejo:** descarga los mapas de los lugares a los que viajas seguido y, por las dudas, también los de las regiones vecinas.
 

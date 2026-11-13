@@ -1,0 +1,1170 @@
+{
+  "release_tag": "paquetes-es",
+  "packages": [
+    {
+      "id": "docs.python.org_es_3",
+      "title": "Documentación de Python",
+      "description": "Documentación oficial de Python 3 en español",
+      "license": "Licencia PSF (Python Software Foundation)",
+      "source": "https://docs.python.org/es/3/",
+      "seeds": [
+        "https://docs.python.org/es/3/"
+      ],
+      "scopeType": "prefix",
+      "type": "website",
+      "enabled": false,
+      "note": "Descartado: el contenido de programación no es prioridad. Las versiones en inglés siguen en el catálogo."
+    },
+    {
+      "id": "git-scm.com_es_progit",
+      "title": "Pro Git en español",
+      "description": "El libro Pro Git (2.ª edición) en español",
+      "license": "CC BY-NC-SA 3.0",
+      "source": "https://git-scm.com/book/es/v2",
+      "seeds": [
+        "https://git-scm.com/book/es/v2"
+      ],
+      "scopeType": "prefix",
+      "type": "website",
+      "enabled": false,
+      "note": "Descartado: el contenido de programación no es prioridad. Las versiones en inglés siguen en el catálogo."
+    },
+    {
+      "id": "es.react.dev_es_all",
+      "title": "Documentación de React",
+      "description": "Documentación oficial de React en español",
+      "license": "CC BY 4.0",
+      "source": "https://es.react.dev/",
+      "seeds": [
+        "https://es.react.dev/"
+      ],
+      "scopeType": "host",
+      "type": "website",
+      "enabled": false,
+      "note": "Descartado: el contenido de programación no es prioridad. Las versiones en inglés siguen en el catálogo."
+    },
+    {
+      "id": "developer.mozilla.org_es_web",
+      "title": "MDN: JavaScript, HTML, CSS",
+      "description": "Referencia de MDN en español para JavaScript, HTML y CSS",
+      "license": "CC BY-SA 2.5",
+      "source": "https://developer.mozilla.org/es/",
+      "seeds": [
+        "https://developer.mozilla.org/es/docs/Web/JavaScript",
+        "https://developer.mozilla.org/es/docs/Web/HTML",
+        "https://developer.mozilla.org/es/docs/Web/CSS"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/JavaScript|Web/HTML|Web/CSS|Learn)",
+      "type": "website",
+      "scopeExcludeRx": "/contributors\\.txt$",
+      "enabled": false,
+      "note": "Pausado: entero se traba al escribir el .zim. Se arma por partes: developer.mozilla.org_es_javascript, _html y _css."
+    },
+    {
+      "id": "developer.mozilla.org_es_javascript",
+      "title": "MDN: JavaScript",
+      "description": "Referencia y guías de MDN en español para JavaScript",
+      "license": "CC BY-SA 2.5",
+      "source": "https://developer.mozilla.org/es/",
+      "seeds": [
+        "https://developer.mozilla.org/es/docs/Web/JavaScript"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/JavaScript)",
+      "type": "website",
+      "scopeExcludeRx": "/contributors\\.txt$",
+      "minSizeMB": 5,
+      "enabled": false,
+      "note": "Descartado por ahora: el contenido de programación no es prioridad. MDN en inglés sigue en el catálogo."
+    },
+    {
+      "id": "developer.mozilla.org_es_html",
+      "title": "MDN: HTML y Aprender",
+      "description": "Referencia de MDN en español para HTML y la sección Aprender desarrollo web",
+      "license": "CC BY-SA 2.5",
+      "source": "https://developer.mozilla.org/es/",
+      "seeds": [
+        "https://developer.mozilla.org/es/docs/Web/HTML",
+        "https://developer.mozilla.org/es/docs/Learn"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/HTML|Learn)",
+      "type": "website",
+      "scopeExcludeRx": "/contributors\\.txt$",
+      "minSizeMB": 5,
+      "enabled": false,
+      "note": "Descartado por ahora: el contenido de programación no es prioridad. MDN en inglés sigue en el catálogo."
+    },
+    {
+      "id": "developer.mozilla.org_es_css",
+      "title": "MDN: CSS",
+      "description": "Referencia de MDN en español para CSS",
+      "license": "CC BY-SA 2.5",
+      "source": "https://developer.mozilla.org/es/",
+      "seeds": [
+        "https://developer.mozilla.org/es/docs/Web/CSS"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://developer\\.mozilla\\.org/es/docs/(Web/CSS)",
+      "type": "website",
+      "scopeExcludeRx": "/contributors\\.txt$",
+      "minSizeMB": 5,
+      "enabled": false,
+      "note": "Descartado por ahora: el contenido de programación no es prioridad. MDN en inglés sigue en el catálogo."
+    },
+    {
+      "id": "cdc.gov_es_all",
+      "type": "website",
+      "title": "CDC en español",
+      "description": "Información de salud de los CDC en español: prevención, enfermedades y brotes",
+      "license": "Dominio público (gobierno de EE. UU.)",
+      "source": "https://www.cdc.gov/spanish/",
+      "seeds": [
+        "https://www.cdc.gov/spanish/index.html"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://www\\.cdc\\.gov/(spanish/|[^?#]*/es/)",
+      "pageLimit": 4000
+    },
+    {
+      "id": "educ.ar_es_plomeria",
+      "type": "video",
+      "title": "Curso de plomería (educ.ar)",
+      "description": "Oficios: curso de plomería de educ.ar: filtraciones, ducha, cocina, griferías, reserva de agua, materiales, desagües y planos",
+      "credit": "educ.ar, portal educativo del Estado argentino (serie «Oficios»)",
+      "license": "CC BY-NC-SA (Creative Commons Atribución – No Comercial – Compartir Igual), indicada en la ficha de cada clase en educ.ar",
+      "source": "https://www.educ.ar/",
+      "note": "Los videos se bajan completos desde educar.arsat.com.ar, el servidor de videos de educ.ar, porque educ.ar no responde a GitHub y zimit cortaba los videos largos.",
+      "intro": "Los conocimientos básicos y las habilidades manuales necesarias para desempeñarse en el oficio de la plomería, explicados paso a paso en clases teórico-prácticas.",
+      "videos": [
+        {
+          "title": "Filtraciones",
+          "page": "https://www.educ.ar/recursos/102309",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/41/41/0aa43ef6-f11e-4959-b431-48b9bccabab7/OficioscursodeplomeriaT01C01_HD_PA-PP-24691PA-PP-24692.mp4",
+          "bytes": 252512126
+        },
+        {
+          "title": "El sistema de ducha",
+          "page": "https://www.educ.ar/recursos/102310",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/57/11/b90156b3-ba63-4115-8681-cff779979af3/Oficioscursodeplomeria_T01C02_HD_PA-PP-24691PA-PP-24950.mp4",
+          "bytes": 252344760
+        },
+        {
+          "title": "Cañería de la cocina",
+          "page": "https://www.educ.ar/recursos/102311",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/73/88/c82bd2d0-f566-46bd-8ab1-d1a8024b7c3a/Oficioscursodeplomeria_T01C03_HD_PA-PP-24691PA-PP-25177.mp4",
+          "bytes": 255113198
+        },
+        {
+          "title": "Griferías",
+          "page": "https://www.educ.ar/recursos/102312",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/86/62/39543f31-7d79-48d3-a677-a1162cc13f20/Oficioscursodeplomeria_T01C04_HD_PA-PP-24691PA-PP-25649.mp4",
+          "bytes": 256687815
+        },
+        {
+          "title": "La reserva de agua",
+          "page": "https://www.educ.ar/recursos/102313",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/39/04/72220765-e828-438e-b4bd-dc9601f4b730/OficioscursodeplomeriaT01C05_HD_PA-PP-24691PA-PP-25896.mp4",
+          "bytes": 151295271
+        },
+        {
+          "title": "Materiales y fusiones",
+          "page": "https://www.educ.ar/recursos/102314",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/87/20/24fe0b99-b44d-4343-a7cd-66c048af60cd/OficiosCursodeplomeriaT01C06_HD_PA-PP-24691PA-PP-25970.mp4",
+          "bytes": 257779311
+        },
+        {
+          "title": "Los desagües cloacales",
+          "page": "https://www.educ.ar/recursos/102315",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/80/85/520fa5af-72e0-480a-b361-103dbf008915/OficiosCursodeplomeriaT01C07_HD_PA-PP-24691PA-PP-26096.mp4",
+          "bytes": 259287222
+        },
+        {
+          "title": "Planos e instalaciones",
+          "page": "https://www.educ.ar/recursos/102316",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/35/00/f41b7ac8-3b14-48e8-8772-657878b8e92c/OficiosCursodeplomer%C3%ADaT01C08_HD_PA-PP-24691PA-PP-26241.mp4",
+          "bytes": 257261925
+        }
+      ]
+    },
+    {
+      "id": "educ.ar_es_electricidad-1",
+      "type": "video",
+      "title": "Curso de electricidad (educ.ar), parte 1",
+      "description": "Oficios: curso de electricidad de educ.ar, clases 1 a 5: circuitos de iluminación, lámparas y potencia",
+      "credit": "educ.ar, portal educativo del Estado argentino (serie «Oficios»)",
+      "license": "CC BY-NC-SA (Creative Commons Atribución – No Comercial – Compartir Igual), indicada en la ficha de cada clase en educ.ar",
+      "source": "https://www.educ.ar/",
+      "note": "Los videos se bajan completos desde educar.arsat.com.ar, el servidor de videos de educ.ar, porque educ.ar no responde a GitHub y zimit cortaba los videos largos.",
+      "videos": [
+        {
+          "title": "Circuitos de iluminación. Parte 1",
+          "page": "https://www.educ.ar/recursos/50045",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/16/29/2ce297ea-9654-4ff9-b913-c7a947458ed8/OficioscursodeelectricidadT01C01_HD_PA-PP-10059PA-PP-11168.mp4",
+          "bytes": 264437459,
+          "description": "Se describe todo lo que se utiliza en una casa. Tipos de luces que se utilizan y cables a usar. Se enseña a esquematizar un circuito."
+        },
+        {
+          "title": "Circuitos de iluminación. Parte 2",
+          "page": "https://www.educ.ar/recursos/50046",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/33/29/80a2f3bd-cf50-445f-8233-5bd1d5aad7a1/OficioscursodeelectricidadT01C02_HD_PA-PP-10059PA-PP-11169.mp4",
+          "bytes": 151521066,
+          "description": "Trabajo con los tableros para realizar la instalación. Se agregan las luces e interruptores. Se especifica cómo se confecciona un circuito con una luminaria y una llave interruptora. Luego se agregan dos llaves, y después cuatro luminarias y un tomacorriente."
+        },
+        {
+          "title": "Circuitos de iluminación. Parte 3",
+          "page": "https://www.educ.ar/recursos/50047",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/31/20/98558c8f-8641-4ec7-845c-d36e734b0237/Oficioscursodeelectricidad_T01C03__HD_PA-PP-10059PA-PP-11170.mp4",
+          "bytes": 258569550,
+          "description": "Profundización de los circuitos. Se utiliza un nuevo tipo de interruptores llamados llave de combinación (o selectoras). Se describen las diferentes clases de llaves."
+        },
+        {
+          "title": "Lámparas",
+          "page": "https://www.educ.ar/recursos/50048",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/08/33/1788fabc-3255-43ff-8dd5-dcfe820c92fb/OficioscursodeelectricidadT01C04_HD_PA-PP-10059PA-PP-11171.mp4",
+          "bytes": 150473997,
+          "description": "Trabajo con las lámparas de descarga, que son aquellas que tienen gases. Se clasifican las luces de descarga y se detalla su consumo. También se incorporan sensores de movimiento y fotocélulas y otros tipos de sensores que se utilizan para la apertura y cierre de distintos circuitos. Se detallan los diferentes tipos de transformadores."
+        },
+        {
+          "title": "Potencia. Parte 1",
+          "page": "https://www.educ.ar/recursos/50049",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/72/70/a997f93b-9c06-49f8-9cc8-dfdc13949b95/OficioscursodeelectricidadT01C05_HD_PA-PP-10059PA-PP-11172.mp4",
+          "bytes": 259715545,
+          "description": "Potencia. Se especifica qué mide el multímetro. Se diferencian las funciones que tiene el multímetro. Se realizan mediciones y se definen las nomenclaturas para medir corriente."
+        }
+      ]
+    },
+    {
+      "id": "educ.ar_es_electricidad-2",
+      "type": "video",
+      "title": "Curso de electricidad (educ.ar), parte 2",
+      "description": "Oficios: curso de electricidad de educ.ar, clases 6 a 10: potencia, llaves térmicas y motores",
+      "credit": "educ.ar, portal educativo del Estado argentino (serie «Oficios»)",
+      "license": "CC BY-NC-SA (Creative Commons Atribución – No Comercial – Compartir Igual), indicada en la ficha de cada clase en educ.ar",
+      "source": "https://www.educ.ar/",
+      "note": "Los videos se bajan completos desde educar.arsat.com.ar, el servidor de videos de educ.ar, porque educ.ar no responde a GitHub y zimit cortaba los videos largos.",
+      "videos": [
+        {
+          "title": "Potencia. Parte 2",
+          "page": "https://www.educ.ar/recursos/50050",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/67/97/f50bd216-cf05-41cf-af67-8d733b78430b/Oficioscursodeelectricidad_T01C06_HD_PA-PP-10059PA-PP-11173.mp4",
+          "bytes": 262135538,
+          "description": "Calcular la potencia para elegir los conductores (cables). Se ejemplifican las tablas que se utilizaran para realizar dicho cálculo."
+        },
+        {
+          "title": "Llaves térmicas",
+          "page": "https://www.educ.ar/recursos/50051",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/39/27/837a3111-9641-4d58-98b2-961675eb8618/OficioscursodeelectricidadT01C07_HD_PA-PP-10059PA-PP-11386.mp4",
+          "bytes": 166393813,
+          "description": "Las tablas que se utilizan para elegir el conductor. Se utilizan llaves térmicas, disyuntores, medidor monofásico. Tambien se detalla por qué hay que elegir el fusible y cuál es el indicado para cada instalación. Se especifíca cuándo es segura una instalación."
+        },
+        {
+          "title": "Motores. Parte 1",
+          "page": "https://www.educ.ar/recursos/50052",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/05/02/270f5240-dc1e-11e0-809e-ed15e3c494af/Oficioselectricidad_T01C08_HD_PA-PP-10059PA-PP-11387.mp4",
+          "bytes": 149767682,
+          "description": "Las conexiones de los circuitos que usan los motores de uso domiciliario (extractor de techo, ventilador). Se detalla cómo se aplica un potenciómetro para regular la velocidad del motor."
+        },
+        {
+          "title": "Motores. Parte 2",
+          "page": "https://www.educ.ar/recursos/50053",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/08/96/1432996c-6e6f-4a9e-ab80-0e7db23b5228/Oficioselectricidad_T01C09_HD_PA-PP-10059PA-PP-11388.mp4",
+          "bytes": 261593122,
+          "description": "Motores. Se trabaja sobre los posibles errores de la instalación. Se diferencian los potenciómetros."
+        },
+        {
+          "title": "Inversión de motores",
+          "page": "https://www.educ.ar/recursos/50054",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/13/54/29484688-7e0c-4a3d-a3af-02c0ceee2552/Oficioselectricidad_T01C10_HD_PA-PP-10059PA-PP-11389.mp4",
+          "bytes": 266644197,
+          "description": "La llave inversora. Se especifica cuándo se aplica una nueva conexión para los circuitos que necesitan que el motor gire en ambos sentidos. Ej.: portón de un garaje."
+        }
+      ]
+    },
+    {
+      "id": "educ.ar_es_mecanica-automotor",
+      "type": "video",
+      "title": "Curso de mecánica del automotor (educ.ar)",
+      "description": "Oficios: curso de mecánica del automotor de educ.ar: motor, distribución, lubricación, refrigeración, alimentación, encendido y sincronismo",
+      "credit": "educ.ar, portal educativo del Estado argentino (serie «Oficios»)",
+      "license": "CC BY-NC-SA (Creative Commons Atribución – No Comercial – Compartir Igual), indicada en la ficha de cada clase en educ.ar",
+      "source": "https://www.educ.ar/",
+      "note": "Los videos se bajan completos desde educar.arsat.com.ar, el servidor de videos de educ.ar, porque educ.ar no responde a GitHub y zimit cortaba los videos largos.",
+      "intro": "El curso de mecánica brinda la posibilidad de conocer los elementos y componentes de un automóvil. Es un curso de mecánica ligera, en el que se desarman todas las partes y componentes de un automóvil para entender cómo funcionan. Brinda herramientas básicas para los diagnósticos por fallas.",
+      "videos": [
+        {
+          "title": "El vehículo",
+          "page": "https://www.educ.ar/recursos/50643",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/55/26/1e5a53c4-cdc1-4657-ae83-94ca31e99990/OficioscursodemecanicadelautomovilT01C01_HD_PA-PP-12073PA-PP-13185.mp4",
+          "bytes": 171860847
+        },
+        {
+          "title": "Funcionamiento del motor",
+          "page": "https://www.educ.ar/recursos/50644",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/71/32/c43582c3-3002-4107-affb-57fea14f6f01/OficioscursodemecanicadelautomovilT01C02_HD_PA-PP-12073PA-PP-13186.mp4",
+          "bytes": 157709843
+        },
+        {
+          "title": "La distribución",
+          "page": "https://www.educ.ar/recursos/50645",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/62/12/4ec58a16-499b-468d-b7c4-332045b262e8/OficioscursodemecanicadelautomovilT01C03_HD_PA-PP-12073PA-PP-13187.mp4",
+          "bytes": 160276609
+        },
+        {
+          "title": "Lubricación",
+          "page": "https://www.educ.ar/recursos/50646",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/99/58/9dde0bd7-374a-45b5-aec6-e4fd624a4c14/OficioscursodemecanicadelautomovilT01C04_HD_PA-PP-12073PA-PP-13188.mp4",
+          "bytes": 185805895
+        },
+        {
+          "title": "Refrigeración",
+          "page": "https://www.educ.ar/recursos/50647",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/81/88/9a8b795c-030a-41bd-a564-537c75232ba2/OficioscursodemecanicadelautomovilT01C05_HD_PA-PP-12073PA-PP-13191.mp4",
+          "bytes": 179131764
+        },
+        {
+          "title": "La alimentación (primera parte)",
+          "page": "https://www.educ.ar/recursos/50648",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/85/25/e2c1925b-b44f-4571-ad62-84a9445bd9f4/OficioscursodemecanicadelautomovilT01C06_HD_PA-PP-12073PA-PP-13192.mp4",
+          "bytes": 176111941
+        },
+        {
+          "title": "La alimentación (segunda parte)",
+          "page": "https://www.educ.ar/recursos/50649",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/92/52/69a23dd4-c918-44b2-98f6-954663cfa8ae/OficioscursodemecanicadelautomovilT01C07_HD_PA-PP-12073PA-PP-13193.mp4",
+          "bytes": 163286179
+        },
+        {
+          "title": "Encendido",
+          "page": "https://www.educ.ar/recursos/50650",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/65/10/e8dbe0ad-f5d9-4c70-8820-6cee703822b1/OficioscursodemecanicadelautomovilT01C08_HD_PA-PP-12073PA-PP-13194.mp4",
+          "bytes": 172002755
+        },
+        {
+          "title": "Sincronismo, primera parte",
+          "page": "https://www.educ.ar/recursos/50651",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/98/21/0e9df2a0-1e85-48b0-a7e5-07894e2c9241/OficioscursodemecanicadelautomovilT01C09_HD_PA-PP-12073PA-PP-13195.mp4",
+          "bytes": 150067956
+        },
+        {
+          "title": "Sincronismo (segunda parte)",
+          "page": "https://www.educ.ar/recursos/50652",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/78/07/51be333d-1d14-437f-aa40-1194f1688178/OficioscursodemecanicadelautomovilT01C10_HD_PA-PP-12073PA-PP-13196.mp4",
+          "bytes": 175372029
+        }
+      ]
+    },
+    {
+      "id": "educ.ar_es_carpinteria",
+      "type": "video",
+      "title": "Curso de carpintería (educ.ar)",
+      "description": "Oficios: curso de carpintería de educ.ar: caballetes, sillas, cajas y cajones, revestimientos y muebles laminados",
+      "credit": "educ.ar, portal educativo del Estado argentino (serie «Oficios»)",
+      "license": "CC BY-NC-SA (Creative Commons Atribución – No Comercial – Compartir Igual), indicada en la ficha de cada clase en educ.ar",
+      "source": "https://www.educ.ar/",
+      "note": "Los videos se bajan completos desde educar.arsat.com.ar, el servidor de videos de educ.ar, porque educ.ar no responde a GitHub y zimit cortaba los videos largos.",
+      "intro": "Para aprender a diseñar y confeccionar muebles a medida y, también, para pensar nuevos rumbos laborales. Aspectos teóricos sobre el uso de la madera y el trabajo con ella, y un paso a paso para la elaboración de sillas, cajas y cajones. Además, revestimientos y laminados.",
+      "videos": [
+        {
+          "title": "Introducción a la carpintería",
+          "page": "https://www.educ.ar/recursos/103248",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/77/57/8e78c1b3-ce2d-43aa-9d57-e5a363b57546/pa-pp-13174.mp4",
+          "bytes": 152379959
+        },
+        {
+          "title": "Realización de caballetes",
+          "page": "https://www.educ.ar/recursos/103260",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/31/62/393f1c29-e32d-49a0-b24e-ab8ba666f556/Oficioscursodecarpinteria_T01C02_HD_PA-PP-12072PA-PP-13175.mp4",
+          "bytes": 279721685
+        },
+        {
+          "title": "Realización de sillas, parte 1",
+          "page": "https://www.educ.ar/recursos/103261",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/55/85/416d2cdd-47ba-4760-87e7-17d02ecd1874/pa-pp-13176.mp4",
+          "bytes": 151781804
+        },
+        {
+          "title": "Realización de sillas, parte 2",
+          "page": "https://www.educ.ar/recursos/103265",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/94/96/353dc7f6-c2db-468c-be3c-a66f6dfd2195/pa-pp-13177.mp4",
+          "bytes": 153427742
+        },
+        {
+          "title": "Realización de cajas y cajones, parte 1",
+          "page": "https://www.educ.ar/recursos/103268",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/26/87/19726506-1a34-43b7-ac7e-a08ba16d2660/pa-pp-13178.mp4",
+          "bytes": 143625982
+        },
+        {
+          "title": "Realización de cajas y cajones, parte 2",
+          "page": "https://www.educ.ar/recursos/103270",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/50/00/c9579466-a2e3-4395-afd5-a57ffe73f1a4/PA-PP-13179.mp4",
+          "bytes": 174873330
+        },
+        {
+          "title": "Revestimientos, parte 1",
+          "page": "https://www.educ.ar/recursos/103275",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/04/60/43163452-34e9-4ebd-aac7-84c1c460f810/Oficioscursodecarpinteria_T01C07_HD_PA-PP-12072PA-PP-13180.mp4",
+          "bytes": 263476330
+        },
+        {
+          "title": "Revestimientos, parte 2",
+          "page": "https://www.educ.ar/recursos/103277",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/03/29/73b48123-e95c-4277-ba59-93e23878e459/pa-pp-13181.mp4",
+          "bytes": 157530504
+        },
+        {
+          "title": "Muebles laminados, parte 1",
+          "page": "https://www.educ.ar/recursos/103279",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/37/48/424f6f38-e4e5-408a-94bb-0a6079f86a2d/Oficioscursodecarpinteria_T01C09_HD_PA-PP-12072PA-PP-13182.mp4",
+          "bytes": 290389971
+        },
+        {
+          "title": "Muebles laminados, parte 2",
+          "page": "https://www.educ.ar/recursos/103282",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/36/33/cda46075-984f-4ea4-b1b5-3a033b05cf6b/Oficioscursodecarpinteria_T01C10_HD_PA-PP-12072PA-PP-13183.mp4",
+          "bytes": 279975366
+        }
+      ]
+    },
+    {
+      "id": "educ.ar_es_terminaciones-1",
+      "type": "video",
+      "title": "Curso de terminaciones (educ.ar), parte 1",
+      "description": "Oficios: curso de terminaciones de educ.ar, clases 1 a 6: tabiques, cielorrasos, revestimiento y empapelado",
+      "credit": "educ.ar, portal educativo del Estado argentino (serie «Oficios»)",
+      "license": "CC BY-NC-SA (Creative Commons Atribución – No Comercial – Compartir Igual), indicada en la ficha de cada clase en educ.ar",
+      "source": "https://www.educ.ar/",
+      "note": "Los videos se bajan completos desde educar.arsat.com.ar, el servidor de videos de educ.ar, porque educ.ar no responde a GitHub y zimit cortaba los videos largos.",
+      "intro": "El curso de terminaciones ofrece la posibilidad de aprender un oficio. Conocer todos los secretos de la pintura, cómo preparar la superficie, qué tener en cuenta a la hora de elegir los materiales o cómo lograr una terminación prolija y estética.",
+      "videos": [
+        {
+          "title": "Clase 1: Presentación. Tabique divisorio",
+          "page": "https://www.educ.ar/recursos/106384",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/72/12/4a04cc15-5dd8-4399-bbae-f294551b2e97/OficiosCursodeterminaciones_T01C01_HD_PA-PP-10060PA-PP-10595.mp4",
+          "bytes": 274025299
+        },
+        {
+          "title": "Clase 2: Tabique divisorio",
+          "page": "https://www.educ.ar/recursos/106385",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/40/41/c82d5318-3fe8-4886-a20c-61e1fb952a64/OficiosCursodeterminaciones_T01C02_HD_PA-PP-10060PA-PP-10596.mp4",
+          "bytes": 259955620
+        },
+        {
+          "title": "Clase 3: Tabique divisorio / Cielorrasos",
+          "page": "https://www.educ.ar/recursos/106386",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/24/35/f51bf7f6-4a5d-48b1-8e72-597eacfef41f/OficiosCursodeterminacionesT01C03_HD_PA-PP-10060PA-PP-10597.mp4",
+          "bytes": 278624932
+        },
+        {
+          "title": "Clase 4: Revestimiento",
+          "page": "https://www.educ.ar/recursos/106387",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/43/28/290c4cb6-333b-47da-9bf1-28875826f770/CursodeterminacionesT01C04_HD_PA-PP-10060-PA-PP-10598.mp4",
+          "bytes": 151668647
+        },
+        {
+          "title": "Clase 5: Empapelado. Papel base",
+          "page": "https://www.educ.ar/recursos/106388",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/17/94/30fd347c-d5be-44a4-b03e-b4cf217f359c/OficiosCursodeterminacionesT01C05_HD_PA-PP-10060PA-PP-10599.mp4",
+          "bytes": 276391892
+        },
+        {
+          "title": "Clase 6: Empapelado. Papel vista",
+          "page": "https://www.educ.ar/recursos/106389",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/42/91/79f13da3-5230-4ae0-8f9a-8dac7b667539/OficiosCursodeterminacionesT01C06_HD_PA-PP-10060PA-PP-10600.mp4",
+          "bytes": 274587088
+        }
+      ]
+    },
+    {
+      "id": "educ.ar_es_terminaciones-2",
+      "type": "video",
+      "title": "Curso de terminaciones (educ.ar), parte 2",
+      "description": "Oficios: curso de terminaciones de educ.ar, clases 7 a 11: preparación de superficies y pintura",
+      "credit": "educ.ar, portal educativo del Estado argentino (serie «Oficios»)",
+      "license": "CC BY-NC-SA (Creative Commons Atribución – No Comercial – Compartir Igual), indicada en la ficha de cada clase en educ.ar",
+      "source": "https://www.educ.ar/",
+      "note": "Los videos se bajan completos desde educar.arsat.com.ar, el servidor de videos de educ.ar, porque educ.ar no responde a GitHub y zimit cortaba los videos largos.",
+      "intro": "El curso de terminaciones ofrece la posibilidad de aprender un oficio. Conocer todos los secretos de la pintura, cómo preparar la superficie, qué tener en cuenta a la hora de elegir los materiales o cómo lograr una terminación prolija y estética.",
+      "videos": [
+        {
+          "title": "Clase 7: Preparación de superficie para pintar",
+          "page": "https://www.educ.ar/recursos/106390",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/09/41/4dbc7d4a-1f09-486e-8cda-52e3c6549b83/OficiosCursodeterminacionesT01C07_HD_PA-PP-10060PA-PP10601.mp4",
+          "bytes": 270919133
+        },
+        {
+          "title": "Clase 8: Pintura de interiores",
+          "page": "https://www.educ.ar/recursos/106391",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/29/07/11c7336f-abe6-47a1-b54d-79e9e1466ee1/OficiosCursodeterminacionesT01C08_HD_PA-PP-10060PA-PP-10602.mp4",
+          "bytes": 275900252
+        },
+        {
+          "title": "Clase 9: Pintura de exteriores",
+          "page": "https://www.educ.ar/recursos/106392",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/97/88/e3ab0c42-7cf2-4366-92f6-dbc004a89c82/OficiosCursodeterminacionesT01C09_HD_PA-PP-10060PA-PP-10603.mp4",
+          "bytes": 276767359
+        },
+        {
+          "title": "Clase 10: Pintura con esmalte satinado",
+          "page": "https://www.educ.ar/recursos/106393",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/77/09/29f7ba3a-7aa4-4164-8ba0-bb733a06405d/CursodeterminacionesT01C10_HD_PA-PP-10060-PA-PP-10604.mp4",
+          "bytes": 261244473
+        },
+        {
+          "title": "Clase 11: Pintura de metales. Barnizado de madera",
+          "page": "https://www.educ.ar/recursos/106394",
+          "mp4": "https://educar.arsat.com.ar/educar/app/files/repositorio/video_streaming/36/35/7ddb5e06-6d6b-4273-9ce7-678aeaee26b6/CursodeterminacionesT01C11_HD_PA-PP-10060PA-PP-10605.mp4",
+          "bytes": 277390848
+        }
+      ]
+    },
+    {
+      "id": "cawst_es_agua",
+      "type": "pdf",
+      "title": "Agua segura en casa (CAWST)",
+      "description": "Guías de CAWST para tratar y guardar agua de forma segura en el hogar",
+      "credit": "CAWST (Centre for Affordable Water and Sanitation Technology), www.cawst.org",
+      "license": "Creative Commons (CC BY 3.0 o CC BY-SA 4.0, según el documento)",
+      "note": "CAWST actualiza sus documentos seguido: busca la versión más nueva en washresources.cawst.org.",
+      "source": "https://washresources.cawst.org/es",
+      "documents": [
+        {
+          "title": "Introducción al tratamiento de agua a nivel domiciliario (2011)",
+          "url": "https://sswm.info/sites/default/files/reference_attachments/CAWST%202011.%20Introduccion%20al%20tratemiento%20de%20agua%20en%20el%20hogar.pdf",
+          "requireLicense": "Creative Commons"
+        },
+        {
+          "title": "Productos para el tratamiento del agua a nivel domiciliario y almacenamiento seguro (2018)",
+          "url": "https://old2019.sswm.info/sites/default/files/reference_attachments/CAWST%202018.%20Productos%20para%20el%20tratamiento%20del%20agua%20a%20nivel%20domiciliario%20y%20almacenamiento.pdf",
+          "requireLicense": "Creative Commons"
+        },
+        {
+          "title": "Introducción al análisis de la calidad del agua de consumo (2013)",
+          "url": "https://www.pseau.org/outils/ouvrages/cawst_introduccion_al_analisis_de_la_calidad_del_agua_de_consumo_2013.pdf",
+          "requireLicense": "Creative Commons"
+        }
+      ]
+    },
+    {
+      "id": "oms_es_agua-saneamiento-emergencias",
+      "enabled": false,
+      "note": "Descartado: los PDF de la OPS no traen ninguna licencia ni permiso de reproducción (revisado en noviembre de 2026).",
+      "type": "pdf",
+      "title": "Agua y saneamiento en emergencias (OMS)",
+      "description": "Notas técnicas de la OMS y el WEDC: agua potable, letrinas, higiene y saneamiento después de un desastre",
+      "credit": "Organización Mundial de la Salud y WEDC (Universidad de Loughborough); edición en español de la OPS",
+      "license": "La que indique cada nota (solo entran las que permiten reproducirlas sin fines de lucro)",
+      "source": "https://www.paho.org/es/emergencias-salud/notas-tecnicas-sobre-agua-saneamiento-e-higiene-emergencias",
+      "documents": [
+        {
+          "title": "Nota técnica {n}",
+          "url": "https://paho.org/sites/default/files/2019-12/Nota-tecnica-sobre-agua-saneamiento-higiene-{n:02d}.pdf",
+          "range": [
+            1,
+            15
+          ],
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|(libremente|puede ser)[\\s\\S]{0,80}?(reproducid|traducid)[\\s\\S]{0,120}?(no (con fines comerciales|para (la )?venta)|sin fines de lucro)|freely[\\s\\S]{0,60}?reproduced[\\s\\S]{0,80}?not for sale"
+        }
+      ]
+    },
+    {
+      "id": "fao_es_alimentos-huerta",
+      "type": "pdf",
+      "title": "FAO: alimentos y huerta",
+      "description": "Manuales de la FAO sobre huerta, semillas y conservación de granos y alimentos",
+      "credit": "Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO)",
+      "license": "CC BY-NC-SA 3.0 IGO, o aviso de la FAO que permite copiar, descargar e imprimir para estudio, docencia o productos no comerciales citando a la FAO, o aviso anterior de la FAO que autoriza reproducir y difundir para fines educativos u otros fines no comerciales sin previa autorización (solo entran los manuales que lo indican; los que dicen 'previa solicitud' quedan afuera)",
+      "source": "https://openknowledge.fao.org/",
+      "documents": [
+        {
+          "title": "Producción artesanal de semillas de hortalizas para la huerta familiar",
+          "url": "https://openknowledge.fao.org/server/api/core/bitstreams/8b14cf90-62c1-467a-8f23-f2f218218a0a/content",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales"
+        },
+        {
+          "title": "Construcción y uso de silos metálicos familiares para granos",
+          "url": "https://openknowledge.fao.org/server/api/core/bitstreams/725b5348-58ef-4eca-aad8-391420e777c6/content",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales"
+        },
+        {
+          "title": "Guía de capacitación en temas agrícolas para agricultores familiares",
+          "url": "https://openknowledge.fao.org/server/api/core/bitstreams/325d8fbc-deb8-4418-900c-265d1ae42380/content",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales"
+        },
+        {
+          "title": "Manual para manipuladores de alimentos",
+          "url": "https://openknowledge.fao.org/server/api/core/bitstreams/78f24b65-7a0e-468d-9e2c-3469d9d14a4b/content",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales"
+        },
+        {
+          "title": "Manual de inocuidad de los alimentos en el hogar (FAO y OMS, 2022)",
+          "url": "https://www.fao.org/3/cc0039es/cc0039es.pdf",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales"
+        },
+        {
+          "title": "Huertos familiares (FAO)",
+          "url": "https://www.fao.org/3/cc0742es/cc0742es.pdf",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales",
+          "requireText": "huert"
+        },
+        {
+          "title": "Captación y almacenamiento de agua de lluvia para la agricultura familiar (FAO, 2013)",
+          "url": "https://www.fao.org/4/i3247s/i3247s.pdf",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales",
+          "requireText": "lluvia"
+        },
+        {
+          "title": "Manual de compostaje del agricultor (FAO, 2013)",
+          "url": [
+            "https://www.fao.org/3/i3388s/i3388s.pdf",
+            "https://www.fao.org/4/i3388s/i3388s.pdf"
+          ],
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo|se\\s+podr[aá]\\s+copiar,\\s+(descargar\\s+e\\s+imprimir|imprimir\\s+y\\s+descargar)\\s+el\\s+material[\\s\\S]{0,250}?no\\s+comerciales",
+          "requireText": "compost"
+        },
+        {
+          "title": "Conservación de frutas y hortalizas mediante tecnologías combinadas (FAO, 2004)",
+          "url": "https://www.fao.org/3/y5771s/y5771s.pdf",
+          "requireText": "tecnolog[ií]as combinadas",
+          "requireLicense": "Se\\s+autoriza\\s+la\\s+reproducci[oó]n\\s+y\\s+difusi[oó]n\\s+de\\s+material[\\s\\S]{0,120}?fines\\s+no\\s+comerciales\\s+sin\\s+previa\\s+autorizaci[oó]n"
+        }
+      ]
+    },
+    {
+      "id": "hesperian_es_salud-ambiental",
+      "type": "pdf",
+      "title": "Guía de salud ambiental",
+      "description": "Hesperian: guía comunitaria para la salud ambiental (agua, saneamiento, vivienda)",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://hesperian.org/",
+      "licenseProof": {
+        "url": [
+          "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_frente.pdf"
+        ],
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_frente.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_cap{n:02d}.pdf",
+          "range": [
+            1,
+            30
+          ]
+        },
+        {
+          "title": "Recursos",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_recursos.pdf"
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_cgeh_2011/es_cgeh_2011_bm.pdf"
+        }
+      ],
+      "note": "La licencia está en las primeras páginas (es_cgeh_2011_frente.pdf), enlazadas desde la página de derechos de autor del WikiSalud de Hesperian."
+    },
+    {
+      "id": "hesperian_es_donde-no-hay-doctor",
+      "type": "pdf",
+      "title": "Donde no hay doctor",
+      "description": "Hesperian: manual de salud para la comunidad, para cuando no hay un médico cerca",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://hesperian.org/",
+      "licenseProof": {
+        "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_fm.pdf",
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_fm.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_{n:02d}.pdf",
+          "range": [
+            1,
+            30
+          ]
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wtnd_2017/es_wtnd_2017_bm.pdf"
+        }
+      ]
+    },
+    {
+      "id": "hesperian_es_parteras",
+      "type": "pdf",
+      "title": "Un libro para parteras (Hesperian)",
+      "description": "Hesperian: embarazo, parto y cuidados después del parto, para parteras y promotoras de salud",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://es.hesperian.org/",
+      "licenseProof": {
+        "url": "https://hesperian.org/wp-content/uploads/pdf/es_midw_2013/es_midw_2013_fmb.pdf",
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_midw_2013/es_midw_2013_fmb.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_midw_2013/es_midw_2013_{n:02d}.pdf",
+          "range": [
+            1,
+            35
+          ]
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_midw_2013/es_midw_2013_bm.pdf",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "hesperian_es_salud-mujeres",
+      "type": "pdf",
+      "title": "Donde no hay doctor para mujeres (Hesperian)",
+      "description": "Hesperian: guía de salud para mujeres, para cuando no hay un médico cerca",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://es.hesperian.org/",
+      "licenseProof": {
+        "url": "https://hesperian.org/wp-content/uploads/pdf/es_wwhnd_2014/es_wwhnd_2014_fm.pdf",
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wwhnd_2014/es_wwhnd_2014_fm.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wwhnd_2014/es_wwhnd_2014_{n:02d}.pdf",
+          "range": [
+            1,
+            35
+          ]
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_wwhnd_2014/es_wwhnd_2014_bm.pdf",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "hesperian_es_nino-discapacidad",
+      "type": "pdf",
+      "title": "El niño campesino deshabilitado (Hesperian)",
+      "description": "Hesperian: guía para ayudar a niñas y niños con discapacidad en la comunidad",
+      "credit": "Hesperian Health Guides, www.hesperian.org. Contacto: hesperian@hesperian.org",
+      "license": "Licencia de derechos de autor compartidos de Hesperian: copia y distribución sin fines de lucro, con créditos",
+      "source": "https://es.hesperian.org/",
+      "licenseProof": {
+        "url": "https://hesperian.org/wp-content/uploads/pdf/es_dvc_2013/es_dvc_2013_fm.pdf",
+        "pattern": "(invita|anima|alienta)\\s+a\\s+(los\\s+dem[aá]s|otros|otras\\s+personas)[\\s\\S]{0,60}?copiar|open-copyright|derechos\\s+de\\s+autor\\s+compartidos|copyleft"
+      },
+      "documents": [
+        {
+          "title": "Primeras páginas e índice",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_dvc_2013/es_dvc_2013_fm.pdf"
+        },
+        {
+          "title": "Capítulo {n}",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_dvc_2013/es_dvc_2013_{n:02d}.pdf",
+          "range": [
+            1,
+            60
+          ]
+        },
+        {
+          "title": "Páginas finales",
+          "url": "https://hesperian.org/wp-content/uploads/pdf/es_dvc_2013/es_dvc_2013_bm.pdf",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "who_es_atencion-basica-emergencia",
+      "type": "pdf",
+      "title": "Atención básica de emergencia (OMS y CICR)",
+      "description": "Manual de la OMS y el CICR para atender a personas heridas o con enfermedades agudas con pocos recursos (enfoque ABCDE)",
+      "credit": "Organización Mundial de la Salud y Comité Internacional de la Cruz Roja (CICR)",
+      "license": "CC BY-NC-SA 3.0 IGO",
+      "note": "Alternativa abierta en español a WikEM (que solo está en inglés).",
+      "source": "https://iris.who.int/handle/10665/332275",
+      "documents": [
+        {
+          "title": "Atención básica de emergencia: abordaje de lesionados y enfermos agudos (2020)",
+          "url": "https://iris.who.int/handle/10665/332275",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo"
+        }
+      ]
+    },
+    {
+      "id": "epes_es_primeros-auxilios",
+      "type": "pdf",
+      "title": "Guía de primeros auxilios (EPES 061)",
+      "description": "Guía de primeros auxilios para la población general de la Empresa Pública de Emergencias Sanitarias de Andalucía",
+      "credit": "Empresa Pública de Emergencias Sanitarias (EPES 061), Junta de Andalucía",
+      "license": "CC BY-NC-SA 4.0",
+      "source": "https://www.epes.es/",
+      "documents": [
+        {
+          "title": "Guía de primeros auxilios (2019)",
+          "url": [
+            "https://personal.uca.es/guia-de-primeros-auxilios-061"
+          ],
+          "requireLicense": "Reconocimiento-NoComercial-CompartirIgual 4\\.0|Atribuci[oó]n-NoComercial-CompartirIgual 4\\.0|by-nc-sa/4\\.0|CC BY-NC-SA 4\\.0",
+          "requireText": "primeros\\s+auxilios"
+        }
+      ]
+    },
+    {
+      "id": "who_es_atencion-primaria-ninos",
+      "type": "pdf",
+      "title": "Atención primaria de niños y adolescentes (OMS)",
+      "description": "Libro de bolsillo de la OMS: cómo tratar y cuándo derivar las enfermedades comunes de niños, niñas y adolescentes",
+      "credit": "Organización Mundial de la Salud, Oficina Regional para Europa",
+      "license": "CC BY-NC-SA 3.0 IGO",
+      "source": "https://www.paho.org/es/documentos/libro-bolsillo-sobre-atencion-primaria-salud-para-ninos-ninas-adolescentes-orientaciones",
+      "documents": [
+        {
+          "title": "Libro de bolsillo sobre la atención primaria de salud para niños, niñas y adolescentes (2025)",
+          "url": [
+            "https://www.paho.org/es/documentos/libro-bolsillo-sobre-atencion-primaria-salud-para-ninos-ninas-adolescentes-orientaciones",
+            "https://docs.academia.cat/95504fad",
+            "https://medbox.org/index.php/pdf/69e0d43bc7843f4cb03f9602"
+          ],
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo",
+          "requireText": "atenci[oó]n\\s+primaria[\\s\\S]{0,80}?ni[nñ]os"
+        }
+      ]
+    },
+    {
+      "id": "ops_es_dengue",
+      "type": "pdf",
+      "title": "Dengue: atención de enfermos (OPS)",
+      "description": "Guías de la OPS para reconocer y tratar el dengue, el chikunguña y el zika",
+      "credit": "Organización Panamericana de la Salud (OPS/OMS)",
+      "license": "CC BY-NC-SA 3.0 IGO",
+      "source": "https://iris.paho.org/",
+      "documents": [
+        {
+          "title": "Dengue: guías para la atención de enfermos en la Región de las Américas (2.ª edición, 2016)",
+          "url": "https://iris.paho.org/handle/10665.2/31207",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo",
+          "requireText": "dengue"
+        },
+        {
+          "title": "Directrices para el diagnóstico clínico y el tratamiento del dengue, el chikunguña y el zika (2022)",
+          "url": "https://iris.paho.org/handle/10665.2/55125",
+          "requireLicense": "CC BY-NC-SA 3\\.0 IGO|by-nc-sa/3\\.0/igo",
+          "requireText": "dengue"
+        }
+      ]
+    },
+    {
+      "id": "inta_es_huerta",
+      "type": "pdf",
+      "title": "Huerta orgánica (INTA)",
+      "description": "Manuales de huerta orgánica familiar del INTA ProHuerta (Argentina)",
+      "credit": "INTA, Programa ProHuerta (Argentina)",
+      "license": "Licencia libre indicada en Wikimedia Commons para cada manual",
+      "source": "https://repositorio.inta.gob.ar/",
+      "documents": [
+        {
+          "title": "La huerta orgánica",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/La_Huerta_Org%C3%A1nica.pdf",
+          "licensePage": {
+            "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata&uselang=en&titles=File:La_Huerta_Org%C3%A1nica.pdf",
+            "pattern": "\"LicenseShortName\":\\s*\\{\\s*\"value\":\\s*\"(CC[ -]BY[^\"]*|CC0[^\"]*|Public domain)\""
+          },
+          "source": "https://commons.wikimedia.org/wiki/File:La_Huerta_Org%C3%A1nica.pdf"
+        },
+        {
+          "title": "Manual de cultivos para la huerta orgánica familiar",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf",
+          "licensePage": {
+            "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata&uselang=en&titles=File:Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf",
+            "pattern": "\"LicenseShortName\":\\s*\\{\\s*\"value\":\\s*\"(CC[ -]BY[^\"]*|CC0[^\"]*|Public domain)\""
+          },
+          "source": "https://commons.wikimedia.org/wiki/File:Manual_de_cultivos_para_la_Huerta_Org%C3%A1nica_Familiar.pdf"
+        }
+      ]
+    },
+    {
+      "id": "inta_es_granja",
+      "type": "pdf",
+      "title": "Granja y conservas (INTA)",
+      "description": "Cartillas del INTA y ProHuerta: gallinas, deshidratado de frutas y hortalizas, conservas de tomate, dulces caseros y horno de barro y metal",
+      "credit": "INTA y Programa ProHuerta (Argentina)",
+      "license": "Creative Commons BY-NC-SA (indicada en cada documento o en su ficha del repositorio del INTA)",
+      "source": "https://repositorio.inta.gob.ar/",
+      "documents": [
+        {
+          "title": "Cría de gallinas (microcurso del INTA)",
+          "url": [
+            "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fuente-inta-gallinas.pdf",
+            "https://formacion.inta.gob.ar/wp-content/uploads/2024/01/GALLINAS.pdf"
+          ],
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "requireText": "gallin",
+          "source": "https://formacion.inta.gob.ar/wp-content/uploads/2024/01/GALLINAS.pdf"
+        },
+        {
+          "title": "Deshidratación de frutas y hortalizas (microcurso del INTA)",
+          "url": [
+            "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fuente-inta-deshidratacion.pdf",
+            "https://formacion.inta.gob.ar/wp-content/uploads/2025/12/Deshidratacion_de_frutas_y_hortalizas.pdf"
+          ],
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "requireText": "deshidrat",
+          "source": "https://formacion.inta.gob.ar/wp-content/uploads/2025/12/Deshidratacion_de_frutas_y_hortalizas.pdf"
+        },
+        {
+          "title": "Conservas de tomate (ProHuerta)",
+          "url": [
+            "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/fuente-inta-conservas-tomate.pdf",
+            "https://repositorio.inta.gob.ar/handle/20.500.12123/15451"
+          ],
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "licensePage": {
+            "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451",
+            "pattern": "creativecommons\\.org/licenses/by|Creative\\s+Commons|Atribuci[oó]n-NoComercial"
+          },
+          "source": "https://repositorio.inta.gob.ar/handle/20.500.12123/15451",
+          "note": "PDF escaneado, sin texto: la licencia se comprueba en su ficha del repositorio del INTA."
+        },
+        {
+          "title": "Dulces caseros (ProHuerta)",
+          "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15836",
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "licensePage": {
+            "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15836",
+            "pattern": "creativecommons\\.org/licenses/by|Creative\\s+Commons|Atribuci[oó]n-NoComercial"
+          },
+          "requireText": "dulce|mermelada"
+        },
+        {
+          "title": "Horno casero de barro y metal (ProHuerta)",
+          "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15967",
+          "requireLicense": "Creative\\s+Commons|creativecommons\\.org/licenses/by|by-nc-sa|Atribuci[oó]n[\\s-]+No\\s*Comercial|Reconocimiento[\\s-]+No\\s*Comercial",
+          "licensePage": {
+            "url": "https://repositorio.inta.gob.ar/handle/20.500.12123/15967",
+            "pattern": "creativecommons\\.org/licenses/by|Creative\\s+Commons|Atribuci[oó]n-NoComercial"
+          },
+          "requireText": "horno"
+        }
+      ],
+      "note": "Los sitios del INTA no responden bien a GitHub Actions: tres PDF se toman de una copia en la versión paquetes-es del fork (archivos fuente-*.pdf). La licencia se comprueba igual en cada PDF."
+    },
+    {
+      "id": "wikem.org_es_all",
+      "type": "website",
+      "title": "WikEM en español",
+      "description": "Páginas de WikEM (medicina de emergencia) traducidas al español",
+      "license": "CC BY-SA 4.0",
+      "source": "https://wikem.org/",
+      "seeds": [
+        "https://wikem.org/wiki/Main_Page/es"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://(www\\.)?wikem\\.org/wiki/[^?#]+/es$",
+      "scopeExcludeRx": "/wiki/(Special|Talk|User|File|Template|Category)[:%]",
+      "pageLimit": 20000,
+      "minSizeMB": 5,
+      "note": "Descartado tras medir: no existe la portada en español y las pocas páginas /es son listas de recursos, no contenido clínico. Queda WikEM en inglés.",
+      "enabled": false
+    },
+    {
+      "id": "espanol.libretexts.org_es_fisica",
+      "type": "website",
+      "title": "LibreTexts: Física",
+      "description": "Libros de texto abiertos de LibreTexts en español: Física",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/F(i|%C3%AD|í)sica(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    },
+    {
+      "id": "espanol.libretexts.org_es_quimica",
+      "type": "website",
+      "title": "LibreTexts: Química",
+      "description": "Libros de texto abiertos de LibreTexts en español: Química",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Qu(i|%C3%AD|í)mica(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    },
+    {
+      "id": "espanol.libretexts.org_es_matematicas",
+      "type": "website",
+      "title": "LibreTexts: Matemáticas",
+      "description": "Libros de texto abiertos de LibreTexts en español: Matemáticas",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Matem(a|%C3%A1|á)ticas(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia",
+      "type": "website",
+      "title": "LibreTexts: Biología",
+      "description": "Libros de texto abiertos de LibreTexts en español: Biología",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biolog(i|%C3%AD|í)a(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "enabled": false,
+      "note": "Reemplazado por paquetes más chicos: entero pasa de 2 GB (un intento parcial dio 2,7 GB)."
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia-general",
+      "type": "website",
+      "title": "LibreTexts: Biología general",
+      "description": "Libros de texto abiertos de LibreTexts en español: biología introductoria y general",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Biologia_introductoria_y_general"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biologia/(Biologia_introductoria_y_general)(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "pageLimit": 2500
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia-celular",
+      "type": "website",
+      "title": "LibreTexts: Biología celular",
+      "description": "Libros de texto abiertos de LibreTexts en español: biología celular y molecular, bioquímica",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Biologia_Celular_y_Molecular",
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Bioquimica"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biologia/(Biologia_Celular_y_Molecular|Bioquimica)(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "pageLimit": 2500
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia-humana",
+      "type": "website",
+      "title": "LibreTexts: Biología humana",
+      "description": "Libros de texto abiertos de LibreTexts en español: biología humana",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Biologia_Humana"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biologia/(Biologia_Humana)(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "pageLimit": 2500
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia-microbiologia",
+      "type": "website",
+      "title": "LibreTexts: Microbiología",
+      "description": "Libros de texto abiertos de LibreTexts en español: microbiología y genética",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Microbiologia",
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Genetica"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biologia/(Microbiologia|Genetica)(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "pageLimit": 2500
+    },
+    {
+      "id": "espanol.libretexts.org_es_biologia-ecologia",
+      "type": "website",
+      "title": "LibreTexts: Ecología y botánic",
+      "description": "Libros de texto abiertos de LibreTexts en español: ecología, botánica y biotecnología",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Ecologia",
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Botanica",
+        "https://espanol.libretexts.org/Bookshelves/Biologia/Biotecnologia"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Biologia/(Ecologia|Botanica|Biotecnologia)(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5,
+      "pageLimit": 2500
+    },
+    {
+      "id": "espanol.libretexts.org_es_ingenieria",
+      "type": "website",
+      "title": "LibreTexts: Ingeniería",
+      "description": "Libros de texto abiertos de LibreTexts en español: Ingeniería",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Ingenier(i|%C3%AD|í)a(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    },
+    {
+      "id": "espanol.libretexts.org_es_negocios",
+      "type": "website",
+      "title": "LibreTexts: Negocios",
+      "description": "Libros de texto abiertos de LibreTexts en español: Negocios",
+      "license": "Por libro; casi todo CC BY-NC-SA 3.0 o CC BY 4.0 (como los paquetes de LibreTexts que publica Kiwix)",
+      "source": "https://espanol.libretexts.org/",
+      "seeds": [
+        "https://espanol.libretexts.org/Bookshelves"
+      ],
+      "scopeType": "custom",
+      "scopeIncludeRx": "^https://espanol\\.libretexts\\.org/Bookshelves/Negocios?(/|$)",
+      "scopeExcludeRx": "\\?|/Special:",
+      "minSizeMB": 5
+    }
+  ]
+}

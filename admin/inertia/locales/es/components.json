@@ -11,7 +11,9 @@
     "failed": "Falló la descarga de Wikipedia. Selecciona un paquete e inténtalo de nuevo.",
     "noDownload": "Sin descarga",
     "remove": "Quitar Wikipedia",
-    "downloadSelected": "Descargar selección"
+    "downloadSelected": "Descargar selección",
+    "titleEs": "Wikipedia en español",
+    "titleEn": "Wikipedia en inglés"
   },
   "category": {
     "indexing": "indexando",

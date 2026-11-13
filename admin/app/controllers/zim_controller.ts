@@ -175,13 +175,15 @@ export default class ZimController {
 
   // Wikipedia selector endpoints
 
-  async getWikipediaState({}: HttpContext) {
-    return this.zimService.getWikipediaState()
+  async getWikipediaState({ request }: HttpContext) {
+    // Fork-only: `?lang=en|es` reads another language's Wikipedia selector.
+    const lang = request.input('lang')
+    return this.zimService.getWikipediaState(lang === 'en' || lang === 'es' ? lang : undefined)
   }
 
   async selectWikipedia({ request }: HttpContext) {
     const payload = await request.validateUsing(selectWikipediaValidator)
-    return this.zimService.selectWikipedia(payload.optionId)
+    return this.zimService.selectWikipedia(payload.optionId, payload.language)
   }
 
   // Custom library endpoints

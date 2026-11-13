@@ -170,6 +170,8 @@ export const downloadCategoryTierValidator = vine.compile(
 export const selectWikipediaValidator = vine.compile(
   vine.object({
     optionId: vine.string().trim().minLength(1),
+    // Fork-only: which language's Wikipedia to change. Defaults to the interface language.
+    language: vine.enum(['en', 'es'] as const).optional(),
   })
 )
 

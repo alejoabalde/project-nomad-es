@@ -388,7 +388,7 @@
     "byCountry": "Descargar por país o región",
     "byCountryMsg": "Elige solo los países que necesitas, desde uno solo hasta un continente entero, y se descargarán únicamente esos mosaicos del archivo global de Protomaps. Ocupa mucho menos que el mapa global completo de 125 GB.",
     "chooseCountries": "Elegir países",
-    "curated": "Regiones de mapas seleccionadas",
+    "curated": "Regiones de mapas seleccionadas (EE. UU.)",
     "forceRefresh": "Forzar actualización de colecciones",
     "noCollections": "No hay colecciones seleccionadas disponibles.",
     "stored": "Archivos de mapas guardados",
@@ -400,7 +400,8 @@
     "eg": "p. ej.",
     "download": "Descargar",
     "confirmBody": "¿Seguro que quieres descargar <b>{{name}}</b>? Puede tardar en estar disponible según el tamaño del archivo y tu conexión a internet.",
-    "globalBody": "Se descargará el mapa global completo de Protomaps ({{size}}, versión {{date}}). Cubre todo el planeta, así que no necesitarás archivos de regiones por separado. Asegúrate de tener suficiente espacio en disco."
+    "globalBody": "Se descargará el mapa global completo de Protomaps ({{size}}, versión {{date}}). Cubre todo el planeta, así que no necesitarás archivos de regiones por separado. Asegúrate de tener suficiente espacio en disco.",
+    "showUsRegions": "Mostrar las regiones de mapas de EE. UU."
   },
   "models": {
     "presets": {
