@@ -135,6 +135,14 @@
               "size_mb": 18
             },
             {
+              "id": "youtube_es_lactancia-recien-nacido",
+              "version": "2026-11",
+              "title": "Lactancia y recién nacido en video",
+              "description": "Cómo funciona la lactancia, posiciones, extracción manual de leche, cuidados del recién nacido y prematuros",
+              "url": "https://github.com/alejoabalde/project-nomad-es/releases/download/paquetes-es/youtube_es_lactancia-recien-nacido_2026-11.zim",
+              "size_mb": 331
+            },
+            {
               "id": "hesperian_es_nino-discapacidad",
               "version": "2026-11",
               "title": "El niño campesino deshabilitado (Hesperian)",
