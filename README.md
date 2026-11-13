@@ -6,7 +6,7 @@
 
 </div>
 
-> **Coming from the original Project NOMAD?** This is an unofficial, community-maintained Spanish fork of [Crosstalk-Solutions/project-nomad](https://github.com/Crosstalk-Solutions/project-nomad). It keeps everything the original has and adds on top of it: a Spanish interface (English is still one click away in the footer) and Spanish documentation, a Spanish content catalog (Spanish Wikipedia plus Spanish-language health, farming, water and trade-school packages built by this fork), Spanish drug leaflets from Spain's AEMPS with Argentine brand names from ANMAT in the drug reference, and community installers for Fedora and Arch Linux. It follows the original releases: each new upstream version is merged and translated, then published as `ghcr.io/alejoabalde/project-nomad-es`. It is not affiliated with or endorsed by Crosstalk Solutions. For the original project, its documentation and its community, go to the [original repository](https://github.com/Crosstalk-Solutions/project-nomad) and [projectnomad.us](https://www.projectnomad.us).
+> **Coming from the original Project NOMAD?** This is an unofficial, community-maintained Spanish fork of [Crosstalk-Solutions/project-nomad](https://github.com/Crosstalk-Solutions/project-nomad). It keeps everything the original has and adds on top of it: a Spanish interface (English is still one click away in the footer) and Spanish documentation, a Spanish content catalog (Spanish Wikipedia plus Spanish-language health, farming, water and trade-school packages built by this fork), Spanish drug leaflets from Spain's AEMPS with Argentine brand names from ANMAT in the drug reference, and installers for Ubuntu/Debian, Fedora and Arch Linux. Installing with this fork's scripts gives you the same NOMAD base as the original, only translated and with the Spanish content selection. It follows the original releases: each new upstream version is merged and translated, then published as `ghcr.io/alejoabalde/project-nomad-es`. It is not affiliated with or endorsed by Crosstalk Solutions. For the original project, its documentation and its community, go to the [original repository](https://github.com/Crosstalk-Solutions/project-nomad) and [projectnomad.us](https://www.projectnomad.us).
 
 ---
 
@@ -28,7 +28,7 @@ Esta versión **suma** cosas al NOMAD original; no quita ninguna. Todo lo que ti
   - ciencias (LibreTexts en español);
   - cursos de oficios en video de educ.ar: plomería, electricidad, mecánica del automotor, carpintería y terminaciones.
 - **Guía de medicamentos en español.** Prospectos de los medicamentos que se venden en España, del CIMA de la AEMPS. También puedes buscar por marca comercial argentina (Vademécum Nacional de Medicamentos de la ANMAT), y buscar «por situación».
-- **Instaladores para Fedora y Arch Linux**, además de los sistemas basados en Debian que soporta el original.
+- **Instaladores en español** para Ubuntu y Debian (los mismos sistemas que el original) y, además, para Fedora y Arch Linux.
 - **Se mantiene sola al día:**
   - cada semana se actualizan los prospectos de la AEMPS y cada mes las marcas de la ANMAT;
   - cada mes se revisan las versiones nuevas del contenido de Kiwix;
@@ -39,6 +39,19 @@ Esta versión **suma** cosas al NOMAD original; no quita ninguna. Todo lo que ti
 NOMAD en sí necesita unos **5 GB de disco y menos de 1 GB de RAM**. Lo que llena el disco es el contenido que agregues después, y lo que sube la memoria necesaria es el asistente de IA (mira [Requisitos del equipo](#requisitos-del-equipo)).
 
 Hace falta ser administrador (`sudo`) para correr el instalador.
+
+**Qué instalan estos scripts.** Los instaladores de esta página instalan el mismo NOMAD que el original, con la misma base y las mismas funciones. La única diferencia es que queda traducido al español y con el contenido en español elegido para esta versión (siempre puedes sumar el contenido en inglés del original). Si usas el instalador del repositorio original, se instala el NOMAD original en inglés.
+
+### Ubuntu o Debian
+
+Es el sistema con el que se prueba NOMAD original (Ubuntu 26.04 LTS recomendado; también Ubuntu 24.04 LTS y Debian 12).
+
+```bash
+sudo apt-get update && sudo apt-get install -y curl && \
+curl -fsSL https://raw.githubusercontent.com/alejoabalde/project-nomad-es/refs/heads/main/install/install_nomad_debian.sh \
+  -o install_nomad_debian.sh && \
+sudo bash install_nomad_debian.sh
+```
 
 ### Fedora
 

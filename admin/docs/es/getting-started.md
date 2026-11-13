@@ -24,6 +24,19 @@ Ubuntu Desktop es la opción más amigable si vienes de Windows o macOS. Ubuntu 
 
 macOS y las distribuciones que no son Debian, como Fedora o Arch, no tienen soporte oficial.
 
+### Instalar en Ubuntu o Debian
+
+Para instalar NOMAD en español, abre una terminal y copia este comando:
+
+```bash
+sudo apt-get update && sudo apt-get install -y curl && \
+curl -fsSL https://raw.githubusercontent.com/alejoabalde/project-nomad-es/refs/heads/main/install/install_nomad_debian.sh \
+  -o install_nomad_debian.sh && \
+sudo bash install_nomad_debian.sh
+```
+
+Instala el mismo NOMAD que el original, solo que traducido al español y con el contenido en español elegido para esta versión. El instalador del repositorio original instala NOMAD en inglés.
+
 ### Instalar en Fedora o Arch
 
 Esta versión en español incluye dos instaladores armados por la comunidad, uno para Fedora y otro para Arch Linux. Crosstalk no los prueba ni los mantiene. Hacen lo mismo que el instalador original, pero con las herramientas de cada sistema, y dejan instalado NOMAD en español.

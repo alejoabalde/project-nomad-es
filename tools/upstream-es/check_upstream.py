@@ -145,8 +145,11 @@ def build_body(base, new):
         "4. Documentación: actualiza la página equivalente en admin/docs/es/, incluida release-notes.md.",
         "5. Catálogo: anota en el PR qué contenido nuevo sumó NOMAD original a collections/*.json, "
         "sin agregarlo a collections/es/ hasta que yo lo decida.",
-        "6. Español neutro, tratando de tú. Sin jerga técnica en los textos que ve la persona.",
-        "7. Corre las pruebas de admin (npm test) y la compilación, y abre un PR contra main que cierre "
+        "6. Instaladores: si cambió install/install_nomad.sh, aplica el mismo cambio en "
+        "install/install_nomad_debian.sh, install_nomad_fedora.sh e install_nomad_arch.sh, "
+        "manteniendo lo propio de cada uno (la imagen en español y los comandos de cada sistema).",
+        "7. Español neutro, tratando de tú. Sin jerga técnica en los textos que ve la persona.",
+        "8. Corre las pruebas de admin (npm test) y la compilación, y abre un PR contra main que cierre "
         "este aviso. Explica en el PR qué se tradujo y qué quedó pendiente.",
         "```",
     ]
