@@ -273,6 +273,10 @@ export interface AempsDataStatus {
   /** Argentine presentations (ANMAT) installed alongside the leaflets. */
   brandCount: number
   packageDate: string | null
+  /** Fork: newer data is published on the `datos` branch (only when ready). */
+  updateAvailable?: boolean
+  /** Fork: when that newer data was published (ISO). */
+  latestDate?: string | null
   bytesDownloaded?: number
   totalBytes?: number
   imported?: number

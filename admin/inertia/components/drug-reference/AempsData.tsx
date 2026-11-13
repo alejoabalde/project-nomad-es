@@ -99,6 +99,9 @@ export default function AempsData({
   }
 
   const installed = (status?.rowCount ?? 0) > 0
+  const newer = installed && !busy && phase !== 'failed' && status?.updateAvailable && status.latestDate
+    ? new Date(status.latestDate).toLocaleDateString(i18n.language, { dateStyle: 'long' })
+    : null
 
   return (
     <div className={className}>
@@ -111,7 +114,7 @@ export default function AempsData({
             </StyledButton>
           )}
           <StyledButton
-            variant={installed ? 'secondary' : 'primary'}
+            variant={installed && !newer ? 'secondary' : 'primary'}
             size="sm"
             onClick={handleDownload}
             disabled={starting || busy}
@@ -122,6 +125,9 @@ export default function AempsData({
       </div>
       <p className="mb-2 text-xs text-desert-stone">{t('aemps.body')}</p>
       <p className={`text-sm ${phase === 'failed' ? 'text-desert-red-dark' : 'text-desert-green-darker'}`}>{line}</p>
+      {newer && (
+        <p className="mt-1 text-sm font-semibold text-desert-orange-dark">{t('aemps.updateAvailable', { date: newer })}</p>
+      )}
       {busy && (
         <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-desert-stone-lighter/40">
           <div
