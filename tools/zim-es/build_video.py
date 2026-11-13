@@ -79,6 +79,9 @@ def download_youtube(video_id: str, dest: pathlib.Path) -> bool:
             ["yt-dlp", "--skip-download", "--no-warnings", "--print", "%(license)s", url],
             capture_output=True, text=True, timeout=300, check=True,
         ).stdout.strip()
+    except subprocess.CalledProcessError as exc:
+        print(f"  no se pudo leer {url}: {(exc.stderr or '').strip()[-500:]}")
+        return False
     except Exception as exc:
         print(f"  no se pudo leer {url}: {exc}")
         return False
