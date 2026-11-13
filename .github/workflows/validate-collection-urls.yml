@@ -23,7 +23,8 @@ jobs:
           FAILED_URLS=""
 
           # Recursively extract all non-null string URLs from every JSON file in collections/
-          URLS=$(jq -r '.. | .url? | select(type == "string")' collections/*.json | sort -u)
+          # (fork: also collections/es/, the Spanish catalog)
+          URLS=$(jq -r '.. | .url? | select(type == "string")' collections/*.json collections/es/*.json | sort -u)
 
           while IFS= read -r url; do
             [ -z "$url" ] && continue

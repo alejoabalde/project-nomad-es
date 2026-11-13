@@ -1,0 +1,73 @@
+name: Actualizar catálogo en español (Kiwix)
+
+# Fork-only: una vez por mes busca versiones nuevas de los archivos de Kiwix
+# que usa el catálogo en español (collections/es/) y, si hay, abre o actualiza
+# un PR para revisar y aprobar. Kiwix borra las versiones viejas, así que sin
+# esto los enlaces del catálogo se van rompiendo.
+
+on:
+  schedule:
+    - cron: '0 8 5 * *'
+  workflow_dispatch:
+  # En un PR que cambia el script, solo se prueba contra Kiwix sin abrir nada.
+  pull_request:
+    paths:
+      - 'tools/kiwix-es/**'
+      - '.github/workflows/update-kiwix-es.yml'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-kiwix-es
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: auto/catalogo-kiwix-es
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Buscar versiones nuevas
+        run: python3 -I tools/kiwix-es/update_catalog.py --resumen "$RUNNER_TEMP/resumen.md"
+
+      - name: Mostrar lo que cambiaría
+        if: github.event_name == 'pull_request'
+        run: |
+          cat "$RUNNER_TEMP/resumen.md" >> "$GITHUB_STEP_SUMMARY"
+          git diff --stat -- collections/es
+
+      - name: Abrir o actualizar el PR
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- collections/es; then
+            echo "No hay versiones nuevas."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add collections/es
+          git commit -m "Catálogo en español: versiones nuevas de Kiwix ($(date -u +%Y-%m))"
+          git push --force origin "$BRANCH"
+
+          {
+            echo "Versiones nuevas de Kiwix para el catálogo en español, encontradas automáticamente."
+            echo
+            echo "Antes de aprobar, conviene mirar que los tamaños sean parecidos a los anteriores: un archivo mucho más chico puede ser una versión incompleta."
+            echo
+            cat "$RUNNER_TEMP/resumen.md"
+          } > "$RUNNER_TEMP/cuerpo.md"
+
+          if gh pr view "$BRANCH" --json state --jq .state 2>/dev/null | grep -q OPEN; then
+            gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/cuerpo.md"
+          else
+            gh pr create --base "${{ github.event.repository.default_branch }}" --head "$BRANCH" \
+              --title "Catálogo en español: versiones nuevas de Kiwix ($(date -u +%Y-%m))" \
+              --body-file "$RUNNER_TEMP/cuerpo.md"
+          fi
