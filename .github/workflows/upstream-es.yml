@@ -8,6 +8,11 @@ on:
   schedule:
     - cron: '0 9 * * 1'
   workflow_dispatch:
+    inputs:
+      desde:
+        description: 'Solo para probar: versión base (p. ej. v1.35.0). Abre un aviso de prueba.'
+        required: false
+        default: ''
   # En un PR que cambia esto, solo se prueba con dos versiones ya publicadas.
   pull_request:
     paths:
@@ -47,15 +52,21 @@ jobs:
       - name: Buscar una versión nueva
         id: check
         if: github.event_name != 'pull_request'
-        run: python3 -I tools/upstream-es/check_upstream.py --salida "$RUNNER_TEMP/aviso.md"
+        env:
+          DESDE: ${{ github.event.inputs.desde }}
+        run: |
+          python3 -I tools/upstream-es/check_upstream.py --salida "$RUNNER_TEMP/aviso.md" \
+            ${DESDE:+--desde "$DESDE"}
 
       - name: Abrir el aviso
         if: github.event_name != 'pull_request' && steps.check.outputs.nueva != ''
         env:
           GH_TOKEN: ${{ github.token }}
           NUEVA: ${{ steps.check.outputs.nueva }}
+          DESDE: ${{ github.event.inputs.desde }}
         run: |
           TITLE="Traducir NOMAD $NUEVA"
+          [ -n "$DESDE" ] && TITLE="[Prueba] $TITLE"
           gh label create "$LABEL" --color 1D76DB \
             --description "Versión nueva de NOMAD original para unir y traducir" 2>/dev/null || true
           EXISTING=$(gh issue list --label "$LABEL" --state all --limit 100 --json title \

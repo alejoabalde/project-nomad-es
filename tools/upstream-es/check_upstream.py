@@ -157,7 +157,8 @@ def main():
     if base is None:
         sys.exit("Ninguna versión de NOMAD original está unida a esta rama.")
 
-    nueva = "" if new == base or is_ancestor(new) and not args.hasta else new
+    forced = args.desde or args.hasta
+    nueva = "" if new == base or (is_ancestor(new) and not forced) else new
     print(f"base={base}")
     print(f"nueva={nueva}")
     if os.environ.get("GITHUB_OUTPUT"):
