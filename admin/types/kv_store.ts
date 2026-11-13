@@ -105,6 +105,9 @@ export const KV_STORE_SCHEMA = {
   // Fork (project-nomad-es) — `generado` date of the AEMPS (CIMA) Spanish
   // leaflet package last imported by ImportAempsDataJob. Null when never imported.
   'drugReference.aempsPackageDate': 'string',
+  // Fork (project-nomad-es) — `actualizado` of the `datos` branch publish the
+  // installed AEMPS/ANMAT data came from (paquetes.json). Null when unknown.
+  'drugReference.datosPublished': 'string',
 } as const
 
 type KVTagToType<T extends string> = T extends 'boolean' ? boolean : string

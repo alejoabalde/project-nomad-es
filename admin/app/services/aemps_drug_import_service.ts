@@ -5,8 +5,17 @@ import { createGunzip } from 'node:zlib'
 import { createInterface } from 'node:readline'
 import { aempsRecordToRow, type AempsRecord } from '../../util/aemps_prospecto.js'
 import { summarizeJobError } from '../../util/drug_labels.js'
+import {
+  isUpdateAvailable,
+  parsePaquetesJson,
+  type DatosVersion,
+} from '../../util/datos_version.js'
 import KVStore from '#models/kv_store'
-import { ImportAempsDataJob, type AempsJobData } from '#jobs/import_aemps_data_job'
+import {
+  DATOS_VERSION_URL,
+  ImportAempsDataJob,
+  type AempsJobData,
+} from '#jobs/import_aemps_data_job'
 import type { AempsDataStatus } from '../../types/drug_reference.js'
 
 /**
@@ -29,6 +38,29 @@ export interface AempsPackageHeader {
 export interface AempsImportProgress {
   imported: number
   skipped: number
+}
+
+/** Remote `paquetes.json`, cached so the Data tab polls do not hit GitHub. */
+const VERSION_TTL_MS = 6 * 60 * 60 * 1000
+let versionCache: { at: number; value: DatosVersion | null } | null = null
+
+/**
+ * Fork (project-nomad-es): what the `datos` branch has published right now.
+ * Null when offline or when the file is missing; never throws.
+ */
+export async function fetchDatosVersion(fresh = false): Promise<DatosVersion | null> {
+  if (!fresh && versionCache && Date.now() - versionCache.at < VERSION_TTL_MS) {
+    return versionCache.value
+  }
+  let value: DatosVersion | null = null
+  try {
+    const resp = await fetch(DATOS_VERSION_URL, { signal: AbortSignal.timeout(5000) })
+    value = resp.ok ? parsePaquetesJson(await resp.json()) : null
+  } catch {
+    value = null
+  }
+  versionCache = { at: Date.now(), value }
+  return value
 }
 
 export class AempsDrugImportService {
@@ -134,6 +166,7 @@ export class AempsDrugImportService {
     const { AnmatBrandService } = await import('#services/anmat_brand_service')
     await new AnmatBrandService().removeAll().catch(() => {})
     await KVStore.clearValue('drugReference.aempsPackageDate')
+    await KVStore.clearValue('drugReference.datosPublished')
     return removed
   }
 
@@ -161,6 +194,21 @@ export class AempsDrugImportService {
     if (state === 'failed') {
       return { ...base, phase: 'failed', error: summarizeJobError(job?.failedReason) }
     }
-    return { ...base, phase: rowCount > 0 ? 'ready' : 'idle' }
+    if (rowCount === 0) return { ...base, phase: 'idle' }
+    // Only when idle and installed: a newer publish on the `datos` branch.
+    const [remote, published] = await Promise.all([
+      fetchDatosVersion(),
+      KVStore.getValue('drugReference.datosPublished'),
+    ])
+    const updateAvailable = isUpdateAvailable(remote, {
+      published: published ?? null,
+      aempsPackageDate: packageDate ?? null,
+    })
+    return {
+      ...base,
+      phase: 'ready',
+      updateAvailable,
+      latestDate: updateAvailable ? remote!.published : null,
+    }
   }
 }

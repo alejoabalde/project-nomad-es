@@ -261,6 +261,8 @@ def main():
     ap.add_argument('--out', required=True, help='archivo final .jsonl.gz')
     ap.add_argument('--pausa', type=float, default=3.0, help='segundos entre pedidos (por defecto 3)')
     ap.add_argument('--max-terminos', type=int, default=0, help='parar después de N términos (para probar)')
+    ap.add_argument('--max-minutos', type=float, default=0,
+                    help='parar al llegar a este tiempo y salir con código 2 (se retoma en otra corrida)')
     ap.add_argument('--en-cadena', type=int, default=0, metavar='RONDAS',
                     help='buscar también los principios activos que aparecen en los resultados, hasta N rondas')
     args = ap.parse_args()
@@ -285,12 +287,17 @@ def main():
 
     vnm = Vademecum(args.pausa)
     estado = {'abierta': False}
+    limite = time.monotonic() + args.max_minutos * 60 if args.max_minutos else None
 
     def correr(pendientes):
         fallos_seguidos = 0
         with open(parcial, 'a', encoding='utf-8') as out, open(hechos_path, 'a', encoding='utf-8') as hechos_f:
             i = 0
             while i < len(pendientes):
+                if limite and time.monotonic() > limite:
+                    print(f'Se acabó el tiempo: quedan {len(pendientes) - i} términos para la próxima corrida.',
+                          file=sys.stderr)
+                    raise SystemExit(2)
                 termino = pendientes[i]
                 try:
                     if not estado['abierta']:

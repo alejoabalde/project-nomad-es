@@ -30,6 +30,14 @@ export const ANMAT_PACKAGE_URL =
   process.env.NOMAD_ANMAT_PACKAGE_URL ||
   'https://raw.githubusercontent.com/alejoabalde/project-nomad-es/datos/anmat-vnm.jsonl.gz'
 
+/**
+ * Small file written on every publish of the `datos` branch (see
+ * tools/datos/publicar.py): lets the Data tab say when newer data is out.
+ */
+export const DATOS_VERSION_URL =
+  process.env.NOMAD_DATOS_VERSION_URL ||
+  'https://raw.githubusercontent.com/alejoabalde/project-nomad-es/datos/paquetes.json'
+
 export type AempsJobPhase = 'downloading' | 'importing' | 'brands' | 'done'
 
 export interface AempsJobData {
@@ -89,6 +97,9 @@ export class ImportAempsDataJob {
   async handle(job: Job) {
     const startedAt = (job.data as AempsJobData).startedAt ?? Date.now()
     const filepath = path.join(AEMPS_STORAGE_BASE, 'aemps-prospectos.jsonl.gz')
+    // Which publish of the `datos` branch this install comes from (best effort).
+    const { fetchDatosVersion } = await import('#services/aemps_drug_import_service')
+    const publish = await fetchDatosVersion(true)
 
     // 1) Download (resumes from the .tmp after a worker restart).
     await job.updateData({ phase: 'downloading', bytesDownloaded: 0, startedAt } satisfies AempsJobData)
@@ -135,6 +146,12 @@ export class ImportAempsDataJob {
       'drugReference.aempsPackageDate',
       result.header?.generado ?? new Date().toISOString()
     )
+
+    if (publish) {
+      await KVStore.setValue('drugReference.datosPublished', publish.published)
+    } else {
+      await KVStore.clearValue('drugReference.datosPublished')
+    }
 
     // The rows are in the database; the package is not needed on disk anymore.
     await rm(filepath, { force: true })

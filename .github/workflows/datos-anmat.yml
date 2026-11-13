@@ -1,0 +1,130 @@
+name: Datos ANMAT (marcas argentinas)
+
+# Fork-only: una vez por mes vuelve a extraer las marcas argentinas del
+# Vademécum Nacional de Medicamentos (ANMAT), despacio (un pedido cada 3 s).
+# Toma los principios activos del paquete AEMPS de la rama «datos». Como tarda
+# varias horas, va por partes: cada corrida guarda lo avanzado y lanza la
+# siguiente. Al terminar reemplaza el archivo en la rama «datos», que queda con
+# un solo commit (sin historial).
+
+on:
+  schedule:
+    - cron: '0 4 2 * *'
+  workflow_dispatch:
+    inputs:
+      vuelta:
+        description: 'Número de corrida (lo usa la propia tarea al seguir; dejar en 1)'
+        default: '1'
+  # En un PR que cambia esto, arma el paquete y muestra el resultado sin publicar.
+  pull_request:
+    paths:
+      - 'tools/anmat/**'
+      - 'tools/datos/**'
+      - '.github/workflows/datos-anmat.yml'
+
+permissions:
+  contents: write
+  actions: write
+
+env:
+  PAQUETE: anmat-vnm.jsonl.gz
+  AEMPS: aemps-prospectos.jsonl.gz
+  MAX_VUELTAS: 8
+
+jobs:
+  armar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    outputs:
+      terminado: ${{ steps.armar.outputs.terminado }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bajar el paquete AEMPS (de ahí salen los principios activos)
+        run: |
+          mkdir -p "$RUNNER_TEMP/previo" "$RUNNER_TEMP/nuevo"
+          curl -fsSL -o "$RUNNER_TEMP/previo/$AEMPS" \
+            "https://raw.githubusercontent.com/${{ github.repository }}/datos/$AEMPS"
+          echo "MES=$(date -u +%Y-%m)" >> "$GITHUB_ENV"
+
+      - name: Retomar lo avanzado este mes
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/nuevo
+          key: anmat-${{ env.MES }}-${{ github.run_id }}
+          restore-keys: anmat-${{ env.MES }}-
+
+      - name: Armar el paquete
+        id: armar
+        run: |
+          set +e
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            # Prueba corta: confirma que el buscador responde desde GitHub.
+            python3 -I tools/anmat/vnm_extract.py --terminos IBUPROFENO,LORATADINA \
+              --out "$RUNNER_TEMP/nuevo/$PAQUETE"
+          else
+            python3 -I tools/anmat/vnm_extract.py --desde-aemps "$RUNNER_TEMP/previo/$AEMPS" \
+              --en-cadena 3 --pausa 3 --max-minutos 320 --out "$RUNNER_TEMP/nuevo/$PAQUETE"
+          fi
+          code=$?
+          set -e
+          case $code in
+            0) echo "terminado=true" >> "$GITHUB_OUTPUT" ;;
+            2) echo "terminado=false" >> "$GITHUB_OUTPUT" ;;
+            *) exit $code ;;
+          esac
+
+      - name: Guardar lo avanzado para la próxima corrida
+        if: steps.armar.outputs.terminado == 'false' && github.event_name != 'pull_request'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/nuevo
+          key: anmat-${{ env.MES }}-${{ github.run_id }}
+
+      - name: Lanzar la corrida siguiente
+        if: steps.armar.outputs.terminado == 'false' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VUELTA: ${{ github.event.inputs.vuelta || '1' }}
+        run: |
+          if [ "$VUELTA" -ge "$MAX_VUELTAS" ]; then
+            echo "::error::No terminó en $MAX_VUELTAS corridas; se deja para el mes próximo."
+            exit 1
+          fi
+          gh workflow run datos-anmat.yml --ref "${{ github.ref_name }}" -f vuelta=$((VUELTA + 1))
+
+      - name: Mostrar el resultado de la prueba
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "Presentaciones encontradas en la prueba: $(zcat "$RUNNER_TEMP/nuevo/$PAQUETE" | tail -n +2 | wc -l)" \
+            >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: steps.armar.outputs.terminado == 'true' && github.event_name != 'pull_request'
+        with:
+          name: paquete
+          path: ${{ runner.temp }}/nuevo/${{ env.PAQUETE }}
+          retention-days: 3
+
+  publicar:
+    needs: armar
+    if: needs.armar.outputs.terminado == 'true' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    # AEMPS y ANMAT escriben en la misma rama: de a una por vez.
+    concurrency:
+      group: rama-datos
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: paquete
+          path: ${{ runner.temp }}/nuevo
+
+      - name: Reemplazar el archivo en la rama datos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash tools/datos/reemplazar_rama.sh "$RUNNER_TEMP/nuevo/$PAQUETE" "$PAQUETE" \
+          "Marcas ANMAT actualizadas ($(date -u +%Y-%m-%d))"
