@@ -10,6 +10,8 @@ import classNames from 'classnames'
 import DynamicIcon, { DynamicIconName } from './DynamicIcon'
 import StyledButton from './StyledButton'
 import KbGuardrailModal from './KbGuardrailModal'
+import useServiceInstalledStatus from '~/hooks/useServiceInstalledStatus'
+import { SERVICE_NAMES } from '../../constants/service_names'
 import { evaluateGuardrail, type GuardrailVerdict } from '~/lib/kb_guardrail'
 import { useSystemInfo } from '~/hooks/useSystemInfo'
 import { getPrimaryDiskInfo } from '~/hooks/useDiskDisplayData'
@@ -32,6 +34,12 @@ interface TierSelectionModalProps {
   category: CategoryWithStatus | null
   selectedTierSlug?: string | null
   onSelectTier: (category: CategoryWithStatus, tier: SpecTier) => void
+  /**
+   * Fork (project-nomad-es): whether the AI Assistant will index these files.
+   * Defaults to "installed (locally or remote)". Easy Setup passes true when
+   * the AI is picked in the wizard but not installed yet.
+   */
+  aiEnabled?: boolean
 }
 
 const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
@@ -40,6 +48,7 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
   category,
   selectedTierSlug,
   onSelectTier,
+  aiEnabled,
 }) => {
   const { t } = useTranslation('components')
   const tc = useCollectionText()
@@ -78,10 +87,16 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
     [selectedTierResources]
   )
 
+  // Fork: without the AI Assistant nothing gets indexed (ZimService only
+  // embeds when Ollama is reachable), so skip the estimate and the disk
+  // warning instead of asking about space that will never be used.
+  const { isInstalled: aiInstalled } = useServiceInstalledStatus(SERVICE_NAMES.OLLAMA)
+  const aiWillIndex = aiEnabled ?? !!aiInstalled
+
   const { data: embedEstimate, isLoading: isEstimating } = useQuery({
     queryKey: ['embedEstimateBatch', embedEstimateRequest],
     queryFn: () => api.estimateEmbeddingBatch(embedEstimateRequest),
-    enabled: embedEstimateRequest.length > 0,
+    enabled: aiWillIndex && embedEstimateRequest.length > 0,
     staleTime: 5 * 60_000,
   })
 
@@ -151,7 +166,7 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
     // would auto-index this batch. Under Manual the user has already opted
     // out of automatic ingestion, so the bulk-disk warning would be a false
     // alarm — the files would just queue as pending_decision.
-    if (ingestPolicy === 'Always' && embedEstimate) {
+    if (aiWillIndex && ingestPolicy === 'Always' && embedEstimate) {
       const verdict = evaluateGuardrail({
         estimateBytes: embedEstimate.totalBytes,
         freeBytes,
@@ -311,7 +326,7 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
                       selected. The estimate uses #891's ratio registry to
                       project how much extra disk space the AI Assistant will
                       need for these files on top of the raw downloads. */}
-                  {localSelectedSlug && embedEstimate && embedEstimate.totalBytes > 0 && (
+                  {aiWillIndex && localSelectedSlug && embedEstimate && embedEstimate.totalBytes > 0 && (
                     <div className="mt-4 bg-surface-secondary border border-border-subtle rounded p-3 text-sm">
                       <div className="flex items-start gap-2">
                         <DynamicIcon icon="IconBrain" className="w-5 h-5 text-desert-green flex-shrink-0 mt-0.5" />
@@ -355,7 +370,7 @@ const TierSelectionModal: React.FC<TierSelectionModalProps> = ({
                     variant='primary'
                     size='lg'
                     onClick={handleSubmit}
-                    disabled={!localSelectedSlug || (embedEstimateRequest.length > 0 && isEstimating)}
+                    disabled={!localSelectedSlug || (aiWillIndex && embedEstimateRequest.length > 0 && isEstimating)}
                   >
                     {t('tiers.submit')}
                   </StyledButton>

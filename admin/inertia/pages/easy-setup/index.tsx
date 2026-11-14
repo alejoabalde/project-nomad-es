@@ -988,6 +988,7 @@ export default function EasySetupWizard(props: {
 
                 {/* Tier Selection Modal */}
                 <TierSelectionModal
+                  aiEnabled={isAiInSetup}
                   isOpen={tierModalOpen}
                   onClose={closeTierModal}
                   category={activeCategory}
