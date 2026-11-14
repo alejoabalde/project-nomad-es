@@ -47,6 +47,7 @@ import api from '~/lib/api'
 import { toTitleCase } from '../../app/utils/misc'
 import { SERVICE_NAMES } from '../../constants/service_names'
 import { useServiceText } from '~/lib/service_i18n'
+import { withServiceLanguage } from '~/lib/service_language'
 import { Trans, useTranslation } from 'react-i18next'
 
 function extractTag(containerImage: string): string {
@@ -882,7 +883,7 @@ function AppCard({
   migrationInstructionsText,
 }: AppCardProps) {
   const serviceText = useServiceText()
-  const { t } = useTranslation('supplyDepot')
+  const { t, i18n } = useTranslation('supplyDepot')
   const isRunning = service.status === 'running'
   const isStopped = service.installed && !isRunning
   const catColor = service.category ? CATEGORY_COLORS[service.category] ?? CATEGORY_COLORS.custom : CATEGORY_COLORS.custom
@@ -1038,7 +1039,7 @@ function AppCard({
             {/* Open button — shown when the app has a default location or a user-set custom URL */}
             {(service.ui_location || service.custom_url) && (
               <a
-                href={getServiceLink(service.ui_location || "", service.custom_url)}
+                href={withServiceLanguage(getServiceLink(service.ui_location || "", service.custom_url), service.service_name, i18n.language, service.custom_url)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1"

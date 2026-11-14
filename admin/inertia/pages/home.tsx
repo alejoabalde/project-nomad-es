@@ -10,6 +10,7 @@ import {
 import { Head, Link, router } from '@inertiajs/react'
 import AppLayout from '~/layouts/AppLayout'
 import { getServiceLink } from '~/lib/navigation'
+import { withServiceLanguage } from '~/lib/service_language'
 import { ServiceSlim } from '../../types/services'
 import DynamicIcon, { DynamicIconName } from '~/components/DynamicIcon'
 import { useUpdateAvailable } from '~/hooks/useUpdateAvailable'
@@ -124,7 +125,7 @@ export default function Home(props: {
   // below so they only appear once the data exists.
   drugReferenceInstalled: boolean
 }) {
-  const { t } = useTranslation('home')
+  const { t, i18n } = useTranslation('home')
   const serviceText = useServiceText()
   const items: DashboardItem[] = []
   const updateInfo = useUpdateAvailable();
@@ -178,7 +179,12 @@ export default function Home(props: {
         label: service.service_name === SERVICE_NAMES.OLLAMA && aiAssistantName ? aiAssistantName : serviceText.name(service),
         to:
           service.ui_location || service.custom_url
-            ? getServiceLink(service.ui_location || '', service.custom_url)
+            ? withServiceLanguage(
+                getServiceLink(service.ui_location || '', service.custom_url),
+                service.service_name,
+                i18n.language,
+                service.custom_url
+              )
             : '#',
         target: '_blank',
         description:
