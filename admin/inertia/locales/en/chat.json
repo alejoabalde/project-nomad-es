@@ -243,5 +243,10 @@
       "unsupported": "This model cannot use images. Choose a model marked “Supports images” in Models & Settings."
     }
   },
-  "streamError": "The model encountered an error. Please try again."
+  "streamError": "The model encountered an error. Please try again.",
+  "unavailable": {
+    "title": "The AI Assistant is not installed",
+    "body": "The AI chat and the knowledge base need the AI Assistant. You can install it from the Supply Depot.",
+    "action": "Go to the Supply Depot"
+  }
 }

@@ -305,7 +305,7 @@ sudo bash /opt/project-nomad/update_nomad.sh
 
 **Desinstalar NOMAD:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Crosstalk-Solutions/project-nomad/refs/heads/main/install/uninstall_nomad.sh -o uninstall_nomad.sh
+curl -fsSL https://raw.githubusercontent.com/alejoabalde/project-nomad-es/refs/heads/main/install/uninstall_nomad.sh -o uninstall_nomad.sh
 sudo bash uninstall_nomad.sh
 ```
 *Advertencia: esto no se puede deshacer. Se borran todos los datos.*
