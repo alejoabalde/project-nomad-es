@@ -255,7 +255,15 @@ Una plataforma de aprendizaje completa y sin conexión de Learning Equality. Kol
 
 **La primera vez que la abras pasarás por un asistente de configuración rápido.** Elige el tipo de institución y crea la **cuenta de administrador** (es el superusuario que administra todo el dispositivo, así que ponle una contraseña de verdad y no la pierdas). Kolibri tiene interfaz en español: puedes elegir el idioma en el asistente o después desde el menú. Una vez dentro, importas el contenido educativo como **canales**.
 
-**Importar contenido:** el contenido de Kolibri se entrega en canales que importas. Abre **Dispositivo → Canales → Importar** y trae canales desde Kolibri Studio (en línea) o impórtalos desde un disco local u otro dispositivo Kolibri si ya tienes los archivos. Hay muchísimo disponible, incluidos canales en español, así que importa solo los que necesites; pueden ser grandes.
+**Importar contenido:** Kolibri empieza vacío, porque NOMAD no le instala ningún canal. El contenido se entrega en **canales** que importas tú. Para traer canales en español desde internet:
+
+1. Inicia sesión con la cuenta de administrador, abre el menú (☰) y entra en **Dispositivo → Canales → Importar**.
+2. Elige **Kolibri Studio** y haz clic en **Continuar**.
+3. El catálogo muestra canales en todos los idiomas. Usa el filtro de idioma o busca «español» para ver solo los que están en español.
+4. Abre un canal para ver qué contiene y cuánto ocupa, e impórtalo entero o marca solo los temas que te interesen.
+5. Haz clic en **Importar**. Puedes seguir el avance en **Dispositivo → Tareas**; al terminar, el canal aparece en **Aprender → Biblioteca**.
+
+También puedes importar canales desde un disco local u otro dispositivo Kolibri si ya tienes los archivos. Los canales pueden ser grandes, así que importa solo los que necesites.
 
 **Migrar el contenido de la Plataforma educativa (1.ª gen.):** las versiones anteriores de NOMAD traían un Kolibri mucho más viejo (la imagen `treehouses/kolibri:0.12.8`). La Plataforma educativa «2.ª gen.» es un Kolibri más nuevo y oficial del proyecto, y se instala **desde cero**: tus canales y datos de estudiantes anteriores **no** se pasan automáticamente, porque las dos versiones guardan los datos de forma demasiado distinta como para migrarlos con seguridad. Si usabas la versión anterior y quieres importar tus canales a la nueva, este es el proceso:
 
