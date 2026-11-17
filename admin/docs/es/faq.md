@@ -69,8 +69,10 @@ También puedes usar el **Explorador de contenido** para ver todo el contenido Z
 ### ¿Cómo agrego más cursos educativos?
 1. Abre **Kolibri**
 2. Inicia sesión como administrador
-3. Ve a **Dispositivo → Canales**
-4. Explora e importa los canales disponibles
+3. Ve a **Dispositivo → Canales → Importar → Kolibri Studio**
+4. Filtra por idioma o busca «español», y elige los canales que quieras
+
+Los pasos completos están en [Primeros pasos](/docs/getting-started).
 
 Hay canales en español, como el de Khan Academy en español. Al importar un canal puedes elegir solo los temas que te interesan, así no descargas el canal entero.
 

@@ -141,17 +141,31 @@ La Biblioteca de información guarda versiones comprimidas de sitios web y obras
 La Plataforma educativa ofrece cursos completos que funcionan sin conexión.
 
 **Qué incluye:**
-- Cursos en video de Khan Academy
+- Lecciones en video, ejercicios y lecturas organizados en canales
 - Matemática, ciencias, lectura y más
 - Seguimiento del progreso de cada estudiante
 - Sirve para todas las edades
 
+**Importante: Kolibri empieza vacío.** La Configuración rápida de NOMAD baja contenido para la Biblioteca de información (Kiwix), no para Kolibri. Los cursos de Kolibri los agregas tú importando canales, y para eso necesitas internet una sola vez. Los pasos están más abajo.
+
 **Cómo se usa:**
 1. Haz clic en **Plataforma educativa** en la pantalla de inicio del Centro de mando o en el [Depósito de suministros](/supply-depot)
-2. Inicia sesión o crea una cuenta de estudiante
-3. Explora los cursos y empieza a aprender
+2. La primera vez, completa el asistente y crea la cuenta de administrador
+3. Importa al menos un canal en español (ver abajo)
+4. Crea las cuentas de estudiante, explora los cursos y empieza a aprender
 
-**Cursos en español:** los cursos se agregan desde Kolibri importando canales. Para Khan Academy en español, importa el canal de Khan Academy en español desde **Dispositivo → Canales**; puedes elegir solo los temas que quieras.
+**Importar cursos en español:**
+1. Inicia sesión con la cuenta de administrador.
+2. Abre el menú (☰, arriba a la izquierda) y entra en **Dispositivo**.
+3. Ve a la pestaña **Canales** y haz clic en **Importar**.
+4. Elige **Kolibri Studio** y haz clic en **Continuar**.
+5. Verás el catálogo público de Kolibri, con canales en todos los idiomas. Para ver solo los que están en español, usa el filtro de idioma o busca «español».
+6. Abre un canal para ver qué contiene y cuánto ocupa. Puedes importarlo entero o marcar solo los temas que te interesen.
+7. Haz clic en **Importar**. La descarga sigue sola en segundo plano y puedes ver cómo avanza en **Dispositivo → Tareas**.
+
+Cuando termina, el canal aparece en **Aprender → Biblioteca** y funciona sin conexión.
+
+**¿Y Khan Academy?** Hay dos formas de tenerlo en español. En la Biblioteca de información (Kiwix) está «Khan Academy en español», que se descarga desde NOMAD como cualquier otro recurso, aunque es muy grande (unos 150 GB). En Kolibri también hay canales de Khan Academy en español: la ventaja es que puedes elegir solo los temas que quieras y seguir el progreso de cada estudiante.
 
 **Consejo:** Kolibri admite varios usuarios. Crea una cuenta para cada integrante de la familia y así sigues el progreso de cada uno.
 
