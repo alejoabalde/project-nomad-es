@@ -1,5 +1,5 @@
 {
-  "spec_version": "2026-11-13",
+  "spec_version": "2026-11-16",
   "categories": [
     {
       "name": "Medicina",
@@ -1198,10 +1198,10 @@
             },
             {
               "id": "devdocs_en_react",
-              "version": "2026-05",
+              "version": "2026-11",
               "title": "Documentación de React (en inglés)",
               "description": "Referencia y tutoriales de la biblioteca React",
-              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_react_2026-05.zim",
+              "url": "https://download.kiwix.org/zim/devdocs/devdocs_en_react_2026-11.zim",
               "size_mb": 3
             },
             {
