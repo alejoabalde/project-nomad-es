@@ -7,7 +7,7 @@ name: Actualizar catálogo en español (Kiwix)
 
 on:
   schedule:
-    - cron: '0 8 5 * *'
+    - cron: '41 8 5 * *'
   workflow_dispatch:
   # En un PR que cambia el script, solo se prueba contra Kiwix sin abrir nada.
   pull_request:

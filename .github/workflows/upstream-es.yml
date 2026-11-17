@@ -6,7 +6,7 @@ name: Aviso de versión nueva de NOMAD
 
 on:
   schedule:
-    - cron: '0 9 * * 1'
+    - cron: '37 9 * * 1'
   workflow_dispatch:
     inputs:
       desde:
