@@ -8,7 +8,7 @@ name: Datos AEMPS (prospectos en español)
 
 on:
   schedule:
-    - cron: '0 3 * * 2'
+    - cron: '17 3 * * 2'
   workflow_dispatch:
     inputs:
       vuelta:
